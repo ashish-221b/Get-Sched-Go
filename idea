@@ -1,0 +1,14 @@
+\\
+
+The key idea of project is to make an interactive  web application which is a daily, weekly and monthly scheduler .
+Based on your input events it will generate few suitable timetables. 
+Your input events can be specified daily/weekly/ monthly and also with your preference. 
+You can also fix the time of event or keep it flexible for which our scheduler will generate a few possible timings keeping in mind upon the fixed events whose timings are pre-specified(e.g. Lectures , quizzes have max preference with fixed timing. Assignments have max preference with a flexible timing. 
+Playing games has a low priority with flexible timing and attending a insti-event have low priority but fixed timing).  
+We would also take care of events that has a time interval(e.g. lunch timing of yours). 
+It's next step is to maintain specific profiling of individual such as sleep-time(sparsed or continuous), working time preference(e.g. late night or early morning), continous working durations. 
+Suggesting adequate sleep timing after a tiring days and before an important day.
+Further level would be interaction between users (e.g. An instructor pushing an extra class, team-leader of ssl deciding time to meet).
+Sharing of schedule would help instructor decide proper timings but the detail of schedule sharing depends on choice of user. Though the priority of schedule would be visible.
+We will use python with django in backend to generate and maintain the schedule and in frontend use html with css and js. 
+Our output would be a timetable which can also be exported as a csv file to your google calender etc. The thing we are tring to deliver to our user is an easy way of time management, a thing which lacks amongst us.
