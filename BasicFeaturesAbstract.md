@@ -48,4 +48,5 @@
     * get events from instructor 
     * fix meetings with friends and instructor
     * group study/meet by schedule interaction.
-    * 
+    * estimate of events like exam prep, assignment etc. as given be peers
+    * exporting schedule in some format (eg csv for google calender)
