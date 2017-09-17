@@ -23,4 +23,29 @@
         * Insti Events
         * Assignments and pre-declared quizzes help-sessions
         * Tutorial prep (solve/ view tutorial)
-        * Daily/weekly tasks (eg take a bath)
+        * Daily/weekly target (eg complete a lecture/tv series)
+* ### Event Details:
+    * Priority:
+        * Acad/personal
+        * Indespensable (eg quiz exam assignment)
+        * High (Game of thrones,meeting with friends)
+        * preferred (regular study slot , sleep)
+        * mediocre (sports)
+        * least (dedicated chillout)
+    * Timing:
+        * fixed timing
+        * deadlined (hard/soft)
+        * flexible
+ Event shcheduling will take into consideration mainly these above mentioned two parameters
+    * Other addons
+        * venue
+        * description
+        * buffer time/recovery time.
+* ### Interface and working:
+    * Account based service
+    * will ask for basic profile info i.e. **"Personal details and habits"**
+    * add event for a day/week.
+    * get events from instructor 
+    * fix meetings with friends and instructor
+    * group study/meet by schedule interaction.
+    * 
