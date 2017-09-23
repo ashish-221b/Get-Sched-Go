@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#%qh!kmr1!)65aw2+-a4ukg)&j#d_xym$8ro&c_b%y)^f5nw3c'
+SECRET_KEY = '2pm#w&x6qfxi(&es%wwbv%a@v#gk$&x&m^%8$na55s=anew&&^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,13 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #installed by cloning their git-repo
-    'crispy_forms',
+    'profiles',
+    'crispy_forms',    
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',    
-
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +72,15 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 WSGI_APPLICATION = 'getSchedGo.wsgi.application'
 
@@ -126,7 +134,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# below this was added by rupesh to specify static file to django
 if DEBUG:
     MEDIA_URL = '/media/'
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static-only")
@@ -134,3 +141,34 @@ if DEBUG:
     STATICFILES_DIRS = (
         os.path.join(os.path.dirname(BASE_DIR), "static", "static"),
 )
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+SITE_ID = 1
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_URL
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = None
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "My Subject:"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+
+ACCOUNT_LOGOUT_ON_GET = False
+ACCOUNT_LOGOUT_REDIRECT_URL ='/'
+ACCOUNT_SIGNUP_FORM_CLASS = None
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD ="username"
+ACCOUNT_USER_MODEL_EMAIL_FIELD ="email"
+
+ACCOUNT_USERNAME_MIN_LENGTH = 5
+ACCOUNT_USERNAME_BLACKLIST = []
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = False
+ACCOUNT_PASSWORD_MIN_LENGTH = 6
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
