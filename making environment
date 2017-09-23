@@ -1,0 +1,13 @@
+Firstly install pyhton3-pip
+
+sudo pip3 install virtualenv
+
+NOT NEEDED IF THERE IS ALREADY AN ENVIRONMENT
+virtualenv getSchedGo
+
+NOW
+cd getSchedGo
+source bin/activate
+
+Afterwards expected that all requirement seperate installation not needed.
+Still we will maintain requirement.txt in the getSchedGo environment folder
