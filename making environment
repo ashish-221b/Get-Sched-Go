@@ -10,4 +10,8 @@ cd getSchedGo
 source bin/activate
 
 Afterwards expected that all requirement seperate installation not needed.
+
+But observed that even after installing packages the packages though get passed to next PC while pulling but essentially never get used and don't show up in pip list so please maintain requirement.txt 
+
+
 Still we will maintain requirement.txt in the getSchedGo environment folder
