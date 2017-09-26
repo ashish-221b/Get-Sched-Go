@@ -3,7 +3,6 @@ from .models import profile
 
 STUDY_CHOICES = [('1','Day'),('2','Evening'), ('3','Night'), ('4','Late Night')]
 SLEEP_TIME = [('A','6 hours'), ('B','7 hours'), ('C','8 hours')]
-#user = request.user
 class SimpleForm(forms.ModelForm):
 	name = forms.CharField(max_length=120)
 	studyChoice = forms.ChoiceField(
