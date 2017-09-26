@@ -14,8 +14,14 @@ class profile(models.Model):
 	#Various Fields for user preference.
 	studyChoice = models.CharField(max_length=1,choices=STUDY_CHOICES,default='3')
 	sleepChoice = models.CharField(max_length=1,choices=SLEEP_TIME,default='B')
+	crickenthu = models.BooleanField(default=False,)
+	NBAenthu = models.BooleanField(default=False,)
+	footballenthu = models.BooleanField(default=False,)
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank = True)
 	#connects to User model
+
+
+
 	def __str__(self):
 		return self.name
 #function that creates profile model when User Logs in for the first time
