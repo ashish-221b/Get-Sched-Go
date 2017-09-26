@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'profiles',
-    'crispy_forms',    
+    'crispy_forms',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -172,3 +172,4 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = False
 ACCOUNT_PASSWORD_MIN_LENGTH = 6
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+AUTH_PROFILE_MODULE = 'profiles.profile'
