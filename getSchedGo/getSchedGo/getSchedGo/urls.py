@@ -20,7 +20,6 @@ from django.contrib import admin
 
 from profiles import views as profiles_views
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', profiles_views.home, name='home'),
