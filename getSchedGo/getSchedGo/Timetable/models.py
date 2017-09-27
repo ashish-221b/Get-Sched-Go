@@ -14,7 +14,7 @@ class DailySched(models.Model):
 	def __str__(self):
 		return self.name
 #Events
-class Event(object):
+class Event(models.Model):
 	"""docstring for Event."""
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
