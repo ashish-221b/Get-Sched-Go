@@ -1,8 +1,10 @@
 from django import forms
 from .models import profile
 
+# A tuple made for choice. First value will be stored in database. Second will be key to Display
 STUDY_CHOICES = [('1','Day'),('2','Evening'), ('3','Night'), ('4','Late Night')]
 SLEEP_TIME = [('A','6 hours'), ('B','7 hours'), ('C','8 hours')]
+# A model form that through meta get linked to profile imported from .models
 class SimpleForm(forms.ModelForm):
 	name = forms.CharField(max_length=120)
 	studyChoice = forms.ChoiceField(

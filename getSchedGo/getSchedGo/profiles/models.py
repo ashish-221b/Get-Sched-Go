@@ -21,7 +21,7 @@ class profile(models.Model):
 	#connects to User model
 
 
-
+	# What to display as index in admin page use __unicode__ for python2
 	def __str__(self):
 		return self.name
 #function that creates profile model when User Logs in for the first time

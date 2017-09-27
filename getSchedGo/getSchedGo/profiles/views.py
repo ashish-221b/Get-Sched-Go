@@ -3,17 +3,21 @@ from django.shortcuts import render, redirect
 from .forms import SimpleForm
 from .models import profile
 # Create your views here.
+# main page url is ^$. No special context to be displayed
+
 def home(request):
 	context = {}
 	template = 'home.html'
 	return render(request,template,context)
 
+# Just a random page to be filled by Deba
 def about(request):
 	context = {}
 	template = 'about.html'
 	return render(request,template,context)
 
-@login_required
+# Anything below this redirects to accounts/login if user is not authenticated
+@login_required 
 def userProfile(request):
 	user = request.user
 	#context = {'user': user,}
@@ -35,6 +39,6 @@ def userProfile(request):
 		# 	return redirect('home')
 		return render(request,template,{'user': user, 'form': form})
 
-	else:
-		form = SimpleForm(instance=user.profile)
+	else: #for get request i.e. when page opens on browser
+		form = SimpleForm(instance=user.profile) #fills choice from earlier user data is Db
 		return render(request,template,{'user': user, 'form': form})
