@@ -20,14 +20,13 @@ from django.contrib import admin
 
 from profiles import views as profiles_views
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', profiles_views.home, name='home'),
     url(r'^about/$', profiles_views.about, name='about'),
     url(r'^profile/$', profiles_views.userProfile, name='profile'),
     url(r'^accounts/', include('allauth.urls')),
-    
+
 ]
 
 if settings.DEBUG:
