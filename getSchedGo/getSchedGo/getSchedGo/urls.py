@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^about/$', profiles_views.about, name='about'),
     url(r'^profile/$', profiles_views.userProfile, name='profile'),
     url(r'^accounts/', include('allauth.urls')),
-    
+    url(r'^event/', include('Timetable.urls')),
 ]
 
 if settings.DEBUG:
