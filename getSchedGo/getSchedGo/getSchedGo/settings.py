@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'profiles',
     'Timetable',
+    'courses',
     'crispy_forms',
     'django.contrib.sites',
     'allauth',

@@ -12,7 +12,7 @@ class EventForm(forms.ModelForm):
         EndTime = forms.DateTimeField(required=False,widget=forms.DateTimeInput)
         DeadLine = forms.DateTimeField(required=False,widget=forms.DateTimeInput)
         Priority = forms.ChoiceField(required=False,choices = Priority_Options,widget = forms.RadioSelect)
-        Type = forms.CharField(equired=False,choices = Event_Type,widget = forms.RadioSelect)
+        Type = forms.CharField(required=False,choices = Event_Type,widget = forms.RadioSelect)
         TimeSettings = forms.CharField(required=False,choices = Event_Timings,widget = forms.RadioSelect)
 
         class Meta:
