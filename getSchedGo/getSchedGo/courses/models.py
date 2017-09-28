@@ -9,5 +9,7 @@ class coursedetail(models.Model):
 	credit = models.IntegerField(null=True,blank=True)
 	tutorial = models.BooleanField(default = False)
 	tutorialSlot = models.CharField(max_length=5)
+	# if tutorial==False:
+	# 	tutorialSlot.blank = True
 	def __str__(self):
 		return self.code

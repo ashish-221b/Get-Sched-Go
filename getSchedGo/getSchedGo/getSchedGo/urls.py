@@ -19,6 +19,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from profiles import views as profiles_views
+from courses import views as course_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +28,7 @@ urlpatterns = [
     url(r'^profile/$', profiles_views.userProfile, name='profile'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^event/', include('Timetable.urls')),
+    url(r'^course/$', course_views.CourseView, name='course')
 ]
 
 if settings.DEBUG:

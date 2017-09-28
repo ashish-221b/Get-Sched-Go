@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-4 col-md-offset-2">
+	
+	 <form method="post">
+	 	{% csrf_token %}
+	 	{{ form|crispy }}
+			<button type="submit">Submit</button>
+		</form>
+</div>
+<div class="col-md-8 col-md-offset-2">
+<h3>
+{{ text }}
+</h3>
+{% for courses in courseDetail %}
+<h3>
+{{ courses.name }}
+</h3>
+{% endfor %}
+</div>
+{% endblock %}
