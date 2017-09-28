@@ -4,12 +4,15 @@ from .forms import EventForm
 from .models import DailySched, Event, Slots
 @login_required
 def CreateEvent(request):
+    user = request.user
     if request.method == 'POST':
-        form = EventForm()
-        context = {'user': user, 'form': form}
-        return render(request,template,context)
+        form = EventForm(request.POST)
+        if form.is_valid():
+            Eve = form.save(commit=False)
+            Eve.UserProfile = user.profile
+            Eve.save()
+            return redirect('home')
     else:
-        user = request.user
         form = EventForm()
         context = {'user': user, 'form': form}
         template = 'CreateEvent.html'
