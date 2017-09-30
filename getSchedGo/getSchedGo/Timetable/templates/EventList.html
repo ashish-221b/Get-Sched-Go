@@ -1,15 +1,68 @@
-{% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
-{% load staticfiles %}<!-- Using files that are in static folder mainly images-->
-{% load crispy_forms_tags %}<!-- Crispy is just awesome for forms handling -->
+{% extends 'base.html'%}
+{% block styles %}
+<style type="text/css">
+  .affix {
+    top:50px;
+    position: fixed;
+    width: 100%;
+    margin-left: 0;
+    z-index: 9999 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+</style>
+{% endblock %}
+{% block bars %}
+<div align="center">Hi {{ user }}</div>
+{% if List %}
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="40">
+ <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+<div id="mynavbar" class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav">
+          <li><a href="{% url 'Timetable:SortEvent' 0 %}">Sort by ID</a></li>
+          <li><a href="{% url 'Timetable:SortEvent' 1 %}">Sort by DATE</a></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+<!-- using if for different view if user is logged in or not -->
+                <li><a href="#">Filter1</a></li>
+                <li><a href="#">Filter2</a></li>
+
+<!--                 <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li> -->
+              </ul>
+            </li>
+        </ul>
+      </div>
+
+  </div>
+</nav>
+{% endif %}
+{% endblock %}
+
 {% block content %}<!-- Using extend everything to be displayed are kept in extend.
 It is just as if part of content in block of actually in base.html -->
-<div align="center">Hi {{ user }}</div>
+
 
 
 
   {% if List %}
+
    {% for Event in List %}
-   <div class="row event-holder">
+   <div class="row event-holder" id="event{{ forloop.counter }}">
        <div class="col-md-8">
          <h3> {{ Event.name }} </h3>
          <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
@@ -25,4 +78,6 @@ It is just as if part of content in block of actually in base.html -->
    <p>No Events are available.</p>
 {% endif %}
 </div>
+<p style="margin-top: 50em;">&nbsp;</p>
+
 {% endblock %}
