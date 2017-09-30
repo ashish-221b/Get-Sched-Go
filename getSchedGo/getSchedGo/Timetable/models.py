@@ -36,8 +36,8 @@ class Event(models.Model):
 class Slots(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	Day_Sched = models.ForeignKey(DailySched, on_delete=models.CASCADE)
-	StartTime = models.DateTimeField(null=False,blank=False)
-	EndTime = models.DateTimeField(null=False,blank=False)
+	StartTime = models.TimeField(null=False,blank=False)
+	EndTime = models.TimeField(null=False,blank=False)
 	SlotNum= models.IntegerField(null=False,blank=False)
 	def __str__(self):
-		return self.SlotNum
+		return str(self.SlotNum)
