@@ -11,3 +11,27 @@
 .navbar-inverse .navbar-brand {
     color: #2dd1eb;
 }
+.event-holder {
+    transition: all .5s ease-in-out;
+    font-size: 100%;
+    opacity: 0.6;
+    width:100%;
+    min-height:50px;
+    padding: 2em;
+    border-radius: 25px;
+    box-shadow: 0 0 1em rgba(0,0,0,0.8);
+    margin: 20px;
+    /* overflow: scroll;*/
+}
+.event-holder:hover {
+    border-radius: 50px;
+    font-size: 150%;
+    padding: 4em;
+    opacity: 1;
+    /*margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: 0px;
+    margin-right: 0px;*/
+    background-color: rgb(204, 204, 255);
+    box-shadow: 0 0 2em rgba(100,0,100,0.8);
+}

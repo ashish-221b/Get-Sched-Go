@@ -5,14 +5,22 @@
 It is just as if part of content in block of actually in base.html -->
 <div align="center">Hi {{ user }}</div>
 
-<div class="col-md-4 col-md-offset-2">
+
 
   {% if List %}
-   <ul>
    {% for Event in List %}
-       <li><a href="{% url 'Timetable:EditEvent' Event.id %}">{{ Event.name }}</a></li>
+   <div class="row event-holder">
+       <div class="col-md-8">
+         <h3> {{ Event.name }} </h3>
+         <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
+         <h4> To : {{ Event.EndDate  }} {{ Event.EndTime }} </h4>
+         <h4> DeadLine : {{ Event.DeadLineDate }} {{ Event.DeadLineTime }} </h4>
+      </div>
+      <div class="col-md-4" >
+         <a href="{% url 'Timetable:EditEvent' Event.id %}">Edit</a></li>
+      </div>
+    </div>
    {% endfor %}
-   </ul>
 {% else %}
    <p>No Events are available.</p>
 {% endif %}
