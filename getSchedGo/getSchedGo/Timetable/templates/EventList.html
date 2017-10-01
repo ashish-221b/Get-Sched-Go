@@ -4,11 +4,9 @@
 {% block content %}<!-- Using extend everything to be displayed are kept in extend.
 It is just as if part of content in block of actually in base.html -->
 <div align="center">Hi {{ user }}</div>
-
-
-
   {% if List %}
    {% for Event in List %}
+   <div class="row ">
    <div class="row event-holder">
        <div class="col-md-8">
          <h3> {{ Event.name }} </h3>
