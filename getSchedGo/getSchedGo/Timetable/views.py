@@ -4,6 +4,7 @@ from .forms import EventForm
 from .models import DailySched, Event, Slots
 from datetime import date, time
 from .schedule import fixedScheduleAdder
+from .EventPicker import eventList
 @login_required
 def CreateEvent(request,pk=-1):
     user = request.user
@@ -13,16 +14,13 @@ def CreateEvent(request,pk=-1):
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(request.POST, instance = prev)
+            SlotToFree = Slots.objects.filter(EventConnected = prev)
+            for slot in SlotToFree:
+                slot.EventConnected = None
+                slot.save()
         if form.is_valid():
             Eve = form.save(commit=False)
             Eve.UserProfile = user.profile
-            # Start=form.cleaned_data['StartDate']
-            # End=form.cleaned_data['EndDate']
-            # DeadLine=form.cleaned_data['DeadLineDate']
-            # Eve.StartDate=Start
-            # Eve.EndDate=End
-            # Eve.DeadLineDate=DeadLine #if form EVENT TIMING =B startdate timesched-statrttime 0slot slot key added
-            # print(Eve.TimeSettings)
             Eve.save()
             if Eve.TimeSettings=='B':
                 a=fixedScheduleAdder(Eve,user)
@@ -52,7 +50,7 @@ def EventList(request,pk=-1):
 def Schedules(request):
     user=request.user
     SchedToday = DailySched.objects.get(UserProfile = user.profile, Active_day = date.today())
-    SlotList = Slots.objects.filter(Day_Sched = SchedToday)
-    context = {'user': user,'SlotList': SlotList, 'range': range(0,24),'SchedToday': SchedToday}
+    EventList = eventList(SchedToday)
+    context = {'user': user,'EventList': EventList, 'range': range(0,24),'SchedToday': SchedToday}
     template = 'todayschedule.html'
     return render(request,template,context)
