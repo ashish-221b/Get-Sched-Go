@@ -32,9 +32,13 @@ def CreateEvent(request,pk=-1):
         template = 'CreateEvent.html'
         return render(request,template,context)
 @login_required
-def EventList(request):
+def EventList(request,pk=-1):
     user = request.user
-    List = Event.objects.filter(UserProfile=user.profile)
+    if(pk==-1 or pk=='0'):
+        List = Event.objects.filter(UserProfile=user.profile)
+    else:
+        print(pk)#now if more wanted then add pk=='3' so on
+        List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')   
     context = {'user': user,'List': List}
     template = 'EventList.html'
     return render (request,template,context)
