@@ -53,6 +53,6 @@ def Schedules(request):
     user=request.user
     SchedToday = DailySched.objects.get(UserProfile = user.profile, Active_day = date.today())
     SlotList = Slots.objects.filter(Day_Sched = SchedToday)
-    context = {'user': user,'SlotList': SlotList}
+    context = {'user': user,'SlotList': SlotList, 'range': range(0,24),'SchedToday': SchedToday}
     template = 'todayschedule.html'
     return render(request,template,context)
