@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm
 from .models import DailySched, Event, Slots
 from datetime import date, time
+from .schedule import fixedScheduleAdder
 @login_required
 def CreateEvent(request,pk=-1):
     user = request.user
@@ -22,10 +23,10 @@ def CreateEvent(request,pk=-1):
             # Eve.EndDate=End
             # Eve.DeadLineDate=DeadLine #if form EVENT TIMING =B startdate timesched-statrttime 0slot slot key added
             # print(Eve.TimeSettings)
-            if Eve.TimeSettings=='B':
-                print("RANDOM")
-                pass
             Eve.save()
+            if Eve.TimeSettings=='B':
+                a=fixedScheduleAdder(Eve,user)
+                print(a)
             return redirect('home')
     else:
         if(pk==-1):

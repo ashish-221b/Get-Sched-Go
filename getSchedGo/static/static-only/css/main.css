@@ -1,3 +1,19 @@
+body {
+      position: relative; 
+  }
+.affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+.navbar {
+      margin-bottom: 0px;
+  }
+
+.affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
 .btn-primary {
     background-image: -webkit-linear-gradient(top,#337ab7 0,#265a88 100%);
     background-image: -o-linear-gradient(top,#337ab7 0,#265a88 100%);
