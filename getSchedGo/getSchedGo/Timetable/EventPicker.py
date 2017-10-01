@@ -9,4 +9,4 @@ def eventList(dayToSchedule):
 		else:
 			EventSet.add(slot.EventConnected)
 	EventList = List(EventSet)
-	return EventList			
+	return EventList

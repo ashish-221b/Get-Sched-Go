@@ -27,7 +27,7 @@ class Event(models.Model):
 	DeadLineTime = models.TimeField(null=True,blank=True)
 	DeadLineDate = models.DateField(null=True,blank=True)
 	Priority = models.CharField(max_length=25,blank=True,choices=Priority_Options,default='1')
-	Type = models.CharField(max_length=25,blank=True,choices=Event_Type,default='')
+	Type = models.CharField(max_length=25,choices=Event_Type,default='E')
 	TimeSettings = models.CharField(max_length=25,blank=True,choices=Event_Timings,default='B')
 
 	def __str__(self):
