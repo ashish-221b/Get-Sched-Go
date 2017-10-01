@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm
 from .models import DailySched, Event, Slots
+from datetime import date, time
 @login_required
 def CreateEvent(request,pk=-1):
     user = request.user
@@ -42,7 +43,15 @@ def EventList(request,pk=-1):
         List = Event.objects.filter(UserProfile=user.profile)
     else:
         print(pk)#now if more wanted then add pk=='3' so on
-        List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')   
+        List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')
     context = {'user': user,'List': List}
     template = 'EventList.html'
-    return render (request,template,context)
+    return render(request,template,context)
+@login_required
+def Schedules(request):
+    user=request.user
+    SchedToday = DailySched.objects.get(UserProfile = user.profile, Active_day = date.today())
+    SlotList = Slots.objects.filter(Day_Sched = SchedToday)
+    context = {'user': user,'SlotList': SlotList}
+    template = 'todayschedule.html'
+    return render(request,template,context)

@@ -1,0 +1,14 @@
+{% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
+{% load staticfiles %}<!-- Using files that are in static folder mainly images-->
+{% block content %}<!-- Using extend everything to be displayed are kept in extend.
+It is just as if part of content in block of actually in base.html -->
+<div align="center">Hi {{ user }}</div>
+
+<div class="col-md-12">
+    {% for slot in SlotList %}
+        {{ slot.SlotNum }}<br>
+        {{ slot.StartTime }} -- {{ slot.EndTime }}<br>
+    {% endfor %}
+
+</div>
+{% endblock %}

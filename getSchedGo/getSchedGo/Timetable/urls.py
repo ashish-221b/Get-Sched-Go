@@ -6,4 +6,5 @@ urlpatterns = [
     url(r"^create/$", views.CreateEvent, name="CreateEvent"),
     url(r"^(?P<pk>[0-9]+)/edit$", views.CreateEvent, name="EditEvent"),
     url(r"^(?P<pk>[0-9]+)/sort$", views.EventList, name="SortEvent"),
+    url(r'^today/$',views.Schedules, name = "Today's Schedule"),
 ]

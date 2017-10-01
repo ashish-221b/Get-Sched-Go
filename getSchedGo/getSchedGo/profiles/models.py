@@ -41,9 +41,9 @@ def my_Call(sender, request, user, **kwargs):
 		for i in range(1,289):
 			k = (i-1)%12
 			mins = k*5
-			hour = k//12
+			hour = (i-1)//12
 			mins_e = (mins + 5)%60
-			hour_e = hour + (mins + 5)//60
+			hour_e = (hour + (mins + 5)//60)%24
 			Slotx = Slots(UserProfile = userProfile, Day_Sched = Sched_today,
 			StartTime = str(hour)+":"+str(mins)+":"+"00", EndTime = str(hour_e)+":"+str(mins_e)+":"+"00", SlotNum = i)
 			Slotx.save()
