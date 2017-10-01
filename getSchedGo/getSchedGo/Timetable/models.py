@@ -28,7 +28,7 @@ class Event(models.Model):
 	DeadLineDate = models.DateField(null=True,blank=True)
 	Priority = models.CharField(max_length=25,blank=True,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=25,blank=True,choices=Event_Type,default='')
-	TimeSettings = models.CharField(max_length=25,blank=True,choices=Event_Timings,default='C')
+	TimeSettings = models.CharField(max_length=25,blank=True,choices=Event_Timings,default='B')
 
 	def __str__(self):
 		return self.name
@@ -39,5 +39,6 @@ class Slots(models.Model):
 	StartTime = models.TimeField(null=False,blank=False)
 	EndTime = models.TimeField(null=False,blank=False)
 	SlotNum= models.IntegerField(null=False,blank=False)
+	EventConnected = models.ForeignKey(Event,on_delete=models.SET_NULL,null=True)
 	def __str__(self):
 		return str(self.SlotNum)

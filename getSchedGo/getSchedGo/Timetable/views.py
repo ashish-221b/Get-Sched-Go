@@ -14,12 +14,16 @@ def CreateEvent(request,pk=-1):
         if form.is_valid():
             Eve = form.save(commit=False)
             Eve.UserProfile = user.profile
-            Start=form.cleaned_data['StartDate']
-            End=form.cleaned_data['EndDate']
-            DeadLine=form.cleaned_data['DeadLineDate']
-            Eve.StartDate=Start
-            Eve.EndDate=End
-            Eve.DeadLineDate=DeadLine
+            # Start=form.cleaned_data['StartDate']
+            # End=form.cleaned_data['EndDate']
+            # DeadLine=form.cleaned_data['DeadLineDate']
+            # Eve.StartDate=Start
+            # Eve.EndDate=End
+            # Eve.DeadLineDate=DeadLine #if form EVENT TIMING =B startdate timesched-statrttime 0slot slot key added
+            # print(Eve.TimeSettings)
+            if Eve.TimeSettings=='B':
+                print("RANDOM")
+                pass
             Eve.save()
             return redirect('home')
     else:

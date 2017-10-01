@@ -15,6 +15,7 @@
 {% endblock %}
 {% block bars %}
 <div align="center">Hi {{ user }}</div>
+
 {% if List %}
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="40">
  <div class="container">
@@ -73,6 +74,7 @@ It is just as if part of content in block of actually in base.html -->
       </div>
     </div>
    {% endfor %}
+
 {% else %}
    <p>No Events are available.</p>
 {% endif %}
