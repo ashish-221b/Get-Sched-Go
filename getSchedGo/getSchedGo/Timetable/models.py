@@ -22,6 +22,8 @@ class Event(models.Model):
 	Venue = models.CharField(max_length=100,blank=True)
 	StartTime = models.TimeField(null=True,blank=True)
 	StartDate = models.DateField(null=True,blank=True)
+	ScheduledStartTime = models.TimeField(null=True,blank=True)
+	ScheduledEndTime = models.TimeField(null=True,blank=True)
 	EndTime = models.TimeField(null=True,blank=True)
 	EndDate = models.DateField(null=True,blank=True)
 	DeadLineTime = models.TimeField(null=True,blank=True)

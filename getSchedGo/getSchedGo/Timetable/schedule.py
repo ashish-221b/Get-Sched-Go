@@ -25,6 +25,9 @@ def fixedScheduleAdder(fixedEvent,user):
 			else:
 				print("The Slot has been filled by some events somewhere")
 				return 1
+		fixedEvent.ScheduledStartTime = startTime
+		fixedEvent.ScheduledEndTime = endTime
+		fixedEvent.save()
 		for slott in range(SlotStart,SlotEnd):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
 			# print(SlotToSet.StartTime,SlotToSet.EndTime)
@@ -65,6 +68,11 @@ def VariableEventAdder(fixedEvent,user):
 			print("NO Slot Left")
 			return 414
 		else:
+			SlotToStart = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=maxPriorSlot[0])
+			SlotToEnd = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=maxPriorSlot[0]+slotGap-1)
+			fixedEvent.ScheduledStartTime = SlotToStart.StartTime
+			fixedEvent.ScheduledEndTime = SlotToEnd.EndTime
+			fixedEvent.save()
 			for k in range(maxPriorSlot[0],maxPriorSlot[0]+slotGap):
 				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=k)
 				SlotToSet.EventConnected=fixedEvent

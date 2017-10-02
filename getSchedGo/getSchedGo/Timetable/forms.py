@@ -28,7 +28,7 @@ class EventForm(forms.ModelForm):
         # #     self.fields['DeadLineDate'].widget = SelectDateWidget
         class Meta:
             model = Event
-            exclude = ('UserProfile',)
+            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime')
             widgets = {
                 'Description': forms.Textarea
             }

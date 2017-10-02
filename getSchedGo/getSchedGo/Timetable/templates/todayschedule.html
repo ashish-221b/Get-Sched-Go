@@ -24,7 +24,7 @@
 				       <div class="top-info"><span>{{tuple.0.Active_day}}</span></div>
 				<ul>
           {% for Event in tuple.1 %}
-          <li class="single-event" data-start="{{Event.StartTime|time:"H:i"}}" data-end="{{Event.EndTime|time:"H:i"}}" data-content=Event data-event="event-1">
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1">
 						<a href="#0">
 							<em class="event-name">{{Event.name}}</em>
 						</a>
