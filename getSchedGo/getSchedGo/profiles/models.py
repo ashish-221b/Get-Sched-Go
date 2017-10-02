@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 # from Timetable.models import DailySched, Slots
 from allauth.account.signals import user_logged_in, user_signed_up
-from datetime import date, time
+from datetime import *
 
 # Create your models here.
 
@@ -27,6 +27,21 @@ class profile(models.Model):
 	def __str__(self):
 		return self.name
 #function that creates profile model when User Logs in for the first time
+def createSched(Day,userProfile):
+	from Timetable.models import DailySched, Slots
+	Sched_today, wasCreated = DailySched.objects.get_or_create(UserProfile=userProfile,Active_day = Day)
+	if wasCreated:
+		Sched_today.name = "Primary"+str(Sched_today.Active_day)
+		Sched_today.save()
+		for i in range(1,49):
+			k = (i-1)%2
+			mins = (k)*30
+			hour = (i-1)//2
+			mins_e = ((k+1)%2)*30
+			hour_e = (i//2)%24
+			Slotx = Slots(UserProfile = userProfile, Day_Sched = Sched_today,
+			StartTime = str(hour)+":"+str(mins)+":"+"00", EndTime = str(hour_e)+":"+str(mins_e)+":"+"00", SlotNum = i)
+			Slotx.save()
 def my_Call(sender, request, user, **kwargs):
 	from Timetable.models import DailySched, Slots
 	userProfile, isCreated = profile.objects.get_or_create(user=user)
@@ -34,18 +49,7 @@ def my_Call(sender, request, user, **kwargs):
 	if isCreated:
 		userProfile.name = user.username
 		userProfile.save()
-	Sched_today, wasCreated = DailySched.objects.get_or_create(UserProfile=userProfile,Active_day = date.today())
-	if wasCreated:
-		Sched_today.name = "Primary"+str(Sched_today.Active_day)
-		Sched_today.save()
-		for i in range(1,289):
-			k = (i-1)%12
-			mins = k*5
-			hour = (i-1)//12
-			mins_e = (mins + 5)%60
-			hour_e = (hour + (mins + 5)//60)%24
-			Slotx = Slots(UserProfile = userProfile, Day_Sched = Sched_today,
-			StartTime = str(hour)+":"+str(mins)+":"+"00", EndTime = str(hour_e)+":"+str(mins_e)+":"+"00", SlotNum = i)
-			Slotx.save()
+	for i in range(4):
+		createSched(date.today()+timedelta(days=i),userProfile)
 #To execute mycall at login
 user_logged_in.connect(my_Call)

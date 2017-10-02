@@ -361,12 +361,13 @@ Main Components
   height: 70px;
   /* vertically center its content */
   display: table;
-  width: 100%;
+  width: 200px;
 }
 
 .cd-schedule .event-modal .header .content {
   position: relative;
   z-index: 3;
+  min-width: 500px;
   /* vertically center inside its parent */
   display: table-cell;
   vertical-align: middle;
@@ -375,7 +376,7 @@ Main Components
 
 .cd-schedule .event-modal .body {
   position: relative;
-  width: 100%;
+  width: 0%;
   /* 70px is the .header height */
   height: calc(100% - 70px);
 }
@@ -495,6 +496,7 @@ Main Components
     top: 0;
     left: 0;
     height: 100%;
+    width: 2000px;
   }
   .cd-schedule .event-modal .header .content {
     /* reset style */

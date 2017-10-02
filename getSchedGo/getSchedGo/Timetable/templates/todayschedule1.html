@@ -1,15 +1,6 @@
-<div align="center"><h1>Hi {{ user }}</h1></div>
-
-{% for slot in SlotList %}
-   <div class="row">
-   {{slot.SlotNum}}
-   {% if forloop.counter|divisibleby:"6" and not forloop.counter|divisibleby:"12" %}
-   <hr style="width: 100%; color: #66e0ff; height: 1px;" />
-
-   {% endif %}
-
-   {% if forloop.counter|divisibleby:"12" %}
-   <hr style="width: 100%; color: #006680; height: 1px;" />
-   {% endif %}
+<div>
+{% include "todayschedule.html" %}
+</div>
+  <div>
+    {% include "todayschedule.html" %}
    </div>
-{% endfor %}

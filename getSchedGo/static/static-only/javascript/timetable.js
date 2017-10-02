@@ -120,6 +120,8 @@ jQuery(document).ready(function($){
 			//once the event content has been loaded
 			self.element.addClass('content-loaded');
 		});
+		// Event = event.parent().attr('data-content');
+		// this.modalBody.find('.event-info').text('Ashish');
 
 		this.element.addClass('modal-is-open');
 
