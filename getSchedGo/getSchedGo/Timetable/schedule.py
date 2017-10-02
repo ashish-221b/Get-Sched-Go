@@ -12,7 +12,6 @@ def fixedScheduleAdder(fixedEvent,user):
 	eventDate = fixedEvent.StartDate
 	startTime = fixedEvent.StartTime
 	endTime = fixedEvent.EndTime
-	# print(eventDate,startTime,endTime)
 	SchedToChange = DailySched.objects.filter(UserProfile=user.profile,Active_day=eventDate)
 	if not SchedToChange:
 		return 2
@@ -21,19 +20,24 @@ def fixedScheduleAdder(fixedEvent,user):
 		SlotEnd = timeToSlot(str(endTime))
 		for slott in range(SlotStart,SlotEnd):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
-			# print(SlotToSet.StartTime,SlotToSet.EndTime)
 			if SlotToSet.EventConnected is None:
-				SlotToSet.EventConnected=fixedEvent
-				SlotToSet.save()
+				pass
 			else:
-				return 1 # also delete the remaining slot out of events	
+				print("The Slot has been filled by some events somewhere")
+				return 1
+		for slott in range(SlotStart,SlotEnd):
+			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
+			# print(SlotToSet.StartTime,SlotToSet.EndTime)
+			SlotToSet.EventConnected=fixedEvent
+			SlotToSet.save()
+			 # also delete the remaining slot out of events	
 			# check that the given slot was null previously return-1. if no daysched then return -2
 		return 0
 
 def VariableEventAdder(fixedEvent,user):
 	Evtype = fixedEvent.Type
 	eventDate = fixedEvent.StartDate
-	startTime = fixedEvent.StartTime
+	startTime = fixedEvent.StartTime #We would be expecting a time duration in place of StartTime
 	endTime = fixedEvent.EndTime
 	SlotStart = timeToSlot(str(startTime))
 	SlotEnd = timeToSlot(str(endTime))
@@ -43,7 +47,7 @@ def VariableEventAdder(fixedEvent,user):
 		return 2
 	else:
 		maxPriorSlot=[0,0]
-		for x in range(1,290-slotGap):
+		for x in range(1,50-slotGap):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=x)
 			counter = scoreCalc(str(Evtype),x-1)
 			if SlotToSet.EventConnected is None:
