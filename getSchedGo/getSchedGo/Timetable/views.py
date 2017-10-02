@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm
 from .models import DailySched, Event, Slots
 from datetime import date, time
-from .schedule import fixedScheduleAdder
+from .schedule import fixedScheduleAdder, VariableEventAdder
 from .EventPicker import eventList
 @login_required
 def CreateEvent(request,pk=-1):
@@ -25,6 +25,8 @@ def CreateEvent(request,pk=-1):
             if Eve.TimeSettings=='B':
                 a=fixedScheduleAdder(Eve,user)
                 print(a)
+            elif Eve.TimeSettings=='C':
+                a=VariableEventAdder(Eve,user)
             return redirect('home')
     else:
         if(pk==-1):

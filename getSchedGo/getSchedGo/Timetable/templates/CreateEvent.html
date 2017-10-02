@@ -5,20 +5,46 @@
 It is just as if part of content in block of actually in base.html -->
 <div align="center">Hi {{ user }}</div>
 
-<div class="col-md-4 col-md-offset-2">
+<div class="col-md-5 col-md-offset-1">
 
 	 <form method="post">
 			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
 			{% for field in form %}<!-- making a loop across form to break it into 2-3 forms -->
 				{{ field|as_crispy_field }}
-				{% if forloop.counter|divisibleby:"3" and not forloop.counter|divisibleby:"6"  %}
+				{% if forloop.counter|divisibleby:"5" and not forloop.counter|divisibleby:"10"  %}
 				<!-- Forloop counter if true makes a division heading that divides form -->
 </div>
-<div class="col-md-4">
+<div class="col-md-5">
 				{% endif %}
 			{% endfor %}
 			<br>
 			<button type="submit">Submit</button>
 		</form>
 </div>
+{% endblock %}
+{% block jscript %}
+<script type="text/javascript">
+$(document).ready(function(){
+	toggleFields();
+	$("#id_TimeSettings").change(function(){
+		toggleFields();
+	});
+});
+function toggleFields(){
+	if ($("#id_TimeSettings").val()==="C"){
+		$("#div_id_StartTime").hide();
+		// $("#div_id_TimeDuration").show();
+		$("#div_id_EndTime").hide();
+	}
+	else{
+		$("#div_id_StartTime").show();
+		// $("#div_id_TimeDuration").hide();
+		$("#div_id_EndTime").show();
+	}
+}
+
+
+</script>
+
+
 {% endblock %}
