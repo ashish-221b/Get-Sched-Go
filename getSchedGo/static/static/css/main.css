@@ -39,7 +39,16 @@
     font-size: 200%;
     color: rgb(3, 59, 99);
 }
+.glyphicon-trash{
+    font-size: 200%;
+    color: rgb(3, 59, 99);
+}
 .glyphicon-edit:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    font-size: 200%;
+    color: rgb(255, 0, 0);
+}
+.glyphicon-trash:hover{
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
     font-size: 200%;
     color: rgb(255, 0, 0);
