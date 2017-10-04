@@ -6,7 +6,7 @@
     position: fixed;
     width: 100%;
     margin-left: 0;
-    z-index: 9999 !important;
+    z-index: 1 !important;
   }
   .navbar {
       margin-bottom: 0px;
@@ -71,6 +71,7 @@ It is just as if part of content in block of actually in base.html -->
       </div>
       <div class="col-md-4" >
          <a href="{% url 'Timetable:EditEvent' Event.id %}"><span class="glyphicon glyphicon-edit"></span></a></li>
+         <a href="{% url 'Timetable:DeleteEvent' Event.id %}"><span class="glyphicon glyphicon-trash"></span></a></li>
       </div>
     </div>
    {% endfor %}

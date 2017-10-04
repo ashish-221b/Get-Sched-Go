@@ -22,12 +22,14 @@ class Event(models.Model):
 	Venue = models.CharField(max_length=100,blank=True)
 	StartTime = models.TimeField(null=True,blank=True)
 	StartDate = models.DateField(null=True,blank=True)
+	ScheduledStartTime = models.TimeField(null=True,blank=True)
+	ScheduledEndTime = models.TimeField(null=True,blank=True)
 	EndTime = models.TimeField(null=True,blank=True)
 	EndDate = models.DateField(null=True,blank=True)
 	DeadLineTime = models.TimeField(null=True,blank=True)
 	DeadLineDate = models.DateField(null=True,blank=True)
 	Priority = models.CharField(max_length=25,blank=True,choices=Priority_Options,default='1')
-	Type = models.CharField(max_length=25,blank=True,choices=Event_Type,default='')
+	Type = models.CharField(max_length=25,choices=Event_Type,default='E')
 	TimeSettings = models.CharField(max_length=25,blank=True,choices=Event_Timings,default='B')
 
 	def __str__(self):
