@@ -1,0 +1,19 @@
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div align="center">Hi {{ user }}</div>
+
+<div class="col-md-8 col-md-offset-2">
+
+	 <form method="post">
+			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
+			{% for field in form %}<!-- making a loop across form to break it into 2-3 forms -->
+				{{ field|as_crispy_field }}
+				
+			{% endfor %}
+			<br>
+			<button type="submit">Submit</button>
+		</form>
+</div>
+{% endblock %}
