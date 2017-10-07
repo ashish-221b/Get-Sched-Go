@@ -11,7 +11,7 @@ It is just as if part of content in block of actually in base.html -->
 			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
 			{% for field in form %}<!-- making a loop across form to break it into 2-3 forms -->
 				{{ field|as_crispy_field }}
-				{% if forloop.counter|divisibleby:"5" and not forloop.counter|divisibleby:"10"  %}
+				{% if forloop.counter|divisibleby:"6" and not forloop.counter|divisibleby:"10"  %}
 				<!-- Forloop counter if true makes a division heading that divides form -->
 </div>
 <div class="col-md-5">
@@ -32,14 +32,54 @@ $(document).ready(function(){
 });
 function toggleFields(){
 	if ($("#id_TimeSettings").val()==="C"){
-		$("#div_id_StartTime").hide();
-		// $("#div_id_TimeDuration").show();
-		$("#div_id_EndTime").hide();
+var labels = document.getElementsByTagName('LABEL');
+for (var i = 0; i < labels.length; i++) {
+    if (labels[i].htmlFor == 'id_StartDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedStartDate<span class="asteriskField">*</span>'
+		        
+    }
+        if (labels[i].htmlFor == 'id_StartTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedStartTime<span class="asteriskField">*</span>'         
+    }
+        if (labels[i].htmlFor == 'id_EndDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedEndDate<span class="asteriskField">*</span>'         
+    }
+    if (labels[i].htmlFor == 'id_EndTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedEndTime<span class="asteriskField">*</span>'         
+    }
+}
+$("#div_id_Duration").show();
 	}
 	else{
-		$("#div_id_StartTime").show();
+		var labels = document.getElementsByTagName('LABEL');
+for (var i = 0; i < labels.length; i++) {
+    if (labels[i].htmlFor == 'id_StartDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='StartDate<span class="asteriskField">*</span>'
+		        
+    }
+        if (labels[i].htmlFor == 'id_StartTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='StartTime<span class="asteriskField">*</span>'         
+    }
+        if (labels[i].htmlFor == 'id_EndDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='EndDate<span class="asteriskField">*</span>'         
+    }
+    if (labels[i].htmlFor == 'id_EndTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='EndTime<span class="asteriskField">*</span>'         
+    }
+}
+
+$("#div_id_Duration").hide();
+		//$("#div_id_EndDate").show();
 		// $("#div_id_TimeDuration").hide();
-		$("#div_id_EndTime").show();
+		//$("#div_id_EndTime").show();
 	}
 }
 

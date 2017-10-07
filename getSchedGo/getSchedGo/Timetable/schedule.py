@@ -149,13 +149,11 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 	expectedEndDate = fixedEvent.EndDate
 	expectedEndTime = fixedEvent.EndTime
 	expectedEndSlot = timeToSlot(expectedEndTime)
-	DeadlineTime = fixedEvent.DeadLineTime #Assume DeadLine Event is On same Date
+	DeadlineTime = fixedEvent.DeadLineTime # Assume DeadLine Event is On same Date
 	DeadLineDate = fixedEvent.DeadLineDate
 	DeadLineSlot = timeToSlot(DeadlineTime)
-	slotGap = 2 #Will be found from The Time Interval IN the Event module
-	SchedsToChange = DailySched.objects.filter(
-	UserProfile=user.profile,Active_day__gte = expectedStartDate
-	).filter(Active_day__lte = expectedEndDate).order(Active_day)
+	slotGap = 2 # Will be found from The Time Interval IN the Event module
+	SchedsToChange = DailySched.objects.filter(UserProfile=user.profile,Active_day__gte = expectedStartDate).filter(Active_day__lte = expectedEndDate).order(Active_day)
 	if not SchedsToChange:
 		return 2
 	else:
