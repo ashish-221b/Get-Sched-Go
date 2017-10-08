@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import EventForm
 from .models import DailySched, Event, Slots
 from datetime import *
-from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent
+from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent1
 from profiles.models import createSched
 from .EventPicker import eventList
 from django.contrib import messages
@@ -35,7 +35,8 @@ def CreateEvent(request,pk=-1):
                     formToRestructure = EventForm(instance=Eve)
                     return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
             elif Eve.TimeSettings=='C':
-                a=NewVariableEvent(Eve,user)
+                a=NewVariableEvent1(Eve,user)
+                print(a)
             return redirect('home')
     else:
         if(pk==-1):
