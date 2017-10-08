@@ -2,7 +2,7 @@ from django.db import models
 from django.db import models
 from django.conf import settings
 from profiles.models import profile
-from datetime import date
+from datetime import *
 # Create your models here.
 #Time Table for a Day
 Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','Indespensable')]
@@ -16,6 +16,7 @@ class DailySched(models.Model):
 	def __str__(self):
 		return self.name
 #Events
+defaultDeadLine = date.today()+timedelta(days=3)
 class Event(models.Model):
 	"""docstring for Event."""
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
@@ -31,7 +32,7 @@ class Event(models.Model):
 	EndTime = models.TimeField(null=True,)
 	EndDate = models.DateField(null=True,blank=True,default=date.today)
 	DeadLineTime = models.TimeField(null=True,)
-	DeadLineDate = models.DateField(null=True,blank=True,default=date.today)
+	DeadLineDate = models.DateField(null=True,blank=True,default=defaultDeadLine)
 	Priority = models.CharField(max_length=5,blank=True,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=5,choices=Event_Type,default='E')
 
