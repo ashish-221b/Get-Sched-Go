@@ -30,7 +30,7 @@ class Event(models.Model):
 	TimeSettings = models.CharField(max_length=5,blank=True,choices=Event_Timings,default='B')
 	EndTime = models.TimeField(null=True,)
 	EndDate = models.DateField(null=True,blank=True,default=date.today)
-	DeadLineTime = models.TimeField(null=True,blank=True)
+	DeadLineTime = models.TimeField(null=True,)
 	DeadLineDate = models.DateField(null=True,blank=True,default=date.today)
 	Priority = models.CharField(max_length=5,blank=True,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=5,choices=Event_Type,default='E')
