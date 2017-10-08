@@ -27,11 +27,11 @@ def CreateEvent(request,pk=-1):
             if Eve.TimeSettings=='B':
                 a=fixedScheduleAdder(Eve,user)
                 if a == 2:
-                    messages ="Sorry, you are thinking of too far away. Have a life a come back later.We have saved your event. You can go to home. Still if you made a mistake while entering, Now is the time"
+                    messages ="Sorry, you are thinking of too far away. Have a life a come back later.We have saved your event. You can go to home. Still if you made a mistake while entering, Goto EventList"
                     formToRestructure = EventForm(instance=Eve)
                     return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
                 elif a == 1:
-                    messages ="We have saved your event.This timing is already scheduled. You can change the timing or try making event of variable type."
+                    messages ="We have saved your event.This timing is already scheduled. You can change the timing or try making event of variable type by going to EventList"
                     formToRestructure = EventForm(instance=Eve)
                     return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
             elif Eve.TimeSettings=='C':
