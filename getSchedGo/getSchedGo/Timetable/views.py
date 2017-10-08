@@ -6,6 +6,7 @@ from datetime import *
 from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent
 from profiles.models import createSched
 from .EventPicker import eventList
+from django.contrib import messages
 @login_required
 def CreateEvent(request,pk=-1):
     user = request.user
@@ -25,7 +26,14 @@ def CreateEvent(request,pk=-1):
             Eve.save()
             if Eve.TimeSettings=='B':
                 a=fixedScheduleAdder(Eve,user)
-                print(a)
+                if a == 2:
+                    messages ="Sorry, you are thinking of too far away. Have a life a come back later.We have saved your event. You can go to home. Still if you made a mistake while entering, Now is the time"
+                    formToRestructure = EventForm(instance=Eve)
+                    return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
+                elif a == 1:
+                    messages ="We have saved your event.This timing is already scheduled. You can change the timing or try making event of variable type."
+                    formToRestructure = EventForm(instance=Eve)
+                    return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
             elif Eve.TimeSettings=='C':
                 a=NewVariableEvent(Eve,user)
             return redirect('home')

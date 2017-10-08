@@ -3,8 +3,12 @@
 {% load crispy_forms_tags %}<!-- Crispy is just awesome for forms handling -->
 {% block content %}<!-- Using extend everything to be displayed are kept in extend.
 It is just as if part of content in block of actually in base.html -->
-<div align="center">Hi {{ user }}</div>
 
+{% if message %}
+<div align="center" class="alert alert-warning">{{ message }}</div>
+{% else %}
+<div align="center" class="alert alert-success">Hi {{ user }}</div>
+{% endif %}
 <div class="col-md-5 col-md-offset-1">
 
 	 <form method="post">
@@ -85,6 +89,5 @@ $("#div_id_Duration").hide();
 
 
 </script>
-
 
 {% endblock %}
