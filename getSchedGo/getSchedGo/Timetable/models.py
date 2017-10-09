@@ -6,7 +6,7 @@ from datetime import *
 # Create your models here.
 #Time Table for a Day
 Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','Indespensable')]
-Event_Timings = [('A','Duration Fixed'),('B','Duration and Timing Fixed'),('C',('Variable'))]
+Event_Timings = [('B','Fixed Timing'),('C',('Variable Timing'))]
 Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study'), ('D','ExtraCurriculars'),('E','Misc.')]
 Duration_choices = [('1','Half Hour'),('2','One Hour'),('3','One and Half Hour'),('4','Two Hour')]
 class DailySched(models.Model):
@@ -28,12 +28,12 @@ class Event(models.Model):
 	Duration = models.CharField(max_length=5,choices=Duration_choices,default='1')
 	ScheduledStartTime = models.TimeField(null=True,blank=True)
 	ScheduledEndTime = models.TimeField(null=True,blank=True)
-	TimeSettings = models.CharField(max_length=5,blank=True,choices=Event_Timings,default='B')
+	TimeSettings = models.CharField(max_length=5,choices=Event_Timings,default='B')
 	EndTime = models.TimeField(null=True,)
 	EndDate = models.DateField(null=True,blank=True,default=date.today)
-	DeadLineTime = models.TimeField(null=True,default="23:30:00")
+	DeadLineTime = models.TimeField(null=True,blank=True,default="23:30:00")
 	DeadLineDate = models.DateField(null=True,blank=True,default=defaultDeadLine)
-	Priority = models.CharField(max_length=5,blank=True,choices=Priority_Options,default='1')
+	Priority = models.CharField(max_length=5,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=5,choices=Event_Type,default='E')
 
 	def __str__(self):

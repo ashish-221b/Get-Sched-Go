@@ -22,13 +22,22 @@ It is just as if part of content in block of actually in base.html -->
 				{% endif %}
 			{% endfor %}
 			<br>
-			<button type="submit">Submit</button>
+			<button type="submit" class="btn">Submit</button>
 		</form>
 </div>
 {% endif %}
 {% endblock %}
 {% block jscript %}
-{% if not message %}
+{% if message %}
+<script type="text/javascript">
+window.onload = function () {
+setTimeout(function() {
+     window.location.href = "{% url 'home' %}"
+}, 5000);
+// console.log("HI")
+};
+</script>
+{% else %}
 <script type="text/javascript">
 $(document).ready(function(){
 	toggleFields();

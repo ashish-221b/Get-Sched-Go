@@ -13,6 +13,7 @@ def fixedScheduleAdder(fixedEvent,user):
 	eventDate = fixedEvent.StartDate
 	startTime = fixedEvent.StartTime
 	endTime = fixedEvent.EndTime
+	possibleReschedulingEvents = []
 	SchedToChange = DailySched.objects.filter(UserProfile=user.profile,Active_day=eventDate)
 	if not SchedToChange:
 		return 2
@@ -23,6 +24,8 @@ def fixedScheduleAdder(fixedEvent,user):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
 			if SlotToSet.EventConnected is None:
 				pass
+			elif int(SlotToSet.EventConnected.Priority) < int(fixedEvent.Priority):
+				possibleReschedulingEvents.append(SlotToSet.EventConnected)
 			else:
 				print("The Slot has been filled by some events somewhere")
 				return 1
@@ -35,17 +38,43 @@ def fixedScheduleAdder(fixedEvent,user):
 		# SlotList = Slots.objects.filter(Day_Sched=SchedToChange[0],EventConnected=EventToDeschedule)
 		# for slots in SlotList:
 		# 	slots.EventConnected = None
-		fixedEvent.ScheduledStartTime = startTime
-		fixedEvent.ScheduledEndTime = endTime
-		fixedEvent.save()
-		for slott in range(SlotStart,SlotEnd):
-			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
-			# print(SlotToSet.StartTime,SlotToSet.EndTime)
-			SlotToSet.EventConnected=fixedEvent
-			SlotToSet.save()
-			 # also delete the remaining slot out of events
-			# check that the given slot was null previously return-1. if no daysched then return -2
-		return 0
+		if possibleReschedulingEvents == [] :
+			fixedEvent.ScheduledStartTime = startTime
+			fixedEvent.ScheduledEndTime = endTime
+			fixedEvent.save()
+			for slott in range(SlotStart,SlotEnd):
+				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
+				# print(SlotToSet.StartTime,SlotToSet.EndTime)
+				SlotToSet.EventConnected=fixedEvent
+				SlotToSet.save()
+				 # also delete the remaining slot out of events
+				# check that the given slot was null previously return-1. if no daysched then return -2
+			return 0
+		# rescheduling lower priority events
+		else :
+			for event in possibleReschedulingEvents:
+				event.ScheduledStartTime = None
+				event.ScheduledEndTime = None
+				event.save()
+				SlotConnected = Slots.objects.filter(Day_Sched=SchedToChange[0],EventConnected=event)
+				for slots in SlotConnected:
+					slots.EventConnected = None
+					slots.save()
+			fixedEvent.ScheduledStartTime = startTime
+			fixedEvent.ScheduledEndTime = endTime
+			fixedEvent.save()
+			for slott in range(SlotStart,SlotEnd):
+				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
+				# print(SlotToSet.StartTime,SlotToSet.EndTime)
+				SlotToSet.EventConnected=fixedEvent
+				SlotToSet.save()
+			for events in possibleReschedulingEvents:
+				NewVariableEvent1(events,user)
+			return 3
+
+
+
+
 
 def VariableEventAdder(fixedEvent,user):
 	Evtype = fixedEvent.Type
