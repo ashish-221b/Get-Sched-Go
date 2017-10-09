@@ -20,6 +20,8 @@ def CreateEvent(request,pk=-1):
             for slot in SlotToFree:
                 slot.EventConnected = None
                 slot.save()
+            prev.ScheduledStartTime=None
+            prev.ScheduledEndTime=None
         if form.is_valid():
             Eve = form.save(commit=False)
             Eve.UserProfile = user.profile
@@ -60,7 +62,7 @@ def EventList(request,pk=-1):
         List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None)
         print(List)
     elif(pk == '3'):
-        List = Event.objects.filter(UserProfile=user.profile,ScheduledStartTime__isnull=True)    
+        List = Event.objects.filter(UserProfile=user.profile,ScheduledStartTime__isnull=True)
     else:
         print(pk)#now if more wanted then add pk=='3' so on
         List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')

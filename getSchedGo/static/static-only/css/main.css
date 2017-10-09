@@ -11,6 +11,9 @@
 .navbar-inverse .navbar-brand {
     color: #2dd1eb;
 }
+body {
+    background-color: rgb(170,170,170);
+}
 .event-holder {
     transition: all .5s ease-in-out;
     font-size: 100%;
@@ -19,7 +22,7 @@
     min-height:50px;
     padding: 2em;
     border-radius: 25px;
-    box-shadow: 0 0 1em rgba(0,0,0,0.8);
+    box-shadow: 0 0 1em rgba(0,0,0,0.5);
     margin: 20px;
     /* overflow: scroll;*/
 }
@@ -33,7 +36,7 @@
     margin-left: 0px;
     margin-right: 0px;*/
     background-color: rgb(204, 204, 255);
-    box-shadow: 0 0 2em rgba(100,0,100,0.8);
+    box-shadow: 0 0 2em rgba(0,0,0,1);
 }
 .glyphicon-edit{
     font-size: 200%;

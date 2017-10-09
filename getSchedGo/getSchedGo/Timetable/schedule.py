@@ -69,7 +69,8 @@ def fixedScheduleAdder(fixedEvent,user):
 				SlotToSet.EventConnected=fixedEvent
 				SlotToSet.save()
 			for events in possibleReschedulingEvents:
-				NewVariableEvent1(events,user)
+				if events.TimeSettings == 'C':
+					NewVariableEvent1(events,user)
 			return 3
 
 
