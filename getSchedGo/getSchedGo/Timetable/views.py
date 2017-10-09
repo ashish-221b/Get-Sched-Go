@@ -34,6 +34,10 @@ def CreateEvent(request,pk=-1):
                     messages ="We have saved your event.This timing is already scheduled. You can change the timing or try making event of variable type by going to EventList"
                     formToRestructure = EventForm(instance=Eve)
                     return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
+                elif a == 3:
+                    messages ="This event clashed with some event that was less useful for you. Please checkout the newly scheduled time-table. Your earlier event if not scheduled automatically will be available in event list"
+                    formToRestructure = EventForm(instance=Eve)
+                    return render(request,'CreateEvent.html',{'user': user, 'form': formToRestructure, 'message': messages})
             elif Eve.TimeSettings=='C':
                 a=NewVariableEvent1(Eve,user)
                 print(a)
