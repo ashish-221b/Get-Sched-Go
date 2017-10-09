@@ -25,9 +25,29 @@
 				       <div class="top-info"><span>{{tuple.0.Active_day}}</span></div>
 				<ul>
           {% for Event in tuple.1 %}
-          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1">
+          {% if Event.Type == 'A' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1" style="/*color: #8a6d3b;*/
+    background-color: #73620c;
+    border-color: #faebcc;">
+          {% else %}
+          {% if Event.Type == 'B' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1" style="/*color:#31708f;*/background-color: #164e69;border-color: #bce8f1;">
+          {% else %}
+          {% if Event.Type == 'C' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1" style="   /* color: #3c763d;
+*/    background-color: #539339;
+    border-color: #d6e9c6;">
+          {% else %}
+          {% if Event.Type == 'D' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1" style="background-color:#66ff66;">
+          {% else %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1" style="background-color:#4d4d00;">
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {% endif %}
 						<a href="#0">
-							<em class="event-name">{{Event.name}}</em>
+							<em class="event-name" style="/*color: #000000;*/">{{Event.name}}</em>
 						</a>
 					</li>
           {% endfor %}

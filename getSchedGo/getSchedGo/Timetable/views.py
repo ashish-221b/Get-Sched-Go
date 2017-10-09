@@ -56,6 +56,11 @@ def EventList(request,pk=-1):
     user = request.user
     if(pk==-1 or pk=='0'):
         List = Event.objects.filter(UserProfile=user.profile)
+    elif(pk == '2'):
+        List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None)
+        print(List)
+    elif(pk == '3'):
+        List = Event.objects.filter(UserProfile=user.profile,ScheduledStartTime__isnull=True)    
     else:
         print(pk)#now if more wanted then add pk=='3' so on
         List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')
