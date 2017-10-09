@@ -196,5 +196,47 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 				SlotToSet.EventConnected=fixedEvent
 				SlotToSet.save()
 		else:
-			pass 
+			SchedsToChange = DailySched.objects.filter(UserProfile=user.profile,Active_day__gte = expectedStartDate).filter(Active_day__lte = DeadLineDate).order_by('Active_day')
+			if not SchedsToChange:
+				return 2
+			else:
+				maxPriorSlot = [0,0]
+				chainedEndSlot=((DeadLineDate - expectedStartDate).days)*48+DeadLineSlot
+				for x in range(expectedStartSlot,chainedEndSlot-slotGap+1):
+					tup=SlotTransform(x)
+					SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[tup[1]],SlotNum=tup[0])
+					counter = scoreCalc(str(Evtype),tup[0]-1)
+					# this can made faster
+					if SlotToSet.EventConnected is None:
+						for m in range(x+1,x+slotGap):
+							tupm = SlotTransform(m)
+							SlotAfter = Slots.objects.get(Day_Sched=SchedsToChange[tupm[1]],SlotNum=tupm[0])
+							if not SlotAfter.EventConnected is None:
+								counter = -1 ##No recursion or shifting. If want to change the way of implementation then attack HERE
+								break
+							counter += scoreCalc(str(Evtype),tupm[0]-1)
+						# this is keeping count of maxPrior slot within given timeGap
+						print(x)
+						print(counter)
+						if counter > maxPriorSlot[1]:
+							print("changed")
+							maxPriorSlot[0]=x
+							maxPriorSlot[1]=counter
+					else:
+						pass #Also attack here with recursive attack and moving an event
+					counter=0
+				if maxPriorSlot[0]!=0 : #AtLeast event has found one Place to find its scheduling That has amog best area and empty
+					tup = SlotTransform(maxPriorSlot[0])
+					tupe = SlotTransform(maxPriorSlot[0]+slotGap-1)
+					SlotToStart = Slots.objects.get(Day_Sched=SchedsToChange[tup[1]],SlotNum=tup[0])
+					SlotToEnd = Slots.objects.get(Day_Sched=SchedsToChange[tupe[1]],SlotNum=tupe[0])
+					#need to change Scheduled time to datetime
+					fixedEvent.ScheduledStartTime = SlotToStart.StartTime
+					fixedEvent.ScheduledEndTime = SlotToEnd.EndTime
+					fixedEvent.save()
+					for k in range(maxPriorSlot[0],maxPriorSlot[0]+slotGap):
+						SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[0],SlotNum=k)
+						SlotToSet.EventConnected=fixedEvent
+						SlotToSet.save()
+
 	return 0
