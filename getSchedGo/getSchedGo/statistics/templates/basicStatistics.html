@@ -1,0 +1,11 @@
+{% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
+{% load staticfiles %}
+{% block content %}
+Hi {{ user }}<br>
+ActiveDay: {{ TodaysStats.linkedDay.Active_day }}<br>
+SelfStudy: {{ TodaysStats.SelfStudy }}<br>
+ExtraCurricularsTime: {{ TodaysStats.ExtraCurricularsTime }}<br>
+ExtraStudyTime: {{ TodaysStats.ExtraStudyTime }}<br>
+ClassTiming: {{ TodaysStats.ClassTiming }}<br>
+MiscellaneousTime: {{ TodaysStats.MiscellaneousTime }}<br>
+{% endblock %}
