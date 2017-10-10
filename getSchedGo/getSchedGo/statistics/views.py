@@ -19,5 +19,25 @@ def TodayStats(request):
 
 
 
-def updateStats(StatsToUpdate):
-	return
+def updateStats(statsToChange):
+	dailysched = statsToChange.linkedDay
+	slotList = Slots.objects.filter(Day_Sched=dailysched,)
+	statsToChange.ClassTiming = 0
+	statsToChange.SelfStudy = 0
+	statsToChange.ExtraStudyTime = 0
+	statsToChange.ExtraCurricularsTime = 0
+	statsToChange.MiscellaneousTime = 0
+	for slot in slotList:
+		if slot.EventConnected is not None:
+			event = slot.EventConnected
+			if event.Type == 'A' :
+				statsToChange.ClassTiming = statsToChange.ClassTiming + 1
+			elif event.Type == 'B' :
+				statsToChange.SelfStudy = statsToChange.SelfStudy + 1
+			elif event.Type == 'C' :
+				statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime + 1
+			elif event.Type == 'D' :
+				statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime + 1
+			elif event.Type == 'E' :
+				statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + 1
+	statsToChange.save()
