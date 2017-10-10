@@ -1,4 +1,7 @@
 {% extends 'base.html'%}
+{% block otherinclusions %}
+<link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
+{% endblock %}
 {% block styles %}
 <style type="text/css">
   .affix {
@@ -15,8 +18,6 @@
 {% endblock %}
 {% block bars %}
 <div align="center">Hi {{ user }}</div>
-
-{% if List %}
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="40">
  <div class="container">
         <div class="navbar-header">
@@ -32,13 +33,13 @@
         <ul class="nav navbar-nav">
           <li><a href="{% url 'Timetable:SortEvent' 0 %}">Sort by ID</a></li>
           <li><a href="{% url 'Timetable:SortEvent' 1 %}">Sort by DATE</a></li>
-          <li class="dropdown">
+          <li class="dropdown" align="right">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></a>
               <ul class="dropdown-menu">
 <!-- using if for different view if user is logged in or not -->
-                <li><a href="#">Filter1</a></li>
-                <li><a href="#">Filter2</a></li>
-
+                <li><a href="{% url 'Timetable:SortEvent' 2 %}">Scheduled Events</a></li>
+                <li><a href="{% url 'Timetable:SortEvent' 3 %}">Unscheduled Events</a></li>
+                <li><a href="{% url 'Timetable:EventList' %}">All Events</a></li>
 <!--                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
@@ -50,7 +51,6 @@
 
   </div>
 </nav>
-{% endif %}
 {% endblock %}
 
 {% block content %}<!-- Using extend everything to be displayed are kept in extend.
@@ -60,26 +60,32 @@ It is just as if part of content in block of actually in base.html -->
 
 
   {% if List %}
-
+<p>
    {% for Event in List %}
+   {% if Event.ScheduledStartTime %}
+   <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
+   {% else %}
    <div class="row event-holder" id="event{{ forloop.counter }}">
-       <div class="col-md-8">
+   {% endif %}    <div class="col-md-8">
          <h3> {{ Event.name }} </h3>
          <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
          <h4> To : {{ Event.EndDate  }} {{ Event.EndTime }} </h4>
          <h4> DeadLine : {{ Event.DeadLineDate }} {{ Event.DeadLineTime }} </h4>
+         {% if Event.ScheduledStartTime %}
+         <h4> Scheduled from {{ Event.ScheduledStartTime }} to {{ Event.ScheduledEndTime }}</h4>
+         {% endif %}
       </div>
       <div class="col-md-4" >
-         <a href="{% url 'Timetable:EditEvent' Event.id %}"><span class="glyphicon glyphicon-edit"></span></a></li>
-         <a href="{% url 'Timetable:DeleteEvent' Event.id %}"><span class="glyphicon glyphicon-trash"></span></a></li>
+         <a href="{% url 'Timetable:EditEvent' Event.id %}"><span class="glyphicon glyphicon-edit"></span></a>
+         <a href="{% url 'Timetable:DeleteEvent' Event.id %}"><span class="glyphicon glyphicon-trash"></span></a><br>
       </div>
     </div>
    {% endfor %}
-
+</p>
 {% else %}
    <p>No Events are available.</p>
 {% endif %}
 </div>
-<p style="margin-top: 50em;">&nbsp;</p>
+<p style="margin-top: 5em;">&nbsp;</p>
 
 {% endblock %}

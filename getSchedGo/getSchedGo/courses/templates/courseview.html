@@ -10,13 +10,22 @@
 		</form>
 </div>
 <div class="col-md-8 col-md-offset-2">
-<h3>
-{{ text }}
-</h3>
 {% for courses in courseDetail %}
 <h3>
-{{ courses.name }}
-</h3>
+Code: {{ courses.code }}
+</h3><br>
+<h3>
+Name: {{ courses.name }}
+</h3><br><h3>
+Slot Number: {{ courses.slot }}
+</h3><br><h3>
+Credit: {{ courses.credit }}
+</h3><br>
+{% if courses.tutorial %}
+<h3>
+Tutorial Slot: {{ courses.tutorialSlot }}
+</h3><br>
+{% endif %}
 {% endfor %}
 </div>
 {% endblock %}
