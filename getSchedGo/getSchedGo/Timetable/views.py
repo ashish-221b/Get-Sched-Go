@@ -43,7 +43,7 @@ def CreateEvent(request,pk=-1):
             elif Eve.TimeSettings=='C':
                 a=NewVariableEvent1(Eve,user)
                 print(a)
-            return redirect('home')
+            return redirect('Timetable:EventList')
     else:
         if(pk==-1):
             form = EventForm()
@@ -91,4 +91,15 @@ def DeleteEvent(request,pk):
         slot.EventConnected = None
         slot.save()
     ToBeRemoved.delete()
+    return redirect('Timetable:EventList')
+@login_required
+def DescheduleEvent(request,pk):
+    ToBeDescheduled = get_object_or_404(Event,pk=pk)
+    SlotToFree = Slots.objects.filter(EventConnected = ToBeDescheduled)
+    for slot in SlotToFree:
+        slot.EventConnected = None
+        slot.save()
+    ToBeDescheduled.ScheduledStartTime=None
+    ToBeDescheduled.ScheduledEndTime=None
+    ToBeDescheduled.save()
     return redirect('Timetable:EventList')

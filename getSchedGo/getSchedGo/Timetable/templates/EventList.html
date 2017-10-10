@@ -65,7 +65,7 @@ It is just as if part of content in block of actually in base.html -->
    {% if Event.ScheduledStartTime %}
    <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
    {% else %}
-   <div class="row event-holder" id="event{{ forloop.counter }}">
+   <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
    {% endif %}    <div class="col-md-8">
          <h3> {{ Event.name }} </h3>
          <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
@@ -76,8 +76,11 @@ It is just as if part of content in block of actually in base.html -->
          {% endif %}
       </div>
       <div class="col-md-4" >
-         <a href="{% url 'Timetable:EditEvent' Event.id %}"><span class="glyphicon glyphicon-edit"></span></a>
-         <a href="{% url 'Timetable:DeleteEvent' Event.id %}"><span class="glyphicon glyphicon-trash"></span></a><br>
+         <a href="{% url 'Timetable:EditEvent' Event.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
+         <a href="{% url 'Timetable:DeleteEvent' Event.id %}"><span class="glyphicon glyphicon-trash shaker"></span></a><br>
+         {% if Event.ScheduledStartTime %}
+         <a href="{% url 'Timetable:DescheduleEvent' Event.id %}" class="shaker"><span class="glyphicon glyphicon-calendar"></span><span class="glyphicon glyphicon-remove-sign"></a>
+         {% endif %}
       </div>
     </div>
    {% endfor %}
