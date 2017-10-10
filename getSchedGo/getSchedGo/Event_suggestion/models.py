@@ -5,7 +5,7 @@ Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','I
 
 class suggestion(models.Model):
 	
-	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
+	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE,null=True)
 	StartTime = models.TimeField(null=True, blank= False)
 	EndTime = models.TimeField(null=True, blank= False)
 	StartDate = models.DateField(null=True,blank= False)

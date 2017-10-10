@@ -23,7 +23,7 @@ def matcheschedule(userprofile):
 	connection1.request('GET', '/v1/fixtures', None, headers1 )
 	response1 = json.loads(connection1.getresponse().read().decode())
 	fixture= response1['fixtures']
-	suggestion.objects.all.delete()
+	suggestion.objects.all().delete()
 	for match in fixture:
 		# if dict[match['competitionId']] in list:
 			s= match['date']

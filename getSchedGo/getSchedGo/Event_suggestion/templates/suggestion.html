@@ -3,12 +3,19 @@
 
 {% block content %}
  {% load staticfiles %}
+ {% block styles %}
+ <style type="text/css">
+   .carousel-indicator li {
+    visibility: hidden;
+   }
+ </style>
+ {% endblock %}
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
    <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
    {% for q in suggestionset %}
-    <li data-target="#myCarousel" data-slide-to="{{forloop.counter|add:1}}"></li>
+    <li data-target="#myCarousel" data-slide-to="{{forloop.counter}}" visibility="hidden"></li>
    
    {% endfor %}
   </ol> 
@@ -22,6 +29,12 @@
     {% for q in suggestionset %}
       <div class="item">
       <img src="{% static 'img/imsomniac2.png' %}" >
+      <div class = "carousel-caption">
+      <h3> Time: {{ q.StartTime }} </h3>
+      <h3> Date: {{ q.StartDate }} </h3>
+      <h3> {{ q.Hometeam }} V/S {{ q.Awayteam }} </h3>
+      <h3> League: {{ q.League }} </h3>
+      </div>
     </div>
    {% endfor %}
   </div>
@@ -34,9 +47,9 @@
   <a class="right carousel-control" href="#myCarousel" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
-  </a> --> -->
+  </a>
 
-<p>{{suggestionset.id}}</p> --> --> -->
+<p>{{suggestionset.id}}</p>
 
 
 {% endblock %}
