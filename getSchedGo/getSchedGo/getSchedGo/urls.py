@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^profile/$', profiles_views.userProfile, name='profile'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^event/', include('Timetable.urls')),
+    url(r'^stats/', include('statistics.urls')),
     url(r'^course/$', course_views.CourseView, name='course'),
     url(r'^suggestion/', include('Event_suggestion.urls')),
 ]

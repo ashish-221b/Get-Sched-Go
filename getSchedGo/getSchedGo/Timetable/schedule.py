@@ -41,6 +41,19 @@ def fixedScheduleAdder(fixedEvent,user):
 		if possibleReschedulingEvents == [] :
 			fixedEvent.ScheduledStartTime = startTime
 			fixedEvent.ScheduledEndTime = endTime
+			# from statistics.models import dailyStats
+			# statsToChange = get_object_or_404(dailyStats, linkedDay=SchedToChange[0])
+			# if fixedEvent.Type == 'A' :
+			# 	statsToChange.ClassTiming = statsToChange.ClassTiming + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'B' :
+			# 	statsToChange.SelfStudy = statsToChange.SelfStudy + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'C' :
+			# 	statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'D' :
+			# 	statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'E' :
+			# 	statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + SlotEnd - SlotStart
+			# statsToChange.save()
 			fixedEvent.save()
 			for slott in range(SlotStart,SlotEnd):
 				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
@@ -55,13 +68,40 @@ def fixedScheduleAdder(fixedEvent,user):
 			for event in possibleReschedulingEvents:
 				event.ScheduledStartTime = None
 				event.ScheduledEndTime = None
-				event.save()
+				# from statistics.models import dailyStats
+				statsToChange = get_object_or_404(dailyStats, linkedDay=SchedToChange[0])
 				SlotConnected = Slots.objects.filter(Day_Sched=SchedToChange[0],EventConnected=event)
+				# freedSlot = len(SlotConnected)
+				# if event.Type == 'A' :
+				# 	statsToChange.ClassTiming = statsToChange.ClassTiming - freedSlot
+				# elif event.Type == 'B' :
+				# 	statsToChange.SelfStudy = statsToChange.SelfStudy - freedSlot
+				# elif event.Type == 'C' :
+				# 	statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime - freedSlot
+				# elif event.Type == 'D' :
+				# 	statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime - freedSlot
+				# elif event.Type == 'E' :
+				# 	statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime - freedSlot
+				# statsToChange.save()
+				event.save()
 				for slots in SlotConnected:
 					slots.EventConnected = None
 					slots.save()
 			fixedEvent.ScheduledStartTime = startTime
 			fixedEvent.ScheduledEndTime = endTime
+			# from statistics.models import dailyStats
+			# statsToChange = get_object_or_404(dailyStats, linkedDay=SchedToChange[0])
+			# if fixedEvent.Type == 'A' :
+			# 	statsToChange.ClassTiming = statsToChange.ClassTiming + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'B' :
+			# 	statsToChange.SelfStudy = statsToChange.SelfStudy + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'C' :
+			# 	statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'D' :
+			# 	statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime + SlotEnd - SlotStart
+			# elif fixedEvent.Type == 'E' :
+			# 	statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + SlotEnd - SlotStart
+			# statsToChange.save()
 			fixedEvent.save()
 			for slott in range(SlotStart,SlotEnd):
 				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
