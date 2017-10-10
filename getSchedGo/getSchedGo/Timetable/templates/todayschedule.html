@@ -6,7 +6,10 @@
 {% endblock %}
 {% block content %}
 <p style="margin-top: 2.5em;">&nbsp;</p>
-<div class="cd-schedule loading">
+<!--       <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{% for tuple in SchedList %}
+     {{tuple.0.Active_day}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {% endfor %}</div> -->
+<div class="cd-schedule loading" style="height:580px;width:100%;overflow:scroll;overflow-x:hidden;overflow-y:scroll;">
 	<div class="timeline">
 		<ul>
       <!-- <li><span>08:30</span></li> -->
@@ -17,7 +20,6 @@
         <li<<span>24:00</span></li>
 		</ul>
 	</div> <!-- .timeline -->
-
 	<div class="events">
 		<ul>
       {% for tuple in SchedList %}
