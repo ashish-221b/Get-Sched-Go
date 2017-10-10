@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import suggestion 
+from .models import suggestion
 from profiles.models import profile
 from .forms import suggestionForm
 from datetime import *
@@ -10,7 +10,9 @@ d=now-timedelta(days=5)
 def index(request):
     if request.method == 'GET':
     	Profile=request.user.profile
-    	# print(request.user.profile.lastSuggestion)	
+    	if(Profile.lastSuggestion==None):
+            Profile.lastSuggestion=d
+            Profile.save()
     	if((now-Profile.lastSuggestion).days!=0):
     		print((now-Profile.lastSuggestion).days)
     		matcheschedule(request.user.profile)
