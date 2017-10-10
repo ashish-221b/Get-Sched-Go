@@ -30,10 +30,13 @@ class profile(models.Model):
 #function that creates profile model when User Logs in for the first time
 def createSched(Day,userProfile):
 	from Timetable.models import DailySched, Slots
+	from statistics.models import dailyStats
 	Sched_today, wasCreated = DailySched.objects.get_or_create(UserProfile=userProfile,Active_day = Day)
 	if wasCreated:
 		Sched_today.name = "Primary"+str(Sched_today.Active_day)
 		Sched_today.save()
+		DayStat = dailyStats(linkedDay = Sched_today,)
+		DayStat.save()
 		for i in range(1,49):
 			k = (i-1)%2
 			mins = (k)*30
