@@ -14,6 +14,7 @@ def matcheschedule():
 		dict[match['id']]= match['caption']
 
 	print(dict)
+	# list =["1. Bundesliga 2017/18", "Premier League 2017/18", "Serie A 2017/18"]
 
 
 	connection1 = http.client.HTTPConnection('api.football-data.org')
@@ -22,10 +23,16 @@ def matcheschedule():
 	response1 = json.loads(connection1.getresponse().read().decode())
 	fixture= response1['fixtures']
 	for match in fixture:
-		s= match['date']
-		q= suggestion(StartDate=s[0:10],StartTime=s[11:17],Hometeam=match['homeTeamName']
-		,Awayteam=match['awayTeamName'],League=dict[match['competitionId']])
-		q.save()
+		# if dict[match['competitionId']] in list:
+			s= match['date']
+			q= suggestion(StartDate=s[0:10],StartTime=s[11:17],Hometeam=match['homeTeamName'],Awayteam=match['awayTeamName'],League=dict[match['competitionId']])
+		
+			q.save()
+		
+
+
+
+
 
 	
 # fixtures= response['fixtures']
