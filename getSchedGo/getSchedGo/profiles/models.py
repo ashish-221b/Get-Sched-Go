@@ -3,7 +3,7 @@ from django.conf import settings
 # from Timetable.models import DailySched, Slots
 from allauth.account.signals import user_logged_in, user_signed_up
 from datetime import *
-
+d=date.today()-timedelta(days=5)
 # Create your models here.
 
 STUDY_CHOICES = [('1','Day'),('2','Evening'), ('3','Night'), ('4','Late Night')]
@@ -20,7 +20,7 @@ class profile(models.Model):
 	NBAenthu = models.BooleanField(default=False,)
 	footballenthu = models.BooleanField(default=False,)
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank = True)
-	lastSuggestion = models.DateTimeField(null=True)
+	lastSuggestion = models.DateField(null=True, default=d)
 	#connects to User model
 
 

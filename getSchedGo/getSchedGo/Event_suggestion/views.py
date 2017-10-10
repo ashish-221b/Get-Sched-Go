@@ -1,13 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import suggestion
+from profiles.models import profile
 from .forms import suggestionForm
-from datetime import date, time
-from .example import matcheschedule
+from datetime import *
+from .example import *
+import datetime
+now = date.today()
+d=now-timedelta(days=5)
 def index(request):
     if request.method == 'GET':
-    	matcheschedule()
+    	Profile=request.user.profile
+    	if(Profile.lastSuggestion==None):
+            Profile.lastSuggestion=d
+            Profile.save()
+    	if((now-Profile.lastSuggestion).days!=0):
+    		print((now-Profile.lastSuggestion).days)
+    		matcheschedule(request.user.profile)
+    		Profile.lastSuggestion=now
+    		Profile.save()
+    		print(Profile.lastSuggestion)
     	template='suggestion.html'
-    	context={'suggestionForm':suggestionForm}
+    	suggestionset= suggestion.objects.all()
+    	context={'suggestionForm':suggestionForm,'suggestionset': suggestionset}
     	return render(request,template,context)
 
 
