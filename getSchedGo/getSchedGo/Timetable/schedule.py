@@ -191,6 +191,7 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 		chainedEndSlot=((expectedEndDate - expectedStartDate).days)*48+expectedEndSlot
 		for x in range(expectedStartSlot,chainedEndSlot-slotGap+1):
 			tup=SlotTransform(x)
+			# print(tup[0],tup[1])
 			SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[tup[1]],SlotNum=tup[0])
 			counter = scoreCalc(str(Evtype),tup[0]-1)
 			# this can made faster
@@ -222,7 +223,8 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 			fixedEvent.ScheduledEndTime = SlotToEnd.EndTime
 			fixedEvent.save()
 			for k in range(maxPriorSlot[0],maxPriorSlot[0]+slotGap):
-				SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[0],SlotNum=k)
+				tupp = SlotTransform(k)
+				SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[tup[1]],SlotNum=tup[0])
 				SlotToSet.EventConnected=fixedEvent
 				SlotToSet.save()
 		else:
