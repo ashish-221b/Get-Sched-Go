@@ -35,6 +35,7 @@ class Event(models.Model):
 	DeadLineDate = models.DateField(null=True,blank=True,default=defaultDeadLine)
 	Priority = models.CharField(max_length=5,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=5,choices=Event_Type,default='E')
+	Completed = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.name
