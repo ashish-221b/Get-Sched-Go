@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import EventForm
+from .forms import *
 from .models import DailySched, Event, Slots
 from datetime import *
 from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent1
@@ -103,3 +103,16 @@ def DescheduleEvent(request,pk):
     ToBeDescheduled.ScheduledEndTime=None
     ToBeDescheduled.save()
     return redirect('Timetable:EventList')
+@login_required
+def CreateAssignment(request):
+    user = request.user
+    if (request.user.profile.instructor):
+        if (request.method=='POST'):
+            return redirect('home')
+        else:
+            form = InstructorAssignmentForm()
+            context={'user': user, 'form': form}
+            template = 'CreateEvent.html'
+            return render(request,template,context)
+    else:
+        return redirect('home')

@@ -1,6 +1,6 @@
 from django import forms
 # from django.forms import SelectDateWidget
-from .models import Event
+from .models import *
 from django.forms import SelectDateWidget
 # from django.forms.extras.widgets Django < 1.9
 from django.utils import timezone
@@ -46,3 +46,14 @@ class EventForm(forms.ModelForm):
         # #     self.fields['EndDate'].widget = SelectDateWidget
         # #     self.fields['DeadLineDate'].widget = SelectDateWidget
             # fields = ('name','Description','Venue','StartTime','EndTime','DeadLine','Priority','Type','TimeSettings')
+class InstructorAssignmentForm(forms.ModelForm):
+    class Meta:
+        model = InstructorAssignment
+        exclude  = ('UserProfile',)
+        widgets = widgets = {
+            'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
+            'StartDate': SelectDateWidget(years=past_years(10),),
+            'DeadLineDate' : SelectDateWidget(years=past_years(10),),
+            'StartTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+            'DeadLineTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+        }
