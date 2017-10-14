@@ -7,6 +7,8 @@ from .models import suggestion
 from profiles.models import profile
 def matcheschedule(userprofile):
 	dict= {}
+	list= ['FC Barcelona', 'Real Madrid CF', 'Manchester City FC', 'Manchester United FC',
+	'Chelsea FC', 'Paris Saint-Germain', 'Juventus Turin','Club Atlético de Madrid','Liverpool FC','FC Bayern München']
 	connection = http.client.HTTPConnection('api.football-data.org')
 	headers = { 'X-Auth-Token': 'bcfa111e2227403a9491066e8a033df4', 'X-Response-Control': 'minified' }
 	connection.request('GET', '/v1/competitions', None, headers )
@@ -25,7 +27,7 @@ def matcheschedule(userprofile):
 	fixture= response1['fixtures']
 	suggestion.objects.all().delete()
 	for match in fixture:
-		# if dict[match['competitionId']] in list:
+		if str(match['homeTeamName']) in list or str(match['awayTeamName']) in list:
 			s= match['date']
 			q= suggestion(UserProfile=userprofile,StartDate=s[0:10],StartTime=s[11:17],Hometeam=match['homeTeamName'],Awayteam=match['awayTeamName'],League=dict[match['competitionId']])
 		
