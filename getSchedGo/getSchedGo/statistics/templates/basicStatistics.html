@@ -1,6 +1,12 @@
 {% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
 {% load staticfiles %}
 {% block content %}
+<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+	<option value="" selected disabled hidden>Choose the day here</option>
+  <option value="{% url 'statistics:TodayStatistic' %}"><a href="{% url 'statistics:TodayStatistic' %}"> Today</a></option>
+  <option value="{% url 'statistics:AnyDayStatistics' 1 %}"><a href="{% url 'statistics:AnyDayStatistics' 1 %}"> Yesterday</a></option>
+  <option value="{% url 'statistics:AnyDayStatistics' 2 %}"><a href="{% url 'statistics:AnyDayStatistics' 2 %}"> Yesterday--</a></option>
+</select><br>
 Hi {{ user }}<br>
 ActiveDay: {{ TodaysStats.linkedDay.Active_day }}<br>
 SelfStudy: {{ TodaysStats.SelfStudy }}<br>
@@ -8,4 +14,8 @@ ExtraCurricularsTime: {{ TodaysStats.ExtraCurricularsTime }}<br>
 ExtraStudyTime: {{ TodaysStats.ExtraStudyTime }}<br>
 ClassTiming: {{ TodaysStats.ClassTiming }}<br>
 MiscellaneousTime: {{ TodaysStats.MiscellaneousTime }}<br>
-{% endblock %}
+CompletedSelfStudy: {{ TodaysStats.CompletedSelfStudy }}<br>
+CompletedExtraCurricularsTime: {{ TodaysStats.CompletedExtraCurricularsTime }}<br>
+CompletedExtraStudyTime: {{ TodaysStats.CompletedExtraStudyTime }}<br>
+CompletedClassTiming: {{ TodaysStats.CompletedClassTiming }}<br>
+CompletedMiscellaneousTime: {{ TodaysStats.CompletedMiscellaneousTime }}<br>{% endblock %}

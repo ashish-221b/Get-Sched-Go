@@ -2,13 +2,18 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from Timetable.models import DailySched, Event, Slots
 from .models import *
-from datetime import datetime , timedelta
+from datetime import datetime , timedelta, date
 from django.db.models import Q
 
 # Create your views here.
 @login_required
-def TodayStats(request):
-	Today=date.today()
+def TodayStats(request,pk=-1):
+	if pk=='1' :
+		Today=date.today() - timedelta(days = 1)
+	elif pk == '2':
+		Today=date.today() - timedelta(days = 2)
+	else :
+		Today=date.today()
 	user = request.user
 	TodaySched = get_object_or_404(DailySched,UserProfile =user.profile,Active_day=Today)
 	TodaysStats = get_object_or_404(dailyStats,linkedDay = TodaySched)
@@ -77,17 +82,32 @@ def updateStats(statsToChange):
 	statsToChange.ExtraStudyTime = 0
 	statsToChange.ExtraCurricularsTime = 0
 	statsToChange.MiscellaneousTime = 0
+	statsToChange.CompletedClassTiming = 0
+	statsToChange.CompletedSelfStudy = 0
+	statsToChange.CompletedExtraStudyTime = 0
+	statsToChange.CompletedExtraCurricularsTime = 0
+	statsToChange.CompletedMiscellaneousTime = 0
 	for slot in slotList:
 		if slot.EventConnected is not None:
 			event = slot.EventConnected
 			if event.Type == 'A' :
 				statsToChange.ClassTiming = statsToChange.ClassTiming + 1
+				if event.Completed :
+					statsToChange.CompletedClassTiming = statsToChange.CompletedClassTiming + 1
 			elif event.Type == 'B' :
 				statsToChange.SelfStudy = statsToChange.SelfStudy + 1
+				if event.Completed :
+					statsToChange.CompletedSelfStudy = statsToChange.CompletedSelfStudy + 1
 			elif event.Type == 'C' :
 				statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime + 1
+				if event.Completed :
+					statsToChange.CompletedExtraStudyTime  = statsToChange.CompletedExtraStudyTime + 1
 			elif event.Type == 'D' :
 				statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime + 1
+				if event.Completed :
+					statsToChange.CompletedExtraCurricularsTime = statsToChange.CompletedExtraCurricularsTime + 1
 			elif event.Type == 'E' :
 				statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + 1
+				if event.Completed :
+					statsToChange.CompletedMiscellaneousTime = statsToChange.CompletedMiscellaneousTime + 1				
 	statsToChange.save()
