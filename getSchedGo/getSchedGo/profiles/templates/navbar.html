@@ -46,8 +46,9 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create Student Event<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="{% url 'Timetable:CreateAssignment'%}">Add Assignment</a></li>
-                <li><a href="{% url 'Timetable:EventList'%}">Add Class</a></li>
-                <li><a href="{% url 'Timetable:Schedule'%}">Add Exam</a></li>
+                <li><a href="{% url 'Timetable:CreateClass'%}">Add Class/Exam</a></li>
+                <li><a href="{% url 'Timetable:AssignmentList'%}">Assignments</a></li>
+                <li><a href="{% url 'Timetable:ClassList'%}">Class/Exam</a></li>
               </ul>
             </li>
             {% endif %}

@@ -56,7 +56,7 @@ class InstructorClass(models.Model):
 	StartTime = models.TimeField(null=True,)#removed Blank notequaltoTrue for some case
 	StartDate = models.DateField(null=True,default=date.today)
 	PreparationRequired = models.BooleanField(default=False)
-	PreparationDuration = models.CharField(max_length=5,choices=Duration_choices,default='1')
+	PreparationDuration = models.CharField(null=True,max_length=5,choices=Duration_choices,default='1',blank=True)
 	EndTime = models.TimeField(null=True,)
 	EndDate = models.DateField(null=True,blank=True,default=date.today)
 	Compulsory = models.BooleanField(default=True)
