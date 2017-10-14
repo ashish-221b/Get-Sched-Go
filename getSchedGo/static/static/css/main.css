@@ -11,3 +11,65 @@
 .navbar-inverse .navbar-brand {
     color: #2dd1eb;
 }
+body {
+    background-color: rgb(240,240,240);
+}
+.event-holder {
+    transition: all .5s ease-in-out;
+    font-size: 100%;
+    opacity: 0.6;
+    width:100%;
+    min-height:50px;
+    padding: 2em;
+    border-radius: 25px;
+    box-shadow: 0 0 1em rgba(0,0,0,0.5);
+    margin: 20px;
+    /* overflow: scroll;*/
+}
+.event-holder:hover {
+    border-radius: 50px;
+    font-size: 150%;
+    padding: 4em;
+    opacity: 1;
+    /*margin-top: 80px;
+    margin-bottom: 80px;
+    margin-left: 0px;
+    margin-right: 0px;*/
+    background-color: rgb(204, 204, 255);
+    box-shadow: 0 0 2em rgba(0,0,0,1);
+}
+.glyphicon-edit{
+    font-size: 200%;
+    color: rgb(3, 59, 99);
+}
+.glyphicon-trash{
+    font-size: 200%;
+    color: rgb(3, 59, 99);
+}
+.glyphicon-edit:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    font-size: 200%;
+    color: rgb(255, 0, 0);
+}
+.glyphicon-trash:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    font-size: 200%;
+    color: rgb(255, 0, 0);
+}
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

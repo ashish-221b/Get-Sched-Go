@@ -7,30 +7,51 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bootstrap theme</a>
+          <a class="navbar-brand" href="{% url 'home'%}">GetSchedGo</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-          {% url 'home' as home %}
-          {% url 'about' as about %} 
-          <li {% if request.path == home %} class="active"{% endif %}><a href="{% url 'home'%}">Home</a></li>
+          {% url 'home' as home %}<!-- making local variable -->
+          {% url 'profile' as profile %}
+          {% url 'about' as about %}
+          <li {% if request.path == home %} class="active"{% endif %}><a href="{% url 'home'%}">Home</a></li><!-- Turns to active in navbar if current path is home -->
+          <li {% if request.path == profile %} class="active"{% endif %}><a href="{% url 'profile'%}">Profile</a></li>
           <li {% if request.path == about %} class="active"{% endif %}><a href="{% url 'about'%}">About</a></li>
-
              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                {% if not request.user.is_authenticated %}
+                {% if not request.user.is_authenticated %}<!-- using if for different view if user is logged in or not -->
                 <li><a href="{% url 'account_login'%}">Login</a></li>
                 <li><a href="{% url 'account_signup'%}">Signup</a></li>
                 {% else %}
                 <li><a href="{% url 'account_logout'%}">Logout</a></li>
                 {% endif %}
-                <li role="separator" class="divider"></li>
+<!--                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="#">One more separated link</a></li> -->
               </ul>
             </li>
+            {% if request.user.is_authenticated %}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'Timetable:CreateEvent'%}">Add Events</a></li>
+                <li><a href="{% url 'Timetable:EventList'%}">Event List</a></li>
+                <li><a href="{% url 'Timetable:Schedule'%}">TimeTable</a></li>
+              </ul>
+            </li>
+            {% if request.user.profile.instructor %}
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create Student Event<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'Timetable:CreateAssignment'%}">Add Assignment</a></li>
+                <li><a href="{% url 'Timetable:EventList'%}">Add Class</a></li>
+                <li><a href="{% url 'Timetable:Schedule'%}">Add Exam</a></li>
+              </ul>
+            </li>
+            {% endif %}
+            {% endif %}
           </ul>
         </div><!--/.nav-collapse -->
       </div>
