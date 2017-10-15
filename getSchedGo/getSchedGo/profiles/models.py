@@ -20,8 +20,8 @@ class profile(models.Model):
 	NBAenthu = models.BooleanField(default=False,)
 	footballenthu = models.BooleanField(default=False,)
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank = True)
-	instructor = models.BooleanField(default=False)
-	lastSuggestion = models.DateField(null=True, default=d)
+	instructor = models.BooleanField(default=False, blank = True)
+	lastSuggestion = models.DateField(null=True, default = d)
 	#connects to User model
 
 
