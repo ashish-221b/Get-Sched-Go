@@ -14,5 +14,17 @@ def CourseView(request):
 		return render(request,template,{'form': form, 'text': text, 'courseDetail': detail})
 
 	else: #for get request i.e. when page opens on browser
-		form = CourseForm() #Blank foem where user will enter course
+		form = CourseForm() #Blank form where user will enter course
 		return render(request,template,{'form': form, 'text': text})
+
+def Enrollmentview(request):
+	template = 'Enrollment.html'
+	user = request.user
+	if request.method == 'POST':
+		form = CourseForm(request.POST)
+		if form.is_valid():
+			detail = coursedetail.objects.filter(code=text)
+		return render(request,template,{'form': form, 'courseDetail': detail})
+	else:
+		form = CourseForm()
+		return render(request,template,{'form': form,})
