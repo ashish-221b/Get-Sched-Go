@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+=======
+from django.contrib.auth.decorators import login_required
+>>>>>>> 841f8334eddc1941336e5d518bf1695f11eb4f96
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import coursedetail
 from .forms import CourseForm
+from profiles.models import profile
 
 # Create your views here.
 def CourseView(request):
@@ -54,7 +59,39 @@ def Enrollmentview(request):
 		if form.is_valid():
 			text = form.cleaned_data['code']
 			detail = coursedetail.objects.filter(code__istartswith=text) | coursedetail.objects.filter(code__iendswith=text) 
-		return render(request,template,{'form': form, 'courseDetail': detail})
+		return render(request,template,{'form': form, 'courseDetail': detail, 'user': user})
 	else:
 		form = CourseForm()
 		return render(request,template,{'form': form,})
+
+
+
+@login_required
+def SelectCourse(request,pk=-1):
+	template = 'selectcourse.html'
+	text = " "
+	user = request.user
+	if request.method == 'POST':
+		if(pk==-1):
+			form=CourseForm(request.POST)
+			if form.is_valid():
+				text = form.cleaned_data['code']
+				detail = coursedetail.objects.filter(code__istartswith=text) | coursedetail.objects.filter(code__iendswith=text)
+			return render(request,template,{'form': form, 'text': text, 'courseDetail': detail, 'user': user})
+
+	else: #for get request i.e. when page opens on browser
+		if(pk==-1):
+			form = CourseForm() #Blank form where user will enter course
+			return render(request,template,{'form': form, 'text': text, 'user': user})
+		else:
+			All = coursedetail.objects.filter(instructor = user.profile)
+			print(pk)
+			if not All:
+				print("ys")
+				courseToClaim = get_object_or_404(coursedetail, pk=pk)
+				courseToClaim.instructor = user.profile
+				courseToClaim.save()
+				return redirect('home')
+			else:
+				print("no")
+				return redirect('home')
