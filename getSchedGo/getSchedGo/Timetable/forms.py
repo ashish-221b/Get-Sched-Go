@@ -68,3 +68,13 @@ class InstructorClassForm(forms.ModelForm):
             'EndDate' : SelectDateWidget(years=past_years(10),),
             'EndTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
         }
+class InstructorExamForm(forms.ModelForm):
+    class Meta:
+        model = InstructorExam
+        exclude  = ('UserProfile',)
+        widgets = {
+            'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
+            'Date': SelectDateWidget(years=past_years(10),),
+            'StartTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+            'EndTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+        }

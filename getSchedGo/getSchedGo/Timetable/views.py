@@ -139,6 +139,26 @@ def CreateClass(request):
             return render(request,template,context)
     else:
         return redirect('home')
+
+@login_required
+def CreateExam(request):
+    user = request.user
+    if (request.user.profile.instructor):
+        if (request.method=='POST'):
+            form = InstructorExamForm(request.POST)
+            if form.is_valid():
+                Assign = form.save(commit=False)
+                Assign.UserProfile = user.profile
+                Assign.save()
+            return redirect('home')
+        else:
+            form = InstructorExamForm()
+            context={'user': user, 'form': form}
+            template = 'CreateEvent.html'
+            return render(request,template,context)
+    else:
+        return redirect('home')
+
 @login_required
 def Assignments(request,pk=-1):
     user = request.user
@@ -169,4 +189,21 @@ def Classes(request,pk=-1):
         List = InstructorClass.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')
     context = {'user': user,'List': List}
     template = 'class.html'
+    return render(request,template,context)
+
+@login_required
+def Exams(request,pk=-1):
+    user = request.user
+    if(pk==-1 or pk=='0'):
+        List = InstructorExam.objects.filter(UserProfile=user.profile)
+    elif(pk == '2'):
+        List = InstructorExam.objects.filter(UserProfile=user.profile)
+        print(List)
+    elif(pk == '3'):
+        List = InstructorExam.objects.filter(UserProfile=user.profile)
+    else:
+        # print(pk)#now if more wanted then add pk=='3' so on
+        List = InstructorExam.objects.filter(UserProfile=user.profile).order_by('Date','StartTime')
+    context = {'user': user,'List': List}
+    template = 'exam.html'
     return render(request,template,context)

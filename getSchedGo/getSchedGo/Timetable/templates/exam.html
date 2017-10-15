@@ -1,0 +1,82 @@
+{% extends 'base.html'%}
+{% block otherinclusions %}
+<link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
+{% endblock %}
+{% block styles %}
+<style type="text/css">
+  .affix {
+    top:50px;
+    position: fixed;
+    width: 100%;
+    margin-left: 0;
+    z-index: 1 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+</style>
+{% endblock %}
+{% block bars %}
+<div align="center">Hi {{ user }}</div>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="40">
+ <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div id="mynavbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          <li><a href="{% url 'Timetable:SortExam' 0 %}">Sort by ID</a></li>
+          <li><a href="{% url 'Timetable:SortExam' 1 %}">Sort by DATE</a></li>
+          <li class="dropdown" align="right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+<!-- using if for different view if user is logged in or not -->
+                <li><a href="{% url 'Timetable:SortExam' 2 %}">Declared Exams</a></li>
+                <li><a href="{% url 'Timetable:SortExam' 3 %}">Undeclared Exams</a></li>
+                <li><a href="{% url 'Timetable:ExamList' %}">All Exams</a></li>
+<!--                 <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li> -->
+              </ul>
+            </li>
+        </ul>
+      </div>
+
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}<!-- Using extend everything to be displayed are kept in extend.
+It is just as if part of content in block of actually in base.html -->
+
+
+
+
+  {% if List %}
+<p>
+   {% for Exam in List %}
+   <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+   <div class="col-md-8">
+         <h3> {{ Exam.name }} </h3>
+         <h4> On : {{Exam.Date }} </h4>
+         <h4> From {{ Exam.StartTime }} To {{ Exam.EndTime }} </h4>
+         <h4> At : {{ Exam.Venue }} </h4>
+         <h4> Preparation : {{ Exam.PreparationDuration }}
+      </div>
+    </div>
+   {% endfor %}
+</p>
+{% else %}
+   <p>No Exams are available.</p>
+{% endif %}
+</div>
+<p style="margin-top: 5em;">&nbsp;</p>
+
+{% endblock %}

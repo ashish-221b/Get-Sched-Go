@@ -18,7 +18,13 @@ class InstructorAssignmentAdmin(admin.ModelAdmin):
 class InstructorClassAdmin(admin.ModelAdmin):
 	class Meta:
 		model = InstructorClass
+class InstructorExamAdmin(admin.ModelAdmin):
+	class Meta:
+		model = InstructorExam
+
 admin.site.register(Slots,SlotsAdmin)
 admin.site.register(Event,EventAdmin)
 admin.site.register(DailySched,DailySchedAdmin)
+admin.site.register(InstructorExam,InstructorExamAdmin)
 admin.site.register(InstructorClass,InstructorClassAdmin)
+admin.site.register(InstructorAssignment,InstructorAssignmentAdmin)
