@@ -10,9 +10,7 @@ Hi {{ user }}<br>
 <p>
    {% for Event in List %}
    <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
-
-<!--    <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
- -->  <div class="col-md-8">
+<div class="col-md-8">
          <h3> {{ Event.name }} </h3>
          <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
          <h4> To : {{ Event.EndDate  }} {{ Event.EndTime }} </h4>

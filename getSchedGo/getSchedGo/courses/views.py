@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 from django.contrib.auth.decorators import login_required
->>>>>>> 841f8334eddc1941336e5d518bf1695f11eb4f96
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import coursedetail
 from .forms import CourseForm

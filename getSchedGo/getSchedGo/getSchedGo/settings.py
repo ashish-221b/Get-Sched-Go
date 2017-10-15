@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Timetable',
     'courses',
     'crispy_forms',
+    'mathfilters',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
