@@ -28,3 +28,22 @@ def Enrollmentview(request):
 	else:
 		form = CourseForm()
 		return render(request,template,{'form': form,})
+
+
+
+@login_required
+def SelectCourse(request,pk=-1):
+	template = 'selectcourse.html'
+	text = " "
+	if request.method == 'POST':
+		if(pk==-1)
+			form=CourseForm(request.POST)
+			if form.is_valid():
+				text = form.cleaned_data['code']
+				detail = coursedetail.objects.filter(code=text)
+			return render(request,template,{'form': form, 'text': text, 'courseDetail': detail})
+		else:
+			return redirect('home')
+	else: #for get request i.e. when page opens on browser
+		form = CourseForm() #Blank form where user will enter course
+		return render(request,template,{'form': form, 'text': text})
