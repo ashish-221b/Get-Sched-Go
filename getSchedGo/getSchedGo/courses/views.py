@@ -25,7 +25,7 @@ def UserAdder(request,pk):
 	if user.profile.instructor:
 		if ToChange.instructor is None:
 			ToChange.instructor = user.profile
-		else : 
+		else :
 			pass
 	else:
 		ToChange.Student.add(user.profile)
@@ -38,7 +38,7 @@ def UserDropper(request,pk):
 	if user.profile.instructor:
 		if ToChange.instructor == user.profile:
 			ToChange.instructor = None
-		else : 
+		else :
 			pass
 	else:
 		if user.profile in ToChange.Student.all():
@@ -55,7 +55,7 @@ def Enrollmentview(request):
 		form = CourseForm(request.POST)
 		if form.is_valid():
 			text = form.cleaned_data['code']
-			detail = coursedetail.objects.filter(code__istartswith=text) | coursedetail.objects.filter(code__iendswith=text) 
+			detail = coursedetail.objects.filter(code__istartswith=text) | coursedetail.objects.filter(code__iendswith=text)
 		return render(request,template,{'form': form, 'courseDetail': detail, 'user': user})
 	else:
 		form = CourseForm()
