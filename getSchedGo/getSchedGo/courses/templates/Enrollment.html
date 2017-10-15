@@ -9,23 +9,27 @@
 			<button type="submit">Submit</button>
 		</form>
 </div>
-<div class="col-md-8 col-md-offset-2">
 {% for courses in courseDetail %}
+<div class="col-md-6 col-md-offset-2">
 <h3>
 Code: {{ courses.code }}
-</h3><br>
+</h3>
 <h3>
 Name: {{ courses.name }}
-</h3><br><h3>
+</h3><h3>
 Slot Number: {{ courses.slot }}
-</h3><br><h3>
+</h3><h3>
 Credit: {{ courses.credit }}
-</h3><br>
+</h3>
 {% if courses.tutorial %}
 <h3>
 Tutorial Slot: {{ courses.tutorialSlot }}
-</h3><br>
+</h3>
 {% endif %}
-{% endfor %}
 </div>
+<div class="col-md-4">
+	<a href="">Enroll</a>
+</div>	
+
+{% endfor %}
 {% endblock %}
