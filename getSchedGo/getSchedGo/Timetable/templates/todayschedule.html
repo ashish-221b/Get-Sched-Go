@@ -27,6 +27,7 @@
 				       <div class="top-info"><span>{{tuple.0.Active_day}}</span></div>
 				<ul>
           {% for Event in tuple.1 %}
+          {% if Event.ScheduledEndTime|time:"H:i" != '00:00' %}
           {% if Event.Type == 'A' %}
           <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="{{ Event.ScheduledEndTime|time:"H:i" }}" data-content=Event data-event="event-1" style="/*color: #8a6d3b;*/
     background-color: #73620c;
@@ -48,13 +49,48 @@
           {% endif %}
           {% endif %}
           {% endif %}
-						<a href="#0">
-							<em class="event-name" style="/*color: #000000;*/">{{Event.name}}</em>
-						</a>
-					</li>
+            <a href="#0">
+              <em class="event-name" style="/*color: #000000;*/">{{Event.name}}</em>
+            </a>
+          </li>
+          {% else %}
+           {% if Event.Type == 'A' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="24:00" data-content=Event data-event="event-1" style="/*color: #8a6d3b;*/
+    background-color: #73620c;
+    border-color: #faebcc;">
+          {% else %}
+          {% if Event.Type == 'B' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="24:00" data-content=Event data-event="event-1" style="/*color:#31708f;*/background-color: #164e69;border-color: #bce8f1;">
+          {% else %}
+          {% if Event.Type == 'C' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="24:00" data-content=Event data-event="event-1" style="   /* color: #3c763d;
+*/    background-color: #539339;
+    border-color: #d6e9c6;">
+          {% else %}
+          {% if Event.Type == 'D' %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="24:00" data-content=Event data-event="event-1" style="background-color:#66ff66;">
+          {% else %}
+          <li class="single-event" data-start="{{ Event.ScheduledStartTime|time:"H:i" }}" data-end="24:00" data-content=Event data-event="event-1" style="background-color:#4d4d00;">
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {% endif %}
+            <a href="#0">
+              <em class="event-name" style="/*color: #000000;*/">{{Event.name}}</em>
+            </a>
+          </li>
+          {% endif %}
+
+<!--           {{ Event.ScheduledStartTime }}
+          {{ Event.ScheduledEndTime }} -->
           {% endfor %}
-				</ul>
-			</li>
+<!--       <li class="single-event" data-start="23:00" data-end="24:00" data-content=Event data-event="event-1" style="background-color:#66ff66;">
+            <a href="#0">
+              <em class="event-name" style="/*color: #000000;*/">MIDNIGHT</em>
+            </a>       
+      </li> -->
+        </ul>
+      </li>
       {% endfor %}
 		</ul>
 	</div>

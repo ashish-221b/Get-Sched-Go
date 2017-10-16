@@ -39,6 +39,7 @@
 <!-- using if for different view if user is logged in or not -->
                 <li><a href="{% url 'Timetable:SortEvent' 2 %}">Scheduled Events</a></li>
                 <li><a href="{% url 'Timetable:SortEvent' 3 %}">Unscheduled Events</a></li>
+                <li><a href="{% url 'statistics:CompletedList' %}">Completed Events</a></li>
                 <li><a href="{% url 'Timetable:EventList' %}">All Events</a></li>
 <!--                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -55,7 +56,17 @@
 
 {% block content %}<!-- Using extend everything to be displayed are kept in extend.
 It is just as if part of content in block of actually in base.html -->
-
+<style type="text/css">
+  
+</style>
+<script type="text/javascript">
+  function show(id) {
+    document.getElementById(id).style.display = "block";
+  }
+  function hide(id) {
+    document.getElementById(id).style.display = "none";
+  }
+</script>
 
 
 
@@ -63,9 +74,9 @@ It is just as if part of content in block of actually in base.html -->
 <p>
    {% for Event in List %}
    {% if Event.ScheduledStartTime %}
-   <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
+   <div onMouseOver="show('disc{{ Event.id }}')" onMouseOut="hide('disc{{ Event.id }}')" class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
    {% else %}
-   <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+   <div onMouseOver="show('disc{{ Event.id }}')" onMouseOut="hide('disc{{ Event.id }}')" class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
    {% endif %}    <div class="col-md-8">
          <h3> {{ Event.name }} </h3>
          <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
@@ -74,6 +85,9 @@ It is just as if part of content in block of actually in base.html -->
          {% if Event.ScheduledStartTime %}
          <h4> Scheduled from {{ Event.ScheduledStartTime }} to {{ Event.ScheduledEndTime }}</h4>
          {% endif %}
+         <div id="disc{{ Event.id }}" style="display: none;">
+           {{ Event.Description }}
+         </div>
       </div>
       <div class="col-md-4" >
          <a href="{% url 'Timetable:EditEvent' Event.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>

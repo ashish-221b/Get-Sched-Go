@@ -68,6 +68,7 @@ def TodayStats(request,pk=-1):
 	template = 'basicStatistics.html'
 	return render(request,template,context)
 
+@login_required
 def EventBeforeDate(request):
 	user = request.user
 	List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None).filter(Q(EndDate__lt=datetime.today() ) | (Q(EndDate=datetime.today(),ScheduledEndTime__lte=datetime.today())))
@@ -76,6 +77,7 @@ def EventBeforeDate(request):
 	template = 'basicfeedback.html'
 	return render(request,template,context)
 
+@login_required
 def CompletedList(request):
 	user = request.user
 	List = Event.objects.filter(UserProfile=user.profile, Completed = True)

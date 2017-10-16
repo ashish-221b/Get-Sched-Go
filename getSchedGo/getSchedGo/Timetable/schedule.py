@@ -20,6 +20,8 @@ def fixedScheduleAdder(fixedEvent,user):
 	else:
 		SlotStart = timeToSlot(str(startTime))
 		SlotEnd = timeToSlot(str(endTime))
+		if SlotEnd == 1:
+			SlotEnd = 49
 		for slott in range(SlotStart,SlotEnd):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
 			if SlotToSet.EventConnected is None:
@@ -55,6 +57,7 @@ def fixedScheduleAdder(fixedEvent,user):
 			# 	statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + SlotEnd - SlotStart
 			# statsToChange.save()
 			fixedEvent.save()
+			print(SlotStart,SlotEnd)
 			for slott in range(SlotStart,SlotEnd):
 				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
 				# print(SlotToSet.StartTime,SlotToSet.EndTime)
@@ -103,6 +106,7 @@ def fixedScheduleAdder(fixedEvent,user):
 			# 	statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + SlotEnd - SlotStart
 			# statsToChange.save()
 			fixedEvent.save()
+			print(SlotStart,SlotEnd)
 			for slott in range(SlotStart,SlotEnd):
 				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
 				# print(SlotToSet.StartTime,SlotToSet.EndTime)
@@ -132,14 +136,14 @@ def VariableEventAdder(fixedEvent,user):
 		maxPriorSlot=[0,0]
 		for x in range(1,50-slotGap):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=x)
-			counter = scoreCalc(str(Evtype),x-1)
+			counter = scoreCalc(str(Evtype),x-1,user)
 			if SlotToSet.EventConnected is None:
 				for y in range(x+1,x+slotGap):
 					SlotAfter = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=y)
 					if not SlotAfter.EventConnected is None:
 						counter = -1
 						break
-					counter += scoreCalc(str(Evtype),y-1)
+					counter += scoreCalc(str(Evtype),y-1,user)
 				if counter > maxPriorSlot[1]:
 					maxPriorSlot[0]=x
 					maxPriorSlot[1]=counter
@@ -178,7 +182,7 @@ def NewVariableEvent(fixedEvent,user): #Assuming One Day Event
 		maxPriorSlot = [0,0]
 		for x in range(expectedStartSlot,expectedEndSlot-slotGap+1):
 			SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=x)
-			counter = scoreCalc(str(Evtype),x-1)
+			counter = scoreCalc(str(Evtype),x-1,user)
 			# this can made faster
 			if SlotToSet.EventConnected is None:
 				for y in range(x+1,x+slotGap):
@@ -186,7 +190,7 @@ def NewVariableEvent(fixedEvent,user): #Assuming One Day Event
 					if not SlotAfter.EventConnected is None:
 						counter = -1 ##No recursion or shifting. If want to change the way of implementation then attack HERE
 						break
-					counter += scoreCalc(str(Evtype),y-1)
+					counter += scoreCalc(str(Evtype),y-1,user)
 				# this is keeping count of maxPrior slot within given timeGap
 				if counter > maxPriorSlot[1]:
 					maxPriorSlot[0]=x
@@ -233,7 +237,7 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 			tup=SlotTransform(x)
 			# print(tup[0],tup[1])
 			SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[tup[1]],SlotNum=tup[0])
-			counter = scoreCalc(str(Evtype),tup[0]-1)
+			counter = scoreCalc(str(Evtype),tup[0]-1,user)
 			# this can made faster
 			if SlotToSet.EventConnected is None:
 				for m in range(x+1,x+slotGap):
@@ -242,7 +246,7 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 					if not SlotAfter.EventConnected is None:
 						counter = -1 ##No recursion or shifting. If want to change the way of implementation then attack HERE
 						break
-					counter += scoreCalc(str(Evtype),tupm[0]-1)
+					counter += scoreCalc(str(Evtype),tupm[0]-1,user)
 				# this is keeping count of maxPrior slot within given timeGap
 				print(x)
 				print(counter)
@@ -277,7 +281,7 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 				for x in range(expectedStartSlot,chainedEndSlot-slotGap+1):
 					tup=SlotTransform(x)
 					SlotToSet = Slots.objects.get(Day_Sched=SchedsToChange[tup[1]],SlotNum=tup[0])
-					counter = scoreCalc(str(Evtype),tup[0]-1)
+					counter = scoreCalc(str(Evtype),tup[0]-1,user)
 					# this can made faster
 					if SlotToSet.EventConnected is None:
 						for m in range(x+1,x+slotGap):
@@ -286,7 +290,7 @@ def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 							if not SlotAfter.EventConnected is None:
 								counter = -1 ##No recursion or shifting. If want to change the way of implementation then attack HERE
 								break
-							counter += scoreCalc(str(Evtype),tupm[0]-1)
+							counter += scoreCalc(str(Evtype),tupm[0]-1,user)
 						# this is keeping count of maxPrior slot within given timeGap
 						print(x)
 						print(counter)
