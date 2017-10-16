@@ -6,7 +6,7 @@ from datetime import *
 d=date.today()-timedelta(days=5)
 # Create your models here.
 
-STUDY_CHOICES = [('1','Day'),('2','Evening'), ('3','Night'), ('4','Late Night')]
+STUDY_CHOICES = [('1','Day'), ('3','Night'), ('4','Late Night')]
 SLEEP_TIME = [('A','6 hours'), ('B','7 hours'), ('C','8 hours')]
 
 

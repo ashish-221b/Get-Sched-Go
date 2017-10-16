@@ -58,6 +58,7 @@ def EventList(request,pk=-1):
     user = request.user
     if(pk==-1 or pk=='0'):
         List = Event.objects.filter(UserProfile=user.profile)
+        print(type(List[0].id))
     elif(pk == '2'):
         List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None)
         print(List)
@@ -78,6 +79,7 @@ def Schedules(request):
         createSched(date.today() + timedelta(days=i),user.profile)
         Day = get_object_or_404(DailySched, UserProfile = user.profile, Active_day = (date.today() + timedelta(days=i)))
         EventList = eventList(Day)
+        print(EventList)
         SchedList.append([Day, EventList])
     # SchedToday = DailySched.objects.filter(UserProfile = user.profile, Active_day = date.today())
     print(SchedList)
