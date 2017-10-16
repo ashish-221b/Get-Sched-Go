@@ -14,7 +14,7 @@ Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study')
 class EventForm(forms.ModelForm):
         class Meta:
             model = Event
-            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime','Completed')
+            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime','Completed','CreaterType','CreaterId')
             widgets = {
                 'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
                 'StartDate': SelectDateWidget(years=past_years(10),),

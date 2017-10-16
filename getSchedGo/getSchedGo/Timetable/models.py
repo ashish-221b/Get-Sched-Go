@@ -20,6 +20,8 @@ defaultDeadLine = date.today()+timedelta(days=3)
 class Event(models.Model):
 	"""docstring for Event."""
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
+	CreaterType = models.CharField(max_length=1,default='0')
+	CreaterId = models.CharField(max_length=100,null=True)
 	name = models.CharField(max_length=50)
 	Description = models.CharField(max_length=300,blank=True)
 	Venue = models.CharField(max_length=100,blank=True)

@@ -3,22 +3,45 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import coursedetail
 from .forms import CourseForm
 from profiles.models import profile
+from Timetable.models import *
 
 # Create your views here.
-def CourseView(request):
+@login_required
+def EventList(request,pk=-1):
+    user = request.user
+    if(pk==-1 or pk=='0'):
+        List = Event.objects.filter(UserProfile=user.profile)
+    elif(pk == '2'):
+        List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None)
+        print(List)
+    elif(pk == '3'):
+        List = Event.objects.filter(UserProfile=user.profile,ScheduledStartTime__isnull=True)
+    else:
+        print(pk)#now if more wanted then add pk=='3' so on
+        List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')
+    context = {'user': user,'List': List}
+    template = 'EventList.html'
+    return render(request,template,context)
+def CourseView(request,pk1='nan',pk2='nan'):
+	pk1='nan'
+	pk2='nan'
+	user=request.user
+	if(pk1=='nan'):
+		CourseList=coursedetail.objects.filter(Student = user.profile)
 	template = 'courseview.html'
-	text = " "
-	if request.method == 'POST':
-		form=CourseForm(request.POST)
-		if form.is_valid():
-			text = form.cleaned_data['code']
-			detail = coursedetail.objects.filter(code=text)
-		return render(request,template,{'form': form, 'text': text, 'courseDetail': detail})
-
-	else: #for get request i.e. when page opens on browser
-		form = CourseForm() #Blank form where user will enter course
-		return render(request,template,{'form': form, 'text': text})
-
+	AssignmentList=[]
+	ClassList=[]
+	ExamList=[]
+	for Course in CourseList:
+		AssignmentList.extend(InstructorAssignment.objects.filter(UserProfile=Course.instructor))
+		ExamList.extend(InstructorExam.objects.filter(UserProfile=Course.instructor))
+		ClassList.extend(InstructorClass.objects.filter(UserProfile=Course.instructor))
+	context = {'user': user,'CourseList': CourseList, 'AssignmentList': AssignmentList, 'ClassList': ClassList, 'ExamList': ExamList,'pk1': pk1,'pk2': pk2}
+	print(CourseList)
+	print(AssignmentList)
+	print(ClassList)
+	print(ExamList)
+	return render(request,template,context)
 def UserAdder(request,pk):
 	ToChange = get_object_or_404(coursedetail,pk=pk)
 	user = request.user

@@ -68,6 +68,7 @@ def EventList(request,pk=-1):
         List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')
     context = {'user': user,'List': List}
     template = 'EventList.html'
+    print(List)
     return render(request,template,context)
 @login_required
 def Schedules(request):

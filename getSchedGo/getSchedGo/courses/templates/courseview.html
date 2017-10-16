@@ -1,31 +1,135 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% block styles %}
+<style type="text/css">
+  .affix {
+    top:50px;
+    position: fixed;
+    width: 100%;
+    margin-left: 0;
+    z-index: 1 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
+</style>
+{% endblock %}
+{% block bars %}
+<div align="center">Hi {{ user }}</div>
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="40">
+ <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+<div id="mynavbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown" align="right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+								<li><a href="{% url 'courses:some' 'nan' pk2 %}">All</a></li>
+<!-- using if for different view if user is logged in or not -->
+							{% for courses in CourseList %}
+                <li><a href="{% url 'courses:some' courses.code pk2 %}">{{ courses.code }}</a></li>
+							{% endfor %}
+<!--                 <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li> -->
+              </ul>
+							<li class="dropdown" align="right">
+		              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Event Type <span class="caret"></span></a>
+		              <ul class="dropdown-menu">
+										<li><a href="{% url 'courses:some' pk1 'nan' %}">All</a></li>
+										<li><a href="{% url 'courses:some' pk1 'a' %}">Assignment</a></li>
+										<li><a href="{% url 'courses:some' pk1 'c' %}">Classes</a></li>
+										<li><a href="{% url 'courses:some' pk1 'e' %}">Exam</a></li>
+		<!-- using if for different view if user is logged in or not -->
+		<!--                 <li role="separator" class="divider"></li>
+		                <li class="dropdown-header">Nav header</li>
+		                <li><a href="#">Separated link</a></li>
+		                <li><a href="#">One more separated link</a></li> -->
+		              </ul>
+            </li>
+        </ul>
+      </div>
+
+  </div>
+</nav>
+{% endblock %}
 {% block content %}
-<div class="col-md-4 col-md-offset-2">
-	
-	 <form method="post">
-	 	{% csrf_token %}
-	 	{{ form|crispy }}
-			<button type="submit">Submit</button>
-		</form>
-</div>
-<div class="col-md-8 col-md-offset-2">
-{% for courses in courseDetail %}
-<h3>
-Code: {{ courses.code }}
-</h3><br>
-<h3>
-Name: {{ courses.name }}
-</h3><br><h3>
-Slot Number: {{ courses.slot }}
-</h3><br><h3>
-Credit: {{ courses.credit }}
-</h3><br>
-{% if courses.tutorial %}
-<h3>
-Tutorial Slot: {{ courses.tutorialSlot }}
-</h3><br>
+{% if AssignmentList %}
+<p>
+ {% for Assignment in AssignmentList %}
+ <!-- {% if Event.ScheduledStartTime %}
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
+ {% else %}
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+ {% endif %}     -->
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+ <div class="col-md-8">
+			 <h3> {{ Assignment.name }} </h3>
+			 <!-- <h4> From : {{Event.StartDate }} {{ Event.StartTime }} </h4>
+			 <h4> To : {{ Event.EndDate  }} {{ Event.EndTime }} </h4> -->
+			 <h4> DeadLine : {{ Assignment.DeadLineDate }} {{ Assignment.DeadLineTime }} </h4>
+		</div>
+		<div class="col-md-4" >
+			 </div>
+	</div>
+ {% endfor %}
+</p>
 {% endif %}
-{% endfor %}
+
+
+{% if ExamList %}
+<p>
+ {% for Exam in ExamList %}
+ <!-- {% if Event.ScheduledStartTime %}
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
+ {% else %}
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+ {% endif %}     -->
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+ <div class="col-md-8">
+	 <h3> {{ Exam.name }} </h3>
+	 <h4> On : {{Exam.Date }} </h4>
+	 <h4> From {{ Exam.StartTime }} To {{ Exam.EndTime }} </h4>
+	 <h4> At : {{ Exam.Venue }} </h4>
+	 <h4> Preparation : {{ Exam.PreparationDuration }}
+		</div>
+		<div class="col-md-4" >
+			 </div>
+	</div>
+ {% endfor %}
+</p>
+{% endif %}
+
+{% if ClassList %}
+<p>
+ {% for Class in ClassList %}
+ <!-- {% if Event.ScheduledStartTime %}
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
+ {% else %}
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+ {% endif %}     -->
+ <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
+ <div class="col-md-8">
+	 <h3> {{ Class.name }} </h3>
+	 <h4> From : {{Class.StartDate }} {{ Class.StartTime }} </h4>
+	 <h4> To : {{ Class.EndDate }} {{ Class.EndTime }} </h4>
+	 <h4> At : {{ Class.Venue }} </h4>
+		</div>
+		<div class="col-md-4" >
+
+		</div>
+	</div>
+ {% endfor %}
+</p>
+{% endif %}
 </div>
 {% endblock %}
