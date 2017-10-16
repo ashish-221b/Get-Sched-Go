@@ -4,7 +4,8 @@ from profiles.models import profile
 from .forms import suggestionForm
 from datetime import *
 from .example import *
-import datetime
+from Timetable.models import *
+from datetime import *
 now = date.today()
 d=now-timedelta(days=5)
 def index(request):
@@ -24,6 +25,27 @@ def index(request):
     	context={'suggestionForm':suggestionForm,'suggestionset': suggestionset}
     	return render(request,template,context)
 
+def ConvertToEvent(request,pk):
+    instance=get_object_or_404(suggestion, pk=pk)
+    End=datetime.combine(instance.StartDate, instance.StartTime)+ timedelta(hours=2)
+
+    q= Event(UserProfile = request.user.profile,
+    name= instance.Hometeam + " " +"Vs" + " "+ instance.Awayteam,
+    Venue = instance.Venue,
+    StartTime = instance.StartTime,
+    StartDate = instance.StartDate,
+    Duration = '4',
+    ScheduledEndTime = End.time(),
+   
+    EndTime = End.time(),
+    EndDate = End.today(),
+
+
+    Priority = '2',
+    Type = 'E')
+    q.save()
+    return redirect('Timetable:EditEvent',pk=q.id)
+    
 
 
 
