@@ -1,7 +1,9 @@
 from django import forms
 # from django.forms import SelectDateWidget
 from .models import suggestion
-
+Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','Indespensable')]
+Event_Timings = [('A','Duration Fixed'),('B','Duration and Timing Fixed'),('C',('Variable'))]
+Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study'), ('D','ExtraCurriculars'),('E','Misc.')]
 class suggestionForm(forms.ModelForm):
         # name = forms.CharField(label='Event Name',max_length=50,required = True)
         # Description = forms.CharField(label='Event Description',max_length=300,required=False,widget=forms.Textarea)
@@ -17,13 +19,13 @@ class suggestionForm(forms.ModelForm):
         # Type = forms.ChoiceField(required=True,choices = Event_Type)
         # # (required=False,choices = Event_Type,widget = forms.RadioSelect)
         # TimeSettings = forms.ChoiceField(required=True,choices = Event_Timings)
-        # # (required=False,choices = Event_Timings,widget = forms.RadioSelect)
-        # # def __init__(self, *args, **kwargs):
-        # #     super(EventForm, self).__init__(*args, **kwargs)
-        # #     #Change date field's widget here
-        # #     self.fields['StartDate'].widget = SelectDateWidget
-        # #     self.fields['EndDate'].widget = SelectDateWidget
-        # #     self.fields['DeadLineDate'].widget = SelectDateWidget
+        # (required=False,choices = Event_Timings,widget = forms.RadioSelect)
+        # def __init__(self, *args, **kwargs):
+        #     super(EventForm, self).__init__(*args, **kwargs)
+        #     #Change date field's widget here
+        #     self.fields['StartDate'].widget = SelectDateWidget
+        #     self.fields['EndDate'].widget = SelectDateWidget
+        #     self.fields['DeadLineDate'].widget = SelectDateWidget
         class Meta:
             model = suggestion
             exclude = ('Venue',)
