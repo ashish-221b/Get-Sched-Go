@@ -1,0 +1,81 @@
+\hypertarget{classcourses_1_1models_1_1coursedetail}{}\section{courses.\+models.\+coursedetail Class Reference}
+\label{classcourses_1_1models_1_1coursedetail}\index{courses.\+models.\+coursedetail@{courses.\+models.\+coursedetail}}
+
+
+Inheritance diagram for courses.\+models.\+coursedetail\+:
+% FIG 0
+
+
+Collaboration diagram for courses.\+models.\+coursedetail\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classcourses_1_1models_1_1coursedetail_a93472a5aeac696203095dd262cda88af}{\+\_\+\+\_\+str\+\_\+\+\_\+} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_a9f59d9c14eeb6c52b88f406e8fda1bba}{code} = models.\+Char\+Field(max\+\_\+length=7)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_a1790df7e26de965bd7c457c2757e1222}{name} = models.\+Char\+Field(max\+\_\+length=50)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_abe2db276d6eceaa133f8a9c71f63fb16}{Slot} = models.\+Integer\+Field(null=True,blank=True)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_a764d67285a7c578c4c713c6f6106854f}{credit} = models.\+Integer\+Field(null=True,blank=True)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_a82d72338e090a124f3b2e09d02f38f79}{tutorial} = models.\+Boolean\+Field(default = False)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_ad96479a724c4804c3ab0ca04376ce50c}{tutorial\+Slot} = models.\+Char\+Field(max\+\_\+length=5,blank=True)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_aa4921021a1e28f780255c438617a0a74}{instructor} = models.\+Foreign\+Key(\hyperlink{classprofiles_1_1models_1_1profile}{profile}, on\+\_\+delete=models.\+S\+E\+T\+\_\+\+N\+U\+LL,null=True,blank = True)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_a02223dcd8341b9f202a17d08fe079282}{Prescribed\+Study\+Hours} = models.\+Char\+Field(max\+\_\+length=5,blank=True,null=True)
+\item 
+\hyperlink{classcourses_1_1models_1_1coursedetail_a05149c0617696650da4bf98364ff4cee}{Student} = models.\+Many\+To\+Many\+Field(\hyperlink{classprofiles_1_1models_1_1profile}{profile},related\+\_\+name=\textquotesingle{}Student\+\_\+\+List\textquotesingle{},blank = True,)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+str\+\_\+\+\_\+(self)}{__str__(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def courses.\+models.\+coursedetail.\+\_\+\+\_\+str\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classcourses_1_1models_1_1coursedetail_a93472a5aeac696203095dd262cda88af}{}\label{classcourses_1_1models_1_1coursedetail_a93472a5aeac696203095dd262cda88af}
+
+
+\subsection{Member Data Documentation}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!code@{code}}
+\index{code@{code}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{code}{code}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+code = models.\+Char\+Field(max\+\_\+length=7)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_a9f59d9c14eeb6c52b88f406e8fda1bba}{}\label{classcourses_1_1models_1_1coursedetail_a9f59d9c14eeb6c52b88f406e8fda1bba}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!credit@{credit}}
+\index{credit@{credit}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{credit}{credit}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+credit = models.\+Integer\+Field(null=True,blank=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_a764d67285a7c578c4c713c6f6106854f}{}\label{classcourses_1_1models_1_1coursedetail_a764d67285a7c578c4c713c6f6106854f}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!instructor@{instructor}}
+\index{instructor@{instructor}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{instructor}{instructor}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+instructor = models.\+Foreign\+Key({\bf profile}, on\+\_\+delete=models.\+S\+E\+T\+\_\+\+N\+U\+LL,null=True,blank = True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_aa4921021a1e28f780255c438617a0a74}{}\label{classcourses_1_1models_1_1coursedetail_aa4921021a1e28f780255c438617a0a74}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!name@{name}}
+\index{name@{name}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+name = models.\+Char\+Field(max\+\_\+length=50)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_a1790df7e26de965bd7c457c2757e1222}{}\label{classcourses_1_1models_1_1coursedetail_a1790df7e26de965bd7c457c2757e1222}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!Prescribed\+Study\+Hours@{Prescribed\+Study\+Hours}}
+\index{Prescribed\+Study\+Hours@{Prescribed\+Study\+Hours}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{Prescribed\+Study\+Hours}{PrescribedStudyHours}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+Prescribed\+Study\+Hours = models.\+Char\+Field(max\+\_\+length=5,blank=True,null=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_a02223dcd8341b9f202a17d08fe079282}{}\label{classcourses_1_1models_1_1coursedetail_a02223dcd8341b9f202a17d08fe079282}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!Slot@{Slot}}
+\index{Slot@{Slot}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{Slot}{Slot}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+Slot = models.\+Integer\+Field(null=True,blank=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_abe2db276d6eceaa133f8a9c71f63fb16}{}\label{classcourses_1_1models_1_1coursedetail_abe2db276d6eceaa133f8a9c71f63fb16}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!Student@{Student}}
+\index{Student@{Student}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{Student}{Student}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+Student = models.\+Many\+To\+Many\+Field({\bf profile},related\+\_\+name=\textquotesingle{}Student\+\_\+\+List\textquotesingle{},blank = True,)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_a05149c0617696650da4bf98364ff4cee}{}\label{classcourses_1_1models_1_1coursedetail_a05149c0617696650da4bf98364ff4cee}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!tutorial@{tutorial}}
+\index{tutorial@{tutorial}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{tutorial}{tutorial}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+tutorial = models.\+Boolean\+Field(default = False)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_a82d72338e090a124f3b2e09d02f38f79}{}\label{classcourses_1_1models_1_1coursedetail_a82d72338e090a124f3b2e09d02f38f79}
+\index{courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}!tutorial\+Slot@{tutorial\+Slot}}
+\index{tutorial\+Slot@{tutorial\+Slot}!courses\+::models\+::coursedetail@{courses\+::models\+::coursedetail}}
+\subsubsection[{\texorpdfstring{tutorial\+Slot}{tutorialSlot}}]{\setlength{\rightskip}{0pt plus 5cm}courses.\+models.\+coursedetail.\+tutorial\+Slot = models.\+Char\+Field(max\+\_\+length=5,blank=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classcourses_1_1models_1_1coursedetail_ad96479a724c4804c3ab0ca04376ce50c}{}\label{classcourses_1_1models_1_1coursedetail_ad96479a724c4804c3ab0ca04376ce50c}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jarvis/\+Desktop/sem3 material/cs 251/\+Get-\/\+Sched-\/\+Go/get\+Sched\+Go/get\+Sched\+Go/courses/\hyperlink{courses_2models_8py}{models.\+py}\end{DoxyCompactItemize}

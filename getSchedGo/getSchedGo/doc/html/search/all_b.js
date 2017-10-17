@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['admin',['admin',['../namespaceprofiles_1_1admin.html',1,'profiles']]],
+  ['apps',['apps',['../namespaceprofiles_1_1apps.html',1,'profiles']]],
+  ['forms',['forms',['../namespaceprofiles_1_1forms.html',1,'profiles']]],
+  ['models',['models',['../namespaceprofiles_1_1models.html',1,'profiles']]],
+  ['past_5fyears',['past_years',['../namespaceTimetable_1_1forms.html#a4af0bb23874a094ad7dd2dc09f924c42',1,'Timetable::forms']]],
+  ['preparationduration',['PreparationDuration',['../classTimetable_1_1models_1_1InstructorExam.html#aa762dcd26595ad1bf6cc7e361b6940d0',1,'Timetable::models::InstructorExam']]],
+  ['prescribedstudyhours',['PrescribedStudyHours',['../classcourses_1_1models_1_1coursedetail.html#a02223dcd8341b9f202a17d08fe079282',1,'courses::models::coursedetail']]],
+  ['priority',['Priority',['../classEvent__suggestion_1_1models_1_1suggestion.html#a3bcf2e84c25ad2c81f42731e6d45db56',1,'Event_suggestion.models.suggestion.Priority()'],['../classTimetable_1_1models_1_1Event.html#a2d4e6e1819ff670b068418c7e7f9b030',1,'Timetable.models.Event.Priority()']]],
+  ['priority_5foptions',['Priority_Options',['../namespaceEvent__suggestion_1_1forms.html#ae0ee75286c8408a63046b0fabfc8dd6f',1,'Event_suggestion.forms.Priority_Options()'],['../namespaceEvent__suggestion_1_1models.html#a7f9580b95bf99fb8f850c65544f53426',1,'Event_suggestion.models.Priority_Options()'],['../namespaceTimetable_1_1forms.html#a553ad34240a528cecce56d6a1f4267e5',1,'Timetable.forms.Priority_Options()'],['../namespaceTimetable_1_1models.html#ae489395ae15eda99e8373dca59056f53',1,'Timetable.models.Priority_Options()'],['../namespaceTimetable_1_1schedule.html#a0a5242f6c05c7b95a02f4fc8dd6f2765',1,'Timetable.schedule.Priority_Options()']]],
+  ['prioritymat',['PriorityMat',['../namespaceTimetable_1_1PrMatScore.html#a293eb3ead83ea7f346cfa28ea1d605bb',1,'Timetable::PrMatScore']]],
+  ['prmatscore_2epy',['PrMatScore.py',['../PrMatScore_8py.html',1,'']]],
+  ['profile',['profile',['../classprofiles_1_1models_1_1profile.html',1,'profiles::models']]],
+  ['profileadmin',['profileAdmin',['../classprofiles_1_1admin_1_1profileAdmin.html',1,'profiles::admin']]],
+  ['profiles',['profiles',['../namespaceprofiles.html',1,'']]],
+  ['profilesconfig',['ProfilesConfig',['../classprofiles_1_1apps_1_1ProfilesConfig.html',1,'profiles::apps']]],
+  ['tests',['tests',['../namespaceprofiles_1_1tests.html',1,'profiles']]],
+  ['views',['views',['../namespaceprofiles_1_1views.html',1,'profiles']]]
+];

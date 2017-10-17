@@ -1,0 +1,20 @@
+\hypertarget{classcourses_1_1admin_1_1courseAdmin}{}\section{courses.\+admin.\+course\+Admin Class Reference}
+\label{classcourses_1_1admin_1_1courseAdmin}\index{courses.\+admin.\+course\+Admin@{courses.\+admin.\+course\+Admin}}
+
+
+Inheritance diagram for courses.\+admin.\+course\+Admin\+:
+% FIG 0
+
+
+Collaboration diagram for courses.\+admin.\+course\+Admin\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcourses_1_1admin_1_1courseAdmin_1_1Meta}{Meta}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jarvis/\+Desktop/sem3 material/cs 251/\+Get-\/\+Sched-\/\+Go/get\+Sched\+Go/get\+Sched\+Go/courses/\hyperlink{courses_2admin_8py}{admin.\+py}\end{DoxyCompactItemize}

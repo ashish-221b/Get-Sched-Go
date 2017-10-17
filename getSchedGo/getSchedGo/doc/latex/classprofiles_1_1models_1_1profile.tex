@@ -1,0 +1,81 @@
+\hypertarget{classprofiles_1_1models_1_1profile}{}\section{profiles.\+models.\+profile Class Reference}
+\label{classprofiles_1_1models_1_1profile}\index{profiles.\+models.\+profile@{profiles.\+models.\+profile}}
+
+
+Inheritance diagram for profiles.\+models.\+profile\+:
+% FIG 0
+
+
+Collaboration diagram for profiles.\+models.\+profile\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprofiles_1_1models_1_1profile_aa53e2547357713bbf6c4f7c0d04406f6}{\+\_\+\+\_\+str\+\_\+\+\_\+} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_aa33b7b8c3235c07c5e71c7a58c13c16c}{name} = models.\+Char\+Field(max\+\_\+length=120)
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_abeca72fd053b0c5f75b3927194bcd809}{study\+Choice} = models.\+Char\+Field(max\+\_\+length=1,choices=\hyperlink{namespaceprofiles_1_1models_a66a49fea9e1603c3395bc387e385d6e1}{S\+T\+U\+D\+Y\+\_\+\+C\+H\+O\+I\+C\+ES},default=\textquotesingle{}3\textquotesingle{})
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_a485c5a9cd3e313b41885211790de2bb5}{sleep\+Choice} = models.\+Char\+Field(max\+\_\+length=1,choices=\hyperlink{namespaceprofiles_1_1models_a7111936f7e1fe09a6a5305105cc13029}{S\+L\+E\+E\+P\+\_\+\+T\+I\+ME},default=\textquotesingle{}B\textquotesingle{})
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_a7902853c5b850e9725f3b63a84371e9b}{crickenthu} = models.\+Boolean\+Field(default=False,)
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_afc2a9d06cde3a75d3706077e9c1ba28d}{N\+B\+Aenthu} = models.\+Boolean\+Field(default=False,)
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_a3f41973c11a84c6e3564972e40e6c257}{footballenthu} = models.\+Boolean\+Field(default=False,)
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_a00f2d160ad2e122d55addaa6f43e9aab}{user} = models.\+One\+To\+One\+Field(settings.\+A\+U\+T\+H\+\_\+\+U\+S\+E\+R\+\_\+\+M\+O\+D\+EL, null=True, blank = True)
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_acfa71dd56ef725545087a5e16c4591ad}{instructor} = models.\+Boolean\+Field(default=False, blank = True)
+\item 
+\hyperlink{classprofiles_1_1models_1_1profile_adbe845698f928aed7032f3884ef85a72}{last\+Suggestion} = models.\+Date\+Field(null=True, default = \hyperlink{namespaceprofiles_1_1models_a2ab65a67d2b0414ee05d3702bc47ab17}{d})
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+str\+\_\+\+\_\+(self)}{__str__(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def profiles.\+models.\+profile.\+\_\+\+\_\+str\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classprofiles_1_1models_1_1profile_aa53e2547357713bbf6c4f7c0d04406f6}{}\label{classprofiles_1_1models_1_1profile_aa53e2547357713bbf6c4f7c0d04406f6}
+
+
+\subsection{Member Data Documentation}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!crickenthu@{crickenthu}}
+\index{crickenthu@{crickenthu}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{crickenthu}{crickenthu}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+crickenthu = models.\+Boolean\+Field(default=False,)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_a7902853c5b850e9725f3b63a84371e9b}{}\label{classprofiles_1_1models_1_1profile_a7902853c5b850e9725f3b63a84371e9b}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!footballenthu@{footballenthu}}
+\index{footballenthu@{footballenthu}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{footballenthu}{footballenthu}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+footballenthu = models.\+Boolean\+Field(default=False,)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_a3f41973c11a84c6e3564972e40e6c257}{}\label{classprofiles_1_1models_1_1profile_a3f41973c11a84c6e3564972e40e6c257}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!instructor@{instructor}}
+\index{instructor@{instructor}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{instructor}{instructor}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+instructor = models.\+Boolean\+Field(default=False, blank = True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_acfa71dd56ef725545087a5e16c4591ad}{}\label{classprofiles_1_1models_1_1profile_acfa71dd56ef725545087a5e16c4591ad}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!last\+Suggestion@{last\+Suggestion}}
+\index{last\+Suggestion@{last\+Suggestion}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{last\+Suggestion}{lastSuggestion}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+last\+Suggestion = models.\+Date\+Field(null=True, default = {\bf d})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_adbe845698f928aed7032f3884ef85a72}{}\label{classprofiles_1_1models_1_1profile_adbe845698f928aed7032f3884ef85a72}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!name@{name}}
+\index{name@{name}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+name = models.\+Char\+Field(max\+\_\+length=120)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_aa33b7b8c3235c07c5e71c7a58c13c16c}{}\label{classprofiles_1_1models_1_1profile_aa33b7b8c3235c07c5e71c7a58c13c16c}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!N\+B\+Aenthu@{N\+B\+Aenthu}}
+\index{N\+B\+Aenthu@{N\+B\+Aenthu}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{N\+B\+Aenthu}{NBAenthu}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+N\+B\+Aenthu = models.\+Boolean\+Field(default=False,)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_afc2a9d06cde3a75d3706077e9c1ba28d}{}\label{classprofiles_1_1models_1_1profile_afc2a9d06cde3a75d3706077e9c1ba28d}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!sleep\+Choice@{sleep\+Choice}}
+\index{sleep\+Choice@{sleep\+Choice}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{sleep\+Choice}{sleepChoice}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+sleep\+Choice = models.\+Char\+Field(max\+\_\+length=1,choices={\bf S\+L\+E\+E\+P\+\_\+\+T\+I\+ME},default=\textquotesingle{}B\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_a485c5a9cd3e313b41885211790de2bb5}{}\label{classprofiles_1_1models_1_1profile_a485c5a9cd3e313b41885211790de2bb5}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!study\+Choice@{study\+Choice}}
+\index{study\+Choice@{study\+Choice}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{study\+Choice}{studyChoice}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+study\+Choice = models.\+Char\+Field(max\+\_\+length=1,choices={\bf S\+T\+U\+D\+Y\+\_\+\+C\+H\+O\+I\+C\+ES},default=\textquotesingle{}3\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_abeca72fd053b0c5f75b3927194bcd809}{}\label{classprofiles_1_1models_1_1profile_abeca72fd053b0c5f75b3927194bcd809}
+\index{profiles\+::models\+::profile@{profiles\+::models\+::profile}!user@{user}}
+\index{user@{user}!profiles\+::models\+::profile@{profiles\+::models\+::profile}}
+\subsubsection[{\texorpdfstring{user}{user}}]{\setlength{\rightskip}{0pt plus 5cm}profiles.\+models.\+profile.\+user = models.\+One\+To\+One\+Field(settings.\+A\+U\+T\+H\+\_\+\+U\+S\+E\+R\+\_\+\+M\+O\+D\+EL, null=True, blank = True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classprofiles_1_1models_1_1profile_a00f2d160ad2e122d55addaa6f43e9aab}{}\label{classprofiles_1_1models_1_1profile_a00f2d160ad2e122d55addaa6f43e9aab}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jarvis/\+Desktop/sem3 material/cs 251/\+Get-\/\+Sched-\/\+Go/get\+Sched\+Go/get\+Sched\+Go/profiles/\hyperlink{profiles_2models_8py}{models.\+py}\end{DoxyCompactItemize}

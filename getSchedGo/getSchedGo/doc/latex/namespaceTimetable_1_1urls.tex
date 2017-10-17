@@ -1,0 +1,39 @@
+\hypertarget{namespaceTimetable_1_1urls}{}\section{Timetable.\+urls Namespace Reference}
+\label{namespaceTimetable_1_1urls}\index{Timetable.\+urls@{Timetable.\+urls}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceTimetable_1_1urls_aa2dab9a5e811ab4022e461c788c1ca84}{app\+\_\+name} = \textquotesingle{}Timetable\textquotesingle{}
+\item 
+list \hyperlink{namespaceTimetable_1_1urls_a9b085aa04f9d12160617bad02eae0ab2}{urlpatterns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\index{Timetable\+::urls@{Timetable\+::urls}!app\+\_\+name@{app\+\_\+name}}
+\index{app\+\_\+name@{app\+\_\+name}!Timetable\+::urls@{Timetable\+::urls}}
+\subsubsection[{\texorpdfstring{app\+\_\+name}{app_name}}]{\setlength{\rightskip}{0pt plus 5cm}string Timetable.\+urls.\+app\+\_\+name = \textquotesingle{}Timetable\textquotesingle{}}\hypertarget{namespaceTimetable_1_1urls_aa2dab9a5e811ab4022e461c788c1ca84}{}\label{namespaceTimetable_1_1urls_aa2dab9a5e811ab4022e461c788c1ca84}
+\index{Timetable\+::urls@{Timetable\+::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!Timetable\+::urls@{Timetable\+::urls}}
+\subsubsection[{\texorpdfstring{urlpatterns}{urlpatterns}}]{\setlength{\rightskip}{0pt plus 5cm}list Timetable.\+urls.\+urlpatterns}\hypertarget{namespaceTimetable_1_1urls_a9b085aa04f9d12160617bad02eae0ab2}{}\label{namespaceTimetable_1_1urls_a9b085aa04f9d12160617bad02eae0ab2}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = [
+2     url(\textcolor{stringliteral}{r"^$"}, views.EventList, name=\textcolor{stringliteral}{"EventList"}),
+3     url(\textcolor{stringliteral}{r"^create/$"}, views.CreateEvent, name=\textcolor{stringliteral}{"CreateEvent"}),
+4     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/edit$"}, views.CreateEvent, name=\textcolor{stringliteral}{"EditEvent"}),
+5     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/delete$"}, views.DeleteEvent, name=\textcolor{stringliteral}{"DeleteEvent"}),
+6     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/desched$"}, views.DescheduleEvent, name=\textcolor{stringliteral}{"DescheduleEvent"}),
+7     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/sort$"}, views.EventList, name=\textcolor{stringliteral}{"SortEvent"}),
+8     url(\textcolor{stringliteral}{r"^CreateAssignment$"}, views.CreateAssignment, name=\textcolor{stringliteral}{"CreateAssignment"}),
+9     url(\textcolor{stringliteral}{r"^Assignments$"}, views.Assignments, name=\textcolor{stringliteral}{"AssignmentList"}),
+10     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/SortAssignment$"}, views.Assignments, name=\textcolor{stringliteral}{"SortAssignment"}),
+11     url(\textcolor{stringliteral}{r"^CreateClass$"}, views.CreateClass, name=\textcolor{stringliteral}{"CreateClass"}),
+12     url(\textcolor{stringliteral}{r"^Classes$"}, views.Classes, name=\textcolor{stringliteral}{"ClassList"}),
+13     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/SortClass$"}, views.Classes, name=\textcolor{stringliteral}{"SortClass"}),
+14     url(\textcolor{stringliteral}{r"^CreateExam$"}, views.CreateExam, name=\textcolor{stringliteral}{"CreateExam"}),
+15     url(\textcolor{stringliteral}{r"^Exams$"}, views.Exams, name=\textcolor{stringliteral}{"ExamList"}),
+16     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/SortExam$"}, views.Exams, name=\textcolor{stringliteral}{"SortExam"}),
+17     url(\textcolor{stringliteral}{r'^today/$'},views.Schedules, name = \textcolor{stringliteral}{"Schedule"}),
+18 ]
+\end{DoxyCode}

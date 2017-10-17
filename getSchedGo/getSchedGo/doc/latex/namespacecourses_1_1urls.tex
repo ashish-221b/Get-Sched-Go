@@ -1,0 +1,33 @@
+\hypertarget{namespacecourses_1_1urls}{}\section{courses.\+urls Namespace Reference}
+\label{namespacecourses_1_1urls}\index{courses.\+urls@{courses.\+urls}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespacecourses_1_1urls_aa353d0fd6a76ab69a4e7f0a015e637b5}{app\+\_\+name} = \textquotesingle{}courses\textquotesingle{}
+\item 
+list \hyperlink{namespacecourses_1_1urls_aacc66e14cddc63727182685f921b8726}{urlpatterns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\index{courses\+::urls@{courses\+::urls}!app\+\_\+name@{app\+\_\+name}}
+\index{app\+\_\+name@{app\+\_\+name}!courses\+::urls@{courses\+::urls}}
+\subsubsection[{\texorpdfstring{app\+\_\+name}{app_name}}]{\setlength{\rightskip}{0pt plus 5cm}string courses.\+urls.\+app\+\_\+name = \textquotesingle{}courses\textquotesingle{}}\hypertarget{namespacecourses_1_1urls_aa353d0fd6a76ab69a4e7f0a015e637b5}{}\label{namespacecourses_1_1urls_aa353d0fd6a76ab69a4e7f0a015e637b5}
+\index{courses\+::urls@{courses\+::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!courses\+::urls@{courses\+::urls}}
+\subsubsection[{\texorpdfstring{urlpatterns}{urlpatterns}}]{\setlength{\rightskip}{0pt plus 5cm}list courses.\+urls.\+urlpatterns}\hypertarget{namespacecourses_1_1urls_aacc66e14cddc63727182685f921b8726}{}\label{namespacecourses_1_1urls_aacc66e14cddc63727182685f921b8726}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = [
+2     url(\textcolor{stringliteral}{r"^$"}, views.CourseView, name=\textcolor{stringliteral}{"CourseView"}),
+3     url(\textcolor{stringliteral}{r"^list/$"},views.Enrollmentview, name=\textcolor{stringliteral}{"Enrollmentview"}),
+4     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/add/$"},views.UserAdder, name=\textcolor{stringliteral}{"UserAdder"}),
+5     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/remove/$"},views.UserDropper, name=\textcolor{stringliteral}{"UserDropper"}),
+6     \textcolor{comment}{# url(r"^(?P<pk>[0-9]+)/anyDay/$", views.TodayStats, name="AnyDayStatistics"),}
+7     \textcolor{comment}{# url(r"^list/$", views.EventBeforeDate, name="EventBeforeDate"),}
+8     \textcolor{comment}{# url(r"^donelist/$", views.CompletedList, name="CompletedList"),}
+9     \textcolor{comment}{# url(r"^(?P<pk>[0-9]+)/comp/$", views.MarkItCompleted, name="MarkItCompleted"),}
+10     url(\textcolor{stringliteral}{r"^SelectCourse$"}, views.SelectCourse, name=\textcolor{stringliteral}{"SelectCourse"}),
+11     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/ClaimCourse$"}, views.SelectCourse, name=\textcolor{stringliteral}{"ClaimCourse"}),
+12 ]
+\end{DoxyCode}

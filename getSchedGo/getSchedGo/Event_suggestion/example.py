@@ -1,10 +1,18 @@
 
-import http.client
+import http.client ## 
 import requests
 import json
 import re
 from .models import suggestion
 from profiles.models import profile
+
+## Method for scheduling match
+# @param userprofile
+# @details It extracts the list of football matches from the API endpoint
+# football-data.org/fixtures for the upcoming week.It then filters the matches 
+# to get the matches for famous clubs like FC Barcelona, Real Madrid etc.Then it
+# create an instance of suggestion model out of each of these matches and save them 
+# to the database.
 def matcheschedule(userprofile):
 	dict= {}
 	list= ['FC Barcelona', 'Real Madrid CF', 'Manchester City FC', 'Manchester United FC',

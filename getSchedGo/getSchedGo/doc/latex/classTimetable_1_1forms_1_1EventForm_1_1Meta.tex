@@ -1,0 +1,40 @@
+\hypertarget{classTimetable_1_1forms_1_1EventForm_1_1Meta}{}\section{Timetable.\+forms.\+Event\+Form.\+Meta Class Reference}
+\label{classTimetable_1_1forms_1_1EventForm_1_1Meta}\index{Timetable.\+forms.\+Event\+Form.\+Meta@{Timetable.\+forms.\+Event\+Form.\+Meta}}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTimetable_1_1forms_1_1EventForm_1_1Meta_a02301bd84120cfd745e32233480b8509}{model} = \hyperlink{classTimetable_1_1models_1_1Event}{Event}
+\item 
+tuple \hyperlink{classTimetable_1_1forms_1_1EventForm_1_1Meta_acefd98c17a710a234e19a1b8b0c73124}{exclude} = (\textquotesingle{}User\+Profile\textquotesingle{},\textquotesingle{}Scheduled\+Start\+Time\textquotesingle{},\textquotesingle{}Scheduled\+End\+Time\textquotesingle{},\textquotesingle{}Completed\textquotesingle{})
+\item 
+dictionary \hyperlink{classTimetable_1_1forms_1_1EventForm_1_1Meta_ada8de9ad4fda997c8563b1aaa0429f37}{widgets}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\index{Timetable\+::forms\+::\+Event\+Form\+::\+Meta@{Timetable\+::forms\+::\+Event\+Form\+::\+Meta}!exclude@{exclude}}
+\index{exclude@{exclude}!Timetable\+::forms\+::\+Event\+Form\+::\+Meta@{Timetable\+::forms\+::\+Event\+Form\+::\+Meta}}
+\subsubsection[{\texorpdfstring{exclude}{exclude}}]{\setlength{\rightskip}{0pt plus 5cm}tuple Timetable.\+forms.\+Event\+Form.\+Meta.\+exclude = (\textquotesingle{}User\+Profile\textquotesingle{},\textquotesingle{}Scheduled\+Start\+Time\textquotesingle{},\textquotesingle{}Scheduled\+End\+Time\textquotesingle{},\textquotesingle{}Completed\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1forms_1_1EventForm_1_1Meta_acefd98c17a710a234e19a1b8b0c73124}{}\label{classTimetable_1_1forms_1_1EventForm_1_1Meta_acefd98c17a710a234e19a1b8b0c73124}
+\index{Timetable\+::forms\+::\+Event\+Form\+::\+Meta@{Timetable\+::forms\+::\+Event\+Form\+::\+Meta}!model@{model}}
+\index{model@{model}!Timetable\+::forms\+::\+Event\+Form\+::\+Meta@{Timetable\+::forms\+::\+Event\+Form\+::\+Meta}}
+\subsubsection[{\texorpdfstring{model}{model}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+forms.\+Event\+Form.\+Meta.\+model = {\bf Event}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1forms_1_1EventForm_1_1Meta_a02301bd84120cfd745e32233480b8509}{}\label{classTimetable_1_1forms_1_1EventForm_1_1Meta_a02301bd84120cfd745e32233480b8509}
+\index{Timetable\+::forms\+::\+Event\+Form\+::\+Meta@{Timetable\+::forms\+::\+Event\+Form\+::\+Meta}!widgets@{widgets}}
+\index{widgets@{widgets}!Timetable\+::forms\+::\+Event\+Form\+::\+Meta@{Timetable\+::forms\+::\+Event\+Form\+::\+Meta}}
+\subsubsection[{\texorpdfstring{widgets}{widgets}}]{\setlength{\rightskip}{0pt plus 5cm}dictionary Timetable.\+forms.\+Event\+Form.\+Meta.\+widgets\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1forms_1_1EventForm_1_1Meta_ada8de9ad4fda997c8563b1aaa0429f37}{}\label{classTimetable_1_1forms_1_1EventForm_1_1Meta_ada8de9ad4fda997c8563b1aaa0429f37}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = \{
+2                 \textcolor{stringliteral}{'Description'}: forms.Textarea(attrs=\{\textcolor{stringliteral}{'placeholder'}: \textcolor{stringliteral}{'Enter description here'}\}),
+3                 \textcolor{stringliteral}{'StartDate'}: SelectDateWidget(years=\hyperlink{namespaceTimetable_1_1forms_a4af0bb23874a094ad7dd2dc09f924c42}{past\_years}(10),),
+4                 \textcolor{stringliteral}{'EndDate'} : SelectDateWidget(years=\hyperlink{namespaceTimetable_1_1forms_a4af0bb23874a094ad7dd2dc09f924c42}{past\_years}(10),),
+5                 \textcolor{stringliteral}{'DeadLineDate'} : SelectDateWidget(years=\hyperlink{namespaceTimetable_1_1forms_a4af0bb23874a094ad7dd2dc09f924c42}{past\_years}(10),),
+6                 \textcolor{stringliteral}{'StartTime'}: forms.TextInput(attrs=\{\textcolor{stringliteral}{'placeholder'}: \textcolor{stringliteral}{'HH:MM:SS'}\}),
+7                 \textcolor{stringliteral}{'EndTime'}: forms.TextInput(attrs=\{\textcolor{stringliteral}{'placeholder'}: \textcolor{stringliteral}{'HH:MM:SS'}\}),
+8                 \textcolor{stringliteral}{'DeadLineTime'}: forms.TextInput(attrs=\{\textcolor{stringliteral}{'placeholder'}: \textcolor{stringliteral}{'HH:MM:SS'}\}),
+9             \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jarvis/\+Desktop/sem3 material/cs 251/\+Get-\/\+Sched-\/\+Go/get\+Sched\+Go/get\+Sched\+Go/\+Timetable/\hyperlink{Timetable_2forms_8py}{forms.\+py}\end{DoxyCompactItemize}

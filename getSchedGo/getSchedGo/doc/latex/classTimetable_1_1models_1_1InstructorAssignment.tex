@@ -1,0 +1,61 @@
+\hypertarget{classTimetable_1_1models_1_1InstructorAssignment}{}\section{Timetable.\+models.\+Instructor\+Assignment Class Reference}
+\label{classTimetable_1_1models_1_1InstructorAssignment}\index{Timetable.\+models.\+Instructor\+Assignment@{Timetable.\+models.\+Instructor\+Assignment}}
+
+
+Inheritance diagram for Timetable.\+models.\+Instructor\+Assignment\+:
+% FIG 0
+
+
+Collaboration diagram for Timetable.\+models.\+Instructor\+Assignment\+:
+% FIG 1
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a64f231cb4bd0aa520af50783b061152b}{User\+Profile} = models.\+Foreign\+Key(\hyperlink{classprofiles_1_1models_1_1profile}{profile}, on\+\_\+delete=models.\+C\+A\+S\+C\+A\+DE)
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a88f88adb93da287ea6257d10f644deba}{name} = models.\+Char\+Field(max\+\_\+length=50)
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a41098b5ff53c4527338da898d1c8ce60}{Description} = models.\+Char\+Field(max\+\_\+length=300,blank=True)
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a3f4edc7224eef181116da64d9fb3e833}{Start\+Time} = models.\+Time\+Field(null=True,)
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a4118305183920242785ffd38f427504d}{Start\+Date} = models.\+Date\+Field(null=True,default=date.\+today)
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a01e40f725e26619a0274fdd01d7c0a0d}{Expected\+Duration} = models.\+Char\+Field(max\+\_\+length=5,choices=\hyperlink{namespaceTimetable_1_1models_a3de5e5d97c7dbbfd08e212b9d1ad3ec5}{Duration\+\_\+choices},default=\textquotesingle{}1\textquotesingle{})
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a6decd0faec3c1764e6fa139946f94a61}{Dead\+Line\+Time} = models.\+Time\+Field(null=True,blank=True,default=\char`\"{}23\+:30\+:00\char`\"{})
+\item 
+\hyperlink{classTimetable_1_1models_1_1InstructorAssignment_a44347cd7e7a96f8a8c7ed68ca63fbf08}{Dead\+Line\+Date} = models.\+Date\+Field(null=True,blank=True,default=\hyperlink{namespaceTimetable_1_1models_a6b1be2b87de430a3f0820a4908c608fd}{default\+Dead\+Line})
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!Dead\+Line\+Date@{Dead\+Line\+Date}}
+\index{Dead\+Line\+Date@{Dead\+Line\+Date}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{Dead\+Line\+Date}{DeadLineDate}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+Dead\+Line\+Date = models.\+Date\+Field(null=True,blank=True,default={\bf default\+Dead\+Line})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a44347cd7e7a96f8a8c7ed68ca63fbf08}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a44347cd7e7a96f8a8c7ed68ca63fbf08}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!Dead\+Line\+Time@{Dead\+Line\+Time}}
+\index{Dead\+Line\+Time@{Dead\+Line\+Time}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{Dead\+Line\+Time}{DeadLineTime}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+Dead\+Line\+Time = models.\+Time\+Field(null=True,blank=True,default=\char`\"{}23\+:30\+:00\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a6decd0faec3c1764e6fa139946f94a61}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a6decd0faec3c1764e6fa139946f94a61}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!Description@{Description}}
+\index{Description@{Description}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{Description}{Description}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+Description = models.\+Char\+Field(max\+\_\+length=300,blank=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a41098b5ff53c4527338da898d1c8ce60}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a41098b5ff53c4527338da898d1c8ce60}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!Expected\+Duration@{Expected\+Duration}}
+\index{Expected\+Duration@{Expected\+Duration}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{Expected\+Duration}{ExpectedDuration}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+Expected\+Duration = models.\+Char\+Field(max\+\_\+length=5,choices={\bf Duration\+\_\+choices},default=\textquotesingle{}1\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a01e40f725e26619a0274fdd01d7c0a0d}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a01e40f725e26619a0274fdd01d7c0a0d}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!name@{name}}
+\index{name@{name}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{name}{name}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+name = models.\+Char\+Field(max\+\_\+length=50)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a88f88adb93da287ea6257d10f644deba}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a88f88adb93da287ea6257d10f644deba}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!Start\+Date@{Start\+Date}}
+\index{Start\+Date@{Start\+Date}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{Start\+Date}{StartDate}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+Start\+Date = models.\+Date\+Field(null=True,default=date.\+today)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a4118305183920242785ffd38f427504d}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a4118305183920242785ffd38f427504d}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!Start\+Time@{Start\+Time}}
+\index{Start\+Time@{Start\+Time}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{Start\+Time}{StartTime}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+Start\+Time = models.\+Time\+Field(null=True,)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a3f4edc7224eef181116da64d9fb3e833}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a3f4edc7224eef181116da64d9fb3e833}
+\index{Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}!User\+Profile@{User\+Profile}}
+\index{User\+Profile@{User\+Profile}!Timetable\+::models\+::\+Instructor\+Assignment@{Timetable\+::models\+::\+Instructor\+Assignment}}
+\subsubsection[{\texorpdfstring{User\+Profile}{UserProfile}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Instructor\+Assignment.\+User\+Profile = models.\+Foreign\+Key({\bf profile}, on\+\_\+delete=models.\+C\+A\+S\+C\+A\+DE)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1InstructorAssignment_a64f231cb4bd0aa520af50783b061152b}{}\label{classTimetable_1_1models_1_1InstructorAssignment_a64f231cb4bd0aa520af50783b061152b}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jarvis/\+Desktop/sem3 material/cs 251/\+Get-\/\+Sched-\/\+Go/get\+Sched\+Go/get\+Sched\+Go/\+Timetable/\hyperlink{Timetable_2models_8py}{models.\+py}\end{DoxyCompactItemize}

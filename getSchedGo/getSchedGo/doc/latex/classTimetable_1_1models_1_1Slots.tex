@@ -1,0 +1,66 @@
+\hypertarget{classTimetable_1_1models_1_1Slots}{}\section{Timetable.\+models.\+Slots Class Reference}
+\label{classTimetable_1_1models_1_1Slots}\index{Timetable.\+models.\+Slots@{Timetable.\+models.\+Slots}}
+
+
+Inheritance diagram for Timetable.\+models.\+Slots\+:
+% FIG 0
+
+
+Collaboration diagram for Timetable.\+models.\+Slots\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classTimetable_1_1models_1_1Slots_a644a0cc352eff9bfc5477c19c7d91e71}{\+\_\+\+\_\+str\+\_\+\+\_\+} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTimetable_1_1models_1_1Slots_af35ce0385f56fb20baaeab2d11e821e3}{User\+Profile} = models.\+Foreign\+Key(\hyperlink{classprofiles_1_1models_1_1profile}{profile}, on\+\_\+delete=models.\+C\+A\+S\+C\+A\+DE)
+\item 
+\hyperlink{classTimetable_1_1models_1_1Slots_a16ad17531e152e0661b601658c47a157}{Day\+\_\+\+Sched} = models.\+Foreign\+Key(\hyperlink{classTimetable_1_1models_1_1DailySched}{Daily\+Sched}, on\+\_\+delete=models.\+C\+A\+S\+C\+A\+DE)
+\item 
+\hyperlink{classTimetable_1_1models_1_1Slots_ad9dd5ece43699c860c9613bbc546c908}{Start\+Time} = models.\+Time\+Field(null=False,blank=False)
+\item 
+\hyperlink{classTimetable_1_1models_1_1Slots_aebf68749233425604ea55cece33652f3}{End\+Time} = models.\+Time\+Field(null=False,blank=False)
+\item 
+\hyperlink{classTimetable_1_1models_1_1Slots_ab3e185c541695f0cc562bb354df36a57}{Slot\+Num} = models.\+Integer\+Field(null=False,blank=False)
+\item 
+\hyperlink{classTimetable_1_1models_1_1Slots_a3fadb94b957239d32884167f6414e140}{Event\+Connected} = models.\+Foreign\+Key(\hyperlink{classTimetable_1_1models_1_1Event}{Event},on\+\_\+delete=models.\+S\+E\+T\+\_\+\+N\+U\+LL,null=True)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{\+\_\+\+\_\+str\+\_\+\+\_\+(self)}{__str__(self)}}]{\setlength{\rightskip}{0pt plus 5cm}def Timetable.\+models.\+Slots.\+\_\+\+\_\+str\+\_\+\+\_\+ (
+\begin{DoxyParamCaption}
+\item[{}]{self}
+\end{DoxyParamCaption}
+)}\hypertarget{classTimetable_1_1models_1_1Slots_a644a0cc352eff9bfc5477c19c7d91e71}{}\label{classTimetable_1_1models_1_1Slots_a644a0cc352eff9bfc5477c19c7d91e71}
+
+
+\subsection{Member Data Documentation}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!Day\+\_\+\+Sched@{Day\+\_\+\+Sched}}
+\index{Day\+\_\+\+Sched@{Day\+\_\+\+Sched}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{Day\+\_\+\+Sched}{Day_Sched}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Slots.\+Day\+\_\+\+Sched = models.\+Foreign\+Key({\bf Daily\+Sched}, on\+\_\+delete=models.\+C\+A\+S\+C\+A\+DE)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1Slots_a16ad17531e152e0661b601658c47a157}{}\label{classTimetable_1_1models_1_1Slots_a16ad17531e152e0661b601658c47a157}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!End\+Time@{End\+Time}}
+\index{End\+Time@{End\+Time}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{End\+Time}{EndTime}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Slots.\+End\+Time = models.\+Time\+Field(null=False,blank=False)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1Slots_aebf68749233425604ea55cece33652f3}{}\label{classTimetable_1_1models_1_1Slots_aebf68749233425604ea55cece33652f3}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!Event\+Connected@{Event\+Connected}}
+\index{Event\+Connected@{Event\+Connected}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{Event\+Connected}{EventConnected}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Slots.\+Event\+Connected = models.\+Foreign\+Key({\bf Event},on\+\_\+delete=models.\+S\+E\+T\+\_\+\+N\+U\+LL,null=True)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1Slots_a3fadb94b957239d32884167f6414e140}{}\label{classTimetable_1_1models_1_1Slots_a3fadb94b957239d32884167f6414e140}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!Slot\+Num@{Slot\+Num}}
+\index{Slot\+Num@{Slot\+Num}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{Slot\+Num}{SlotNum}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Slots.\+Slot\+Num = models.\+Integer\+Field(null=False,blank=False)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1Slots_ab3e185c541695f0cc562bb354df36a57}{}\label{classTimetable_1_1models_1_1Slots_ab3e185c541695f0cc562bb354df36a57}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!Start\+Time@{Start\+Time}}
+\index{Start\+Time@{Start\+Time}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{Start\+Time}{StartTime}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Slots.\+Start\+Time = models.\+Time\+Field(null=False,blank=False)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1Slots_ad9dd5ece43699c860c9613bbc546c908}{}\label{classTimetable_1_1models_1_1Slots_ad9dd5ece43699c860c9613bbc546c908}
+\index{Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}!User\+Profile@{User\+Profile}}
+\index{User\+Profile@{User\+Profile}!Timetable\+::models\+::\+Slots@{Timetable\+::models\+::\+Slots}}
+\subsubsection[{\texorpdfstring{User\+Profile}{UserProfile}}]{\setlength{\rightskip}{0pt plus 5cm}Timetable.\+models.\+Slots.\+User\+Profile = models.\+Foreign\+Key({\bf profile}, on\+\_\+delete=models.\+C\+A\+S\+C\+A\+DE)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classTimetable_1_1models_1_1Slots_af35ce0385f56fb20baaeab2d11e821e3}{}\label{classTimetable_1_1models_1_1Slots_af35ce0385f56fb20baaeab2d11e821e3}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/jarvis/\+Desktop/sem3 material/cs 251/\+Get-\/\+Sched-\/\+Go/get\+Sched\+Go/get\+Sched\+Go/\+Timetable/\hyperlink{Timetable_2models_8py}{models.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,28 @@
+\hypertarget{namespacestatistics_1_1urls}{}\section{statistics.\+urls Namespace Reference}
+\label{namespacestatistics_1_1urls}\index{statistics.\+urls@{statistics.\+urls}}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespacestatistics_1_1urls_a56e6cd90588b419e44be487be1171507}{app\+\_\+name} = \textquotesingle{}statistics\textquotesingle{}
+\item 
+list \hyperlink{namespacestatistics_1_1urls_a8e02fedbdf5051dc512fa2e80d5411d2}{urlpatterns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\index{statistics\+::urls@{statistics\+::urls}!app\+\_\+name@{app\+\_\+name}}
+\index{app\+\_\+name@{app\+\_\+name}!statistics\+::urls@{statistics\+::urls}}
+\subsubsection[{\texorpdfstring{app\+\_\+name}{app_name}}]{\setlength{\rightskip}{0pt plus 5cm}string statistics.\+urls.\+app\+\_\+name = \textquotesingle{}statistics\textquotesingle{}}\hypertarget{namespacestatistics_1_1urls_a56e6cd90588b419e44be487be1171507}{}\label{namespacestatistics_1_1urls_a56e6cd90588b419e44be487be1171507}
+\index{statistics\+::urls@{statistics\+::urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!statistics\+::urls@{statistics\+::urls}}
+\subsubsection[{\texorpdfstring{urlpatterns}{urlpatterns}}]{\setlength{\rightskip}{0pt plus 5cm}list statistics.\+urls.\+urlpatterns}\hypertarget{namespacestatistics_1_1urls_a8e02fedbdf5051dc512fa2e80d5411d2}{}\label{namespacestatistics_1_1urls_a8e02fedbdf5051dc512fa2e80d5411d2}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = [
+2     url(\textcolor{stringliteral}{r"^$"}, views.TodayStats, name=\textcolor{stringliteral}{"TodayStatistic"}),
+3     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/anyDay/$"}, views.TodayStats, name=\textcolor{stringliteral}{"AnyDayStatistics"}),
+4     url(\textcolor{stringliteral}{r"^list/$"}, views.EventBeforeDate, name=\textcolor{stringliteral}{"EventBeforeDate"}),
+5     url(\textcolor{stringliteral}{r"^donelist/$"}, views.CompletedList, name=\textcolor{stringliteral}{"CompletedList"}),
+6     url(\textcolor{stringliteral}{r"^(?P<pk>[0-9]+)/comp/$"}, views.MarkItCompleted, name=\textcolor{stringliteral}{"MarkItCompleted"}),
+7 ]
+\end{DoxyCode}
