@@ -35,6 +35,7 @@ class Event(models.Model):
 	DeadLineDate = models.DateField(null=True,blank=True,default=defaultDeadLine)
 	Priority = models.CharField(max_length=5,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=5,choices=Event_Type,default='E')
+	Completed = models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.name
@@ -48,24 +49,31 @@ class Slots(models.Model):
 	EventConnected = models.ForeignKey(Event,on_delete=models.SET_NULL,null=True)
 	def __str__(self):
 		return str(self.SlotNum)
+class InstructorExam(models.Model):
+	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
+	name = models.CharField(max_length=50)
+	Description = models.CharField(max_length=300,blank=True)
+	Venue = models.CharField(max_length=100,blank=True)
+	StartTime = models.TimeField(null=True,)
+	Date = models.DateField(null=True,default=date.today)
+	EndTime = models.TimeField(null=True,)
+	PreparationDuration = models.CharField(null=True,max_length=5,choices=Duration_choices,default='1',blank=True)
+
 class InstructorClass(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
 	Description = models.CharField(max_length=300,blank=True)
 	Venue = models.CharField(max_length=100,blank=True)
-	StartTime = models.TimeField(null=True,)#removed Blank notequaltoTrue for some case
-	StartDate = models.DateField(null=True,default=date.today)
-	PreparationRequired = models.BooleanField(default=False)
-	PreparationDuration = models.CharField(max_length=5,choices=Duration_choices,default='1')
+	StartTime = models.TimeField(null=True,)
+	Date = models.DateField(null=True,default=date.today)
 	EndTime = models.TimeField(null=True,)
-	EndDate = models.DateField(null=True,blank=True,default=date.today)
 	Compulsory = models.BooleanField(default=True)
 
 class InstructorAssignment(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
 	Description = models.CharField(max_length=300,blank=True)
-	StartTime = models.TimeField(null=True,)#removed Blank notequaltoTrue for some case
+	StartTime = models.TimeField(null=True,)
 	StartDate = models.DateField(null=True,default=date.today)
 	ExpectedDuration = models.CharField(max_length=5,choices=Duration_choices,default='1')
 	DeadLineTime = models.TimeField(null=True,blank=True,default="23:30:00")

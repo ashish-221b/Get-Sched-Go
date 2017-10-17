@@ -14,7 +14,7 @@ Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study')
 class EventForm(forms.ModelForm):
         class Meta:
             model = Event
-            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime')
+            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime','Completed')
             widgets = {
                 'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
                 'StartDate': SelectDateWidget(years=past_years(10),),
@@ -50,10 +50,31 @@ class InstructorAssignmentForm(forms.ModelForm):
     class Meta:
         model = InstructorAssignment
         exclude  = ('UserProfile',)
-        widgets = widgets = {
+        widgets = {
             'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
             'StartDate': SelectDateWidget(years=past_years(10),),
             'DeadLineDate' : SelectDateWidget(years=past_years(10),),
             'StartTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
             'DeadLineTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+        }
+class InstructorClassForm(forms.ModelForm):
+    class Meta:
+        model = InstructorClass
+        exclude  = ('UserProfile',)
+        widgets = {
+            'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
+            'StartDate': SelectDateWidget(years=past_years(10),),
+            'StartTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+            'EndDate' : SelectDateWidget(years=past_years(10),),
+            'EndTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+        }
+class InstructorExamForm(forms.ModelForm):
+    class Meta:
+        model = InstructorExam
+        exclude  = ('UserProfile',)
+        widgets = {
+            'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
+            'Date': SelectDateWidget(years=past_years(10),),
+            'StartTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
+            'EndTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
         }

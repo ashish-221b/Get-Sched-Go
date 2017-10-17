@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-md-4 col-md-offset-2">
+
+	 <form method="post">
+	 	{% csrf_token %}
+	 	{{ form|crispy }}
+			<button type="submit">Submit</button>
+		</form>
+</div>
+<div class="col-md-8 col-md-offset-2">
+{% for course in courseDetail %}
+<h3>
+Code: {{ course.code }}
+</h3><br>
+<h3>
+Name: {{ course.name }}
+</h3><br><h3>
+Slot Number: {{ course.slot }}
+</h3><br><h3>
+Credit: {{ course.credit }}
+</h3><br>
+{% if course.tutorial %}
+<h3>
+Tutorial Slot: {{ course.tutorialSlot }}
+</h3><br>
+{% endif %}
+{% if request.user.profile.instructor %}
+<h3>
+	{% if not course.instructor %}
+	<li><a href="{% url 'courses:ClaimCourse' course.id %}">I am the Instructor</a></li>
+	{% endif %}
+</h3><br>
+{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

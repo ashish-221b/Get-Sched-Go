@@ -2,20 +2,120 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from Timetable.models import DailySched, Event, Slots
 from .models import *
-from datetime import *
+from datetime import datetime , timedelta, date
+from django.db.models import Q
 
 # Create your views here.
 @login_required
-def TodayStats(request):
-	Today=date.today()
+def TodayStats(request,pk=-1):
+	if pk=='1' :
+		Today=date.today() - timedelta(days = 1)
+	elif pk == '2':
+		Today=date.today() - timedelta(days = 2)
+	else :
+		Today=date.today()
 	user = request.user
 	TodaySched = get_object_or_404(DailySched,UserProfile =user.profile,Active_day=Today)
 	TodaysStats = get_object_or_404(dailyStats,linkedDay = TodaySched)
 	updateStats(TodaysStats)
-	context = {'user': user,'TodaysStats': TodaysStats}
+	#make the calculation for data display here
+	if TodaysStats.SelfStudy != 0 :
+		ScheduledCompletedSelfStudy = TodaysStats.CompletedSelfStudy * 100 / TodaysStats.SelfStudy
+		print(ScheduledCompletedSelfStudy )
+	else :
+		ScheduledCompletedSelfStudy = None
+	if TodaysStats.ClassTiming != 0 :
+		ScheduledCompletedClassTiming = TodaysStats.CompletedClassTiming * 100 / TodaysStats.ClassTiming
+	else :
+		ScheduledCompletedClassTiming = None
+	if TodaysStats.ExtraStudyTime != 0 :
+		ScheduledCompletedExtraStudyTime = TodaysStats.CompletedExtraStudyTime * 100 / TodaysStats.ExtraStudyTime
+	else :
+		ScheduledCompletedExtraStudyTime = None
+	if TodaysStats.MiscellaneousTime != 0 :
+		ScheduledCompletedMiscellaneousTime = TodaysStats.CompletedMiscellaneousTime * 100 / TodaysStats.MiscellaneousTime
+	else :
+		ScheduledCompletedMiscellaneousTime = None
+	if TodaysStats.ExtraCurricularsTime != 0 :
+		ScheduledCompletedExtraCurricularsTime = TodaysStats.CompletedExtraCurricularsTime * 100 / TodaysStats.ExtraCurricularsTime
+	else :
+		ScheduledCompletedExtraCurricularsTime = None
+
+	PercentageSelfStudy = (TodaysStats.SelfStudy * 100) // 48
+	PercentageExtraCurricularsTime = (TodaysStats.ExtraCurricularsTime * 100) // 48
+	PercentageExtraStudyTime = (TodaysStats.ExtraStudyTime * 100) // 48
+	PercentageClassTiming = (TodaysStats.ClassTiming * 100) // 48
+	PercentageMiscellaneousTime  = (TodaysStats.MiscellaneousTime * 100) // 48
+	TotalSchedTime = PercentageSelfStudy + PercentageExtraCurricularsTime + PercentageExtraStudyTime + PercentageClassTiming + PercentageMiscellaneousTime
+	if TotalSchedTime != 0:
+		RelativePercentageSelfStudy = PercentageSelfStudy * 100 // TotalSchedTime
+		RelativePercentageExtraCurricularsTime = PercentageExtraCurricularsTime * 100 // TotalSchedTime
+		RelativePercentageExtraStudyTime = PercentageExtraStudyTime * 100 // TotalSchedTime
+		RelativePercentageClassTiming = PercentageClassTiming * 100 // TotalSchedTime
+		RelativePercentageMiscellaneousTime  = PercentageMiscellaneousTime * 100 // TotalSchedTime
+	else : 
+		RelativePercentageSelfStudy = 0
+		RelativePercentageExtraCurricularsTime = 0
+		RelativePercentageExtraStudyTime = 0
+		RelativePercentageClassTiming = 0
+		RelativePercentageMiscellaneousTime = 0
+
+		# PercentageSelfStudy = (TodaysStats.SelfStudy * 100) // 48 
+	percentage = {'PercentageSelfStudy' : PercentageSelfStudy , 'PercentageExtraCurricularsTime' : PercentageExtraCurricularsTime , 'PercentageExtraStudyTime' : PercentageExtraStudyTime, 'PercentageClassTiming': PercentageClassTiming, 'PercentageMiscellaneousTime' : PercentageMiscellaneousTime, 'ScheduledCompletedSelfStudy' : ScheduledCompletedSelfStudy , 'ScheduledCompletedClassTiming' : ScheduledCompletedClassTiming , 'ScheduledCompletedExtraStudyTime' : ScheduledCompletedExtraStudyTime , 'ScheduledCompletedMiscellaneousTime' : ScheduledCompletedMiscellaneousTime , 'ScheduledCompletedExtraCurricularsTime': ScheduledCompletedExtraCurricularsTime , 'RelativePercentageSelfStudy' : RelativePercentageSelfStudy , 'RelativePercentageExtraCurricularsTime' : RelativePercentageExtraCurricularsTime , 'RelativePercentageExtraStudyTime' : RelativePercentageExtraStudyTime, 'RelativePercentageClassTiming': RelativePercentageClassTiming, 'RelativePercentageMiscellaneousTime' : RelativePercentageMiscellaneousTime, 'TotalSchedTime' : TotalSchedTime}
+	#
+	context = {'user': user,'TodaysStats': TodaysStats, 'percentage': percentage}
 	print(TodaysStats.linkedDay.Active_day )
 	template = 'basicStatistics.html'
 	return render(request,template,context)
+
+def EventBeforeDate(request):
+	user = request.user
+	List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None).filter(Q(EndDate__lt=datetime.today() ) | (Q(EndDate=datetime.today(),ScheduledEndTime__lte=datetime.today())))
+	context = {'user': user , 'List': List}
+	# print(List)
+	template = 'basicfeedback.html'
+	return render(request,template,context)
+
+def CompletedList(request):
+	user = request.user
+	List = Event.objects.filter(UserProfile=user.profile, Completed = True)
+	context = {'user': user , 'List': List}
+	# print(List)
+	template = 'basicfeedback.html'
+	return render(request,template,context)
+
+@login_required
+def MarkItCompleted(request,pk):
+	ToBeChanged = get_object_or_404(Event,pk=pk)
+	# SlotToFree = Slots.objects.filter(EventConnected = ToBeRemoved)
+	# for slot in SlotToFree:
+	# 	slot.EventConnected = None
+	# 	slot.save()
+	ToBeChanged.Completed = True
+	ToBeChanged.save()
+	return redirect('statistics:EventBeforeDate')
+# @login_required
+# def MarkItUnCompleted(request,pk):
+# 	ToBeChanged = get_object_or_404(Event,pk=pk)
+# 	# SlotToFree = Slots.objects.filter(EventConnected = ToBeRemoved)
+# 	# for slot in SlotToFree:
+# 	# 	slot.EventConnected = None
+# 	# 	slot.save()
+# 	TobeRemoved.Completed = False
+# 	ToBeRemoved.delete()
+# 	return redirect('Timetable:EventList')
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -27,17 +127,32 @@ def updateStats(statsToChange):
 	statsToChange.ExtraStudyTime = 0
 	statsToChange.ExtraCurricularsTime = 0
 	statsToChange.MiscellaneousTime = 0
+	statsToChange.CompletedClassTiming = 0
+	statsToChange.CompletedSelfStudy = 0
+	statsToChange.CompletedExtraStudyTime = 0
+	statsToChange.CompletedExtraCurricularsTime = 0
+	statsToChange.CompletedMiscellaneousTime = 0
 	for slot in slotList:
 		if slot.EventConnected is not None:
 			event = slot.EventConnected
 			if event.Type == 'A' :
 				statsToChange.ClassTiming = statsToChange.ClassTiming + 1
+				if event.Completed :
+					statsToChange.CompletedClassTiming = statsToChange.CompletedClassTiming + 1
 			elif event.Type == 'B' :
 				statsToChange.SelfStudy = statsToChange.SelfStudy + 1
+				if event.Completed :
+					statsToChange.CompletedSelfStudy = statsToChange.CompletedSelfStudy + 1
 			elif event.Type == 'C' :
 				statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime + 1
+				if event.Completed :
+					statsToChange.CompletedExtraStudyTime  = statsToChange.CompletedExtraStudyTime + 1
 			elif event.Type == 'D' :
 				statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime + 1
+				if event.Completed :
+					statsToChange.CompletedExtraCurricularsTime = statsToChange.CompletedExtraCurricularsTime + 1
 			elif event.Type == 'E' :
 				statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + 1
+				if event.Completed :
+					statsToChange.CompletedMiscellaneousTime = statsToChange.CompletedMiscellaneousTime + 1				
 	statsToChange.save()

@@ -1,11 +1,203 @@
 {% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
+{% load mathfilters %}
 {% load staticfiles %}
 {% block content %}
-Hi {{ user }}<br>
-ActiveDay: {{ TodaysStats.linkedDay.Active_day }}<br>
-SelfStudy: {{ TodaysStats.SelfStudy }}<br>
-ExtraCurricularsTime: {{ TodaysStats.ExtraCurricularsTime }}<br>
-ExtraStudyTime: {{ TodaysStats.ExtraStudyTime }}<br>
-ClassTiming: {{ TodaysStats.ClassTiming }}<br>
-MiscellaneousTime: {{ TodaysStats.MiscellaneousTime }}<br>
+<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+	<option value="" selected disabled hidden>Choose the day here</option>
+  <option value="{% url 'statistics:TodayStatistic' %}"><a href="{% url 'statistics:TodayStatistic' %}"> Today</a></option>
+  <option value="{% url 'statistics:AnyDayStatistics' 1 %}"><a href="{% url 'statistics:AnyDayStatistics' 1 %}"> Yesterday</a></option>
+  <option value="{% url 'statistics:AnyDayStatistics' 2 %}"><a href="{% url 'statistics:AnyDayStatistics' 2 %}"> Yesterday--</a></option>
+</select><br>
+<!-- ActiveDay: {{ TodaysStats.linkedDay.Active_day|date:"M d, Y" }}<br>
+ --><div class="container">
+  <div class="page-header">
+    <h3> {{ TodaysStats.linkedDay.Active_day|date:"M d, Y" }} </h3>
+    </div></div>   
+
+
+
+<div class="table-responsive">
+  <table class = "table table-hover table-condesed">
+    <thead>
+      <tr>
+        <th>
+          &nbsp;
+        </th>
+        <th>
+          Event Type
+        </th>
+        <th>
+          Scheduled Hours
+        </th>
+        <th>
+          Completed Hours
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success">
+        <td>A.</td>
+        <td>Self Study</td>
+        <td>{{ TodaysStats.SelfStudy|div:2 }}</td>
+        <td>{{ TodaysStats.CompletedSelfStudy|div:2 }}</td>
+      </tr>
+      <tr  class="info">
+         <td>B.</td>
+       <td>Class Timings</td>
+        <td>{{ TodaysStats.ClassTiming|div:2 }}</td>
+        <td>{{ TodaysStats.CompletedClassTiming|div:2 }}</td>
+      </tr>
+      <tr >
+          <td>C.</td>
+      <td>Extra Self Study</td>
+        <td>{{ TodaysStats.ExtraStudyTime|div:2 }}</td>
+        <td>{{ TodaysStats.CompletedExtraStudyTime|div:2 }}</td>
+      </tr>
+      <tr class="danger"> 
+            <td>D.</td>
+    <td>Extra Curriculars</td>
+        <td>{{ TodaysStats.ExtraCurricularsTime|div:2 }}</td>
+        <td>{{ TodaysStats.CompletedExtraCurricularsTime|div:2 }}</td>
+      </tr>
+      <tr class="warning"> 
+           <td>E.</td>
+     <td>Miscellaneous</td>
+        <td>{{  TodaysStats.MiscellaneousTime|div:2 }}</td>
+        <td>{{ TodaysStats.CompletedMiscellaneousTime|div:2 }}</td>
+      </tr>
+    </tbody>
+        
+
+  </table>
+</div>
+
+<style type="text/css">
+.progress-bar-striped:hover {
+     animation: progress-bar-stripes 2.5s ease-out infinite; 
+}
+</style>
+
+Distribution Percentage of whole day over activity<br>
+<div class="progress">
+{% if percentage.PercentageSelfStudy != 0 %}
+<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageSelfStudy }}%">
+    A
+  </div>
+{% endif %}
+{% if percentage.PercentageClassTiming != 0 %}
+   <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageClassTiming }}%;">
+    B
+  </div>  
+{% endif %}
+{% if percentage.PercentageExtraStudyTime != 0 %}
+  <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageExtraStudyTime }}%;background-color:grey;">
+    C
+  </div>
+{% endif %}
+{% if percentage.PercentageExtraCurricularsTime != 0 %}
+  <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageExtraCurricularsTime }}%">
+    D
+  </div>
+{% endif %}
+{% if percentage.PercentageMiscellaneousTime != 0 %}
+  <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageMiscellaneousTime }}%;">
+    E
+  </div>
+{% endif %}
+</div>
+
+{% if percentage.TotalSchedTime != 0 %}
+Relative distribution over the day <br>
+<div class="progress">
+{% if percentage.RelativePercentageSelfStudy != 0 %}
+<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" style="width:{{ percentage.RelativePercentageSelfStudy }}%">
+    A
+  </div>
+{% endif %}
+{% if percentage.RelativePercentageClassTiming != 0 %}
+   <div class="progress-bar progress-bar-info" role="progressbar" style="width:{{ percentage.RelativePercentageClassTiming }}%;">
+    B
+  </div>
+  {% endif %}
+{% if percentage.RelativePercentageExtraStudyTime != 0 %}
+  <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width:{{ percentage.RelativePercentageExtraStudyTime }}%;background-color:grey;">
+    C
+  </div>
+{% endif %}
+{% if percentage.RelativePercentageExtraCurricularsTime != 0 %}
+  <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width:{{ percentage.RelativePercentageExtraCurricularsTime }}%">
+    D
+  </div>
+{% endif %}
+{% if percentage.RelativePercentageMiscellaneousTime != 0 %}
+  <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" style="width:{{ percentage.RelativePercentageMiscellaneousTime }}%;">
+    E
+  </div>
+{% endif %}
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% if not percentage.ScheduledCompletedSelfStudy is None %}
+Percentage of SelfSudy completed <br>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ percentage.ScheduledCompletedSelfStudy }}%">
+    {{ percentage.ScheduledCompletedSelfStudy }}%
+  </div>
+</div>
+{% endif %}
+{% if not percentage.ScheduledCompletedClassTiming is None %}
+Percentage of Class Timing completed <br>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ percentage.ScheduledCompletedClassTiming }}%">
+    {{ percentage.ScheduledCompletedClassTiming }}%
+  </div>
+</div>
+{% endif %}
+{% if not percentage.ScheduledCompletedExtraStudyTime is None %}
+Percentage of Extra Study Events completed <br>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ percentage.ScheduledCompletedExtraStudyTime }}%">
+    {{ percentage.ScheduledCompletedExtraStudyTime }}%
+  </div>
+</div>
+{% endif %}
+{% if not percentage.ScheduledCompletedMiscellaneousTime is None %}
+Percentage of Miscellaneous timing completed <br>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ percentage.ScheduledCompletedMiscellaneousTime }}%">
+    {{ percentage.ScheduledCompletedMiscellaneousTime }}%
+  </div>
+</div>
+{% endif %}
+{% if not percentage.ScheduledCompletedExtraCurricularsTime is None %}
+Percentage of Extra-Curricular timing completed <br>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{ percentage.ScheduledCompletedExtraCurricularsTime}}%">
+    {{ percentage.ScheduledCompletedExtraCurricularsTime }}%
+  </div>
+</div>
+{% endif %}
+
 {% endblock %}

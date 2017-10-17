@@ -17,7 +17,7 @@ class SimpleForm(forms.ModelForm):
 	crickenthu = forms.BooleanField(required=False,label='Suggestions for cricket matches')
 	NBAenthu = forms.BooleanField(required=False,label='Suggestions for NBA matches')
 	footballenthu = forms.BooleanField(required=False,label='Suggestions for football matches')
-	instructor = forms.BooleanField(required = True,label = 'Are you an Instructor')
+	instructor = forms.BooleanField(required = False,label = 'Are you an Instructor')
 	class Meta:
 		model = profile
 		fields = ('name','studyChoice','sleepChoice','crickenthu','NBAenthu','footballenthu','instructor')
