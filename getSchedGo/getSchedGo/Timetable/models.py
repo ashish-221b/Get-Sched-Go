@@ -20,8 +20,8 @@ defaultDeadLine = date.today()+timedelta(days=3)
 class Event(models.Model):
 	"""docstring for Event."""
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
-	CreaterType = models.CharField(max_length=1,default='0')
-	CreaterId = models.CharField(max_length=100,null=True)
+	CreatorType = models.CharField(max_length=1,default='0')
+	CreatorId = models.CharField(max_length=100,null=True)
 	name = models.CharField(max_length=50)
 	Description = models.CharField(max_length=300,blank=True)
 	Venue = models.CharField(max_length=100,blank=True)
@@ -61,8 +61,9 @@ class InstructorExam(models.Model):
 	EndTime = models.TimeField(null=True,)
 	PreparationDuration = models.CharField(null=True,max_length=5,choices=Duration_choices,default='1',blank=True)
 	StudentData = models.CharField(max_length=250,null=True,default='$')
-	def addStudentData(a):
-		self.StudentData=self.StudentData+'$'+a
+	def addStudentData(self,a):
+		self.StudentData=self.StudentData+a+'$'
+		self.save()
 class InstructorClass(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
@@ -83,5 +84,6 @@ class InstructorAssignment(models.Model):
 	DeadLineTime = models.TimeField(null=True,blank=True,default="23:30:00")
 	DeadLineDate = models.DateField(null=True,blank=True,default=defaultDeadLine)
 	StudentData = models.CharField(max_length=250,null=True,default='$')
-	def addStudentData(a):
-		self.StudentData=self.StudentData+'$'+a
+	def addStudentData(self,a):
+		self.StudentData=self.StudentData+a+'$'
+		self.save()

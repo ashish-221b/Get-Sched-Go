@@ -118,20 +118,18 @@ def SelectCourse(request,pk=-1):
 
 def AssignmentToEvent(request, pk):
 	instance= get_object_or_404(InstructorAssignment, pk=pk)
-	q= Event(Userprofile= request.user.profile,
+	q = Event(UserProfile= request.user.profile,
 	name= instance.name,
 	CreatorType= '1',
 	CreatorId= pk,
-	Description=q.Description,
+	Description=instance.Description,
 	TimeSettings='C',
 	StartTime = instance.StartTime,
 	StartDate = instance.StartDate,
 	Duration = instance.ExpectedDuration,
-	DeadLineTime=q.DeadLineTime,
-	DeadLineDate=q.DeadLineDate,
+	DeadLineTime=instance.DeadLineTime,
+	DeadLineDate=instance.DeadLineDate,
 	Priority = '4',
 	Type = 'B')
 	q.save()
 	return redirect('Timetable:EditEvent',pk=q.id)
-    
-

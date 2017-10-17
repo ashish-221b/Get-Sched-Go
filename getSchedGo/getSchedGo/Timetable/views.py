@@ -43,13 +43,15 @@ def CreateEvent(request,pk=-1):
             elif Eve.TimeSettings=='C':
                 a=NewVariableEvent1(Eve,user)
                 print(a)
-            if Eve.CreaterType=='1':
+            if Eve.CreatorType=='1':
+                a=Eve.Duration
+                Assign=get_object_or_404(InstructorAssignment,pk=Eve.CreatorId)
+                print("hello")
                 print(Eve.Duration)
-                Assign=get_object_or_404(InstructorAssignment,pk=Eve.CreaterId)
-                Assign.addStudentData(Eve.Duration)
-            elif Eve.CreaterType=='4':
+                Assign.addStudentData(a)
+            elif Eve.CreatorType=='4':
                 print(Eve.Duration)
-                Assign=get_object_or_404(InstructorExam,pk=Eve.CreaterId)
+                Assign=get_object_or_404(InstructorExam,pk=Eve.CreatorId)
                 Assign.addStudentData(Eve.Duration)
             return redirect('Timetable:EventList')
     else:
