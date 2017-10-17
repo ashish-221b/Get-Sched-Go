@@ -60,7 +60,9 @@ class InstructorExam(models.Model):
 	Date = models.DateField(null=True,default=date.today)
 	EndTime = models.TimeField(null=True,)
 	PreparationDuration = models.CharField(null=True,max_length=5,choices=Duration_choices,default='1',blank=True)
-
+	StudentData = models.CharField(max_length=250,null=True,default='$')
+	def addStudentData(a):
+		self.StudentData=self.StudentData+'$'+a
 class InstructorClass(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
@@ -80,3 +82,6 @@ class InstructorAssignment(models.Model):
 	ExpectedDuration = models.CharField(max_length=5,choices=Duration_choices,default='1')
 	DeadLineTime = models.TimeField(null=True,blank=True,default="23:30:00")
 	DeadLineDate = models.DateField(null=True,blank=True,default=defaultDeadLine)
+	StudentData = models.CharField(max_length=250,null=True,default='$')
+	def addStudentData(a):
+		self.StudentData=self.StudentData+'$'+a

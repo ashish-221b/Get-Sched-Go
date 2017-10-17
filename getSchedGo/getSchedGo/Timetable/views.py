@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
-from .models import DailySched, Event, Slots
+from .models import *
 from datetime import *
 from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent1
 from profiles.models import createSched
@@ -43,6 +43,14 @@ def CreateEvent(request,pk=-1):
             elif Eve.TimeSettings=='C':
                 a=NewVariableEvent1(Eve,user)
                 print(a)
+            if Eve.CreaterType=='1':
+                print(Eve.Duration)
+                Assign=get_object_or_404(InstructorAssignment,pk=Eve.CreaterId)
+                Assign.addStudentData(Eve.Duration)
+            elif Eve.CreaterType=='4':
+                print(Eve.Duration)
+                Assign=get_object_or_404(InstructorExam,pk=Eve.CreaterId)
+                Assign.addStudentData(Eve.Duration)
             return redirect('Timetable:EventList')
     else:
         if(pk==-1):
@@ -58,7 +66,6 @@ def EventList(request,pk=-1):
     user = request.user
     if(pk==-1 or pk=='0'):
         List = Event.objects.filter(UserProfile=user.profile)
-        print(type(List[0].id))
     elif(pk == '2'):
         List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None)
         print(List)
@@ -99,6 +106,7 @@ def DeleteEvent(request,pk):
 def DescheduleEvent(request,pk):
     ToBeDescheduled = get_object_or_404(Event,pk=pk)
     SlotToFree = Slots.objects.filter(EventConnected = ToBeDescheduled)
+    print(SlotToFree)
     for slot in SlotToFree:
         slot.EventConnected = None
         slot.save()
