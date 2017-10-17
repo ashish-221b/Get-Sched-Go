@@ -79,6 +79,7 @@
 			 <h4> DeadLine : {{ Assignment.DeadLineDate }} {{ Assignment.DeadLineTime }} </h4>
 		</div>
 		<div class="col-md-4" >
+		<a href="{% url 'AssignmentToEvent' Assignment.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
 			 </div>
 	</div>
  {% endfor %}

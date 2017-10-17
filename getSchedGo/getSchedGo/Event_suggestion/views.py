@@ -52,6 +52,8 @@ def ConvertToEvent(request,pk):
     End= Start+ timedelta(hours=2)
     q= Event(UserProfile = request.user.profile,
     name= instance.Hometeam + " " +"Vs" + " "+ instance.Awayteam,
+    CreatorType= '5',
+    CreatorId= pk,
     Venue = instance.Venue,
     StartTime = Start.time(),
     StartDate = Start.today(),
