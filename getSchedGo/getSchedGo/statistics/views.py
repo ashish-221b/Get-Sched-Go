@@ -4,7 +4,9 @@ from Timetable.models import DailySched, Event, Slots
 from .models import *
 from datetime import datetime , timedelta, date
 from django.db.models import Q
-
+from django.views.static import serve
+import os
+import re
 # Create your views here.
 @login_required
 def TodayStats(request,pk=-1):
@@ -78,6 +80,48 @@ def EventBeforeDate(request):
 	return render(request,template,context)
 
 @login_required
+def AheadOfTime(request):
+	user = request.user
+	List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None).filter(Q(StartDate__gte=datetime.today()) , Q(StartDate=datetime.today(), ScheduledStartTime__gte=datetime.today()))
+	temp = open("sched.csv","w+")
+	temp.write("Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private \n")
+	for event in List:
+		temp.write(str(event.name))
+		temp.write(",")
+		temp.write(str(event.StartDate.month)+"/"+str(event.StartDate.day)+"/"+str(event.StartDate.year)) #eventDate may not be same as event scheduled date so that must be taken care of
+		temp.write(",")
+		temp.write(str(event.ScheduledStartTime))
+		temp.write(",")
+		temp.write(str(event.StartDate.month)+"/"+str(event.StartDate.day)+"/"+str(event.StartDate.year))
+		temp.write(',"')
+		temp.write(str(event.ScheduledEndTime))
+		temp.write('",')
+		temp.write('FALSE,"')
+		temp.write(str(event.Description))
+		temp.write('","')
+		temp.write(str(event.Venue))
+		temp.write('",TRUE')
+		temp.write("\n")
+	temp.close()
+	filepath = './sched.csv'
+	return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
+	#return redirect("statistics:EventBeforeDate")
+
+@login_required
+def googleConnector(request):
+	print(request.user.email)
+	text = None
+	mail = request.user.email
+	if mail is not None:
+		mach = re.match("^[a-z0-9]+[\.'\-a-z0-9_]*[a-z0-9]+@(gmail|googlemail)\.com$", mail)
+		if bool(mach):
+			text = mail.split('@',1)[0]
+	print (text)
+	return render(request,'googleConnector.html',{'text': text})
+
+
+
+@login_required
 def CompletedList(request):
 	user = request.user
 	List = Event.objects.filter(UserProfile=user.profile, Completed = True)
@@ -106,9 +150,6 @@ def MarkItCompleted(request,pk):
 # 	TobeRemoved.Completed = False
 # 	ToBeRemoved.delete()
 # 	return redirect('Timetable:EventList')
-
-
-
 
 
 

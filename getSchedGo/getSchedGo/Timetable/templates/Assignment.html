@@ -62,6 +62,7 @@ It is just as if part of content in block of actually in base.html -->
   {% if List %}
 <p>
    {% for Assignment in List %}
+   {% if Assignment.ScheduledStartTime %}
    <div onMouseOver="show('disc{{ Event.id }}')" onMouseOut="hide('disc{{ Event.id }}')" class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
    {% else %}
    <div onMouseOver="show('disc{{ Event.id }}')" onMouseOut="hide('disc{{ Event.id }}')" class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">

@@ -14,7 +14,7 @@ Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study')
 class EventForm(forms.ModelForm):
         class Meta:
             model = Event
-            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime','Completed','CreaterType','CreaterId')
+            exclude = ('UserProfile','ScheduledStartTime','ScheduledEndTime','Completed','CreatorType','CreatorId')
             widgets = {
                 'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
                 'StartDate': SelectDateWidget(years=past_years(10),),
@@ -49,7 +49,7 @@ class EventForm(forms.ModelForm):
 class InstructorAssignmentForm(forms.ModelForm):
     class Meta:
         model = InstructorAssignment
-        exclude  = ('UserProfile',)
+        exclude  = ('UserProfile','StudentData')
         widgets = {
             'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
             'StartDate': SelectDateWidget(years=past_years(10),),
@@ -71,7 +71,7 @@ class InstructorClassForm(forms.ModelForm):
 class InstructorExamForm(forms.ModelForm):
     class Meta:
         model = InstructorExam
-        exclude  = ('UserProfile',)
+        exclude  = ('UserProfile','StudentData')
         widgets = {
             'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
             'Date': SelectDateWidget(years=past_years(10),),
