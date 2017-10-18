@@ -83,7 +83,7 @@ def EventBeforeDate(request):
 def AheadOfTime(request):
 	user = request.user
 	List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None).filter(Q(StartDate__gte=datetime.today()) , Q(StartDate=datetime.today(), ScheduledStartTime__gte=datetime.today()))
-	temp = open("sched.csv","w+")
+	temp = open("sched"+str(user)+".csv","w+")
 	temp.write("Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private \n")
 	for event in List:
 		temp.write(str(event.name))
@@ -103,7 +103,7 @@ def AheadOfTime(request):
 		temp.write('",TRUE')
 		temp.write("\n")
 	temp.close()
-	filepath = './sched.csv'
+	filepath = "./sched"+str(user)+".csv"
 	return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 	#return redirect("statistics:EventBeforeDate")
 
