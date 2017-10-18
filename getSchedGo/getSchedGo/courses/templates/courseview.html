@@ -104,7 +104,9 @@
 	 <h4> Preparation : {{ Exam.PreparationDuration }}
 		</div>
 		<div class="col-md-4" >
-			 </div>
+		<a href="{% url 'courses:ExamToEvent' Exam.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
+		<a href="{% url 'courses:ExamPrepToEvent' Exam.id %}"><span class="glyphicon glyphicon-trash shaker"></span></a>
+		</div>
 	</div>
  {% endfor %}
 </p>
@@ -126,7 +128,8 @@
 	 <h4> At : {{ Class.Venue }} </h4>
 		</div>
 		<div class="col-md-4" >
-
+		<a href="{% url 'courses:ClassToEvent' Class.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
+		
 		</div>
 	</div>
  {% endfor %}

@@ -18,4 +18,5 @@ urlpatterns = [
     url(r"^Exams$", views.Exams, name="ExamList"),
     url(r"^(?P<pk>[0-9]+)/SortExam$", views.Exams, name="SortExam"),
     url(r'^today/$',views.Schedules, name = "Schedule"),
+   
 ]

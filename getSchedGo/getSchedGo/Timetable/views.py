@@ -210,3 +210,27 @@ def Exams(request,pk=-1):
     context = {'user': user,'List': List}
     template = 'exam.html'
     return render(request,template,context)
+
+def ClassToEvent(request,pk):
+    instance=get_object_or_404(suggestion, pk=pk)
+
+    q= Event(UserProfile=request.user.profile,
+    CreaterType = '2',
+    CreaterId = pk,
+    name = instance.name,
+    Description = instance.Description,
+    Venue = instance.Venue,
+    StartTime = instance.StartTime,
+    StartDate = instance.Date,
+    Duration = instance.EndTime-instance.StartTime,
+    ScheduledStartTime = instance.StartTime,
+    ScheduledEndTime = instance.EndTime,
+    TimeSettings = 'B',
+    EndDate = instance.Date,
+   
+    Priority = '3',
+    Type = 'B',
+    )
+    q.save()
+    return redirect('Timetable:EditEvent',pk=q.id)
+    

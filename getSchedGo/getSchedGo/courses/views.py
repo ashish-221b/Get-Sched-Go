@@ -127,11 +127,81 @@ def AssignmentToEvent(request, pk):
 	StartTime = instance.StartTime,
 	StartDate = instance.StartDate,
 	Duration = instance.ExpectedDuration,
-	DeadLineTime=q.DeadLineTime,
-	DeadLineDate=q.DeadLineDate,
+	DeadLineTime=instance.DeadLineTime,
+	DeadLineDate=instance.DeadLineDate,
 	Priority = '4',
 	Type = 'B')
 	q.save()
 	return redirect('Timetable:EditEvent',pk=q.id)
     
+
+def ClassToEvent(request,pk):
+    instance=get_object_or_404(InstructorClass, pk=pk)
+
+    q= Event(UserProfile=request.user.profile,
+    CreaterType = '2',
+    CreaterId = pk,
+    name = instance.name,
+    Description = instance.Description,
+    Venue = instance.Venue,
+    StartTime = instance.StartTime,
+    StartDate = instance.Date,
+    Duration = instance.EndTime-instance.StartTime,
+    ScheduledStartTime = instance.StartTime,
+    ScheduledEndTime = instance.EndTime,
+    TimeSettings = 'B',
+    EndDate = instance.Date,
+   
+    Priority = '3',
+    Type = 'B',
+    )
+    q.save()
+    return redirect('Timetable:EditEvent',pk=q.id)
+    
+def ExamToEvent(request,pk):
+    instance=get_object_or_404(InstructorExam, pk=pk)
+    q= Event(UserProfile=request.user.profile,
+    CreaterType ='3',
+    CreaterId =pk ,
+    name = instance.name,
+    Description = instance.Description,
+    Venue = instance.Venue,
+    
+    Duration = instance.EndTime- instance.StartTime,
+    ScheduledStartTime = instance.StartTime ,
+    ScheduledEndTime = instance.Event,
+    TimeSettings = 'B',
+    
+    Priority = '4',
+    Type = 'B'
+    )
+    q.save()
+    return redirect('Timetable:EditEvent',pk=q.id)
+
+def ExamPrepToEvent(request,pk):
+	instance=get_object_or_404(InstructorExam, pk=pk)
+	Start= datetime.combine(instance.Date,instance.StartTime)
+	End=Start-timedelta(days=1)
+	q= Event(UserProfile = request.user.profile,
+	CreaterType = '4',
+	CreaterId = pk,
+	name = instance.name + "Preparation",
+	Description = instance.Description,
+	
+	StartTime = (Start-timedelta(days=2)).time(),
+	StartDate = (Start-timedelta(days=2)).date(),
+	
+	TimeSettings = 'C',
+	EndTime = End.replace(hour=23,minute=30).time(),
+	EndDate = End.date(),
+	DeadLineTime = Start.replace(hour=2,minute=0).time(),
+	DeadLineDate = Start.date(),
+	Priority = '4',
+	Type = 'B')
+	q.save()
+	return redirect('Timetable:EditEvent',pk=q.id)
+	 
+
+
+
 
