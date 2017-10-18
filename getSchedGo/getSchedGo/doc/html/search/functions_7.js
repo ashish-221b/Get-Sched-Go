@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['index',['index',['../namespaceEvent__suggestion_1_1views.html#aeeddee0039963002a8e054fe800cef71',1,'Event_suggestion::views']]]
+  ['home',['home',['../namespaceprofiles_1_1views.html#a0e60398aa12ab33b3fd11e1e87dbb8a0',1,'profiles::views']]]
 ];

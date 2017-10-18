@@ -1,20 +1,9 @@
 var searchData=
 [
-  ['admin',['admin',['../namespaceprofiles_1_1admin.html',1,'profiles']]],
-  ['apps',['apps',['../namespaceprofiles_1_1apps.html',1,'profiles']]],
-  ['forms',['forms',['../namespaceprofiles_1_1forms.html',1,'profiles']]],
-  ['models',['models',['../namespaceprofiles_1_1models.html',1,'profiles']]],
-  ['past_5fyears',['past_years',['../namespaceTimetable_1_1forms.html#a4af0bb23874a094ad7dd2dc09f924c42',1,'Timetable::forms']]],
-  ['preparationduration',['PreparationDuration',['../classTimetable_1_1models_1_1InstructorExam.html#aa762dcd26595ad1bf6cc7e361b6940d0',1,'Timetable::models::InstructorExam']]],
-  ['prescribedstudyhours',['PrescribedStudyHours',['../classcourses_1_1models_1_1coursedetail.html#a02223dcd8341b9f202a17d08fe079282',1,'courses::models::coursedetail']]],
-  ['priority',['Priority',['../classEvent__suggestion_1_1models_1_1suggestion.html#a3bcf2e84c25ad2c81f42731e6d45db56',1,'Event_suggestion.models.suggestion.Priority()'],['../classTimetable_1_1models_1_1Event.html#a2d4e6e1819ff670b068418c7e7f9b030',1,'Timetable.models.Event.Priority()']]],
-  ['priority_5foptions',['Priority_Options',['../namespaceEvent__suggestion_1_1forms.html#ae0ee75286c8408a63046b0fabfc8dd6f',1,'Event_suggestion.forms.Priority_Options()'],['../namespaceEvent__suggestion_1_1models.html#a7f9580b95bf99fb8f850c65544f53426',1,'Event_suggestion.models.Priority_Options()'],['../namespaceTimetable_1_1forms.html#a553ad34240a528cecce56d6a1f4267e5',1,'Timetable.forms.Priority_Options()'],['../namespaceTimetable_1_1models.html#ae489395ae15eda99e8373dca59056f53',1,'Timetable.models.Priority_Options()'],['../namespaceTimetable_1_1schedule.html#a0a5242f6c05c7b95a02f4fc8dd6f2765',1,'Timetable.schedule.Priority_Options()']]],
-  ['prioritymat',['PriorityMat',['../namespaceTimetable_1_1PrMatScore.html#a293eb3ead83ea7f346cfa28ea1d605bb',1,'Timetable::PrMatScore']]],
-  ['prmatscore_2epy',['PrMatScore.py',['../PrMatScore_8py.html',1,'']]],
-  ['profile',['profile',['../classprofiles_1_1models_1_1profile.html',1,'profiles::models']]],
-  ['profileadmin',['profileAdmin',['../classprofiles_1_1admin_1_1profileAdmin.html',1,'profiles::admin']]],
-  ['profiles',['profiles',['../namespaceprofiles.html',1,'']]],
-  ['profilesconfig',['ProfilesConfig',['../classprofiles_1_1apps_1_1ProfilesConfig.html',1,'profiles::apps']]],
-  ['tests',['tests',['../namespaceprofiles_1_1tests.html',1,'profiles']]],
-  ['views',['views',['../namespaceprofiles_1_1views.html',1,'profiles']]]
+  ['name',['name',['../classEvent__suggestion_1_1apps_1_1EventSuggestionConfig.html#a4b00864b14aeb52b304bd86deb5466e3',1,'Event_suggestion.apps.EventSuggestionConfig.name()'],['../classprofiles_1_1apps_1_1ProfilesConfig.html#ae4a549edec02587ca86bd547975f5f5e',1,'profiles.apps.ProfilesConfig.name()'],['../classprofiles_1_1forms_1_1SimpleForm.html#a27db91136cd11af5441ac0a5df111c24',1,'profiles.forms.SimpleForm.name()'],['../classprofiles_1_1models_1_1profile.html#aa33b7b8c3235c07c5e71c7a58c13c16c',1,'profiles.models.profile.name()'],['../classstatistics_1_1apps_1_1StatisticsConfig.html#aa1f07cd3b57a9bb18ab2fd41fd937af6',1,'statistics.apps.StatisticsConfig.name()'],['../classTimetable_1_1apps_1_1TimetableConfig.html#a5e2f67809f3525ce1ca8c41a9fb83d6a',1,'Timetable.apps.TimetableConfig.name()'],['../classTimetable_1_1models_1_1DailySched.html#ac6ba7d5a39e3d85d102b1e6bee3deb28',1,'Timetable.models.DailySched.name()'],['../classTimetable_1_1models_1_1Event.html#a774e00d377c679749ab116b28816529b',1,'Timetable.models.Event.name()'],['../classTimetable_1_1models_1_1InstructorExam.html#a48cd7517f1628975472ef83904920218',1,'Timetable.models.InstructorExam.name()'],['../classTimetable_1_1models_1_1InstructorClass.html#a215826a11f8c099d0691884b0c045b8d',1,'Timetable.models.InstructorClass.name()'],['../classTimetable_1_1models_1_1InstructorAssignment.html#a88f88adb93da287ea6257d10f644deba',1,'Timetable.models.InstructorAssignment.name()'],['../classcourses_1_1apps_1_1CoursesConfig.html#aa9d8ba01b9ecf36c212bb500e42e2fc9',1,'courses.apps.CoursesConfig.name()'],['../classcourses_1_1models_1_1coursedetail.html#a1790df7e26de965bd7c457c2757e1222',1,'courses.models.coursedetail.name()']]],
+  ['nbaenthu',['NBAenthu',['../classprofiles_1_1forms_1_1SimpleForm.html#a791fd8196dfe174afb185e8f0357d807',1,'profiles.forms.SimpleForm.NBAenthu()'],['../classprofiles_1_1models_1_1profile.html#afc2a9d06cde3a75d3706077e9c1ba28d',1,'profiles.models.profile.NBAenthu()']]],
+  ['newvariableevent',['NewVariableEvent',['../namespaceTimetable_1_1schedule.html#a3dec946c9e2d51e3995bcd0c2beb3bc2',1,'Timetable::schedule']]],
+  ['newvariableevent1',['NewVariableEvent1',['../namespaceTimetable_1_1schedule.html#a0b527691f9d6cd5606c81f7c55245836',1,'Timetable::schedule']]],
+  ['nightmat',['NightMat',['../namespaceTimetable_1_1PrMatScore.html#a3f24e640773eae2ce3c0240e1699877f',1,'Timetable::PrMatScore']]],
+  ['now',['now',['../namespaceEvent__suggestion_1_1views.html#ae89e8020076ee1ad19b887aea5efbb82',1,'Event_suggestion::views']]]
 ];

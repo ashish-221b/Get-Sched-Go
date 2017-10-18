@@ -5,17 +5,28 @@ from .models import profile
 # Create your views here.
 # main page url is ^$. No special context to be displayed
 
+## This view is the home of the web app.
+# @details Most data displayed is static and hence a blank context is passed.
+# template home.html uses django html parsing tricks to achieve different 
+# content to different users.
 def home(request):
 	context = {}
 	template = 'home.html'
 	return render(request,template,context)
 
-# Just a random page to be filled by Deba
+## A view that would brief user about the application
 def about(request):
 	context = {}
 	template = 'about.html'
 	return render(request,template,context)
 
+## This view asks user to fill profile details
+# @details This view uses the form created in form.py instanciated with current 
+# profile of user and asks user to fill/ change the values
+# If user submits the form, it redirects to the same view with a post request
+# that post request is saved which edits the value of fields of user's profile 
+# in database
+# login_required cap is added to ensure that 
 # Anything below this redirects to accounts/login if user is not authenticated
 @login_required 
 def userProfile(request):

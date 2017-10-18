@@ -7,7 +7,6 @@ Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','I
 # It is used to store the data received from the api endpoints. Each match becomes a suggestion model 
 # instance.
 class suggestion(models.Model):
-	
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE,null=True)
 	StartTime = models.TimeField(null=True, blank= False)
 	EndTime = models.TimeField(null=True, blank= False)

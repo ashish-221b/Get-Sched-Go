@@ -42,7 +42,9 @@
                 <li><a href="{% url 'statistics:EventBeforeDate' %}">Give Completion Data</a>
               </ul>
             </li>
-
+            {% url 'statistics:googleConnector' as googl%} 
+<li  {% if request.path == googl %} class="active"{% endif %}>        <a href="{% url 'statistics:googleConnector' %}"><img src="https://calendar.google.com/googlecalendar/images/favicon_v2014_18.ico"></a>
+</li>
             {% if request.user.profile.instructor %}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create Student Event<span class="caret"></span></a>

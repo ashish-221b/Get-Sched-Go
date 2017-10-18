@@ -7,6 +7,7 @@ var searchData=
   ['dailystatsadmin',['dailyStatsAdmin',['../classstatistics_1_1admin_1_1dailyStatsAdmin.html',1,'statistics::admin']]],
   ['date',['Date',['../classTimetable_1_1models_1_1InstructorExam.html#a632313b267299b3374bf86838b81f4ce',1,'Timetable.models.InstructorExam.Date()'],['../classTimetable_1_1models_1_1InstructorClass.html#a93d7f8dc40544f71ef1b9ead30fe03c5',1,'Timetable.models.InstructorClass.Date()']]],
   ['day_5fsched',['Day_Sched',['../classTimetable_1_1models_1_1Slots.html#a16ad17531e152e0661b601658c47a157',1,'Timetable::models::Slots']]],
+  ['daymat',['dayMat',['../namespaceTimetable_1_1PrMatScore.html#ac8c7a1429724317c8d6ee5d10ec18964',1,'Timetable::PrMatScore']]],
   ['deadlinedate',['DeadLineDate',['../classTimetable_1_1models_1_1Event.html#af6ab6e49e7feda614d433c6f224c337e',1,'Timetable.models.Event.DeadLineDate()'],['../classTimetable_1_1models_1_1InstructorAssignment.html#a44347cd7e7a96f8a8c7ed68ca63fbf08',1,'Timetable.models.InstructorAssignment.DeadLineDate()']]],
   ['deadlinetime',['DeadLineTime',['../classTimetable_1_1models_1_1Event.html#ac304261e5d4682f87b09c40c7ee9db03',1,'Timetable.models.Event.DeadLineTime()'],['../classTimetable_1_1models_1_1InstructorAssignment.html#a6decd0faec3c1764e6fa139946f94a61',1,'Timetable.models.InstructorAssignment.DeadLineTime()']]],
   ['defaultdeadline',['defaultDeadLine',['../namespaceTimetable_1_1models.html#a6b1be2b87de430a3f0820a4908c608fd',1,'Timetable::models']]],
