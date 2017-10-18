@@ -65,11 +65,11 @@ It is just as if part of content in block of actually in base.html -->
    <div class="row event-holder" id="event{{ forloop.counter }}" style="font-family: 'Alegreya SC';font-size: 24px;">
    <div class="col-md-8">
          <h3> {{ Class.name }} </h3>
-         <h4> From : {{Class.StartDate }} {{ Class.StartTime }} </h4>
-         <h4> To : {{ Class.EndDate }} {{ Class.EndTime }} </h4>
+         <h4> On : {{Class.Date }} </h4>
+         <h4> From {{ Class.StartTime }} To {{ Class.EndTime }} </h4>
          <h4> At : {{ Class.Venue }} </h4>
       </div>
-      
+
     </div>
    {% endfor %}
 </p>
