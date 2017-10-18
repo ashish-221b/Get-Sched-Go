@@ -237,10 +237,9 @@ def ClassToEvent(request,pk):
     ScheduledEndTime = instance.EndTime,
     TimeSettings = 'B',
     EndDate = instance.Date,
-   
+
     Priority = '3',
     Type = 'B',
     )
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
-    
