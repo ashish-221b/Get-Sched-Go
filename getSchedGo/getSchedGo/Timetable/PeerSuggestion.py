@@ -1,5 +1,6 @@
 from .models import *
 import collections
+## function to get data for peer suggestion for assignment and exam prep events
 def getDuration(Type,Id):
     targetEvents = Event.objects.filter(CreatorType=Type,CreatorId=Id)
     DurationData = []

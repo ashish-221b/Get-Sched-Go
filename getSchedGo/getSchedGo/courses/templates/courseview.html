@@ -108,9 +108,17 @@
 	 <h4> Preparation : {{ Exam.PreparationDuration }}
 		</div>
 		<div class="col-md-4" >
+    {% if added == 0 %}
 		<a href="{% url 'courses:ExamToEvent' Exam.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
+    {% else %}
+    added
+    {% endif %}
+    {% if prep == 0 %}
 		<a href="{% url 'courses:ExamPrepToEvent' Exam.id %}" class="shaker"><span class="glyphicon glyphicon-calendar"></span></a>
-		</div>
+    {% else %}
+    added
+    {% endif %}
+    </div>
 	</div>
  {% endfor %}
 </p>
@@ -132,8 +140,11 @@
 	 <h4> At : {{ Class.Venue }} </h4>
 		</div>
 		<div class="col-md-4" >
+    {% if added == 0 %}
 		<a href="{% url 'courses:ClassToEvent' Class.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
-
+    {% else %}
+    added
+    {% endif %}
 		</div>
 	</div>
  {% endfor %}
