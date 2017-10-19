@@ -10,11 +10,28 @@ It is just as if part of content in block of actually in base.html -->
 <div align="center" class="alert alert-success">Hi {{ user }}</div>
 <div class="row">
 <div class="col-md-5 col-md-offset-1">
-
-	 <form method="post">
+<script type="text/javascript">
+	function validateMe(){
+		var name = document.forms["eventForm"]["id_name"].value;
+		var Description = document.forms["eventForm"]["id_Description"].value;
+		var Venue = document.forms["eventForm"]["id_Venue"].value;
+		var StartTime = document.forms["eventForm"]["id_StartTime"].value;
+		var Duration = document.forms["eventForm"]["id_Duration"].value;
+		var TimeSettings = document.forms["eventForm"]["id_TimeSettings"].value;
+		var EndTime = document.forms["eventForm"]["id_EndTime"].value;
+		if (x == "ram"){
+			alert("name Needed");
+			return false;
+		}
+	}
+</script>
+	 <form onsubmit="return validateMe()" method="post" id="eventForm">
 			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
 			{% for field in form %}<!-- making a loop across form to break it into 2-3 forms -->
 				{{ field|as_crispy_field }}
+<!-- 				{% if field.error %}
+				<label class='error' for='id_{{ field.name }}' generated="true">{{ field.errors|join:". " }}</label>
+				{% endif %} -->
 				{% if forloop.counter|divisibleby:"6" and not forloop.counter|divisibleby:"10"  %}
 				<!-- Forloop counter if true makes a division heading that divides form -->
 </div>
@@ -46,8 +63,26 @@ setTimeout(function() {
 };
 </script>
 {% else %}
+<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
+
 <script type="text/javascript">
 $(document).ready(function(){
+	// 	$("#eventForm").validate({
+	// 	rules :{
+	// 		id_name :{
+	// 		required : true ,
+	// 		minlength : 5
+	// 	}
+	// 	},
+	// 	messages :{
+	// 		id_name :{
+	// 			required : 'hushud' ,
+	// 			minlength : "fsay"
+	// 		}
+	// 	}
+	// });
 	toggleFields();
 	$("#id_TimeSettings").change(function(){
 		toggleFields();

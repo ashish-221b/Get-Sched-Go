@@ -56,16 +56,16 @@ def CreateEvent(request,pk=-1):
                 Assign.addStudentData(Eve.Duration)
             return redirect('Timetable:EventList')
     else:
+        dataList = []
         if(pk==-1):
             form = EventForm()
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(instance=prev)
-        dataList = []
-        if(prev.CreatorType=='1'):
-            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
-        if(prev.CreatorType=='4'):
-            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
+            if(prev.CreatorType=='1'):
+                dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
+            if(prev.CreatorType=='4'):
+                dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
         context = {'user': user, 'form': form, 'dataList': dataList}
         template = 'CreateEvent.html'
         return render(request,template,context)
