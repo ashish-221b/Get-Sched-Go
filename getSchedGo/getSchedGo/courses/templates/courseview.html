@@ -65,7 +65,7 @@
 {% block content %}
 {% if AssignmentList %}
 <p>
- {% for Assignment in AssignmentList %}
+ {% for Assignment,added in AssignmentList %}
  <!-- {% if Event.ScheduledStartTime %}
  <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
  {% else %}
@@ -79,7 +79,11 @@
 			 <h4> DeadLine : {{ Assignment.DeadLineDate }} {{ Assignment.DeadLineTime }} </h4>
 		</div>
 		<div class="col-md-4" >
+      {% if added == 0 %}
 		<a href="{% url 'courses:AssignmentToEvent' Assignment.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
+      {% else %}
+      Added
+      {% endif %}
 			 </div>
 	</div>
  {% endfor %}
@@ -89,7 +93,7 @@
 
 {% if ExamList %}
 <p>
- {% for Exam in ExamList %}
+ {% for Exam,added,prep in ExamList %}
  <!-- {% if Event.ScheduledStartTime %}
  <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
  {% else %}
@@ -114,7 +118,7 @@
 
 {% if ClassList %}
 <p>
- {% for Class in ClassList %}
+ {% for Class,added in ClassList %}
  <!-- {% if Event.ScheduledStartTime %}
  <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
  {% else %}
@@ -129,7 +133,7 @@
 		</div>
 		<div class="col-md-4" >
 		<a href="{% url 'courses:ClassToEvent' Class.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
-		
+
 		</div>
 	</div>
  {% endfor %}

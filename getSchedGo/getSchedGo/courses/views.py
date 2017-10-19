@@ -6,22 +6,6 @@ from profiles.models import profile
 from Timetable.models import *
 from Timetable.PeerSuggestion import getDuration
 # Create your views here.
-@login_required
-def EventList(request,pk=-1):
-    user = request.user
-    if(pk==-1 or pk=='0'):
-        List = Event.objects.filter(UserProfile=user.profile)
-    elif(pk == '2'):
-        List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None)
-        print(List)
-    elif(pk == '3'):
-        List = Event.objects.filter(UserProfile=user.profile,ScheduledStartTime__isnull=True)
-    else:
-        print(pk)#now if more wanted then add pk=='3' so on
-        List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime')
-    context = {'user': user,'List': List}
-    template = 'EventList.html'
-    return render(request,template,context)
 def CourseView(request,pk1='nan',pk2='nan'):
     user=request.user
     CourseList=coursedetail.objects.filter(Student = user.profile)
@@ -46,6 +30,24 @@ def CourseView(request,pk1='nan',pk2='nan'):
     elif(pk2=='e'):
         ClassList=[]
         AssignmentList=[]
+    supportAssign = []
+    for assign in AssignmentList:
+        i=Event.objects.filter(UserProfile = user.profile,CreatorType='1',CreatorId=assign.id).count()
+        supportAssign.append(i)
+    supportClass = []
+    for Class in ClassList:
+        i=Event.objects.filter(UserProfile = user.profile,CreatorType='2',CreatorId=Class.id).count()
+        supportClass.append(i)
+    supportExam = []
+    supportExamPrep = []
+    for Exam in ExamList:
+        i=Event.objects.filter(UserProfile = user.profile,CreatorType='3',CreatorId=Exam.id).count()
+        j=Event.objects.filter(UserProfile = user.profile,CreatorType='4',CreatorId=Exam.id).count()
+        supportExam.append(i)
+        supportExamPrep.append(j)
+    AssignmentList = zip(AssignmentList,supportAssign)
+    ClassList = zip(ClassList,supportClass)
+    ExamList = zip(ExamList,supportExam,supportExamPrep)
     context = {'user': user,'CourseList': CourseList, 'AssignmentList': AssignmentList, 'ClassList': ClassList, 'ExamList': ExamList,'pk1': pk1,'pk2': pk2}
     print(CourseList)
     print(AssignmentList)
@@ -94,8 +96,6 @@ def Enrollmentview(request):
         form = CourseForm()
         return render(request,template,{'form': form,})
 
-
-
 @login_required
 def SelectCourse(request,pk=-1):
     template = 'selectcourse.html'
@@ -143,8 +143,6 @@ def AssignmentToEvent(request, pk):
     Type = 'B')
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
-
-
 
 def ClassToEvent(request,pk):
     instance=get_object_or_404(InstructorClass, pk=pk)
@@ -208,7 +206,7 @@ def ExamToEvent(request,pk):
     q.save()
     print(q.Duration)
     # print(((datetime.min+ (datetime.combine(datetime.min,instance.EndTime)-datetime.combine(datetime.min,instance.StartTime))).time()).strftime('%H:%M/%S'))
-    
+
     return redirect('Timetable:EditEvent',pk=q.id)
 
 def ExamPrepToEvent(request,pk):
