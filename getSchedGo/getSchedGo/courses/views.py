@@ -4,7 +4,7 @@ from .models import coursedetail
 from .forms import CourseForm
 from profiles.models import profile
 from Timetable.models import *
-
+from Timetable.PeerSuggestion import getDuration
 # Create your views here.
 @login_required
 def EventList(request,pk=-1):

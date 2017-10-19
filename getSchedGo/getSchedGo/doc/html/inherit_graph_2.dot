@@ -3,15 +3,15 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="AppConfig",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="courses.apps.CoursesConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcourses_1_1apps_1_1CoursesConfig.html"];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="Event_suggestion.apps.Event\lSuggestionConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEvent__suggestion_1_1apps_1_1EventSuggestionConfig.html"];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="profiles.apps.ProfilesConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classprofiles_1_1apps_1_1ProfilesConfig.html"];
-  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="statistics.apps.Statistics\lConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classstatistics_1_1apps_1_1StatisticsConfig.html"];
-  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="Timetable.apps.Timetable\lConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1apps_1_1TimetableConfig.html"];
+  Node46 [label="AppConfig",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node46 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="courses.apps.CoursesConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcourses_1_1apps_1_1CoursesConfig.html"];
+  Node46 -> Node48 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node48 [label="Event_suggestion.apps.Event\lSuggestionConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEvent__suggestion_1_1apps_1_1EventSuggestionConfig.html"];
+  Node46 -> Node49 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node49 [label="profiles.apps.ProfilesConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classprofiles_1_1apps_1_1ProfilesConfig.html",tooltip="specifies that the name of this app is profiles "];
+  Node46 -> Node50 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node50 [label="statistics.apps.Statistics\lConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classstatistics_1_1apps_1_1StatisticsConfig.html",tooltip="This is auto-generate django-python file that currently stores the name of app for server to recognis..."];
+  Node46 -> Node51 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node51 [label="Timetable.apps.Timetable\lConfig",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1apps_1_1TimetableConfig.html"];
 }

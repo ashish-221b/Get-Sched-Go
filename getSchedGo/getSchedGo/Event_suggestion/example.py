@@ -40,24 +40,3 @@ def matcheschedule(userprofile):
 			q= suggestion(UserProfile=userprofile,StartDate=s[0:10],StartTime=s[11:17],Hometeam=match['homeTeamName'],Awayteam=match['awayTeamName'],League=dict[match['competitionId']])
 		
 			q.save()
-		
-
-
-
-
-
-	
-# fixtures= response['fixtures']
-
-# # for match in fixtures:
-# # 	if match['homeTeamName'] in list:
-# # 		print( match['hometeamName'] ,match['date'])
-# # 	elif match['awayTeamName'] in list:
-# # 		print(match['awayTeamName'],match['date'])
-
-
-
-
-# for match in fixtures:
-	
-# 	print(match['date'],match['homeTeamName'],"\t",match['awayTeamName'])

@@ -4,10 +4,10 @@ digraph "Graphical Class Hierarchy"
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
   Node1 [label="ModelForm",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="Event_suggestion.forms.suggestionForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEvent__suggestion_1_1forms_1_1suggestionForm.html"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="Event_suggestion.forms.suggestionForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEvent__suggestion_1_1forms_1_1suggestionForm.html",tooltip="A form which was used to call API during Beta testing. "];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="profiles.forms.SimpleForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classprofiles_1_1forms_1_1SimpleForm.html"];
+  Node3 [label="profiles.forms.SimpleForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classprofiles_1_1forms_1_1SimpleForm.html",tooltip="A model form that through meta get linked to profile imported from .models This model form is a class..."];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="Timetable.forms.EventForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1forms_1_1EventForm.html"];
   Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

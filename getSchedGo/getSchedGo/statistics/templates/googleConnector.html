@@ -2,11 +2,30 @@
 {% load staticfiles %}
 {% block content %}
 
-<a href="{% url 'statistics:AheadOfTime' %}">CLICK TO Generate CSV to export to calender</a><br>
+<p class="lead" style="font-size: 12pt; padding: 0rem 2rem ; text-align: center;"><a href="{% url 'statistics:AheadOfTime' %}">CLICK TO Generate CSV to export to calender</a></p>
 
-
-<a href="https://calendar.google.com/calendar/render#settings-calendars_9">CLICK HERE TO add CSV from your PC to google calender</a>
+<style type="text/css">
+	.starter-template {
+  padding: 0.3rem 1.5rem;
+  text-align: center;
+}
+</style>   
 {% if text %}
-<iframe src="https://calendar.google.com/calendar/embed?src={{ text }}%40gmail.com&ctz=Asia/Calcutta" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<div class="container starter-template">
+	<iframe src="https://calendar.google.com/calendar/embed?title=Your%20Schedule%20is%20Served&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=500&amp;wkst=2&amp;bgcolor=%23c0c0c0&amp;src={{ text }}%40gmail.com&amp;color=%2329527A&amp;src=en.indian%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=Asia%2FCalcutta" style="border:solid 1px #777" width="800" height="500" frameborder="0" scrolling="no"></iframe>
+</div>
 {% endif %}
+
+
+ <div class="container">
+      <div class="starter-template">
+        <h1><a href="https://calendar.google.com/calendar/r/settings/export">Add CSV from your PC to google calender</a>
+</h1>
+        <p class="lead">In the Google Calender window upload the file downlaoded from this website in the import calender option<br> 
+        	For a detailed help. <a href="https://support.google.com/calendar/answer/37118?hl=en">here</a></p>
+      </div>
+
+    </div>
+
+
 {% endblock %}

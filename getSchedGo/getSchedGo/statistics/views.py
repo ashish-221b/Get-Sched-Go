@@ -8,6 +8,15 @@ from django.views.static import serve
 import os
 import re
 # Create your views here.
+
+## TodayStats is the basic statistics view which displays what user has done over past days
+# @param request basic call for a view in django
+# @param pk contains key for whether asked statistics of yesterday or today 
+# @details This supplies a dictionary filled with data to basicStatistics.html which displays to user all his data over past days
+# depending of selection from dropdown list available on html page
+#
+# Also there is a call for function updateStats to recalculate number of scheduled and completed slots over that day.
+# All the calculation of percentage for statistics display is gone in this view itself
 @login_required
 def TodayStats(request,pk=-1):
 	if pk=='1' :
@@ -70,6 +79,14 @@ def TodayStats(request,pk=-1):
 	template = 'basicStatistics.html'
 	return render(request,template,context)
 
+## EventBeforeDate is the  view which displays what all events that were scheduled to be done by user
+# @param request basic call for a view in django
+# @details This page in general displays all scheduled event whose end-Time is less than the current Time
+# also with options to either mark it completed if user has done it or delete the event, or resvhedule them sometime in the future
+#
+# This view is the feedback system gets from the user about the user which helps application give proper statistics of the past 
+# and efficiency of the user
+
 @login_required
 def EventBeforeDate(request):
 	user = request.user
@@ -78,6 +95,14 @@ def EventBeforeDate(request):
 	# print(List)
 	template = 'basicfeedback.html'
 	return render(request,template,context)
+
+## AheadOfTime is the intermediate view which serves events of user as CSV
+# @param request basic call for a view in django
+# @details This view gets all events list scheduled to start after current time.
+# This helps system generate a csv file of all these events 
+#
+# Further this csv file can be exported to any external calender app. 
+# serving the file will download the file in user's local system which he can use further
 
 @login_required
 def AheadOfTime(request):
@@ -107,6 +132,12 @@ def AheadOfTime(request):
 	return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 	#return redirect("statistics:EventBeforeDate")
 
+## googleConnector is the  view which has link to view for generating CSV
+# @param request basic call for a view in django
+# @details This view provides user's gmail id , if he has one , to the it's template where we have an iframe
+# which will display his current status of google calendar
+# 
+# Also a link is provided where he can directly upload the CSV file downloaded earlier to get the changes in Google Calendar
 @login_required
 def googleConnector(request):
 	print(request.user.email)
@@ -120,7 +151,9 @@ def googleConnector(request):
 	return render(request,'googleConnector.html',{'text': text})
 
 
-
+## CompletedList is the view which lists events of user that he has marked aas completed
+# @param request basic call for a view in django
+# @details This view gets all events list completed by user 
 @login_required
 def CompletedList(request):
 	user = request.user
@@ -129,7 +162,9 @@ def CompletedList(request):
 	# print(List)
 	template = 'basicfeedback.html'
 	return render(request,template,context)
-
+## MarkItCompleted is the intermediate view called by view EventBeforeDate to change the completed field of a view
+# @param request basic call for a view in django which provides who is current user 
+# @param pk EventID whose field named Completed needs to be change 
 @login_required
 def MarkItCompleted(request,pk):
 	ToBeChanged = get_object_or_404(Event,pk=pk)
@@ -159,9 +194,9 @@ def MarkItCompleted(request,pk):
 
 
 
-
-
-
+## updateStats is a function to update all the data of a day statistics
+# @param statsToChange the stats model needing a refreshing
+# @detail using the date it was linked to, we sweep across the linked day and change the value of each field in stats object passed as parameter
 def updateStats(statsToChange):
 	dailysched = statsToChange.linkedDay
 	slotList = Slots.objects.filter(Day_Sched=dailysched,)
