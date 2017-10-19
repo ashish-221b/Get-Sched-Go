@@ -8,12 +8,17 @@ from profiles.models import createSched
 from .EventPicker import eventList
 from django.contrib import messages
 from .PeerSuggestion import getDuration
+## view to Create/Edit Event
+# @details Saves a new event, Edit an existing events, Schedules event on form submission
 @login_required
 def CreateEvent(request,pk=-1):
     user = request.user
+    ## When Submit is pressed
     if request.method == 'POST':
+        # If new event
         if(pk==-1):
             form = EventForm(request.POST)
+        # If event exists. This block deschedules it first to free up the slots
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(request.POST, instance = prev)
@@ -27,6 +32,7 @@ def CreateEvent(request,pk=-1):
             Eve = form.save(commit=False)
             Eve.UserProfile = user.profile
             Eve.save()
+            ## Code here onwards handles issues regarding Scheduling
             if Eve.TimeSettings=='B':
                 a=fixedScheduleAdder(Eve,user)
                 if a == 2:
@@ -45,15 +51,19 @@ def CreateEvent(request,pk=-1):
                 a=NewVariableEvent1(Eve,user)
                 print(a)
             return redirect('Timetable:EventList')
+    # When Edit or create button is pressed
     else:
         template = 'CreateEvent.html'
+        # for new events
         if(pk==-1):
             form = EventForm()
             context = {'user': user, 'form': form}
+        # for existing events and event created using Course events and Suggestion API
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(instance=prev)
             context = {'user': user, 'form': form}
+            # collects Peer Duration data for assignments and exam prearation events
             if((prev.CreatorType=='4')or(prev.CreatorType=='1')):
                 dataList = []
                 dataList,freqList,mean = getDuration(prev.CreatorType,prev.CreatorId)
@@ -62,9 +72,11 @@ def CreateEvent(request,pk=-1):
                 context = {'user': user, 'form': form, 'freqList': freqList.items(),'mult': multiplier}
                 template = 'CreateEventSpecial.html'
         return render(request,template,context)
+## Displays Event List
 @login_required
 def EventList(request,pk=-1):
     user = request.user
+    # Various Filters
     if(pk==-1 or pk=='0'):
         List = Event.objects.filter(UserProfile=user.profile)
     elif(pk == '2'):
@@ -79,10 +91,12 @@ def EventList(request,pk=-1):
     template = 'EventList.html'
     print(List)
     return render(request,template,context)
+## For displaying Schedule in timetable
 @login_required
 def Schedules(request):
     user=request.user
     SchedList = []
+    # Gets DayScheds (Day containers) and Creates them if they doesn't exist
     for i in range(-3,4):
         createSched(date.today() + timedelta(days=i),user.profile)
         Day = get_object_or_404(DailySched, UserProfile = user.profile, Active_day = (date.today() + timedelta(days=i)))
@@ -94,6 +108,7 @@ def Schedules(request):
     context = {'user': user, 'range': range(0,24),'SchedList': SchedList}
     template = 'todayschedule.html'
     return render(request,template,context)
+## Delete an event
 @login_required
 def DeleteEvent(request,pk):
     ToBeRemoved = get_object_or_404(Event,pk=pk)
@@ -103,6 +118,7 @@ def DeleteEvent(request,pk):
         slot.save()
     ToBeRemoved.delete()
     return redirect('Timetable:EventList')
+## Deschedule an Event
 @login_required
 def DescheduleEvent(request,pk):
     ToBeDescheduled = get_object_or_404(Event,pk=pk)
@@ -116,6 +132,7 @@ def DescheduleEvent(request,pk):
     ToBeDescheduled.save()
     return redirect('Timetable:EventList')
 @login_required
+## Create Assignment for a Course
 def CreateAssignment(request):
     user = request.user
     if (request.user.profile.instructor):
@@ -133,6 +150,7 @@ def CreateAssignment(request):
             return render(request,template,context)
     else:
         return redirect('home')
+## Create Class for a Course
 @login_required
 def CreateClass(request):
     user = request.user
@@ -151,7 +169,7 @@ def CreateClass(request):
             return render(request,template,context)
     else:
         return redirect('home')
-
+## Create Exam for a Course
 @login_required
 def CreateExam(request):
     user = request.user
@@ -170,7 +188,7 @@ def CreateExam(request):
             return render(request,template,context)
     else:
         return redirect('home')
-
+## Display Assignment for a Course by the instructor
 @login_required
 def Assignments(request,pk=-1):
     user = request.user
@@ -186,6 +204,7 @@ def Assignments(request,pk=-1):
     context = {'user': user,'List': List}
     template = 'Assignment.html'
     return render(request,template,context)
+## Display Class for a Course by the instructor
 @login_required
 def Classes(request,pk=-1):
     user = request.user
@@ -202,7 +221,7 @@ def Classes(request,pk=-1):
     context = {'user': user,'List': List}
     template = 'class.html'
     return render(request,template,context)
-
+## Display Exam for a Course by the instructor
 @login_required
 def Exams(request,pk=-1):
     user = request.user
@@ -219,26 +238,3 @@ def Exams(request,pk=-1):
     context = {'user': user,'List': List}
     template = 'exam.html'
     return render(request,template,context)
-
-def ClassToEvent(request,pk):
-    instance=get_object_or_404(suggestion, pk=pk)
-
-    q= Event(UserProfile=request.user.profile,
-    CreaterType = '2',
-    CreaterId = pk,
-    name = instance.name,
-    Description = instance.Description,
-    Venue = instance.Venue,
-    StartTime = instance.StartTime,
-    StartDate = instance.Date,
-    Duration = instance.EndTime-instance.StartTime,
-    ScheduledStartTime = instance.StartTime,
-    ScheduledEndTime = instance.EndTime,
-    TimeSettings = 'B',
-    EndDate = instance.Date,
-
-    Priority = '3',
-    Type = 'B',
-    )
-    q.save()
-    return redirect('Timetable:EditEvent',pk=q.id)

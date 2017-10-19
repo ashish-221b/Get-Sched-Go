@@ -7,8 +7,8 @@ dl {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100%;
-  max-width: 700px;
+  /*width: 100%;
+  max-width: 700px;*/
   position: relative;
   padding: 20px;
 }
@@ -35,20 +35,20 @@ dt {
       -ms-flex-align: center;
           align-items: center;
   height: 40px;
-  width: 130px;
+  width: 200px;
   background-color: white;
   position: absolute;
   left: 0;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: flex-end;
+          /*justify-content: flex-end;*/
 }
 
 .percentage {
   font-size: .8em;
   line-height: 1;
   text-transform: uppercase;
-  /*width: 100%;*/
+  width: 80%;
   height: 40px;
   margin-left: 130px;
   background: -webkit-repeating-linear-gradient(left, #ddd, #ddd 1px, #fff 1px, #fff 5%);
@@ -474,7 +474,6 @@ dt {
 }
 .graph{
   width: 1000px;
-  margin: 0px;
 }
 
 
