@@ -53,15 +53,14 @@ def CreateEvent(request,pk=-1):
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(instance=prev)
-            dataList = []
-            if(prev.CreatorType=='1'):
+            context = {'user': user, 'form': form}
+            if((prev.CreatorType=='4')or(prev.CreatorType=='1')):
+                dataList = []
                 dataList,freqList,mean = getDuration(prev.CreatorType,prev.CreatorId)
-            if(prev.CreatorType=='4'):
-                dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
-            maximum = max(freqList, key=freqList.get)
-            multiplier=100//freqList[maximum]
-            context = {'user': user, 'form': form, 'freqList': freqList.items(),'mult': multiplier}
-            template = 'CreateEventSpecial.html'
+                maximum = max(freqList, key=freqList.get)
+                multiplier=100//freqList[maximum]
+                context = {'user': user, 'form': form, 'freqList': freqList.items(),'mult': multiplier}
+                template = 'CreateEventSpecial.html'
         return render(request,template,context)
 @login_required
 def EventList(request,pk=-1):
