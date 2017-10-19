@@ -16,6 +16,6 @@ urlpatterns = [
     url(r"^(?P<pk>[0-9]+)/converttoevent$", views.AssignmentToEvent, name="AssignmentToEvent"),
     url(r"^(?P<pk>[0-9]+)/classtoevent$", views.ClassToEvent, name="ClassToEvent"),
     url(r"^(?P<pk>[0-9]+)/examtoevent$", views.ExamToEvent, name="ExamToEvent"),
-    url(r"^(?P<pk>[0-9]+)/examppreptoevent$", views.ClassToEvent, name="ExamPrepToEvent"),
+    url(r"^(?P<pk>[0-9]+)/examppreptoevent$", views.ExamPrepToEvent, name="ExamPrepToEvent"),
 
 ]

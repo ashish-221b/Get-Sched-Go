@@ -148,45 +148,67 @@ def AssignmentToEvent(request, pk):
 
 def ClassToEvent(request,pk):
     instance=get_object_or_404(InstructorClass, pk=pk)
-
+    Start= datetime.combine(instance.Date, instance.StartTime)
+    End= datetime.combine(instance.Date, instance.EndTime)
     q= Event(UserProfile=request.user.profile,
-    CreaterType = '2',
-    CreaterId = pk,
+    CreatorType = '2',
+    CreatorId = pk,
     name = instance.name,
     Description = instance.Description,
     Venue = instance.Venue,
     StartTime = instance.StartTime,
     StartDate = instance.Date,
-    Duration = instance.EndTime-instance.StartTime,
+    Duration = TimeToDuration((datetime.min+(End-Start)).strftime('%H:%M:%S')),
     ScheduledStartTime = instance.StartTime,
     ScheduledEndTime = instance.EndTime,
     TimeSettings = 'B',
     EndDate = instance.Date,
-
+    EndTime= instance.EndTime,
     Priority = '3',
     Type = 'B',
     )
     q.save()
+
     return redirect('Timetable:EditEvent',pk=q.id)
+
+
+
+def TimeToDuration(time):
+    if time=='01:30:00':
+        return '3'
+    elif time=='02:00:00':
+        return '4'
+    elif time=='00:30:00':
+        return '1'
+    elif time=='01:00:00':
+        return '2'
+    else:
+        return ''
+
 
 def ExamToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
+    Start= datetime.combine(instance.Date, instance.StartTime)
+    End= datetime.combine(instance.Date, instance.EndTime)
     q= Event(UserProfile=request.user.profile,
-    CreaterType ='3',
-    CreaterId =pk ,
+    CreatorType ='3',
+    CreatorId =pk ,
     name = instance.name,
     Description = instance.Description,
     Venue = instance.Venue,
 
-    Duration = instance.EndTime- instance.StartTime,
+    Duration = TimeToDuration((datetime.min+(End-Start)).strftime('%H:%M:%S')),
     ScheduledStartTime = instance.StartTime ,
-    ScheduledEndTime = instance.Event,
+    ScheduledEndTime = instance.EndTime,
     TimeSettings = 'B',
 
     Priority = '4',
     Type = 'B'
     )
     q.save()
+    print(q.Duration)
+    # print(((datetime.min+ (datetime.combine(datetime.min,instance.EndTime)-datetime.combine(datetime.min,instance.StartTime))).time()).strftime('%H:%M/%S'))
+    
     return redirect('Timetable:EditEvent',pk=q.id)
 
 def ExamPrepToEvent(request,pk):
@@ -194,14 +216,14 @@ def ExamPrepToEvent(request,pk):
     Start= datetime.combine(instance.Date,instance.StartTime)
     End=Start-timedelta(days=1)
     q= Event(UserProfile = request.user.profile,
-    CreaterType = '4',
-    CreaterId = pk,
+    CreatorType = '4',
+    CreatorId = pk,
     name = instance.name + "Preparation",
     Description = instance.Description,
 
     StartTime = (Start-timedelta(days=2)).time(),
     StartDate = (Start-timedelta(days=2)).date(),
-
+    Duration= instance.PreparationDuration,
     TimeSettings = 'C',
     EndTime = End.replace(hour=23,minute=30).time(),
     EndDate = End.date(),
