@@ -46,18 +46,22 @@ def CreateEvent(request,pk=-1):
                 print(a)
             return redirect('Timetable:EventList')
     else:
+        template = 'CreateEvent.html'
         if(pk==-1):
             form = EventForm()
+            context = {'user': user, 'form': form}
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(instance=prev)
-        dataList = []
-        if(prev.CreatorType=='1'):
-            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
-        if(prev.CreatorType=='4'):
-            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
-        context = {'user': user, 'form': form, 'dataList': dataList}
-        template = 'CreateEvent.html'
+            dataList = []
+            if(prev.CreatorType=='1'):
+                dataList,freqList,mean = getDuration(prev.CreatorType,prev.CreatorId)
+            if(prev.CreatorType=='4'):
+                dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
+            maximum = max(freqList, key=freqList.get)
+            multiplier=100//freqList[maximum]
+            context = {'user': user, 'form': form, 'freqList': freqList.items(),'mult': multiplier}
+            template = 'CreateEventSpecial.html'
         return render(request,template,context)
 @login_required
 def EventList(request,pk=-1):

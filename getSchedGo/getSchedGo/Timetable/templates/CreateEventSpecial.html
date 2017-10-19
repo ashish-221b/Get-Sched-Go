@@ -1,6 +1,10 @@
 {% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
 {% load staticfiles %}<!-- Using files that are in static folder mainly images-->
+{% load mathfilters %}
 {% load crispy_forms_tags %}<!-- Crispy is just awesome for forms handling -->
+{% block styles %}
+	<link href='{% static "css/graph.css" %}' rel="stylesheet" >
+{% endblock %}
 {% block content %}<!-- Using extend everything to be displayed are kept in extend.
 It is just as if part of content in block of actually in base.html -->
 
@@ -27,6 +31,17 @@ It is just as if part of content in block of actually in base.html -->
 </div>
 </div>
 {% endif %}
+<div class="row graph">
+	<dl class 	= "graph">
+		<dt>
+			Some generic heading
+		</dt>
+	{% for data, freq in freqList %}
+	<dd class="percentage percentage-{{ freq|mul:mult }}"><span class="text">
+		{{ data|div:2 }} Hours : {{ freq }} Students</span></dd>
+	{% endfor %}
+</dl>
+</div>
 {% endblock %}
 {% block jscript %}
 {% if message %}

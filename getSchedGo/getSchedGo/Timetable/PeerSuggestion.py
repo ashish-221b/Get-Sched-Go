@@ -10,4 +10,4 @@ def getDuration(Type,Id):
     for d in DurationData:
         sums = sums + int(d)
     mean = round((sums/float(len(DurationData))),2)
-    return (DurationData,counter,mean)
+    return (DurationData,dict(counter),mean)
