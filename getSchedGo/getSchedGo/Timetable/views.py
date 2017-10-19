@@ -7,6 +7,7 @@ from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent1
 from profiles.models import createSched
 from .EventPicker import eventList
 from django.contrib import messages
+from .PeerSuggestion import getDuration
 @login_required
 def CreateEvent(request,pk=-1):
     user = request.user
@@ -60,7 +61,12 @@ def CreateEvent(request,pk=-1):
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(instance=prev)
-        context = {'user': user, 'form': form}
+        dataList = []
+        if(prev.CreatorType=='1'):
+            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
+        if(prev.CreatorType=='4'):
+            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
+        context = {'user': user, 'form': form, 'dataList': dataList}
         template = 'CreateEvent.html'
         return render(request,template,context)
 @login_required

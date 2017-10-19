@@ -4,7 +4,7 @@ from .models import coursedetail
 from .forms import CourseForm
 from profiles.models import profile
 from Timetable.models import *
-
+from Timetable.PeerSuggestion import getDuration
 # Create your views here.
 @login_required
 def EventList(request,pk=-1):
@@ -150,8 +150,8 @@ def ClassToEvent(request,pk):
     instance=get_object_or_404(InstructorClass, pk=pk)
 
     q= Event(UserProfile=request.user.profile,
-    CreaterType = '2',
-    CreaterId = pk,
+    CreatorType = '2',
+    CreatorId = pk,
     name = instance.name,
     Description = instance.Description,
     Venue = instance.Venue,
@@ -172,8 +172,8 @@ def ClassToEvent(request,pk):
 def ExamToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     q= Event(UserProfile=request.user.profile,
-    CreaterType ='3',
-    CreaterId =pk ,
+    CreatorType ='3',
+    CreatorId =pk ,
     name = instance.name,
     Description = instance.Description,
     Venue = instance.Venue,
@@ -194,8 +194,8 @@ def ExamPrepToEvent(request,pk):
     Start= datetime.combine(instance.Date,instance.StartTime)
     End=Start-timedelta(days=1)
     q= Event(UserProfile = request.user.profile,
-    CreaterType = '4',
-    CreaterId = pk,
+    CreatorType = '4',
+    CreatorId = pk,
     name = instance.name + "Preparation",
     Description = instance.Description,
 

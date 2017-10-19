@@ -8,7 +8,7 @@ It is just as if part of content in block of actually in base.html -->
 <div align="center" class="alert alert-warning">{{ message }}</div>
 {% else %}
 <div align="center" class="alert alert-success">Hi {{ user }}</div>
-
+<div class="row">
 <div class="col-md-5 col-md-offset-1">
 
 	 <form method="post">
@@ -25,7 +25,15 @@ It is just as if part of content in block of actually in base.html -->
 			<button type="submit" class="btn">Submit</button>
 		</form>
 </div>
+</div>
 {% endif %}
+<div>
+	{% for data in dataList %}
+	<div class = "event-holder">
+		{{ data }}
+	</div>
+	{% endfor %}
+</div>
 {% endblock %}
 {% block jscript %}
 {% if message %}
@@ -52,19 +60,19 @@ for (var i = 0; i < labels.length; i++) {
     if (labels[i].htmlFor == 'id_StartDate_month') {
 		console.log(labels[i].innerHTML)
 		labels[i].innerHTML='ExpectedStartDate<span class="asteriskField">*</span>'
-		        
+
     }
         if (labels[i].htmlFor == 'id_StartTime') {
 		console.log(labels[i].innerHTML)
-		labels[i].innerHTML='ExpectedStartTime<span class="asteriskField">*</span>'         
+		labels[i].innerHTML='ExpectedStartTime<span class="asteriskField">*</span>'
     }
         if (labels[i].htmlFor == 'id_EndDate_month') {
 		console.log(labels[i].innerHTML)
-		labels[i].innerHTML='ExpectedEndDate<span class="asteriskField">*</span>'         
+		labels[i].innerHTML='ExpectedEndDate<span class="asteriskField">*</span>'
     }
     if (labels[i].htmlFor == 'id_EndTime') {
 		console.log(labels[i].innerHTML)
-		labels[i].innerHTML='ExpectedEndTime<span class="asteriskField">*</span>'         
+		labels[i].innerHTML='ExpectedEndTime<span class="asteriskField">*</span>'
     }
 }
 $("#div_id_Duration").show();
@@ -75,19 +83,19 @@ for (var i = 0; i < labels.length; i++) {
     if (labels[i].htmlFor == 'id_StartDate_month') {
 		console.log(labels[i].innerHTML)
 		labels[i].innerHTML='StartDate<span class="asteriskField">*</span>'
-		        
+
     }
         if (labels[i].htmlFor == 'id_StartTime') {
 		console.log(labels[i].innerHTML)
-		labels[i].innerHTML='StartTime<span class="asteriskField">*</span>'         
+		labels[i].innerHTML='StartTime<span class="asteriskField">*</span>'
     }
         if (labels[i].htmlFor == 'id_EndDate_month') {
 		console.log(labels[i].innerHTML)
-		labels[i].innerHTML='EndDate<span class="asteriskField">*</span>'         
+		labels[i].innerHTML='EndDate<span class="asteriskField">*</span>'
     }
     if (labels[i].htmlFor == 'id_EndTime') {
 		console.log(labels[i].innerHTML)
-		labels[i].innerHTML='EndTime<span class="asteriskField">*</span>'         
+		labels[i].innerHTML='EndTime<span class="asteriskField">*</span>'
     }
 }
 
