@@ -26,6 +26,8 @@ def TodayStats(request,pk=-1):
 	else :
 		Today=date.today()
 	user = request.user
+	from profiles.models import createSched
+	createSched(Today,user.profile,user)
 	TodaySched = get_object_or_404(DailySched,UserProfile =user.profile,Active_day=Today)
 	TodaysStats = get_object_or_404(dailyStats,linkedDay = TodaySched)
 	updateStats(TodaysStats)

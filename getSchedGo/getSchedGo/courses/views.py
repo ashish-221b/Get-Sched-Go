@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import coursedetail
-from .forms import CourseForm
+from .forms import CourseForm , CourseEditForm
 from profiles.models import profile
 from Timetable.models import *
 from Timetable.PeerSuggestion import getDuration
@@ -259,3 +259,25 @@ def ExamPrepToEvent(request,pk):
     Type = 'B')
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
+
+
+
+
+
+def EditCourse(request):
+    user = request.user
+    courseInstances = coursedetail.objects.filter(instructor=user.profile)
+    if request.method == 'POST':
+        form = CourseEditForm(request.POST,instance=courseInstances[0])
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            return redirect('home')
+    else:
+        template='courseedit.html'
+        if len(courseInstances) == 0 :
+            return render(request,template,{})
+        else:
+            form = CourseEditForm(instance=courseInstances[0])
+            return render(request,template,{'form':form})
