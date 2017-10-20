@@ -5,6 +5,7 @@ var searchData=
   ['forms',['forms',['../namespaceprofiles_1_1forms.html',1,'profiles']]],
   ['models',['models',['../namespaceprofiles_1_1models.html',1,'profiles']]],
   ['past_5fyears',['past_years',['../namespaceTimetable_1_1forms.html#a4af0bb23874a094ad7dd2dc09f924c42',1,'Timetable::forms']]],
+  ['peersuggestion_2epy',['PeerSuggestion.py',['../PeerSuggestion_8py.html',1,'']]],
   ['preparationduration',['PreparationDuration',['../classTimetable_1_1models_1_1InstructorExam.html#aa762dcd26595ad1bf6cc7e361b6940d0',1,'Timetable::models::InstructorExam']]],
   ['prescribedstudyhours',['PrescribedStudyHours',['../classcourses_1_1models_1_1coursedetail.html#a02223dcd8341b9f202a17d08fe079282',1,'courses::models::coursedetail']]],
   ['priority',['Priority',['../classEvent__suggestion_1_1models_1_1suggestion.html#a3bcf2e84c25ad2c81f42731e6d45db56',1,'Event_suggestion.models.suggestion.Priority()'],['../classTimetable_1_1models_1_1Event.html#a2d4e6e1819ff670b068418c7e7f9b030',1,'Timetable.models.Event.Priority()']]],

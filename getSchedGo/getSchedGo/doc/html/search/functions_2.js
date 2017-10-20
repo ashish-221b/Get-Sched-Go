@@ -1,7 +1,7 @@
 var searchData=
 [
   ['classes',['Classes',['../namespaceTimetable_1_1views.html#a5dc026c70ee8fed98a161847bd100028',1,'Timetable::views']]],
-  ['classtoevent',['ClassToEvent',['../namespaceTimetable_1_1views.html#a1ee6fa257340c2486067649b4e4527b5',1,'Timetable.views.ClassToEvent()'],['../namespacecourses_1_1views.html#a235e73ecd1c10ba17444fe4438518767',1,'courses.views.ClassToEvent()']]],
+  ['classtoevent',['ClassToEvent',['../namespacecourses_1_1views.html#a235e73ecd1c10ba17444fe4438518767',1,'courses::views']]],
   ['completedlist',['CompletedList',['../namespacestatistics_1_1views.html#a532172e4359c802a5b714dd8e33803e0',1,'statistics::views']]],
   ['converttoevent',['ConvertToEvent',['../namespaceEvent__suggestion_1_1views.html#a3da298714fb94171689078c67f46335c',1,'Event_suggestion::views']]],
   ['courseview',['CourseView',['../namespacecourses_1_1views.html#a192104891397bfcd401799bde6879b35',1,'courses::views']]],

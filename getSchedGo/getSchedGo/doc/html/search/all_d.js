@@ -25,7 +25,6 @@ var searchData=
   ['statistics',['statistics',['../namespacestatistics.html',1,'']]],
   ['statisticsconfig',['StatisticsConfig',['../classstatistics_1_1apps_1_1StatisticsConfig.html',1,'statistics::apps']]],
   ['student',['Student',['../classcourses_1_1models_1_1coursedetail.html#a05149c0617696650da4bf98364ff4cee',1,'courses::models::coursedetail']]],
-  ['studentdata',['StudentData',['../classTimetable_1_1models_1_1InstructorExam.html#af95639934d44b99c0a0297c69213704f',1,'Timetable.models.InstructorExam.StudentData()'],['../classTimetable_1_1models_1_1InstructorAssignment.html#a8d0296c713bc3d3853b05d8c42fd0584',1,'Timetable.models.InstructorAssignment.StudentData()']]],
   ['study_5fchoices',['STUDY_CHOICES',['../namespaceprofiles_1_1forms.html#ad18051c2e7ed6d9b9a9a01f28dca7e06',1,'profiles.forms.STUDY_CHOICES()'],['../namespaceprofiles_1_1models.html#a66a49fea9e1603c3395bc387e385d6e1',1,'profiles.models.STUDY_CHOICES()']]],
   ['studychoice',['studyChoice',['../classprofiles_1_1forms_1_1SimpleForm.html#ada90dea452920f838181a9984b90e965',1,'profiles.forms.SimpleForm.studyChoice()'],['../classprofiles_1_1models_1_1profile.html#abeca72fd053b0c5f75b3927194bcd809',1,'profiles.models.profile.studyChoice()']]],
   ['suggestion',['suggestion',['../classEvent__suggestion_1_1models_1_1suggestion.html',1,'Event_suggestion::models']]],

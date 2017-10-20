@@ -5,6 +5,7 @@ var searchData=
   ['eventpicker',['EventPicker',['../namespaceTimetable_1_1EventPicker.html',1,'Timetable']]],
   ['forms',['forms',['../namespaceTimetable_1_1forms.html',1,'Timetable']]],
   ['models',['models',['../namespaceTimetable_1_1models.html',1,'Timetable']]],
+  ['peersuggestion',['PeerSuggestion',['../namespaceTimetable_1_1PeerSuggestion.html',1,'Timetable']]],
   ['prmatscore',['PrMatScore',['../namespaceTimetable_1_1PrMatScore.html',1,'Timetable']]],
   ['schedule',['schedule',['../namespaceTimetable_1_1schedule.html',1,'Timetable']]],
   ['slotconverter',['slotconverter',['../namespaceTimetable_1_1slotconverter.html',1,'Timetable']]],
