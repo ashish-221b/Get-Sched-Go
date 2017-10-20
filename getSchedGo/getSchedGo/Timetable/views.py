@@ -72,7 +72,7 @@ def CreateEvent(request,pk=-1):
             form = EventForm(instance=prev)
             context = {'user': user, 'form': form}
             # collects Peer Duration data for assignments and exam prearation events
-            if((prev.CreatorType=='4')or(prev.CreatorType=='1')):
+            if prev.CreatorType =='4' or prev.CreatorType=='1':
                 dataList = []
                 dataList,freqList,mean = getDuration(prev.CreatorType,prev.CreatorId)
                 maximum = max(freqList, key=freqList.get)

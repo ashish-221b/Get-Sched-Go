@@ -20,7 +20,7 @@
   <!-- Indicators -->
    <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-   {% for q in suggestionset %}
+   {% for q in suggestionsetList %}
     <li data-target="#myCarousel" data-slide-to="{{forloop.counter}}" visibility="hidden"></li>
 
    {% endfor %}
@@ -32,7 +32,7 @@
       
     </div>
 
-    {% for q in suggestionset %}
+    {% for q in suggestionsetList %}
       <div class="item">
       
       {% if q.Hometeam == 'FC Barcelona' %} 
@@ -143,8 +143,4 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
-
-<p>{{suggestionset.id}}</p>
-
-
 {% endblock %}

@@ -40,48 +40,21 @@ def fixedScheduleAdder(fixedEvent,user):
 			else:
 				print("The Slot has been filled by some events somewhere")
 				return 1
-		# Now if Event is Not of type fixed event "Move It"
-		# If Event has lower priority than the eventToSchedule, Deschedule it
-		# How to deschedule an event?
-		# EventToDeschedule = SlotToSet.EventConnected
-		# Event.ScheduledStartTime = None
-		# Event.ScheduledEndTime = None
-		# SlotList = Slots.objects.filter(Day_Sched=SchedToChange[0],EventConnected=EventToDeschedule)
-		# for slots in SlotList:
-		# 	slots.EventConnected = None
 		if possibleReschedulingEvents == [] :
 			fixedEvent.ScheduledStartTime = startTime
 			fixedEvent.ScheduledEndTime = endTime
-			# from statistics.models import dailyStats
-			# statsToChange = get_object_or_404(dailyStats, linkedDay=SchedToChange[0])
-			# if fixedEvent.Type == 'A' :
-			# 	statsToChange.ClassTiming = statsToChange.ClassTiming + SlotEnd - SlotStart
-			# elif fixedEvent.Type == 'B' :
-			# 	statsToChange.SelfStudy = statsToChange.SelfStudy + SlotEnd - SlotStart
-			# elif fixedEvent.Type == 'C' :
-			# 	statsToChange.ExtraStudyTime = statsToChange.ExtraStudyTime + SlotEnd - SlotStart
-			# elif fixedEvent.Type == 'D' :
-			# 	statsToChange.ExtraCurricularsTime = statsToChange.ExtraCurricularsTime + SlotEnd - SlotStart
-			# elif fixedEvent.Type == 'E' :
-			# 	statsToChange.MiscellaneousTime = statsToChange.MiscellaneousTime + SlotEnd - SlotStart
-			# statsToChange.save()
 			fixedEvent.save()
 			print(SlotStart,SlotEnd)
 			for slott in range(SlotStart,SlotEnd):
 				SlotToSet = Slots.objects.get(Day_Sched=SchedToChange[0],SlotNum=slott)
-				# print(SlotToSet.StartTime,SlotToSet.EndTime)
 				SlotToSet.EventConnected=fixedEvent
 				SlotToSet.save()
-				 # also delete the remaining slot out of events
-				# check that the given slot was null previously return-1. if no daysched then return -2
 			return 0
 		# rescheduling lower priority events
 		else :
 			for event in possibleReschedulingEvents:
 				event.ScheduledStartTime = None
 				event.ScheduledEndTime = None
-				# from statistics.models import dailyStats
-				statsToChange = get_object_or_404(dailyStats, linkedDay=SchedToChange[0])
 				SlotConnected = Slots.objects.filter(Day_Sched=SchedToChange[0],EventConnected=event)
 				# freedSlot = len(SlotConnected)
 				# if event.Type == 'A' :

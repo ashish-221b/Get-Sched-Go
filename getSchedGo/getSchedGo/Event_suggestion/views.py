@@ -28,8 +28,16 @@ def index(request):
 			print(Profile.lastSuggestion)
 		template='suggestion.html'
 		dict={'FC Barcelona':'fcbarcelona.jpg','Real Madrid CF':'realmadrid.jpg','Manchester City FC': 'manchestercity.jpg','Manchester United FC':'manchesterunited.jpg', 'Chelsea FC':'chelsea.jpg', 'Paris Saint-Germain':'parissaintgermain.jpg', 'Juventus Turin':'juventusturin.jpg','Club Atlético de Madrid':'atleticodemadrid.jpeg','Liverpool FC':'liverpool.jpg','FC Bayern München':'bayernmuchen.jpg'}
-		suggestionset= suggestion.objects.all()
-		context={'suggestionForm':suggestionForm,'suggestionset': suggestionset,'dict':dict,'list':list}
+		suggestionsetList= list(suggestion.objects.all())
+		# supportMatch = []
+		# for match in suggestionset:
+		# 	i=Event.objects.filter(UserProfile = request.user.profile,CreatorType='5',CreatorId=match.id).count()
+		# 	print(i,match.Hometeam)
+		# 	supportMatch.append(i)
+		# suggestionsetList = zip(suggestionset,supportMatch)
+		# # for a,b in suggestionsetList:
+		# # 	print(a.Hometeam,b)
+		context={'suggestionForm':suggestionForm,'suggestionsetList': suggestionsetList,'dict':dict,'list':list}
 		return render(request,template,context)
 ## A view which converts the suggestion into an event
 # @param Request, SuggestionId
@@ -51,18 +59,20 @@ def ConvertToEvent(request,pk):
 		Start=Start.replace(hour=hours,minute=0,second=0)+timedelta(hours=1)
 	print(Start)
 	End= Start+ timedelta(hours=2)
+	print(End)
+	print(End.date())   
 	q= Event(UserProfile = request.user.profile,
 	name= instance.Hometeam + " " +"Vs" + " "+ instance.Awayteam,
 	CreatorType= '5',
 	CreatorId= pk,
 	Venue = instance.Venue,
 	StartTime = Start.time(),
-	StartDate = Start.today(),
+	StartDate = Start.date(),
 	Duration = '4',
 	ScheduledEndTime = End.time(),
    
-	EndTime = End.time(),   
-	EndDate = End.today(),
+	EndTime = End.time(),
+	EndDate = End.date(),
 
 
 	Priority = '2',
