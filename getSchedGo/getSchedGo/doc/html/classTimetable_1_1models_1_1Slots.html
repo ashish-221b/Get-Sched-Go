@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Timetable</b></li><li class="navelem"><b>models</b></li><li class="navelem"><a class="el" href="classTimetable_1_1models_1_1Slots.html">Slots</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceTimetable.html">Timetable</a></li><li class="navelem"><a class="el" href="namespaceTimetable_1_1models.html">models</a></li><li class="navelem"><a class="el" href="classTimetable_1_1models_1_1Slots.html">Slots</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,36 +95,181 @@ Collaboration diagram for Timetable.models.Slots:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a644a0cc352eff9bfc5477c19c7d91e71"><td class="memItemLeft" align="right" valign="top"><a id="a644a0cc352eff9bfc5477c19c7d91e71"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>__str__</b> (self)</td></tr>
+<tr class="memitem:a644a0cc352eff9bfc5477c19c7d91e71"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#a644a0cc352eff9bfc5477c19c7d91e71">__str__</a> (self)</td></tr>
 <tr class="separator:a644a0cc352eff9bfc5477c19c7d91e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:af35ce0385f56fb20baaeab2d11e821e3"><td class="memItemLeft" align="right" valign="top"><a id="af35ce0385f56fb20baaeab2d11e821e3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UserProfile</b> = models.ForeignKey(<a class="el" href="classprofiles_1_1models_1_1profile.html">profile</a>, on_delete=models.CASCADE)</td></tr>
+<tr class="memitem:af35ce0385f56fb20baaeab2d11e821e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#af35ce0385f56fb20baaeab2d11e821e3">UserProfile</a> = models.ForeignKey(<a class="el" href="classprofiles_1_1models_1_1profile.html">profile</a>, on_delete=models.CASCADE)</td></tr>
 <tr class="separator:af35ce0385f56fb20baaeab2d11e821e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16ad17531e152e0661b601658c47a157"><td class="memItemLeft" align="right" valign="top"><a id="a16ad17531e152e0661b601658c47a157"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Day_Sched</b> = models.ForeignKey(<a class="el" href="classTimetable_1_1models_1_1DailySched.html">DailySched</a>, on_delete=models.CASCADE)</td></tr>
+<tr class="memitem:a16ad17531e152e0661b601658c47a157"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#a16ad17531e152e0661b601658c47a157">Day_Sched</a> = models.ForeignKey(<a class="el" href="classTimetable_1_1models_1_1DailySched.html">DailySched</a>, on_delete=models.CASCADE)</td></tr>
 <tr class="separator:a16ad17531e152e0661b601658c47a157"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9dd5ece43699c860c9613bbc546c908"><td class="memItemLeft" align="right" valign="top"><a id="ad9dd5ece43699c860c9613bbc546c908"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StartTime</b> = models.TimeField(null=False,blank=False)</td></tr>
+<tr class="memitem:ad9dd5ece43699c860c9613bbc546c908"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#ad9dd5ece43699c860c9613bbc546c908">StartTime</a> = models.TimeField(null=False,blank=False)</td></tr>
 <tr class="separator:ad9dd5ece43699c860c9613bbc546c908"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf68749233425604ea55cece33652f3"><td class="memItemLeft" align="right" valign="top"><a id="aebf68749233425604ea55cece33652f3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EndTime</b> = models.TimeField(null=False,blank=False)</td></tr>
+<tr class="memitem:aebf68749233425604ea55cece33652f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#aebf68749233425604ea55cece33652f3">EndTime</a> = models.TimeField(null=False,blank=False)</td></tr>
 <tr class="separator:aebf68749233425604ea55cece33652f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3e185c541695f0cc562bb354df36a57"><td class="memItemLeft" align="right" valign="top"><a id="ab3e185c541695f0cc562bb354df36a57"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SlotNum</b> = models.IntegerField(null=False,blank=False)</td></tr>
+<tr class="memitem:ab3e185c541695f0cc562bb354df36a57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#ab3e185c541695f0cc562bb354df36a57">SlotNum</a> = models.IntegerField(null=False,blank=False)</td></tr>
 <tr class="separator:ab3e185c541695f0cc562bb354df36a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fadb94b957239d32884167f6414e140"><td class="memItemLeft" align="right" valign="top"><a id="a3fadb94b957239d32884167f6414e140"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EventConnected</b> = models.ForeignKey(<a class="el" href="classTimetable_1_1models_1_1Event.html">Event</a>,on_delete=models.SET_NULL,null=True)</td></tr>
+<tr class="memitem:a3fadb94b957239d32884167f6414e140"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1Slots.html#a3fadb94b957239d32884167f6414e140">EventConnected</a> = models.ForeignKey(<a class="el" href="classTimetable_1_1models_1_1Event.html">Event</a>,on_delete=models.SET_NULL,null=True)</td></tr>
 <tr class="separator:a3fadb94b957239d32884167f6414e140"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A model for slots. </p>
 <p>It has a field a Day_Sched that has a foreignkey to the model <a class="el" href="classTimetable_1_1models_1_1DailySched.html" title="A model named DailySched. ">DailySched</a>. The EventConnected field has a foreign key to the <a class="el" href="classTimetable_1_1models_1_1Event.html" title="A model named Event. ">Event</a> model, to store the event in the specific slot. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/personal/Desktop/django101/Get-Sched-Go/getSchedGo/getSchedGo/Timetable/models.py</li>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a644a0cc352eff9bfc5477c19c7d91e71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a644a0cc352eff9bfc5477c19c7d91e71">&#9670;&nbsp;</a></span>__str__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def Timetable.models.Slots.__str__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a16ad17531e152e0661b601658c47a157"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16ad17531e152e0661b601658c47a157">&#9670;&nbsp;</a></span>Day_Sched</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.Slots.Day_Sched = models.ForeignKey(<a class="el" href="classTimetable_1_1models_1_1DailySched.html">DailySched</a>, on_delete=models.CASCADE)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aebf68749233425604ea55cece33652f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebf68749233425604ea55cece33652f3">&#9670;&nbsp;</a></span>EndTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.Slots.EndTime = models.TimeField(null=False,blank=False)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3fadb94b957239d32884167f6414e140"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fadb94b957239d32884167f6414e140">&#9670;&nbsp;</a></span>EventConnected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.Slots.EventConnected = models.ForeignKey(<a class="el" href="classTimetable_1_1models_1_1Event.html">Event</a>,on_delete=models.SET_NULL,null=True)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab3e185c541695f0cc562bb354df36a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e185c541695f0cc562bb354df36a57">&#9670;&nbsp;</a></span>SlotNum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.Slots.SlotNum = models.IntegerField(null=False,blank=False)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad9dd5ece43699c860c9613bbc546c908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9dd5ece43699c860c9613bbc546c908">&#9670;&nbsp;</a></span>StartTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.Slots.StartTime = models.TimeField(null=False,blank=False)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af35ce0385f56fb20baaeab2d11e821e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af35ce0385f56fb20baaeab2d11e821e3">&#9670;&nbsp;</a></span>UserProfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.Slots.UserProfile = models.ForeignKey(<a class="el" href="classprofiles_1_1models_1_1profile.html">profile</a>, on_delete=models.CASCADE)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/personal/Desktop/django101/Get-Sched-Go/getSchedGo/getSchedGo/Timetable/<a class="el" href="Timetable_2models_8py.html">models.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,3 +1,35 @@
+## \author Ashish
+# Debanjan
+# Rupesh
+# \version 1.0
+# \date 2017-10-22
+# \bug no bug as such. If found please mail to rupesh95903@gmail.com
+# 
+# \warning While cloning this application make your own sqlite database and link that to this django application
+#
+# \copyright To be used for education purpose only. No redistribution allowed.
+# \mainpage THE CODEKARS ROCKS
+#
+# \section intro-sec INRODUCTION
+# This project is developed as a course-project in CS215 keep to provide time management facility to
+# IIT Bombay student maintaining all courses data and generating basic schedule out of it.
+#
+# \subsection Event Scheduling
+# A naive and intelligent scheduler schedules the time-table according to user data
+#
+# \subsection Course Enrollment
+# Getting enrolled to a course helps you generate timetable filled up with official class
+# and you get all event pushed by instructor
+#
+# \subsection Event Suggestion
+# Currently you get suggestion regarding football matches. These suggestion can be further pin-pointed for each user
+# As well as can be expanded to various games
+#
+# \section credit Django-Based Application
+# Whole web-application is developed in django-framework. 
+#
+# For more details https://www.djangoproject.com/
+#/
 """
 Django settings for getSchedGo project.
 
@@ -18,13 +50,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
+## \if DOXYGEN_SHOULD_SKIP_THIS 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '2pm#w&x6qfxi(&es%wwbv%a@v#gk$&x&m^%8$na55s=anew&&^'
-
+# \ENDIF
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+#endif DOXYGEN_SHOULD_SKIP_THIS
 ALLOWED_HOSTS = []
 
 

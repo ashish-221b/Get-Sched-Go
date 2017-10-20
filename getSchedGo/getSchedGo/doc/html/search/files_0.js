@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5finit_5f_5f_2epy',['__init__.py',['../Event__suggestion_2____init_____8py.html',1,'(Global Namespace)'],['../profiles_2____init_____8py.html',1,'(Global Namespace)'],['../statistics_2____init_____8py.html',1,'(Global Namespace)'],['../Timetable_2____init_____8py.html',1,'(Global Namespace)'],['../courses_2____init_____8py.html',1,'(Global Namespace)']]]
+  ['admin_2epy',['admin.py',['../Event__suggestion_2admin_8py.html',1,'(Global Namespace)'],['../profiles_2admin_8py.html',1,'(Global Namespace)'],['../statistics_2admin_8py.html',1,'(Global Namespace)'],['../Timetable_2admin_8py.html',1,'(Global Namespace)'],['../courses_2admin_8py.html',1,'(Global Namespace)']]],
+  ['apps_2epy',['apps.py',['../Event__suggestion_2apps_8py.html',1,'(Global Namespace)'],['../profiles_2apps_8py.html',1,'(Global Namespace)'],['../statistics_2apps_8py.html',1,'(Global Namespace)'],['../Timetable_2apps_8py.html',1,'(Global Namespace)'],['../courses_2apps_8py.html',1,'(Global Namespace)']]]
 ];

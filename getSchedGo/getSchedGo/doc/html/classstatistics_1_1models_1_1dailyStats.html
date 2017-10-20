@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>statistics</b></li><li class="navelem"><b>models</b></li><li class="navelem"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html">dailyStats</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacestatistics.html">statistics</a></li><li class="navelem"><a class="el" href="namespacestatistics_1_1models.html">models</a></li><li class="navelem"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html">dailyStats</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,42 +94,253 @@ Collaboration diagram for statistics.models.dailyStats:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a519ea849b6f94b94f4ed187aeda701be"><td class="memItemLeft" align="right" valign="top"><a id="a519ea849b6f94b94f4ed187aeda701be"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>linkedDay</b> = models.OneToOneField(<a class="el" href="classTimetable_1_1models_1_1DailySched.html">DailySched</a>,null=True, blank = True)</td></tr>
+<tr class="memitem:a519ea849b6f94b94f4ed187aeda701be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#a519ea849b6f94b94f4ed187aeda701be">linkedDay</a> = models.OneToOneField(<a class="el" href="classTimetable_1_1models_1_1DailySched.html">DailySched</a>,null=True, blank = True)</td></tr>
 <tr class="separator:a519ea849b6f94b94f4ed187aeda701be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45fb03a98db2062537d449f60e9f8f71"><td class="memItemLeft" align="right" valign="top"><a id="a45fb03a98db2062537d449f60e9f8f71"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SelfStudy</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:a45fb03a98db2062537d449f60e9f8f71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#a45fb03a98db2062537d449f60e9f8f71">SelfStudy</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:a45fb03a98db2062537d449f60e9f8f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac074f31070d3dae16f586e786d85b1f3"><td class="memItemLeft" align="right" valign="top"><a id="ac074f31070d3dae16f586e786d85b1f3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ExtraCurricularsTime</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:ac074f31070d3dae16f586e786d85b1f3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#ac074f31070d3dae16f586e786d85b1f3">ExtraCurricularsTime</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:ac074f31070d3dae16f586e786d85b1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb884bf88e957e71ca2ac54417f7cc5d"><td class="memItemLeft" align="right" valign="top"><a id="aeb884bf88e957e71ca2ac54417f7cc5d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ExtraStudyTime</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:aeb884bf88e957e71ca2ac54417f7cc5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#aeb884bf88e957e71ca2ac54417f7cc5d">ExtraStudyTime</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:aeb884bf88e957e71ca2ac54417f7cc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64c0a84cafb1e53a56946262d600511d"><td class="memItemLeft" align="right" valign="top"><a id="a64c0a84cafb1e53a56946262d600511d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ClassTiming</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:a64c0a84cafb1e53a56946262d600511d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#a64c0a84cafb1e53a56946262d600511d">ClassTiming</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:a64c0a84cafb1e53a56946262d600511d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0edffeea33ea7e79d3a5702798a4478"><td class="memItemLeft" align="right" valign="top"><a id="af0edffeea33ea7e79d3a5702798a4478"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MiscellaneousTime</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:af0edffeea33ea7e79d3a5702798a4478"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#af0edffeea33ea7e79d3a5702798a4478">MiscellaneousTime</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:af0edffeea33ea7e79d3a5702798a4478"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf62cf0f094acc048701d98eb14f6938"><td class="memItemLeft" align="right" valign="top"><a id="adf62cf0f094acc048701d98eb14f6938"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedSelfStudy</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:adf62cf0f094acc048701d98eb14f6938"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#adf62cf0f094acc048701d98eb14f6938">CompletedSelfStudy</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:adf62cf0f094acc048701d98eb14f6938"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7ad94ef8eb2a008adb76100913589a1"><td class="memItemLeft" align="right" valign="top"><a id="ab7ad94ef8eb2a008adb76100913589a1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedExtraCurricularsTime</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:ab7ad94ef8eb2a008adb76100913589a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#ab7ad94ef8eb2a008adb76100913589a1">CompletedExtraCurricularsTime</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:ab7ad94ef8eb2a008adb76100913589a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23a0e94939fc27b3bc62d0fab69de8f1"><td class="memItemLeft" align="right" valign="top"><a id="a23a0e94939fc27b3bc62d0fab69de8f1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedExtraStudyTime</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:a23a0e94939fc27b3bc62d0fab69de8f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#a23a0e94939fc27b3bc62d0fab69de8f1">CompletedExtraStudyTime</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:a23a0e94939fc27b3bc62d0fab69de8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2d911354275cd7317d8e8a679cbffba"><td class="memItemLeft" align="right" valign="top"><a id="ad2d911354275cd7317d8e8a679cbffba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CompletedClassTiming</b> = models.IntegerField(default = 0)</td></tr>
+<tr class="memitem:ad2d911354275cd7317d8e8a679cbffba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstatistics_1_1models_1_1dailyStats.html#ad2d911354275cd7317d8e8a679cbffba">CompletedClassTiming</a> = models.IntegerField(default = 0)</td></tr>
 <tr class="separator:ad2d911354275cd7317d8e8a679cbffba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classstatistics_1_1models_1_1dailyStats.html" title="dailyStats is a django model developed for storing data of a given day of a given user ...">dailyStats</a> is a django model developed for storing data of a given day of a given user </p>
 <p>For this, it follows a oneToOne relation with a dailySched model and stores data of time given to all seperate event type and out of those one that are completed </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/personal/Desktop/django101/Get-Sched-Go/getSchedGo/getSchedGo/statistics/models.py</li>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a64c0a84cafb1e53a56946262d600511d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64c0a84cafb1e53a56946262d600511d">&#9670;&nbsp;</a></span>ClassTiming</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.ClassTiming = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2d911354275cd7317d8e8a679cbffba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2d911354275cd7317d8e8a679cbffba">&#9670;&nbsp;</a></span>CompletedClassTiming</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.CompletedClassTiming = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab7ad94ef8eb2a008adb76100913589a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7ad94ef8eb2a008adb76100913589a1">&#9670;&nbsp;</a></span>CompletedExtraCurricularsTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.CompletedExtraCurricularsTime = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23a0e94939fc27b3bc62d0fab69de8f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23a0e94939fc27b3bc62d0fab69de8f1">&#9670;&nbsp;</a></span>CompletedExtraStudyTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.CompletedExtraStudyTime = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf62cf0f094acc048701d98eb14f6938"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf62cf0f094acc048701d98eb14f6938">&#9670;&nbsp;</a></span>CompletedSelfStudy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.CompletedSelfStudy = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac074f31070d3dae16f586e786d85b1f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac074f31070d3dae16f586e786d85b1f3">&#9670;&nbsp;</a></span>ExtraCurricularsTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.ExtraCurricularsTime = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeb884bf88e957e71ca2ac54417f7cc5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb884bf88e957e71ca2ac54417f7cc5d">&#9670;&nbsp;</a></span>ExtraStudyTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.ExtraStudyTime = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a519ea849b6f94b94f4ed187aeda701be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a519ea849b6f94b94f4ed187aeda701be">&#9670;&nbsp;</a></span>linkedDay</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.linkedDay = models.OneToOneField(<a class="el" href="classTimetable_1_1models_1_1DailySched.html">DailySched</a>,null=True, blank = True)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0edffeea33ea7e79d3a5702798a4478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0edffeea33ea7e79d3a5702798a4478">&#9670;&nbsp;</a></span>MiscellaneousTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.MiscellaneousTime = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a45fb03a98db2062537d449f60e9f8f71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45fb03a98db2062537d449f60e9f8f71">&#9670;&nbsp;</a></span>SelfStudy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">statistics.models.dailyStats.SelfStudy = models.IntegerField(default = 0)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/personal/Desktop/django101/Get-Sched-Go/getSchedGo/getSchedGo/statistics/<a class="el" href="statistics_2models_8py.html">models.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

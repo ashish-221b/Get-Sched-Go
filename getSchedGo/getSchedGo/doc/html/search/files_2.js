@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['coursedata_2epy',['CourseData.py',['../CourseData_8py.html',1,'']]]
+  ['eventpicker_2epy',['EventPicker.py',['../EventPicker_8py.html',1,'']]],
+  ['example_2epy',['example.py',['../example_8py.html',1,'']]]
 ];

@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Timetable</b></li><li class="navelem"><b>models</b></li><li class="navelem"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html">InstructorAssignment</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespaceTimetable.html">Timetable</a></li><li class="navelem"><a class="el" href="namespaceTimetable_1_1models.html">models</a></li><li class="navelem"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html">InstructorAssignment</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,35 +94,205 @@ Collaboration diagram for Timetable.models.InstructorAssignment:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a64f231cb4bd0aa520af50783b061152b"><td class="memItemLeft" align="right" valign="top"><a id="a64f231cb4bd0aa520af50783b061152b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UserProfile</b> = models.ForeignKey(<a class="el" href="classprofiles_1_1models_1_1profile.html">profile</a>, on_delete=models.CASCADE)</td></tr>
+<tr class="memitem:a64f231cb4bd0aa520af50783b061152b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a64f231cb4bd0aa520af50783b061152b">UserProfile</a> = models.ForeignKey(<a class="el" href="classprofiles_1_1models_1_1profile.html">profile</a>, on_delete=models.CASCADE)</td></tr>
 <tr class="separator:a64f231cb4bd0aa520af50783b061152b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88f88adb93da287ea6257d10f644deba"><td class="memItemLeft" align="right" valign="top"><a id="a88f88adb93da287ea6257d10f644deba"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = models.CharField(max_length=50)</td></tr>
+<tr class="memitem:a88f88adb93da287ea6257d10f644deba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a88f88adb93da287ea6257d10f644deba">name</a> = models.CharField(max_length=50)</td></tr>
 <tr class="separator:a88f88adb93da287ea6257d10f644deba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41098b5ff53c4527338da898d1c8ce60"><td class="memItemLeft" align="right" valign="top"><a id="a41098b5ff53c4527338da898d1c8ce60"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Description</b> = models.CharField(max_length=300,blank=True)</td></tr>
+<tr class="memitem:a41098b5ff53c4527338da898d1c8ce60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a41098b5ff53c4527338da898d1c8ce60">Description</a> = models.CharField(max_length=300,blank=True)</td></tr>
 <tr class="separator:a41098b5ff53c4527338da898d1c8ce60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f4edc7224eef181116da64d9fb3e833"><td class="memItemLeft" align="right" valign="top"><a id="a3f4edc7224eef181116da64d9fb3e833"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StartTime</b> = models.TimeField(null=True,)</td></tr>
+<tr class="memitem:a3f4edc7224eef181116da64d9fb3e833"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a3f4edc7224eef181116da64d9fb3e833">StartTime</a> = models.TimeField(null=True,)</td></tr>
 <tr class="separator:a3f4edc7224eef181116da64d9fb3e833"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4118305183920242785ffd38f427504d"><td class="memItemLeft" align="right" valign="top"><a id="a4118305183920242785ffd38f427504d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>StartDate</b> = models.DateField(null=True,default=date.today)</td></tr>
+<tr class="memitem:a4118305183920242785ffd38f427504d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a4118305183920242785ffd38f427504d">StartDate</a> = models.DateField(null=True,default=date.today)</td></tr>
 <tr class="separator:a4118305183920242785ffd38f427504d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01e40f725e26619a0274fdd01d7c0a0d"><td class="memItemLeft" align="right" valign="top"><a id="a01e40f725e26619a0274fdd01d7c0a0d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ExpectedDuration</b> = models.CharField(max_length=5,choices=Duration_choices,default='1')</td></tr>
+<tr class="memitem:a01e40f725e26619a0274fdd01d7c0a0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a01e40f725e26619a0274fdd01d7c0a0d">ExpectedDuration</a> = models.CharField(max_length=5,choices=<a class="el" href="namespaceTimetable_1_1models.html#a3de5e5d97c7dbbfd08e212b9d1ad3ec5">Duration_choices</a>,default='1')</td></tr>
 <tr class="separator:a01e40f725e26619a0274fdd01d7c0a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6decd0faec3c1764e6fa139946f94a61"><td class="memItemLeft" align="right" valign="top"><a id="a6decd0faec3c1764e6fa139946f94a61"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DeadLineTime</b> = models.TimeField(null=True,blank=True,default=&quot;23:30:00&quot;)</td></tr>
+<tr class="memitem:a6decd0faec3c1764e6fa139946f94a61"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a6decd0faec3c1764e6fa139946f94a61">DeadLineTime</a> = models.TimeField(null=True,blank=True,default=&quot;23:30:00&quot;)</td></tr>
 <tr class="separator:a6decd0faec3c1764e6fa139946f94a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44347cd7e7a96f8a8c7ed68ca63fbf08"><td class="memItemLeft" align="right" valign="top"><a id="a44347cd7e7a96f8a8c7ed68ca63fbf08"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>DeadLineDate</b> = models.DateField(null=True,blank=True,default=defaultDeadLine)</td></tr>
+<tr class="memitem:a44347cd7e7a96f8a8c7ed68ca63fbf08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTimetable_1_1models_1_1InstructorAssignment.html#a44347cd7e7a96f8a8c7ed68ca63fbf08">DeadLineDate</a> = models.DateField(null=True,blank=True,default=<a class="el" href="namespaceTimetable_1_1models.html#a6b1be2b87de430a3f0820a4908c608fd">defaultDeadLine</a>)</td></tr>
 <tr class="separator:a44347cd7e7a96f8a8c7ed68ca63fbf08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A model for assignments given by the instrtuctor. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/personal/Desktop/django101/Get-Sched-Go/getSchedGo/getSchedGo/Timetable/models.py</li>
+<p>Assignment planned by instructor to be done before a given deadline time Also it contains the expectation of student as well as will be showing suggestion of peers while scheduling this into an event </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a44347cd7e7a96f8a8c7ed68ca63fbf08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44347cd7e7a96f8a8c7ed68ca63fbf08">&#9670;&nbsp;</a></span>DeadLineDate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.DeadLineDate = models.DateField(null=True,blank=True,default=<a class="el" href="namespaceTimetable_1_1models.html#a6b1be2b87de430a3f0820a4908c608fd">defaultDeadLine</a>)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6decd0faec3c1764e6fa139946f94a61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6decd0faec3c1764e6fa139946f94a61">&#9670;&nbsp;</a></span>DeadLineTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.DeadLineTime = models.TimeField(null=True,blank=True,default=&quot;23:30:00&quot;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41098b5ff53c4527338da898d1c8ce60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41098b5ff53c4527338da898d1c8ce60">&#9670;&nbsp;</a></span>Description</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.Description = models.CharField(max_length=300,blank=True)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01e40f725e26619a0274fdd01d7c0a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e40f725e26619a0274fdd01d7c0a0d">&#9670;&nbsp;</a></span>ExpectedDuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.ExpectedDuration = models.CharField(max_length=5,choices=<a class="el" href="namespaceTimetable_1_1models.html#a3de5e5d97c7dbbfd08e212b9d1ad3ec5">Duration_choices</a>,default='1')</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88f88adb93da287ea6257d10f644deba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f88adb93da287ea6257d10f644deba">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.name = models.CharField(max_length=50)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4118305183920242785ffd38f427504d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4118305183920242785ffd38f427504d">&#9670;&nbsp;</a></span>StartDate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.StartDate = models.DateField(null=True,default=date.today)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f4edc7224eef181116da64d9fb3e833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f4edc7224eef181116da64d9fb3e833">&#9670;&nbsp;</a></span>StartTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.StartTime = models.TimeField(null=True,)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a64f231cb4bd0aa520af50783b061152b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64f231cb4bd0aa520af50783b061152b">&#9670;&nbsp;</a></span>UserProfile</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Timetable.models.InstructorAssignment.UserProfile = models.ForeignKey(<a class="el" href="classprofiles_1_1models_1_1profile.html">profile</a>, on_delete=models.CASCADE)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>/home/personal/Desktop/django101/Get-Sched-Go/getSchedGo/getSchedGo/Timetable/<a class="el" href="Timetable_2models_8py.html">models.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

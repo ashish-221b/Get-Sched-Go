@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['instructor',['instructor',['../classprofiles_1_1models_1_1profile.html#acfa71dd56ef725545087a5e16c4591ad',1,'profiles.models.profile.instructor()'],['../classcourses_1_1models_1_1coursedetail.html#aa4921021a1e28f780255c438617a0a74',1,'courses.models.coursedetail.instructor()']]]
+  ['base_5fdir',['BASE_DIR',['../namespacegetSchedGo_1_1settings.html#abe9f919329e20b3526accbb6265f48c9',1,'getSchedGo::settings']]]
 ];

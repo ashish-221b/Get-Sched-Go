@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['schedule_2epy',['schedule.py',['../schedule_8py.html',1,'']]],
-  ['slotconverter_2epy',['slotconverter.py',['../slotconverter_8py.html',1,'']]],
-  ['slots_2epy',['slots.py',['../slots_8py.html',1,'']]]
+  ['tests_2epy',['tests.py',['../Event__suggestion_2tests_8py.html',1,'(Global Namespace)'],['../profiles_2tests_8py.html',1,'(Global Namespace)'],['../statistics_2tests_8py.html',1,'(Global Namespace)'],['../Timetable_2tests_8py.html',1,'(Global Namespace)'],['../courses_2tests_8py.html',1,'(Global Namespace)']]]
 ];
