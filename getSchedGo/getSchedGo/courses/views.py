@@ -11,7 +11,8 @@ from Timetable.schedule import fixedScheduleAdder
 # Create your views here.
 
 ## This view is student Dashboard for various events published by instructor
-# @details
+# @params request getargument1 getargument2
+# @details allows user to view assignments classes exams published by instructors of various courses
 def CourseView(request,pk1='nan',pk2='nan'):
     user=request.user
     #List of courses in which student is ennrolled
@@ -68,6 +69,10 @@ def CourseView(request,pk1='nan',pk2='nan'):
     print(ClassList)
     print(ExamList)
     return render(request,template,context)
+## View to enroll into a Course
+# @params request getargument(coursedetail model id)
+# @details This view enrolls a user into a course.
+# It also adds the regular classes to user schedule automatically
 def UserAdder(request,pk):
     ToChange = get_object_or_404(coursedetail,pk=pk)
     user = request.user
@@ -99,7 +104,7 @@ def UserAdder(request,pk):
                     stu.save()
                     fixedScheduleAdder(stu,user)
     return redirect('courses:Enrollmentview')
-
+## view for dropping the course
 def UserDropper(request,pk):
     ToChange = get_object_or_404(coursedetail,pk=pk)
     user = request.user
@@ -115,7 +120,7 @@ def UserDropper(request,pk):
             pass
     ToChange.save()
     return redirect('courses:Enrollmentview')
-
+## view to search querry for available courses
 def Enrollmentview(request):
     template = 'Enrollment.html'
     user = request.user
@@ -158,7 +163,7 @@ def SelectCourse(request,pk=-1):
             else:
                 print("no")
                 return redirect('home')
-# Convert an Assignment object of a course to event of user
+## Convert an Assignment object of a course to event of user
 def AssignmentToEvent(request, pk):
     instance= get_object_or_404(InstructorAssignment, pk=pk)
     q = Event(UserProfile= request.user.profile,
@@ -176,7 +181,7 @@ def AssignmentToEvent(request, pk):
     Type = 'B')
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
-# Convert an Class object of a course to event of user
+## Convert an Class object of a course to event of user
 def ClassToEvent(request,pk):
     instance=get_object_or_404(InstructorClass, pk=pk)
     Start= datetime.combine(instance.Date, instance.StartTime)
@@ -211,7 +216,7 @@ def TimeToDuration(time):
         return '2'
     else:
         return ''
-# Convert an Exam object of a course to event of user
+## Convert an Exam object of a course to event of user
 def ExamToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     Start= datetime.combine(instance.Date, instance.StartTime)
@@ -236,7 +241,7 @@ def ExamToEvent(request,pk):
     # print(((datetime.min+ (datetime.combine(datetime.min,instance.EndTime)-datetime.combine(datetime.min,instance.StartTime))).time()).strftime('%H:%M/%S'))
 
     return redirect('Timetable:EditEvent',pk=q.id)
-# Convert an exam object of a course to event for preparation of exam of user
+## Convert an exam object of a course to event for preparation of exam of user
 def ExamPrepToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     Start= datetime.combine(instance.Date,instance.StartTime)

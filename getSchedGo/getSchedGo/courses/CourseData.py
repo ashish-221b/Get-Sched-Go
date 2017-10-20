@@ -1,6 +1,10 @@
 import csv
 import collections
 from .models import coursedetail
+## Method for extracting Course Details from .csv provided by asc
+# @params none
+# @details It traverses over whole csv file using csv package of python.
+# Exctract all the slots relating to a particular course and stores them in coursedetail model 
 def UpdateCourse():
     LookupTable = ['1A','1B','1C','2A','2B','2C','3A','3B','3C','4A','4B','4C',
     '5A', '5B', '6A', '6B', '7A', '7B', '8A', '8B', '9A', '9B', '10A', '10B',
