@@ -200,8 +200,8 @@ def ClassToEvent(request,pk):
     TimeSettings = 'B',
     EndDate = instance.Date,
     EndTime= instance.EndTime,
-    Priority = '3',
-    Type = 'B',
+    Priority = '4',
+    Type = 'A',
     )
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
@@ -227,14 +227,17 @@ def ExamToEvent(request,pk):
     name = instance.name,
     Description = instance.Description,
     Venue = instance.Venue,
-
+    StartTime = instance.StartTime,
+    StartDate = instance.Date,
+    EndDate = instance.Date,
+    EndTime= instance.EndTime,
     Duration = TimeToDuration((datetime.min+(End-Start)).strftime('%H:%M:%S')),
     ScheduledStartTime = instance.StartTime ,
     ScheduledEndTime = instance.EndTime,
     TimeSettings = 'B',
 
     Priority = '4',
-    Type = 'B'
+    Type = 'A'
     )
     q.save()
     print(q.Duration)
