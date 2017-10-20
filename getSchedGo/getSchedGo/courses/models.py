@@ -9,7 +9,7 @@ class coursedetail(models.Model):
 	# Course Name
 	name = models.CharField(max_length=50)
 	# Running Slot as per Institute TimeTable
-	Slot = models.IntegerField(null=True,blank=True)
+	Slot = models.CharField(max_length=50,null=True,blank=True)
 	# No. of Course Credits
 	credit = models.IntegerField(null=True,blank=True)
 	# Tuturial exist or not
