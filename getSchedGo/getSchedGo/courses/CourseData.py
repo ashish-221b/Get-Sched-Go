@@ -27,8 +27,8 @@ def UpdateCourse():
                         uni[row['Course Code']] = slot
         coursedetail.objects.all().delete()
         for i in uni:
-            st = '$'
+            st = ''
             for j in uni[i]:
-                st = st + j + '$'
+                st = st + j + ' '
             q = coursedetail(code=i,name=i,Slot = st)
             q.save()

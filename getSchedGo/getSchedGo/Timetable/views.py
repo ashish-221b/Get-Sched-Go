@@ -98,7 +98,7 @@ def Schedules(request):
     SchedList = []
     # Gets DayScheds (Day containers) and Creates them if they doesn't exist
     for i in range(-3,4):
-        createSched(date.today() + timedelta(days=i),user.profile)
+        createSched(date.today() + timedelta(days=i),user.profile,user)
         Day = get_object_or_404(DailySched, UserProfile = user.profile, Active_day = (date.today() + timedelta(days=i)))
         EventList = eventList(Day)
         print(EventList)
