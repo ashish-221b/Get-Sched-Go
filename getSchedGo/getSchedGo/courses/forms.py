@@ -7,6 +7,9 @@ from .models import coursedetail
 class CourseForm(forms.Form):
 	code = forms.CharField(max_length=7)
 
+## This is a djangoModel form to update the data of courseDetail model
+# @details excluding the code and slots related to it
+
 class CourseEditForm(forms.ModelForm):
 	class Meta:
 		model = coursedetail

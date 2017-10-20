@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['tests_2epy',['tests.py',['../Event__suggestion_2tests_8py.html',1,'']]],
-  ['tests_2epy',['tests.py',['../courses_2tests_8py.html',1,'']]],
-  ['tests_2epy',['tests.py',['../Timetable_2tests_8py.html',1,'']]],
-  ['tests_2epy',['tests.py',['../statistics_2tests_8py.html',1,'']]],
-  ['tests_2epy',['tests.py',['../profiles_2tests_8py.html',1,'']]]
+  ['schedule_2epy',['schedule.py',['../schedule_8py.html',1,'']]],
+  ['slotconverter_2epy',['slotconverter.py',['../slotconverter_8py.html',1,'']]],
+  ['slots_2epy',['slots.py',['../slots_8py.html',1,'']]]
 ];

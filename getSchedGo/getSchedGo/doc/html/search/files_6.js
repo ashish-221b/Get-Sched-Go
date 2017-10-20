@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['schedule_2epy',['schedule.py',['../schedule_8py.html',1,'']]],
-  ['slotconverter_2epy',['slotconverter.py',['../slotconverter_8py.html',1,'']]]
+  ['peersuggestion_2epy',['PeerSuggestion.py',['../PeerSuggestion_8py.html',1,'']]],
+  ['prmatscore_2epy',['PrMatScore.py',['../PrMatScore_8py.html',1,'']]]
 ];

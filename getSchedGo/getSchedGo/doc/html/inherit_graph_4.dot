@@ -3,25 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="Model",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="courses.models.coursedetail",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcourses_1_1models_1_1coursedetail.html"];
-  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="Event_suggestion.models.suggestion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEvent__suggestion_1_1models_1_1suggestion.html",tooltip="A model for football match suggestion. "];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="profiles.models.profile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classprofiles_1_1models_1_1profile.html",tooltip="Profile model is a model connected to every user. "];
-  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="statistics.models.dailyStats",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classstatistics_1_1models_1_1dailyStats.html",tooltip="dailyStats is a django model developed for storing data of a given day of a given user ..."];
-  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="Timetable.models.DailySched",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1models_1_1DailySched.html",tooltip="A model named DailySched. "];
-  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="Timetable.models.Event",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1models_1_1Event.html",tooltip="A model named Event. "];
-  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node8 [label="Timetable.models.Instructor\lAssignment",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1models_1_1InstructorAssignment.html",tooltip="A model for assignments given by the instrtuctor. "];
-  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="Timetable.models.Instructor\lClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1models_1_1InstructorClass.html",tooltip="A model for classes scheduled by the instructor. "];
-  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node10 [label="Timetable.models.InstructorExam",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1models_1_1InstructorExam.html",tooltip="A model for exams given by instructors. "];
-  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node11 [label="Timetable.models.Slots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1models_1_1Slots.html",tooltip="A model for slots. "];
+  Node0 [label="courses.forms.CourseEdit\lForm.Meta",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcourses_1_1forms_1_1CourseEditForm_1_1Meta.html"];
 }
