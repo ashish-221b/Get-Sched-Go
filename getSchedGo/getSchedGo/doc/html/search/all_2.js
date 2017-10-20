@@ -4,7 +4,7 @@ var searchData=
   ['apps',['apps',['../namespacecourses_1_1apps.html',1,'courses']]],
   ['classes',['Classes',['../namespaceTimetable_1_1views.html#a5dc026c70ee8fed98a161847bd100028',1,'Timetable::views']]],
   ['classtiming',['ClassTiming',['../classstatistics_1_1models_1_1dailyStats.html#a64c0a84cafb1e53a56946262d600511d',1,'statistics::models::dailyStats']]],
-  ['classtoevent',['ClassToEvent',['../namespaceTimetable_1_1views.html#a1ee6fa257340c2486067649b4e4527b5',1,'Timetable.views.ClassToEvent()'],['../namespacecourses_1_1views.html#a235e73ecd1c10ba17444fe4438518767',1,'courses.views.ClassToEvent()']]],
+  ['classtoevent',['ClassToEvent',['../namespacecourses_1_1views.html#a235e73ecd1c10ba17444fe4438518767',1,'courses::views']]],
   ['code',['code',['../classcourses_1_1forms_1_1CourseForm.html#a9767044ae5cffeca77a367516cc640c3',1,'courses.forms.CourseForm.code()'],['../classcourses_1_1models_1_1coursedetail.html#a9f59d9c14eeb6c52b88f406e8fda1bba',1,'courses.models.coursedetail.code()']]],
   ['completed',['Completed',['../classTimetable_1_1models_1_1Event.html#a72b12a2e2015a620af6cfcf51a9231de',1,'Timetable::models::Event']]],
   ['completedclasstiming',['CompletedClassTiming',['../classstatistics_1_1models_1_1dailyStats.html#ad2d911354275cd7317d8e8a679cbffba',1,'statistics::models::dailyStats']]],

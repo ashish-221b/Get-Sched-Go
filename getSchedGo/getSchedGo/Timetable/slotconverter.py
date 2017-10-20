@@ -1,3 +1,6 @@
+## Converts a time to a slot
+# @param Time a time object
+# @details Converts a time object into the slotnumber of the slot containing the time.
 def timeToSlot(time):
 	if time is None:
 		return 0

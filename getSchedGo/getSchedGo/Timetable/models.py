@@ -9,14 +9,25 @@ Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','I
 Event_Timings = [('B','Fixed Timing'),('C',('Variable Timing'))]
 Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study'), ('D','ExtraCurriculars'),('E','Misc.')]
 Duration_choices = [('1','Half Hour'),('2','One Hour'),('3','One and Half Hour'),('4','Two Hour')]
+
+## A model named DailySched
+# @details It contains the fields UserProfile which has a foreignkey to the profile model,
+# a datefileld called Active_Day, and a name which is a characterfield.
 class DailySched(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	Active_day = models.DateField()
 	name = models.CharField(max_length=50)
 	def __str__(self):
 		return self.name
-#Events
+
 defaultDeadLine = date.today()+timedelta(days=3)
+
+## A model named Event
+# @details The most elementary model of the project.It contains all the fields that specifies all the details 
+# of an event. CreatorType corresponds to what type of event an instructor is creating i.e, assignments,
+# classes, exams etc. Creatorid correspond to the id of the respective type of event(model).
+# Completed is a booleanfield which stores whether the event is completed or not.
+
 class Event(models.Model):
 	"""docstring for Event."""
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
@@ -40,7 +51,10 @@ class Event(models.Model):
 	Completed = models.BooleanField(default=False)
 	def __str__(self):
 		return self.name
-#Slots of the day
+
+## A model for slots
+# @details It has a field a Day_Sched that has a foreignkey to the model DailySched. The EventConnected
+# field has a foreign key to the Event model, to store the event in the specific slot.
 class Slots(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	Day_Sched = models.ForeignKey(DailySched, on_delete=models.CASCADE)
@@ -50,6 +64,9 @@ class Slots(models.Model):
 	EventConnected = models.ForeignKey(Event,on_delete=models.SET_NULL,null=True)
 	def __str__(self):
 		return str(self.SlotNum)
+
+## A model for exams given by instructors
+
 class InstructorExam(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
@@ -59,6 +76,8 @@ class InstructorExam(models.Model):
 	Date = models.DateField(null=True,default=date.today)
 	EndTime = models.TimeField(null=True,)
 	PreparationDuration = models.CharField(null=True,max_length=5,choices=Duration_choices,default='1',blank=True)
+
+## A model for classes scheduled by the instructor
 class InstructorClass(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
@@ -69,6 +88,7 @@ class InstructorClass(models.Model):
 	EndTime = models.TimeField(null=True,)
 	Compulsory = models.BooleanField(default=True)
 
+## A model for assignments given by the instrtuctor
 class InstructorAssignment(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)

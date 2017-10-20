@@ -1,4 +1,66 @@
 {% extends 'base.html'%}
 {% block content %}
 <h1>WELCOME TO ABOUT</h1>
+This is a FAQ section.
+Q1. What is GetSchedGo ?
+
+Basic Intro
+
+
+
+
+
+Q2. Who should use this application?
+This application mainly targets student specially college going who have an unplanned approach to the day
+but need a planned one to perform good and remove the self guilt of not being able to achieve something
+
+Q3. How to use this application to schedule my google calender?
+<ul>
+	<li>
+		Click the calender icon in the navigation bar.
+
+	</li>
+	<li>
+		Click the generate CSV option available at the top of this window
+	</li>
+	<li>
+		Dowload the file in your computer.
+
+	</li>
+	<li>
+		Select the ADD csv to google calender link present below your google calender frame
+	</li>
+	<li>
+		In the google calender website page select the import calender option and pick your file from the displayed file picker
+	</li>
+	<li>
+		NOw check out your google calender to find your event planned there. In case of any discrepancy please submit your bug with screenchot and username
+		to <a href="mailto:rupesh95903@gmail.com">rupesh95903@gmail.com</a>
+	</li>
+</ul>
+
+
+Q4. How is it different from a general calender application?
+General calender app uses your input and shows the result.
+We here are tring to add intelligence to it while scheduling.
+In limited amount of time and resource we did not integrated it with machine leaning but 
+we plan in doing so suvh that all event you don't know when to do is scheduled in the time you actually perfer to do 
+and have been doing in the past.
+
+Q5. What type of scheduling can be done by GetSchedGo ? 
+
+This mainly focusses on activities of student life and type of event's related to that.
+Suggestions are also from football and from instructor of course you are enrolled to.
+Things like studyong time is mainly in preferrence while scheduling a variable event so you can give more time to study.
+Statistics help you to visualise how you have been performing to develop more cinsience how to utilise time.
+
+Q6. Is my data secured and private?
+
+Your data is secured in a sqlite database and can not be accessed by other user unless you desire to release to help your peer is estimating time
+Currently in prototype phase we have given admin rights to see through all data and check for bugs.
+But with initial public release, we won't be giving rights to any data to the admin.
+
+
+
+ASK YOUR QUESTION :- We will reach back to you. A general HTML form Nothing fancy
 {% endblock %}

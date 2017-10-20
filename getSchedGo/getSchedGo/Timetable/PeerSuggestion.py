@@ -1,7 +1,9 @@
 from .models import *
 import collections
-## function to get data for peer suggestion for assignment and exam prep events
-# returns Frequency List and average hours
+
+## A function to get data for peer suggestion for assignment and exam prep events.
+# It returns Frequency List and average hours
+# @param Type CreatorType, Id CreatorId
 def getDuration(Type,Id):
     targetEvents = Event.objects.filter(CreatorType=Type,CreatorId=Id)
     DurationData = []
