@@ -5,6 +5,9 @@ from .forms import CourseForm
 from profiles.models import profile
 from Timetable.models import *
 from Timetable.PeerSuggestion import getDuration
+from Timetable.slots import SlotPattern as sp
+from Timetable.slotconverter import slotInterval
+from Timetable.schedule import fixedScheduleAdder
 # Create your views here.
 
 ## This view is student Dashboard for various events published by instructor
@@ -37,6 +40,8 @@ def CourseView(request,pk1='nan',pk2='nan'):
     elif(pk2=='e'):
         ClassList=[]
         AssignmentList=[]
+    else:
+        print("ok")
     #these loops check which course event is already added
     supportAssign = []
     for assign in AssignmentList:
@@ -73,7 +78,26 @@ def UserAdder(request,pk):
             pass
     else:
         ToChange.Student.add(user.profile)
-    ToChange.save()
+        ToChange.save()
+        ## to add the classes automatically to student schedule
+        for i in range(4):
+            Day = date.today()+timedelta(days=i)
+            WEEKDAY = Day.weekday() + 1
+            slots = ToChange.Slot
+            slots = slots.split(" ")
+            slots.pop()
+            for s in slots:
+                d,st,et = slotInterval(sp[s])
+                if d == str(WEEKDAY):
+                    st=st.split(":")
+                    et=et.split(":")
+                    st = time(int(st[0]),int(st[1]),int(st[2]))
+                    et = time(int(et[0]),int(et[1]),int(et[2]))
+                    stu = Event(UserProfile = user.profile,name = ToChange.name+" Class",
+                        StartTime = st, StartDate = Day, TimeSettings = 'B',
+                        EndTime = et, EndDate = Day, Priority = '4', Type='A')
+                    stu.save()
+                    fixedScheduleAdder(stu,user)
     return redirect('courses:Enrollmentview')
 
 def UserDropper(request,pk):

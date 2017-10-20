@@ -3,7 +3,7 @@ from . import views
 app_name = 'courses'
 urlpatterns = [
     url(r"^$", views.CourseView, name="CourseView"),
-    url(r"^some/(?P<pk1>\w+)/(?P<pk2>\w+)$", views.CourseView, name="some"),
+    url(r"^some/(?P<pk1>[a-zA-Z0-9_ ]+)/(?P<pk2>\w+)/$", views.CourseView, name="some"),
     url(r"^list/$",views.Enrollmentview, name="Enrollmentview"),
     url(r"^(?P<pk>[0-9]+)/add/$",views.UserAdder, name="UserAdder"),
     url(r"^(?P<pk>[0-9]+)/remove/$",views.UserDropper, name="UserDropper"),
