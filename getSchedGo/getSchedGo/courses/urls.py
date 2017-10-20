@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r"^list/$", views.EventBeforeDate, name="EventBeforeDate"),
     # url(r"^donelist/$", views.CompletedList, name="CompletedList"),
     # url(r"^(?P<pk>[0-9]+)/comp/$", views.MarkItCompleted, name="MarkItCompleted"),
+    url(r"^EditCourse$", views.EditCourse, name="EditCourse"),
     url(r"^SelectCourse$", views.SelectCourse, name="SelectCourse"),
     url(r"^(?P<pk>[0-9]+)/ClaimCourse$", views.SelectCourse, name="ClaimCourse"),
     url(r"^(?P<pk>[0-9]+)/converttoevent$", views.AssignmentToEvent, name="AssignmentToEvent"),
