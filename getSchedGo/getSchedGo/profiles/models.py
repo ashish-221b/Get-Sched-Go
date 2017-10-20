@@ -74,7 +74,7 @@ def createSched(Day,userProfile,user):
 					et = time(int(et[0]),int(et[1]),int(et[2]))
 					stu = Event(UserProfile = userProfile,name = course.name+" Class",
 					 StartTime = st, StartDate = Day, TimeSettings = 'B',
-					 EndTime = st, EndDate = Day, Priority = '4', Type='A')
+					 EndTime = et, EndDate = Day, Priority = '4', Type='A')
 					stu.save()
 					fixedScheduleAdder(stu,user)
 ## my_Call is a function which is called when user logs in
