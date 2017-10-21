@@ -1,3 +1,94 @@
+<style type="text/css">
+.navbar-default {
+  background-color: #bdd6ec;
+  border-color: #97e5f7;
+}
+.navbar-default .navbar-brand {
+  color: #3c3f3f;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #636e09;
+}
+.navbar-default .navbar-text {
+  color: #3c3f3f;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #3c3f3f;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #636e09;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: #bdd6ec;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #3c3f3f;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #636e09;
+  background-color: #97e5f7;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li.divider {
+  background-color: #97e5f7;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #636e09;
+  background-color: #97e5f7;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #636e09;
+  background-color: #97e5f7;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #636e09;
+  background-color: #97e5f7;
+}
+.navbar-default .navbar-toggle {
+  border-color: #97e5f7;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #97e5f7;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #3c3f3f;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #3c3f3f;
+}
+.navbar-default .navbar-link {
+  color: #3c3f3f;
+}
+.navbar-default .navbar-link:hover {
+  color: #636e09;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #3c3f3f;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #636e09;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #636e09;
+    background-color: #97e5f7;
+  }
+}
+</style>
 <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -43,7 +134,7 @@
               </ul>
             </li>
             {% url 'statistics:googleConnector' as googl%} 
-<li  {% if request.path == googl %} class="active"{% endif %}>        <a href="{% url 'statistics:googleConnector' %}"><img src="https://calendar.google.com/googlecalendar/images/favicon_v2014_18.ico"></a>
+<li  {% if request.path == googl %} class="active"{% endif %}>        <a href="{% url 'statistics:googleConnector' %}"><img src="https://calendar.google.com/googlecalendar/images/favicon_v2014_18.ico" width="30" height="25"></a>
 </li>
             {% if request.user.profile.instructor %}
             <li class="dropdown">
