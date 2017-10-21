@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from .models import *
 from datetime import *
-from .schedule import fixedScheduleAdder, VariableEventAdder, NewVariableEvent1
+from .schedule import fixedScheduleAdder, NewVariableEvent1
 from profiles.models import createSched
 from .EventPicker import eventList
 from django.contrib import messages

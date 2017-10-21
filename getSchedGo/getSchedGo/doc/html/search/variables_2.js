@@ -8,6 +8,7 @@ var searchData=
   ['completedextrastudytime',['CompletedExtraStudyTime',['../classstatistics_1_1models_1_1dailyStats.html#a23a0e94939fc27b3bc62d0fab69de8f1',1,'statistics::models::dailyStats']]],
   ['completedselfstudy',['CompletedSelfStudy',['../classstatistics_1_1models_1_1dailyStats.html#adf62cf0f094acc048701d98eb14f6938',1,'statistics::models::dailyStats']]],
   ['compulsory',['Compulsory',['../classTimetable_1_1models_1_1InstructorClass.html#aaf8aedb5f2f9eb793d8596f4c208c654',1,'Timetable::models::InstructorClass']]],
+  ['contact',['contact',['../classprofiles_1_1models_1_1FeedBack.html#abf43feb82d73f496764058aea3efcffe',1,'profiles::models::FeedBack']]],
   ['creatorid',['CreatorId',['../classTimetable_1_1models_1_1Event.html#acf82613eb94514f5f702eadf15267be2',1,'Timetable::models::Event']]],
   ['creatortype',['CreatorType',['../classTimetable_1_1models_1_1Event.html#a20e848bd5b0b6aa8679e6ca47f60e3e4',1,'Timetable::models::Event']]],
   ['credit',['credit',['../classcourses_1_1models_1_1coursedetail.html#a764d67285a7c578c4c713c6f6106854f',1,'courses::models::coursedetail']]],
