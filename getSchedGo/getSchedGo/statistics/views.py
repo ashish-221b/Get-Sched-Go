@@ -109,7 +109,8 @@ def EventBeforeDate(request):
 @login_required
 def AheadOfTime(request):
 	user = request.user
-	List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None).filter(Q(StartDate__gte=datetime.today()) , Q(StartDate=datetime.today(), ScheduledStartTime__gte=datetime.today()))
+	List = Event.objects.filter(UserProfile=user.profile).exclude(ScheduledStartTime=None).filter(Q(StartDate__gte=datetime.today()) | Q(StartDate=datetime.today(), ScheduledStartTime__gte=datetime.today()))
+	# print(List)	
 	temp = open("sched"+str(user)+".csv","w+")
 	temp.write("Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private \n")
 	for event in List:
