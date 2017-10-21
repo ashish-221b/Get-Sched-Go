@@ -1,0 +1,120 @@
+{% extends 'base.html'%} <!--A way to pull content from earliertemplate base.html -->
+{% load staticfiles %}<!-- Using files that are in static folder mainly images-->
+{% load mathfilters %}
+{% load crispy_forms_tags %}<!-- Crispy is just awesome for forms handling -->
+{% block styles %}
+	<link href='{% static "css/graph.css" %}' rel="stylesheet" >
+{% endblock %}
+{% block content %}<!-- Using extend everything to be displayed are kept in extend.
+It is just as if part of content in block of actually in base.html -->
+
+{% if message %}
+<div align="center" class="alert alert-warning">{{ message }}</div>
+{% else %}
+<div align="center" class="alert alert-success">Hi {{ user }}</div>
+<div class="row">
+<div class="col-md-5 col-md-offset-1">
+
+	 <form method="post">
+			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
+			{% for field in form %}<!-- making a loop across form to break it into 2-3 forms -->
+				{{ field|as_crispy_field }}
+				{% if forloop.counter|divisibleby:"6" and not forloop.counter|divisibleby:"10"  %}
+				<!-- Forloop counter if true makes a division heading that divides form -->
+</div>
+<div class="col-md-5">
+				{% endif %}
+			{% endfor %}
+			<br>
+			<button type="submit" class="btn">Submit</button>
+		</form>
+</div>
+</div>
+{% endif %}
+<div class="row graph">
+	<dl class 	= "graph">
+		<dt>
+			Some generic heading
+		</dt>
+	{% for data, freq in freqList %}
+	<dd class="percentage percentage-{{ freq|mul:mult }}"><span class="text">
+		{{ data|div:2 }} Hours : {{ freq }} Students</span></dd>
+	{% endfor %}
+</dl>
+</div>
+{% endblock %}
+{% block jscript %}
+{% if message %}
+<script type="text/javascript">
+window.onload = function () {
+setTimeout(function() {
+     window.location.href = "{% url 'home' %}"
+}, 5000);
+// console.log("HI")
+};
+</script>
+{% else %}
+<script type="text/javascript">
+$(document).ready(function(){
+	toggleFields();
+	$("#id_TimeSettings").change(function(){
+		toggleFields();
+	});
+});
+function toggleFields(){
+	if ($("#id_TimeSettings").val()==="C"){
+var labels = document.getElementsByTagName('LABEL');
+for (var i = 0; i < labels.length; i++) {
+    if (labels[i].htmlFor == 'id_StartDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedStartDate<span class="asteriskField">*</span>'
+
+    }
+        if (labels[i].htmlFor == 'id_StartTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedStartTime<span class="asteriskField">*</span>'
+    }
+        if (labels[i].htmlFor == 'id_EndDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedEndDate<span class="asteriskField">*</span>'
+    }
+    if (labels[i].htmlFor == 'id_EndTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='ExpectedEndTime<span class="asteriskField">*</span>'
+    }
+}
+$("#div_id_Duration").show();
+	}
+	else{
+		var labels = document.getElementsByTagName('LABEL');
+for (var i = 0; i < labels.length; i++) {
+    if (labels[i].htmlFor == 'id_StartDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='StartDate<span class="asteriskField">*</span>'
+
+    }
+        if (labels[i].htmlFor == 'id_StartTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='StartTime<span class="asteriskField">*</span>'
+    }
+        if (labels[i].htmlFor == 'id_EndDate_month') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='EndDate<span class="asteriskField">*</span>'
+    }
+    if (labels[i].htmlFor == 'id_EndTime') {
+		console.log(labels[i].innerHTML)
+		labels[i].innerHTML='EndTime<span class="asteriskField">*</span>'
+    }
+}
+
+$("#div_id_Duration").hide();
+		//$("#div_id_EndDate").show();
+		// $("#div_id_TimeDuration").hide();
+		//$("#div_id_EndTime").show();
+	}
+}
+
+
+</script>
+{% endif %}
+{% endblock %}

@@ -8,7 +8,8 @@ from profiles.models import createSched
 from .EventPicker import eventList
 from django.contrib import messages
 from .PeerSuggestion import getDuration
-@login_required
+
+
 ## A model for creating an Eventor Editing a previous one
 # @param Request,EventId
 # @details First it looks after the pk parameter, if it is blank it creates a blank form.
@@ -17,11 +18,15 @@ from .PeerSuggestion import getDuration
 # User has to fill in the details or edit and then submit. The form saves the event to the database amd calls 
 # the scheduler.py. Depending on its return value it will show a message whether the event was 
 # scheduled or it has a slot clash etc.
+@login_required
 def CreateEvent(request,pk=-1):
     user = request.user
+    ## When Submit is pressed
     if request.method == 'POST':
+        # If new event
         if(pk==-1):
             form = EventForm(request.POST)
+        # If event exists. This block deschedules it first to free up the slots
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(request.POST, instance = prev)
@@ -35,6 +40,7 @@ def CreateEvent(request,pk=-1):
             Eve = form.save(commit=False)
             Eve.UserProfile = user.profile
             Eve.save()
+            ## Code here onwards handles issues regarding Scheduling
             if Eve.TimeSettings=='B':
                 a=fixedScheduleAdder(Eve,user)
                 if a == 2:
@@ -52,30 +58,27 @@ def CreateEvent(request,pk=-1):
             elif Eve.TimeSettings=='C':
                 a=NewVariableEvent1(Eve,user)
                 print(a)
-            if Eve.CreatorType=='1':
-                a=Eve.Duration
-                Assign=get_object_or_404(InstructorAssignment,pk=Eve.CreatorId)
-                print("hello")
-                print(Eve.Duration)
-                Assign.addStudentData(a)
-            elif Eve.CreatorType=='4':
-                print(Eve.Duration)
-                Assign=get_object_or_404(InstructorExam,pk=Eve.CreatorId)
-                Assign.addStudentData(Eve.Duration)
             return redirect('Timetable:EventList')
+    # When Edit or create button is pressed
     else:
+        template = 'CreateEvent.html'
+        # for new events
         if(pk==-1):
             form = EventForm()
+            context = {'user': user, 'form': form}
+        # for existing events and event created using Course events and Suggestion API
         else:
             prev=get_object_or_404(Event, pk=pk)
             form = EventForm(instance=prev)
-        dataList = []
-        if(prev.CreatorType=='1'):
-            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
-        if(prev.CreatorType=='4'):
-            dataList,freq,mean = getDuration(prev.CreatorType,prev.CreatorId)
-        context = {'user': user, 'form': form, 'dataList': dataList}
-        template = 'CreateEvent.html'
+            context = {'user': user, 'form': form}
+            # collects Peer Duration data for assignments and exam prearation events
+            if((prev.CreatorType=='4')or(prev.CreatorType=='1')):
+                dataList = []
+                dataList,freqList,mean = getDuration(prev.CreatorType,prev.CreatorId)
+                maximum = max(freqList, key=freqList.get)
+                multiplier=100//freqList[maximum]
+                context = {'user': user, 'form': form, 'freqList': freqList.items(),'mult': multiplier}
+                template = 'CreateEventSpecial.html'
         return render(request,template,context)
 
 
@@ -91,6 +94,7 @@ def CreateEvent(request,pk=-1):
 @login_required
 def EventList(request,pk=-1):
     user = request.user
+    # Various Filters
     if(pk==-1 or pk=='0'):
         List = Event.objects.filter(UserProfile=user.profile)
     elif(pk == '2'):
@@ -106,6 +110,7 @@ def EventList(request,pk=-1):
     print(List)
     return render(request,template,context)
 
+
 ## A method displaying all events of a week, from three days before to four days after
 # @param request
 # @details It makes a list of lists. The first element of each of the list is a dailysched object and the second 
@@ -113,10 +118,13 @@ def EventList(request,pk=-1):
 # as a context to 'todayschedule.html'
 # createsched checks if there is a dailysched object with active day equal to today, if there isn't it creates one.
 # EventList creates a eventlist corresponding to the day.
+
+## For displaying Schedule in timetable
 @login_required
 def Schedules(request):
     user=request.user
     SchedList = []
+    # Gets DayScheds (Day containers) and Creates them if they doesn't exist
     for i in range(-3,4):
         createSched(date.today() + timedelta(days=i),user.profile)
         Day = get_object_or_404(DailySched, UserProfile = user.profile, Active_day = (date.today() + timedelta(days=i)))
@@ -129,10 +137,12 @@ def Schedules(request):
     template = 'todayschedule.html'
     return render(request,template,context)
 
+
 ## A method for deleting events
 # @param request, pk i.e. id
 # @details Gets the Event by its id and frees the corresponding slot connected by setting the slot's
 # Eventconnected field to none and also deletes the event from database.
+
 @login_required
 def DeleteEvent(request,pk):
     ToBeRemoved = get_object_or_404(Event,pk=pk)
@@ -143,12 +153,12 @@ def DeleteEvent(request,pk):
     ToBeRemoved.delete()
     return redirect('Timetable:EventList')
 
+
 ## A method for descheduling events.
 # @param request, pk i.e. id
 # @details First it gets the event by its id from the databases and frees the corresponding slot connected 
 # by setting the slot's Eventconnected field to none. Then it sets the event's ScheduledStartTime and 
 # ScheduledEndTime to None.
-
 @login_required
 def DescheduleEvent(request,pk):
     ToBeDescheduled = get_object_or_404(Event,pk=pk)
@@ -187,12 +197,14 @@ def CreateAssignment(request):
     else:
         return redirect('home')
 
+
 ## A view for creating a Class
 # @param request
 # @details First it checks if the user is an instructor or not.If it is,if the request is Post , it creates an InstructorClassForm. If the form is valid,
 # it creates a InstructorClass object out of it ans saves it in the database.If there is a get request, 
 # it creates a blank InstructorClassForm and passes it as a context to the template 'CreateEvent.html'. If the user is
 # not an instructor it just redirects to the home.
+
 @login_required
 def CreateClass(request):
     user = request.user
@@ -211,6 +223,7 @@ def CreateClass(request):
             return render(request,template,context)
     else:
         return redirect('home')
+
 ## A view for creating an exam
 # @param request
 # @details First it checks if the user is an instructor or not.If it is,if the request is Post , it creates an InstructorExamForm. If the form is valid,
@@ -235,6 +248,7 @@ def CreateExam(request):
             return render(request,template,context)
     else:
         return redirect('home')
+
 ## A method for displaying Assignments
 # @param request,pk i.e. id
 # @details Depending on the pk parameter it will display assignments in different formats of the user.
@@ -242,6 +256,7 @@ def CreateExam(request):
 # For any other value of pk it will sort the assignments according to StartDate and StartTime 
 # and display accordingly. Actually it passes the list of filtered assignments as a 
 # context to the template 'Assignment.html'
+
 @login_required
 def Assignments(request,pk=-1):
     user = request.user
@@ -258,6 +273,7 @@ def Assignments(request,pk=-1):
     template = 'Assignment.html'
     return render(request,template,context)
 
+
 ## A method for displaying Classes
 # @param request,pk i.e. id
 # @details Depending on the pk parameter it will display classes in different formats of the corresponding instructor..
@@ -265,6 +281,7 @@ def Assignments(request,pk=-1):
 # For any other value of pk it will sort the classes according to StartDate and StartTime 
 # and display accordingly. Actually it passes the list of filtered classes as a 
 # context to the template 'class.html'
+
 @login_required
 def Classes(request,pk=-1):
     user = request.user
@@ -282,6 +299,7 @@ def Classes(request,pk=-1):
     template = 'class.html'
     return render(request,template,context)
 
+
 ## A method for displaying Exams
 # @param request,pk i.e. id
 # @details Depending on the pk parameter it will display exams in different formats created by the corresponding instructor.
@@ -289,6 +307,7 @@ def Classes(request,pk=-1):
 # For any other value of pk it will sort the exams according to StartDate and StartTime 
 # and display accordingly. Actually it passes the list of filtered Exams as a 
 # context to the template 'exam.html'
+
 @login_required
 def Exams(request,pk=-1):
     user = request.user
@@ -305,4 +324,3 @@ def Exams(request,pk=-1):
     context = {'user': user,'List': List}
     template = 'exam.html'
     return render(request,template,context)
-

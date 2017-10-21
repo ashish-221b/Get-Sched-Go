@@ -10,11 +10,71 @@ It is just as if part of content in block of actually in base.html -->
 <div align="center" class="alert alert-success">Hi {{ user }}</div>
 <div class="row">
 <div class="col-md-5 col-md-offset-1">
+<script type="text/javascript">
+	function validateMe(){
+		// evt.preventDefault();
+		var name = document.forms["eventForm"]["id_name"].value;
+		var Description = document.forms["eventForm"]["id_Description"].value;
+		var Venue = document.forms["eventForm"]["id_Venue"].value;
+		var StartTime = document.forms["eventForm"]["id_StartTime"].value;
+		var StartDate_month = document.forms["eventForm"]["id_StartDate_month"].value;
+		var StartDate_date = document.forms["eventForm"]["id_StartDate_day"].value;
+		var StartDate_year = document.forms["eventForm"]["id_StartDate_year"].value;
 
-	 <form method="post">
+		var Duration = document.forms["eventForm"]["id_Duration"].value;
+		var TimeSettings = document.forms["eventForm"]["id_TimeSettings"].value;
+		var EndTime = document.forms["eventForm"]["id_EndTime"].value;
+		var EndDate_month = document.forms["eventForm"]["id_EndDate_month"].value;
+		var EndDate_date = document.forms["eventForm"]["id_EndDate_day"].value;
+		var EndDate_year = document.forms["eventForm"]["id_EndDate_year"].value;
+		var givenEndTime = new Date(EndDate_month + "/" + EndDate_date + "/" + EndDate_year + " " + EndTime)
+		// if (x == " "){
+
+		// }
+		var now = new Date();
+		var nowTime = new Date((now.getMonth()+1) + "/" + now.getDate() + "/" + now.getFullYear() + " " + now.getHours()+":"+now.getMinutes());
+		//console.log(StartTime,StartDate_month,StartDate_year,StartDate_date);
+// try{
+		var givenTime = new Date(StartDate_month + "/" + StartDate_date + "/" + StartDate_year + " " + StartTime);
+// }
+// catch(err){alert("SORRY");return false;}
+Date.prototype.isValid = function() {
+	return this.getTime() === this.getTime();
+}
+	if (!givenTime.isValid())	{
+	alert("SORRY error in StartDate or StartTime");
+	// console.log(err);
+	return false;
+
+	}
+	if (!givenEndTime.isValid())	{	
+		alert("SORRY error in EndDate or EndTime");
+		console.log(err);
+		return false;
+
+	}
+
+	if (givenEndTime < givenTime){
+		alert("Error in endTime\n Give Scheduler some space\n to schedule");
+		return false;
+	}
+	if (givenTime < nowTime){
+		alert("That's a time in past.\n Let's plan for future");
+		return false;
+	}
+
+			// alert("name Needed");
+			// return false;
+
+	}
+</script>
+	 <form onsubmit="return validateMe()" method="post" id="eventForm">
 			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
 			{% for field in form %}<!-- making a loop across form to break it into 2-3 forms -->
 				{{ field|as_crispy_field }}
+<!-- 				{% if field.error %}
+				<label class='error' for='id_{{ field.name }}' generated="true">{{ field.errors|join:". " }}</label>
+				{% endif %} -->
 				{% if forloop.counter|divisibleby:"6" and not forloop.counter|divisibleby:"10"  %}
 				<!-- Forloop counter if true makes a division heading that divides form -->
 </div>
@@ -27,13 +87,6 @@ It is just as if part of content in block of actually in base.html -->
 </div>
 </div>
 {% endif %}
-<div>
-	{% for data in dataList %}
-	<div class = "event-holder">
-		{{ data }}
-	</div>
-	{% endfor %}
-</div>
 {% endblock %}
 {% block jscript %}
 {% if message %}
@@ -46,8 +99,26 @@ setTimeout(function() {
 };
 </script>
 {% else %}
+<!-- <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
+
 <script type="text/javascript">
 $(document).ready(function(){
+	// 	$("#eventForm").validate({
+	// 	rules :{
+	// 		id_name :{
+	// 		required : true ,
+	// 		minlength : 5
+	// 	}
+	// 	},
+	// 	messages :{
+	// 		id_name :{
+	// 			required : 'hushud' ,
+	// 			minlength : "fsay"
+	// 		}
+	// 	}
+	// });
 	toggleFields();
 	$("#id_TimeSettings").change(function(){
 		toggleFields();
@@ -58,20 +129,20 @@ function toggleFields(){
 var labels = document.getElementsByTagName('LABEL');
 for (var i = 0; i < labels.length; i++) {
     if (labels[i].htmlFor == 'id_StartDate_month') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='ExpectedStartDate<span class="asteriskField">*</span>'
 
     }
         if (labels[i].htmlFor == 'id_StartTime') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='ExpectedStartTime<span class="asteriskField">*</span>'
     }
         if (labels[i].htmlFor == 'id_EndDate_month') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='ExpectedEndDate<span class="asteriskField">*</span>'
     }
     if (labels[i].htmlFor == 'id_EndTime') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='ExpectedEndTime<span class="asteriskField">*</span>'
     }
 }
@@ -81,20 +152,20 @@ $("#div_id_Duration").show();
 		var labels = document.getElementsByTagName('LABEL');
 for (var i = 0; i < labels.length; i++) {
     if (labels[i].htmlFor == 'id_StartDate_month') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='StartDate<span class="asteriskField">*</span>'
 
     }
         if (labels[i].htmlFor == 'id_StartTime') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='StartTime<span class="asteriskField">*</span>'
     }
         if (labels[i].htmlFor == 'id_EndDate_month') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='EndDate<span class="asteriskField">*</span>'
     }
     if (labels[i].htmlFor == 'id_EndTime') {
-		console.log(labels[i].innerHTML)
+		// console.log(labels[i].innerHTML)
 		labels[i].innerHTML='EndTime<span class="asteriskField">*</span>'
     }
 }
