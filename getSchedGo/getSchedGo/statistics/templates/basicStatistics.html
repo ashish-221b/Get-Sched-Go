@@ -6,13 +6,13 @@
 	<option value="" selected disabled hidden>Choose the day here</option>
   <option value="{% url 'statistics:TodayStatistic' %}"><a href="{% url 'statistics:TodayStatistic' %}"> Today</a></option>
   <option value="{% url 'statistics:AnyDayStatistics' 1 %}"><a href="{% url 'statistics:AnyDayStatistics' 1 %}"> Yesterday</a></option>
-  <option value="{% url 'statistics:AnyDayStatistics' 2 %}"><a href="{% url 'statistics:AnyDayStatistics' 2 %}"> Yesterday--</a></option>
+  <option value="{% url 'statistics:AnyDayStatistics' 2 %}"><a href="{% url 'statistics:AnyDayStatistics' 2 %}"> Day Before Yesterday</a></option>
 </select><br>
 <!-- ActiveDay: {{ TodaysStats.linkedDay.Active_day|date:"M d, Y" }}<br>
  --><div class="container">
   <div class="page-header">
     <h3> {{ TodaysStats.linkedDay.Active_day|date:"M d, Y" }} </h3>
-    </div></div>   
+    </div></div>
 
 
 
@@ -53,27 +53,27 @@
         <td>{{ TodaysStats.ExtraStudyTime|div:2 }}</td>
         <td>{{ TodaysStats.CompletedExtraStudyTime|div:2 }}</td>
       </tr>
-      <tr class="danger"> 
+      <tr class="danger">
             <td>D.</td>
     <td>Extra Curriculars</td>
         <td>{{ TodaysStats.ExtraCurricularsTime|div:2 }}</td>
         <td>{{ TodaysStats.CompletedExtraCurricularsTime|div:2 }}</td>
       </tr>
-      <tr class="warning"> 
+      <tr class="warning">
            <td>E.</td>
      <td>Miscellaneous</td>
         <td>{{  TodaysStats.MiscellaneousTime|div:2 }}</td>
         <td>{{ TodaysStats.CompletedMiscellaneousTime|div:2 }}</td>
       </tr>
     </tbody>
-        
+
 
   </table>
 </div>
 
 <style type="text/css">
 .progress-bar-striped:hover {
-     animation: progress-bar-stripes 2.5s ease-out infinite; 
+     animation: progress-bar-stripes 2.5s ease-out infinite;
 }
 </style>
 
@@ -87,7 +87,7 @@ Distribution Percentage of whole day over activity<br>
 {% if percentage.PercentageClassTiming != 0 %}
    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageClassTiming }}%;">
     B
-  </div>  
+  </div>
 {% endif %}
 {% if percentage.PercentageExtraStudyTime != 0 %}
   <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" style="width:{{ percentage.PercentageExtraStudyTime }}%;background-color:grey;">

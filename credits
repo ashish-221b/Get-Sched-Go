@@ -9,8 +9,9 @@ w3schools.com
 stackoverflow.com
 
 Helping in designing :-
-bootstrap.com
 
+These include glyphicons navbars and tables
+bootstrap.com
 
 Crispy-forms and its readTheDocs documentation
 https://django-crispy-forms.readthedocs.io/en/latest/install.html#moving-from-django-uni-form-to-django-crispy-forms
@@ -30,3 +31,35 @@ https://stackoverflow.com/questions/30194831/python-regex-email-address
 
 validation of DATE object
 https://stackoverflow.com/questions/1353684/detecting-an-invalid-date-date-instance-in-javascript
+
+Importing Models from different app
+
+https://stackoverflow.com/questions/31406662/django-unable-to-import-model-from-another-app  
+
+Dropdown List in Django
+
+https://stackoverflow.com/questions/31130706/dropdown-in-django-model
+
+set user and related fields in form
+
+https://stackoverflow.com/questions/9056455/set-user-field-in-a-form-object-created-using-modelform
+
+icon shaking animations
+
+https://css-tricks.com/snippets/css/shake-css-keyframe-animation/ icon shaking animations
+
+frequency analysis
+
+https://stackoverflow.com/questions/2161752/how-to-count-the-frequency-of-the-elements-in-a-list
+
+Peer Estimate graph template
+
+https://css-tricks.com/making-charts-with-css/
+
+Template for timetable
+
+https://codyhouse.co/gem/schedule-template/
+
+Carousel circular image things
+
+https://getbootstrap.com/docs/3.3/examples/carousel/
