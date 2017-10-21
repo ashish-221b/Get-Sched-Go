@@ -3,7 +3,19 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="Form",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="courses.forms.CourseForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcourses_1_1forms_1_1CourseForm.html"];
+  Node1 [label="ModelForm",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="courses.forms.CourseEditForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcourses_1_1forms_1_1CourseEditForm.html",tooltip="This is a djangoModel form to update the data of courseDetail model. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Event_suggestion.forms.suggestionForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classEvent__suggestion_1_1forms_1_1suggestionForm.html",tooltip="A form which was used to call API during Beta testing. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="profiles.forms.SimpleForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classprofiles_1_1forms_1_1SimpleForm.html",tooltip="A model form that through meta get linked to profile imported from .models This model form is a class..."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Timetable.forms.EventForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1forms_1_1EventForm.html",tooltip="Form corresponding to an event model with it&#39;s specified widgets and placeholders excluding some fiel..."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Timetable.forms.Instructor\lAssignmentForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1forms_1_1InstructorAssignmentForm.html",tooltip="Form corresponding to an InstructorAssignment model with it&#39;s specified widgets and placeholders excl..."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Timetable.forms.Instructor\lClassForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1forms_1_1InstructorClassForm.html",tooltip="Form corresponding to an InstructorClass model with it&#39;s specified widgets and placeholders excluding..."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Timetable.forms.Instructor\lExamForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1forms_1_1InstructorExamForm.html",tooltip="Form corresponding to an InstructorExam model with it&#39;s specified widgets and placeholders excluding ..."];
 }

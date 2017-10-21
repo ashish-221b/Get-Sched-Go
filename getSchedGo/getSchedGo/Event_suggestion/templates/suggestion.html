@@ -9,18 +9,18 @@
     visibility: hidden;
    }
 
-    #rand :hover { 
+    #rand :hover {
      background-color: #ffff4d;
      opacity: 1;
       }
-      
+
  </style>
  {% endblock %}
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
    <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-   {% for q in suggestionset %}
+   {% for q in suggestionsetList %}
     <li data-target="#myCarousel" data-slide-to="{{forloop.counter}}" visibility="hidden"></li>
 
    {% endfor %}
@@ -29,84 +29,84 @@
   <div class="carousel-inner">
     <div class="item active">
      <img src="{% static 'img/fcbarcelona.jpg' %}" style = "width: 100%; height: 550px" >
-      
+
     </div>
 
-    {% for q in suggestionset %}
+    {% for q,c in suggestionsetList %}
       <div class="item">
-      
-      {% if q.Hometeam == 'FC Barcelona' %} 
-      <img src="{% static 'img/fcbarcelona.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif  q.Awayteam  == 'FC Barcelona' %} 
+      {% if q.Hometeam == 'FC Barcelona' %}
       <img src="{% static 'img/fcbarcelona.jpg' %}" style = "width: 100%; height: 550px" >
-      
+
+
+      {% elif  q.Awayteam  == 'FC Barcelona' %}
+      <img src="{% static 'img/fcbarcelona.jpg' %}" style = "width: 100%; height: 550px" >
+
 
       {% elif q.Hometeam == 'Real Madrid CF' %}
       <img src="{% static 'img/realmadrid.jpg' %}" style = "width: 100%; height: 550px" >
-     
+
 
        {% elif q.Awayteam == 'Real Madrid CF' %}
       <img src="{% static 'img/realmadrid.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Hometeam == 'Manchester City FC' %} 
-      <img src="{% static 'img/manchestercity.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Awayteam == 'Manchester City FC' %} 
+      {% elif q.Hometeam == 'Manchester City FC' %}
       <img src="{% static 'img/manchestercity.jpg' %}" style = "width: 100%; height: 550px" >
-      
+
+
+      {% elif q.Awayteam == 'Manchester City FC' %}
+      <img src="{% static 'img/manchestercity.jpg' %}" style = "width: 100%; height: 550px" >
+
       {% elif q.Hometeam == 'Manchester United FC' %}
       <img src="{% static 'img/manchesterunited.jpg' %}" style = "width: 100%; height: 550px" >
-      
+
 
       {% elif q.Awayteam == 'Manchester United FC' %}
       <img src="{% static 'img/manchesterunited.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Hometeam == 'Chelsea FC' %} 
+
+      {% elif q.Hometeam == 'Chelsea FC' %}
       <img src="{% static 'img/chelsea.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Awayteam == 'Chelsea FC' %} 
+
+      {% elif q.Awayteam == 'Chelsea FC' %}
       <img src="{% static 'img/chelsea.jpg' %}" style = "width: 100%; height: 550px" >
-      
-      {% elif q.Hometeam == 'Paris Saint-Germain' %} 
-      <img src="{% static 'img/parissaintgermain.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Awayteam == 'Paris Saint-Germain' %} 
+      {% elif q.Hometeam == 'Paris Saint-Germain' %}
       <img src="{% static 'img/parissaintgermain.jpg' %}" style = "width: 100%; height: 550px" >
 
-      {% elif q.Hometeam == 'Juventus Turin' %} 
+
+      {% elif q.Awayteam == 'Paris Saint-Germain' %}
+      <img src="{% static 'img/parissaintgermain.jpg' %}" style = "width: 100%; height: 550px" >
+
+      {% elif q.Hometeam == 'Juventus Turin' %}
       <img src="{% static 'img/juventusturin.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Awayteam == 'Juventus Turin' %} 
+
+      {% elif q.Awayteam == 'Juventus Turin' %}
       <img src="{% static 'img/juventusturin.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Hometeam == 'Club Atlético de Madrid' %} 
+
+      {% elif q.Hometeam == 'Club Atlético de Madrid' %}
       <img src="{% static 'img/atleticodemadrid.jpeg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Awayteam == 'Club Atlético de Madrid' %} 
+
+      {% elif q.Awayteam == 'Club Atlético de Madrid' %}
       <img src="{% static 'img/atleticodemadrid.jpeg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Hometeam == 'Liverpool FC' %} 
-      <img src="{% static 'img/liverpool.jpg' %}" style = "width: 100%; height: 550px" >
-      
 
-      {% elif q.Awayteam == 'Liverpool FC' %} 
+      {% elif q.Hometeam == 'Liverpool FC' %}
       <img src="{% static 'img/liverpool.jpg' %}" style = "width: 100%; height: 550px" >
-      
+
+
+      {% elif q.Awayteam == 'Liverpool FC' %}
+      <img src="{% static 'img/liverpool.jpg' %}" style = "width: 100%; height: 550px" >
+
 
       {% elif q.Hometeam == 'FC Bayern München'%}
       <img src="{% static 'img/bayernmuchen.jpg' %}" style = "width: 100%; height: 550px" >
-      
+
 
       {% elif q.Awayteam == 'FC Bayern München' %}
       <img src="{% static 'img/bayernmuchen.jpg' %}" style = "width: 100%; height: 550px" >
@@ -115,19 +115,24 @@
 
 
       <div class = "carousel-caption" id="rand" style="background-color:#ebebe0; opacity:0.8";>
-        
-        <div><a href="{% url 'suggestion:ConvertToEvent' q.id %}"> 
 
-
-
-      
-
-      
+        <div>
+          {% if c != 0 %}
+          <div style="color: #ff0000;">
+          <h3> Time: {{ q.StartTime }} </h3>
+          <h3> Date: {{ q.StartDate }} </h3>
+          <h3> {{ q.Hometeam }} V/S {{ q.Awayteam }} </h3>
+          <h3> League: {{ q.League }} </h3>
+          <h3> You are Following this event </h3><br><br><br>
+        </div>
+          {% else %}
+          <a href="{% url 'suggestion:ConvertToEvent' q.id %}">
         <h3> Time: {{ q.StartTime }} </h3>
         <h3> Date: {{ q.StartDate }} </h3>
-        <h3> {{ q.Hometeam }} V/S {{ q.Awayteam }} </h3> 
+        <h3> {{ q.Hometeam }} V/S {{ q.Awayteam }} </h3>
         <h3> League: {{ q.League }} </h3><br><br><br>
         </a>
+        {% endif %}
       </div>
      </div>
      </div>
@@ -143,8 +148,4 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
-
-<p>{{suggestionset.id}}</p>
-
-
 {% endblock %}

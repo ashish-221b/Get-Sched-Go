@@ -49,7 +49,6 @@ class Event(models.Model):
 	Priority = models.CharField(max_length=5,choices=Priority_Options,default='1')
 	Type = models.CharField(max_length=5,choices=Event_Type,default='E')
 	Completed = models.BooleanField(default=False)
-
 	def __str__(self):
 		return self.name
 
@@ -67,7 +66,9 @@ class Slots(models.Model):
 		return str(self.SlotNum)
 
 ## A model for exams given by instructors
-
+# @details This model will save the instance of an exam scheduled by instructor related to a course
+# Student enrolled can use this model and autogenerate time for their study as well as sweep of time
+# when rthe exam is scheduled
 class InstructorExam(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
@@ -79,6 +80,7 @@ class InstructorExam(models.Model):
 	PreparationDuration = models.CharField(null=True,max_length=5,choices=Duration_choices,default='1',blank=True)
 
 ## A model for classes scheduled by the instructor
+# @details A class scheduled that can convert to an indespensible event for the student
 class InstructorClass(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)
@@ -90,6 +92,8 @@ class InstructorClass(models.Model):
 	Compulsory = models.BooleanField(default=True)
 
 ## A model for assignments given by the instrtuctor
+# @details Assignment planned by instructor to be done before a given deadline time
+# Also it contains the expectation of student as well as will be showing suggestion of peers while scheduling this into an event
 class InstructorAssignment(models.Model):
 	UserProfile = models.ForeignKey(profile, on_delete=models.CASCADE)
 	name = models.CharField(max_length=50)

@@ -3,5 +3,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="Timetable.admin.Instructor\lExamAdmin.Meta",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1admin_1_1InstructorExamAdmin_1_1Meta.html"];
+  Node0 [label="Timetable.admin.Instructor\lClassAdmin.Meta",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTimetable_1_1admin_1_1InstructorClassAdmin_1_1Meta.html"];
 }

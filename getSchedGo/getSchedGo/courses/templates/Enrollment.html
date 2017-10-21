@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <div class="col-md-4 col-md-offset-2">
-	
+
 	 <form method="post">
 	 	{% csrf_token %}
 	 	{{ form|crispy }}
@@ -17,7 +17,7 @@ Code: {{ courses.code }}
 <h3>
 Name: {{ courses.name }}
 </h3><h3>
-Slot Number: {{ courses.slot }}
+Slot Number: {{ courses.Slot }}
 </h3><h3>
 Credit: {{ courses.credit }}
 </h3>
@@ -34,7 +34,7 @@ Tutorial Slot: {{ courses.tutorialSlot }}
 	<a href="{% url 'courses:UserDropper' courses.id %}">        <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-remove"></span>Drop
         </button></a> <br>
-</div>	
+</div>
 
 {% endfor %}
 {% endblock %}
