@@ -2,6 +2,7 @@ var searchData=
 [
   ['admin',['admin',['../namespacecourses_1_1admin.html',1,'courses']]],
   ['apps',['apps',['../namespacecourses_1_1apps.html',1,'courses']]],
+  ['coursedata',['CourseData',['../namespacecourses_1_1CourseData.html',1,'courses']]],
   ['courses',['courses',['../namespacecourses.html',1,'']]],
   ['forms',['forms',['../namespacecourses_1_1forms.html',1,'courses']]],
   ['models',['models',['../namespacecourses_1_1models.html',1,'courses']]],

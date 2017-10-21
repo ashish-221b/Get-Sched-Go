@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from . import views
+## name of app to call it's url without clash with other app's url. works as a namespaces
 app_name = 'courses'
+## list of all url's corresponding to type of get requests to access all the view 
 urlpatterns = [
     url(r"^$", views.CourseView, name="CourseView"),
     url(r"^some/(?P<pk1>[a-zA-Z0-9_ ]+)/(?P<pk2>\w+)/$", views.CourseView, name="some"),

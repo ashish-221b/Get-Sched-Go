@@ -11,13 +11,18 @@ from Timetable.schedule import fixedScheduleAdder
 # Create your views here.
 
 ## This view is student Dashboard for various events published by instructor
-# @params request getargument1 getargument2
+# @param request basic call for a view in django
+# @param getargument1 helps to show all the events of a simgle course
+# @param getargument2 helps to show only a particular type of events
 # @details allows user to view assignments classes exams published by instructors of various courses
+# Here from this view he can easily choose the event and schedule it
+#
+# Scheduled events will flag out among rest of the events
 def CourseView(request,pk1='nan',pk2='nan'):
     user=request.user
-    #List of courses in which student is ennrolled
+    ## List of courses in which student is ennrolled
     CourseList=coursedetail.objects.filter(Student = user.profile)
-    #Apply course filter
+    ## Apply course filter. 'nan' means for all courses
     if(pk1=='nan'):
         Coursereq=coursedetail.objects.filter(Student = user.profile)
     else:
@@ -26,12 +31,12 @@ def CourseView(request,pk1='nan',pk2='nan'):
     AssignmentList=[]
     ClassList=[]
     ExamList=[]
-    #fills in the course events in Lists
+    # fills in the course events in Lists
     for Course in Coursereq:
         AssignmentList.extend(InstructorAssignment.objects.filter(UserProfile=Course.instructor))
         ExamList.extend(InstructorExam.objects.filter(UserProfile=Course.instructor))
         ClassList.extend(InstructorClass.objects.filter(UserProfile=Course.instructor))
-    #Applies Task filter (class/assignment/Exam)
+    ## Applies Task filter (class/assignment/Exam)
     if(pk2=='a'):
         ClassList=[]
         ExamList=[]
@@ -43,7 +48,8 @@ def CourseView(request,pk1='nan',pk2='nan'):
         AssignmentList=[]
     else:
         print("ok")
-    #these loops check which course event is already added
+    ## these loops check which course event is already added. maintain a list of value 0/1 depending
+    # on scheduled or unscheduled by the current user
     supportAssign = []
     for assign in AssignmentList:
         i=Event.objects.filter(UserProfile = user.profile,CreatorType='1',CreatorId=assign.id).count()
@@ -59,7 +65,7 @@ def CourseView(request,pk1='nan',pk2='nan'):
         j=Event.objects.filter(UserProfile = user.profile,CreatorType='4',CreatorId=Exam.id).count()
         supportExam.append(i)
         supportExamPrep.append(j)
-    #zipping relevant lists
+    ## zipping relevant lists with user's history of scheduling
     AssignmentList = zip(AssignmentList,supportAssign)
     ClassList = zip(ClassList,supportClass)
     ExamList = zip(ExamList,supportExam,supportExamPrep)
@@ -70,9 +76,11 @@ def CourseView(request,pk1='nan',pk2='nan'):
     print(ExamList)
     return render(request,template,context)
 ## View to enroll into a Course
-# @params request getargument(coursedetail model id)
+# @param request  basic call for a view in django
+# @param pk getargument which contains coursedetail model id
 # @details This view enrolls a user into a course.
 # It also adds the regular classes to user schedule automatically
+# For instructor it acts a way to bind himself with a course
 def UserAdder(request,pk):
     ToChange = get_object_or_404(coursedetail,pk=pk)
     user = request.user
@@ -84,7 +92,7 @@ def UserAdder(request,pk):
     else:
         ToChange.Student.add(user.profile)
         ToChange.save()
-        ## to add the classes automatically to student schedule
+        ## to add the classes automatically to student schedule for the next 3 days
         for i in range(4):
             Day = date.today()+timedelta(days=i)
             WEEKDAY = Day.weekday() + 1
@@ -105,9 +113,13 @@ def UserAdder(request,pk):
                     fixedScheduleAdder(stu,user)
     return redirect('courses:Enrollmentview')
 ## view for dropping the course
+# @param request  basic call for a view in django
+# @param pk course model id of course to be dropped
 def UserDropper(request,pk):
     ToChange = get_object_or_404(coursedetail,pk=pk)
     user = request.user
+    ## By the way this was just for prototype. Currently instuctor can't get rid of the course.
+    # This link will be activated at the end of the semester
     if user.profile.instructor:
         if ToChange.instructor == user.profile:
             ToChange.instructor = None
@@ -121,6 +133,11 @@ def UserDropper(request,pk):
     ToChange.save()
     return redirect('courses:Enrollmentview')
 ## view to search querry for available courses
+# @param request  basic call for a view in django
+# Does an intelligent searching of course by it's course code throughout the database
+# 
+# Provides links to course enrollment as well as course dropping to the student
+@login_required
 def Enrollmentview(request):
     template = 'Enrollment.html'
     user = request.user
@@ -134,6 +151,8 @@ def Enrollmentview(request):
         form = CourseForm()
         return render(request,template,{'form': form,})
 ## View for instructor to claim a course as his
+# @param request  basic call for a view in django
+# @param pk courseid
 @login_required
 def SelectCourse(request,pk=-1):
     template = 'selectcourse.html'
@@ -164,6 +183,10 @@ def SelectCourse(request,pk=-1):
                 print("no")
                 return redirect('home')
 ## Convert an Assignment object of a course to event of user
+# @param request  basic call for a view in django
+# @param pk InstructorAssignment id
+# Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
+# Priority is kept indespensable with variable time setting
 def AssignmentToEvent(request, pk):
     instance= get_object_or_404(InstructorAssignment, pk=pk)
     q = Event(UserProfile= request.user.profile,
@@ -182,6 +205,10 @@ def AssignmentToEvent(request, pk):
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
 ## Convert an Class object of a course to event of user
+# @param request  basic call for a view in django
+# @param pk InstructorClass id
+# Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
+# Priority is kept indespensable with fixed time setting. 
 def ClassToEvent(request,pk):
     instance=get_object_or_404(InstructorClass, pk=pk)
     Start= datetime.combine(instance.Date, instance.StartTime)
@@ -205,6 +232,8 @@ def ClassToEvent(request,pk):
     )
     q.save()
     return redirect('Timetable:EditEvent',pk=q.id)
+
+## Helps to convert time to duration to store in the model acording to predefined duration choice field in timetable model
 def TimeToDuration(time):
     if time=='01:30:00':
         return '3'
@@ -217,6 +246,10 @@ def TimeToDuration(time):
     else:
         return ''
 ## Convert an Exam object of a course to event of user
+# @param request  basic call for a view in django
+# @param pk InstructorExam id
+# Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
+# Priority is kept indespensable with fixed time setting. 
 def ExamToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     Start= datetime.combine(instance.Date, instance.StartTime)
@@ -245,6 +278,10 @@ def ExamToEvent(request,pk):
 
     return redirect('Timetable:EditEvent',pk=q.id)
 ## Convert an exam object of a course to event for preparation of exam of user
+# @param request  basic call for a view in django
+# @param pk InstructorExam id
+# Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
+# Priority is kept indespensable with variable time setting. 
 def ExamPrepToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     Start= datetime.combine(instance.Date,instance.StartTime)
@@ -271,7 +308,7 @@ def ExamPrepToEvent(request,pk):
 
 
 
-
+## This course view helps instructor to change the details related to course using CourseEditForm
 def EditCourse(request):
     user = request.user
     courseInstances = coursedetail.objects.filter(instructor=user.profile)

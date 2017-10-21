@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 import os
 import sys
+"""@package django
+ This is the main driver program which runs and make calls to all other sub-applications mentioned in setting.py
+ @details starts the server is runserver is called. It's function depends on arguments provided in it's call
 
+ More Details
+ @link https://docs.djangoproject.com/en/1.11/ref/django-admin/#django-admin-and-manage-py
+"""
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "getSchedGo.settings")
     try:
