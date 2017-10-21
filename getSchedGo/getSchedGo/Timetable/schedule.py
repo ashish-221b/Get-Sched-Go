@@ -8,7 +8,16 @@ Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','I
 Event_Timings = [('A','Duration Fixed'),('B','Duration and Timing Fixed'),('C',('Variable'))]
 Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study'), ('D','ExtraCurriculars'),('E','Misc.')]
 
-
+## A method for scheduling a fixedevent i.e. whose StartTime and EndTime are fixed.
+# @param fixedEvent the event, user
+# @details First it gets the Daily.Sched object correspponding to the userprofile and the event 
+# StartDate. After that it gets the Startingslot and EndingSlot for the event to be scheduled. Then it
+# goes through all the slots from StartingSlot to EndingSlot.If in any one of them , an event is 
+# scheduled whose priority is greater than the fixedevent it prints an error message and return.
+# If there isn't any event in the given range of slots , the eventconnected of each of the slots
+# is set to the fixedevent. If there are any events with priority lower than our event, it first does the same 
+# thing as before and then if the events to be rescheduled are variable events , it calls the NewVariableEvent1
+# method to reschedule them. 
 def fixedScheduleAdder(fixedEvent,user):
 	eventDate = fixedEvent.StartDate
 	startTime = fixedEvent.StartTime
@@ -120,7 +129,16 @@ def fixedScheduleAdder(fixedEvent,user):
 
 
 
-
+## A method for scheduling variable events i.e. whose duration is known but the StartTime and 
+# EndTime is not fixed.
+# @param Event, User
+# @details At first it gets the DailySched object associated with the user and the StartDate(estimated)
+# of the event. Now it looks for a range of slots equal to SlotGap(StartTime- EndTime).It checks for
+# every range possible between thhe slot numbers 1 to 50. If there is a previous event existing 
+# in any of this range, the range is discarded. Now it finds the minimal range among the given ranges.
+# This is done by summing up the score of slots in each of the ranges, and finding the minimum of
+# total scores. Score is determined by a prioritization matrix depending on user preferences.If there
+# all the ranges are discarded , it prints an error message and returns.
 def VariableEventAdder(fixedEvent,user):
 	Evtype = fixedEvent.Type
 	eventDate = fixedEvent.StartDate
@@ -164,7 +182,16 @@ def VariableEventAdder(fixedEvent,user):
 	return 0
 
 # Non Recursive way of doing things. Not descheduling any event Now
-
+## A method for scheduling an event within StartTime and EndTime and whose duration is given.
+# @param Event, User
+# @details At first it gets the DailySched object associated with the user and the StartDate(estimated)
+# of the event. Now it looks for a range of slots equal to SlotGap(Duration).It checks for
+# every range possible between the ExpectedStartSlot(Slot correspoding to StartTime) and the 
+# ExpectedEndSlot(Slot corresponding to the End slot).If there is a previous event existing 
+# in any of this range, the range is discarded. Now it finds the minimal range among the given ranges.
+# This is done by summing up the score of slots in each of the ranges, and finding the minimum of
+# total scores. Score is determined by a prioritization matrix depending on user preferences.
+# If all the raanges are discarded, it prints an error message and returns.
 def NewVariableEvent(fixedEvent,user): #Assuming One Day Event
 	Evtype = fixedEvent.Type
 	eventDate = fixedEvent.StartDate
@@ -215,6 +242,21 @@ def SlotTransform(x):
 	y=(x-1)%48 + 1
 	z=(x-y)//48
 	return [y,z]
+## A method for scheduling an event between StartTime and EndTime if possible, if not , Scheduling
+# it between StartTime and DeadlineTime with given duration. Note that the event can be spread across
+# more than one day.
+# @param Event, User
+# @details At first it gets the DailySched object associated with the user and the StartDate(estimated)
+# of the event. Now it looks for a range of slots equal to SlotGap(Duration).It first checks for
+# every range possible between the ExpectedStartSlot(Slot correspoding to StartTime) and the 
+# chainedEndSlot(Slot no corresponding to the End slot, starting the counting from the first slot of the StartDate).
+# If there is a previous event existing 
+# in any of this range, the range is discarded. Now it finds the minimal range among the given ranges.
+# This is done by summing up the score of slots in each of the ranges, and finding the minimum of
+# total scores. Score is determined by a prioritization matrix depending on user preferences.
+# If all the raanges are discarded, it prints an error message and returns. If it fails in the first
+# case, it looks for a range between ExpectedStartSlot and Deadlineslot(again starting the counting
+# from the first slot of the StartDate).
 def NewVariableEvent1(fixedEvent,user): #Assuming One Day Event
 	Evtype = fixedEvent.Type
 	expectedStartDate = fixedEvent.StartDate

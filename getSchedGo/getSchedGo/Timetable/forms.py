@@ -4,7 +4,9 @@ from .models import *
 from django.forms import SelectDateWidget
 # from django.forms.extras.widgets Django < 1.9
 from django.utils import timezone
-
+## A method named past_years
+# @param ago
+# @details returns a list of years starting from (Present year - ago) to Present year
 def past_years(ago):
     this_year = timezone.now().year
     return list(range(this_year, this_year - ago - 1))

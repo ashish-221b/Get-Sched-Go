@@ -1,5 +1,6 @@
 from .models import *
 import collections
+
 def getDuration(Type,Id):
     targetEvents = Event.objects.filter(CreatorType=Type,CreatorId=Id)
     DurationData = []
