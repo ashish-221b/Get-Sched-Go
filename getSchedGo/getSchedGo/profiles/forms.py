@@ -1,5 +1,6 @@
 from django import forms
 from .models import profile
+from  .models import FeedBack
 
 ## A tuple made for choice. First value will be stored in database. Second will be key to Display
 STUDY_CHOICES = [('1','Day'),('2','Evening'), ('3','Night'), ('4','Late Night')]
@@ -23,3 +24,12 @@ class SimpleForm(forms.ModelForm):
 	class Meta:
 		model = profile
 		fields = ('name','studyChoice','sleepChoice','crickenthu','NBAenthu','footballenthu','instructor')
+
+
+class FeedBackForm(forms.ModelForm):
+	class Meta:
+		model= FeedBack
+		exclude=('contact',)
+		widgets = {
+		'Description': forms.Textarea(attrs={'placeholder': 'Enter description here'}),
+		}

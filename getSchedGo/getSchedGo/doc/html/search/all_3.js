@@ -13,6 +13,7 @@ var searchData=
   ['completedlist',['CompletedList',['../namespacestatistics_1_1views.html#a532172e4359c802a5b714dd8e33803e0',1,'statistics::views']]],
   ['completedselfstudy',['CompletedSelfStudy',['../classstatistics_1_1models_1_1dailyStats.html#adf62cf0f094acc048701d98eb14f6938',1,'statistics::models::dailyStats']]],
   ['compulsory',['Compulsory',['../classTimetable_1_1models_1_1InstructorClass.html#aaf8aedb5f2f9eb793d8596f4c208c654',1,'Timetable::models::InstructorClass']]],
+  ['contact',['contact',['../classprofiles_1_1models_1_1FeedBack.html#abf43feb82d73f496764058aea3efcffe',1,'profiles::models::FeedBack']]],
   ['converttoevent',['ConvertToEvent',['../namespaceEvent__suggestion_1_1views.html#a3da298714fb94171689078c67f46335c',1,'Event_suggestion::views']]],
   ['courseadmin',['courseAdmin',['../classcourses_1_1admin_1_1courseAdmin.html',1,'courses::admin']]],
   ['coursedata',['CourseData',['../namespacecourses_1_1CourseData.html',1,'courses']]],

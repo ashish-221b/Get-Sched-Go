@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import suggestion
 from profiles.models import profile
@@ -14,6 +15,7 @@ d=now-timedelta(days=5)
 # If it was sent more than one day ago, it sends another request and updates the variable
 # Profile.lastSuggestion to the current time.It then stores all the objects of type suggestion in
 # the variable suggestionsetList and passes it as a template while rendering 'suggestion.html'
+@login_required
 def index(request):
 	if request.method == 'GET':
 		Profile=request.user.profile

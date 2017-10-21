@@ -90,3 +90,10 @@ def my_Call(sender, request, user, **kwargs):
 		createSched(date.today()+timedelta(days=i),userProfile,user)
 ## To execute mycall at login
 user_logged_in.connect(my_Call)
+
+
+class FeedBack(models.Model):
+	Name= models.CharField(max_length=120)
+	Email=models.EmailField(blank=True)
+	contact=models.IntegerField(null=True)
+	Description= models.CharField(max_length=300)

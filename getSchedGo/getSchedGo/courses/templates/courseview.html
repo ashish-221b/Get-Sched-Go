@@ -138,9 +138,12 @@
 	 <h4> From : {{Class.StartDate }} {{ Class.StartTime }} </h4>
 	 <h4> To : {{ Class.EndDate }} {{ Class.EndTime }} </h4>
 	 <h4> At : {{ Class.Venue }} </h4>
-		</div>
-		<div class="col-md-4" >
+    </div>
+    <div class="col-md-4" >
     {% if added == 0 %}
+    {% if Class.Compulsory %}
+    <h5>This Class Is Compulsary</h5>
+    {% endif %}
 		<a href="{% url 'courses:ClassToEvent' Class.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
     {% else %}
     added

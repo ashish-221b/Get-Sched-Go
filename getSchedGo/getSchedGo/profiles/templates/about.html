@@ -1,66 +1,443 @@
 {% extends 'base.html'%}
+{% load crispy_forms_tags %}
 {% block content %}
-<h1>WELCOME TO ABOUT</h1>
-This is a FAQ section.
-Q1. What is GetSchedGo ?
+<style>
+	
+  .affix {
+      top:60px;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+  /*.affix-to{
+  	 top:60px;
+  }*/
+  .navbar {
+      margin-bottom: 0px;
+  }
 
-Basic Intro
+  .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
+
+  
+</style>
+
+<div class="container-fluid" style="padding-left: 30px;">
+<div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;" >
+<h1>WELCOME TO FAQ</h1>
+Ok Guys, thanks for wasting your valuable time(which is definitely not the project's aim, by the way) and visiting our web application.Here you will find everything you wanna know as a user. So, dig in without
+wasting any further valuable moments.<br>
+</div>
 
 
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      
+    </div>
+    <div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#Basics">Basics</a></li>
+          <li><a href="#Use">Learn To Use</a></li>
+          
+        </ul>
+      </div>
+    </div>
+ </div>
+</nav> 
+</div>
+<div id="Basics" class="container-fluid">
+<div class="container" style="padding-top:50px; " >
 
+  <div class="panel panel-default panel-primary">
+  <div class="panel-heading"><h1>Basics First</h1></div>
+  <div class="panel-body"><p>Let's first see who will use it, for what purpose he will use it 
+    and most importantly why he will use it.</p> </div>
+</div>
+   
+</div>
 
+<div class="container">
+<div class="panel-group" id="accordion" >
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        What is GetSchedGo ?</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse in">
+      <div class="panel-body">This application mainly targets student specially college going who have an unplanned approach to the day
+but need a planned one to perform good and remove the self guilt of not being able to achieve something</div>
+    </div>
+  </div>
 
-Q2. Who should use this application?
-This application mainly targets student specially college going who have an unplanned approach to the day
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Who should use this application?</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">This application mainly targets student specially college going who have an unplanned approach to the day
 but need a planned one to perform good and remove the self guilt of not being able to achieve something
+</div>
+    </div>
+  </div>
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+        How to use this application to schedule my google calender?</a>
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">
+      <ul>
+  <li>
+  Click the calender icon in the navigation bar.
+  </li>
+  <li>
+    Click the generate CSV option available at the top of this window
+  </li>
+  <li>
+    Dowload the file in your computer.
 
-Q3. How to use this application to schedule my google calender?
-<ul>
-	<li>
-		Click the calender icon in the navigation bar.
-
-	</li>
-	<li>
-		Click the generate CSV option available at the top of this window
-	</li>
-	<li>
-		Dowload the file in your computer.
-
-	</li>
-	<li>
-		Select the ADD csv to google calender link present below your google calender frame
-	</li>
-	<li>
-		In the google calender website page select the import calender option and pick your file from the displayed file picker
-	</li>
-	<li>
-		NOw check out your google calender to find your event planned there. In case of any discrepancy please submit your bug with screenchot and username
-		to <a href="mailto:rupesh95903@gmail.com">rupesh95903@gmail.com</a>
-	</li>
+  </li>
+  <li>
+    Select the ADD csv to google calender link present below your google calender frame
+  </li>
+  <li>
+    In the google calender website page select the import calender option and pick your file from the displayed file picker
+  </li>
+  <li>
+    NOw check out your google calender to find your event planned there. In case of any discrepancy please submit your bug with screenchot and username
+    to <a href="mailto:rupesh95903@gmail.com">rupesh95903@gmail.com</a>
+  </li>
 </ul>
+</div>
+    </div>
+  </div>
 
-
-Q4. How is it different from a general calender application?
-General calender app uses your input and shows the result.
-We here are tring to add intelligence to it while scheduling.
-In limited amount of time and resource we did not integrated it with machine leaning but 
-we plan in doing so suvh that all event you don't know when to do is scheduled in the time you actually perfer to do 
-and have been doing in the past.
-
-Q5. What type of scheduling can be done by GetSchedGo ? 
-
-This mainly focusses on activities of student life and type of event's related to that.
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+        How is it different from a general calender application?</a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse ">
+      <div class="panel-body">
+      This mainly focusses on activities of student life and type of event's related to that.
 Suggestions are also from football and from instructor of course you are enrolled to.
 Things like studyong time is mainly in preferrence while scheduling a variable event so you can give more time to study.
 Statistics help you to visualise how you have been performing to develop more cinsience how to utilise time.
+      </div>
+    </div>
+  </div>
 
-Q6. Is my data secured and private?
+<div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+        What type of scheduling can be done by GetSchedGo ? </a>
+      </h4>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse">
+      <div class="panel-body">
+      This mainly focusses on activities of student life and type of event's related to that.
+Suggestions are also from football and from instructor of course you are enrolled to.
+Things like studyong time is mainly in preferrence while scheduling a variable event so you can give more time to study.
+Statistics help you to visualise how you have been performing to develop more cinsience how to utilise time.
+ </div>
+    </div>
+  </div>
 
-Your data is secured in a sqlite database and can not be accessed by other user unless you desire to release to help your peer is estimating time
+
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+        Is my data secure here?</a>
+      </h4>
+    </div>
+    <div id="collapse6" class="panel-collapse collapse">
+      <div class="panel-body">
+      Your data is secured in a sqlite database and can not be accessed by other user unless you desire to release to help your peer is estimating time
 Currently in prototype phase we have given admin rights to see through all data and check for bugs.
 But with initial public release, we won't be giving rights to any data to the admin.
 
+      </div>
+    </div>
+  </div>
 
+</div>
+</div>
+</div>
+
+<div id="Use" class= "container-fluid" style="padding-top: 50px; ">
+
+    
+  <div class="container" style="padding-left: 15px;""> 
+  <div class="panel panel-default panel-primary">
+  <div class="panel-heading"><h1>How to use it?</h1></div>
+  <div class="panel-body"><p>Now it's time for live action. Just click on the specific questions and boom!!
+  You will get to know how to access each and every cool features of the application.</p> </div>
+</div>
+</div>
+
+<div class="container" style="padding-left: 15px;"	>
+<div class="panel-group" id="accordion2" >
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">
+        How to sign up???</a>
+      </h4>
+    </div>
+    <div id="collapse11" class="panel-collapse collapse in">
+      <div class="panel-body">The first time you try to access the application it will prompt you to sign up or sign in.
+      You just click on the sign up button. It will redirect you to a form. Just fill in the details and
+      that's it.</div>
+    </div>
+  </div>
+
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse21">
+        How to add an event??</a>
+      </h4>
+    </div>
+    <div id="collapse21" class="panel-collapse collapse">
+      <div class="panel-body">
+      Now that you have signed in , you will see the events tab. Just hover on it and click on the add events 
+      button. It will redirect you to a form, fill in the details and submit. The scheduler will schedule the 
+      event based on your prioities and presence of other events. Case may occur that the event is not scheduled. It will show an error message in that case else it will rredirect you the eventlist page.
+    </div>
+  </div>
+  </div>
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse31">
+        How to make a profilie?</a>
+      </h4>
+    </div>
+    <div id="collapse31" class="panel-collapse collapse">
+      <div class="panel-body">
+      Just click on the Profile Tab in the Home Page. Fill in your preferences and timing. Check the "Are you an instructor" checkbox if you are an instructor.These will help to schedule your events in future.
+
+</div>
+    </div>
+  </div>
+
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse41">
+       How do I see all the events?</a>
+      </h4>
+    </div>
+    <div id="collapse41" class="panel-collapse collapse ">
+      <div class="panel-body">
+      Click on the Events tab on the home page navbar. Select the EventList menu from the dropdown. You will 
+      be redirected to a page containing all the events.You can sort the events by date and id from the "Sort by DATE" and "Sort by ID" menu from the navbar. You can also click on the "Filers" menu and see only the
+      scheduled events, only the unscheduled events or the completed events.
+      </div>
+    </div>
+  </div>
+
+<div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse51">
+        I want a table view of all the events, what should I do?</a>
+      </h4>
+    </div>
+    <div id="collapse51" class="panel-collapse collapse">
+      <div class="panel-body">
+      You must be opening the application keeping in mind a table full of events like a calender. Well here it is. Click on the "Events" tab and select the "Timetable" menu from the dropdown. Here is what you want. But you will only be able to see the scheduled events.
+ </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse61">
+        How to edit or delete an event?</a>
+      </h4>
+    </div>
+    <div id="collapse61" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Events" tab, and click the "EventList" menu from the dropdown.You will see the EventList. 
+      To the right of the EventDetails, click on the trash-shaker glyphicon.The event will be deleted.
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse7">
+        How to become an Instructor?</a>
+      </h4>
+    </div>
+    <div id="collapse7" class="panel-collapse collapse">
+      <div class="panel-body">
+      Just click on the Profile tab. You will be redirected to a page. Just check the "Are you an Instructor"
+      checkbox and that's all.
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse8">
+        As an Instructor how will you select a course?</a>
+      </h4>
+    </div>
+    <div id="collapse8" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Courses" tab, and click the "Select Course" menu from the dropdown.You will see a form with one field prompting you to specify a course code. Just do that and submit. Ohhh!!! You have become an Instructor. Take a bow, guys!!
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse9">
+        How to add assignments, classes, and exams as an instructor? </a>
+      </h4>
+    </div>
+    <div id="collapse9" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Create Student Event" tab and select "Add Assignment","Add Class" or "Add Exam"
+      as per your wish. You will be redirected to a form , just fill in the details and submit.
+      </div>
+    </div>
+  </div>
+
+<div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse10">
+        As a student how to enroll for a course?</a>
+      </h4>
+    </div>
+    <div id="collapse10" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Courses" tab and select "Enroll for Course" from the dropdown.You will be redirectted to a form with just one field. Just type the course code and submit. Job done.
+
+      </div>
+    </div>
+  </div>
+
+<div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse15">
+        As a student how to see all the events related to the course?</a>
+      </h4>
+    </div>
+    <div id="collapse15" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Courses" tab and select the "My Course" from the dropdown.Now you will be redirected
+      to a page containing all your assignments, classes and courses. Select the "Course" tab from the navbar
+	   and select any specific course if you want to see events related to a specific course. You can also 
+	   select the "Event Type" tab and select "Assignment","Classes" or "Exam" from the dropdown if you want to see only the assignment,Classes or only exams.
+      </div>
+    </div>
+  </div>
+
+<!-- <div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse11">
+        As a student how to see all the events related to the course?</a>
+      </h4>
+    </div>
+    <div id="collapse11" class="panel-collapse collapse"> 
+      <div class="panel-body">
+      Click on the "Courses" tab and select the "My Course" from the dropdown.Now you will be redirected
+      to a page containing all your assignments, classes and courses. Select the "Course" tab from the navbar
+	   and select any specific course if you want to see events related to a specific course. You can also 
+	   select the "Event Type" tab and select "Assignment","Classes" or "Exam" from the dropdown if you want to see only the assignment,Classes or only exams.
+
+      </div>
+    </div>
+  </div>
+
+ -->
+
+<div class="panel panel-default panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse12">
+        How to add an assignment, class or exam to your schedule?</a>
+      </h4>
+    </div>
+    <div id="collapse12" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Courses" tab and select the "My Courses" menu from the dropdown. You will be
+      redirected to a page containing list of course events. To the right of the course details you will see a edit-shaker glyphicon. Click on it and you will be redirected to a page containing a form. The 
+      deatails already provided will be prefilled. Add something or edit the previous as you like. Submit the form, your event will be added to the schedule if possible.In case of exam there will be an xtra calender glyphicon. You can create an ExamPreparation Event by clicking on it. Like the previous case, 
+      you will be redirected to a page containing the form. Submit it and add an ExamPreparation event to the
+      schedule. 
+
+      </div>
+    </div>
+  </div>
+
+<div class="panel panel-default panel-success">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse13">
+        How to see the statistics of a given day?</a>
+      </h4>
+    </div>
+    <div id="collapse13" class="panel-collapse collapse">
+      <div class="panel-body">
+      Click on the "Statistics" tab.Now choose "Today" or "Yesterday" from the dropdown list.You
+      will be shown the stats of the corresponding day.
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+</div>
+
+<div class="container" style="padding-left: 15px;">
+<form method="POST">
+			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
+			{% for field in FeedBackForm %}<!-- making a loop across form to break it into 2-3 forms -->
+				{{ field|as_crispy_field }}
+<!-- 				{% if field.error %}
+				<label class='error' for='id_{{ field.name }}' generated="true">{{ field.errors|join:". " }}</label>
+				{% endif %} -->
+			{% endfor %}
+			<br>
+			<button type="submit" class="btn">Submit</button>
+		</form>
+		</div>
 
 ASK YOUR QUESTION :- We will reach back to you. A general HTML form Nothing fancy
 {% endblock %}
