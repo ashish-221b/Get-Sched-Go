@@ -17,13 +17,13 @@ class SimpleForm(forms.ModelForm):
 	sleepChoice = forms.ChoiceField(
 		widget = forms.RadioSelect,
 		choices = SLEEP_TIME)
-	crickenthu = forms.BooleanField(required=False,label='Suggestions for cricket matches')
-	NBAenthu = forms.BooleanField(required=False,label='Suggestions for NBA matches')
-	footballenthu = forms.BooleanField(required=False,label='Suggestions for football matches')
+	# crickenthu = forms.BooleanField(required=False,label='Suggestions for cricket matches')
+	# NBAenthu = forms.BooleanField(required=False,label='Suggestions for NBA matches')
+	# footballenthu = forms.BooleanField(required=False,label='Suggestions for football matches')
 	instructor = forms.BooleanField(required = False,label = 'Are you an Instructor')
 	class Meta:
 		model = profile
-		fields = ('name','studyChoice','sleepChoice','crickenthu','NBAenthu','footballenthu','instructor')
+		fields = ('name','studyChoice','sleepChoice','instructor')
 
 
 class FeedBackForm(forms.ModelForm):

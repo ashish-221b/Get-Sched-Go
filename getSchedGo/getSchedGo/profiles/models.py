@@ -22,9 +22,9 @@ class profile(models.Model):
 	#Various Fields for user preference.
 	studyChoice = models.CharField(max_length=1,choices=STUDY_CHOICES,default='3')
 	sleepChoice = models.CharField(max_length=1,choices=SLEEP_TIME,default='B')
-	crickenthu = models.BooleanField(default=False,)
-	NBAenthu = models.BooleanField(default=False,)
-	footballenthu = models.BooleanField(default=False,)
+	# crickenthu = models.BooleanField(default=False,)
+	# NBAenthu = models.BooleanField(default=False,)
+	# footballenthu = models.BooleanField(default=False,)
 	## connection with oneToOne relation to user
 	user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank = True)
 	## Is the user an instructor and then provide special features to him

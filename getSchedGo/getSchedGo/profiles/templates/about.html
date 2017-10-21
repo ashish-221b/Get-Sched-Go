@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% load crispy_forms_tags %}
-{% block content %}
+{% block bars %}
 <style>
 	
   .affix {
@@ -19,19 +19,32 @@
      position: relative;
      top: 50px;
   }
+/*a.anchor {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}*/
+#Basics {
+    padding-top: 100px;
+    margin-top: -100px;
+}
 
-  
 </style>
 
-<div class="container-fluid" style="padding-left: 30px;">
-<div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;" >
+
+<div class="container-fluid " style="background-image: -webkit-linear-gradient(top,#337ab7 0,#265a88 100%);
+    background-image: -o-linear-gradient(top,#337ab7 0,#265a88 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#337ab7),to(#265a88));
+    background-image: linear-gradient(to bottom,#337ab7 0,#4e0674 100%);color:#fff;height:200px;" >
+  <div class="col-md-8 col-md-offset-2">
 <h1>WELCOME TO FAQ</h1>
 Ok Guys, thanks for wasting your valuable time(which is definitely not the project's aim, by the way) and visiting our web application.Here you will find everything you wanna know as a user. So, dig in without
 wasting any further valuable moments.<br>
-</div>
+</div></div>
 
 
-<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
+<nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="50">
   <div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -44,15 +57,18 @@ wasting any further valuable moments.<br>
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="#Basics">Basics</a></li>
-          <li><a href="#Use">Learn To Use</a></li>
+          <li><a class="anchor" href="#Basics">Basics</a></li>
+          <li><a class="anchor" href="#Use">Learn To Use</a></li>
           
         </ul>
       </div>
     </div>
  </div>
 </nav> 
-</div>
+
+{% endblock %}
+
+{% block content %}
 <div id="Basics" class="container-fluid">
 <div class="container" style="padding-top:50px; " >
 
@@ -162,7 +178,7 @@ Statistics help you to visualise how you have been performing to develop more ci
   </div>
 
 
-  <div class="panel panel-default panel-info">
+  <div class="panel panel-default panel-info" id="Use">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
@@ -182,12 +198,34 @@ But with initial public release, we won't be giving rights to any data to the ad
 </div>
 </div>
 </div>
-
-<div id="Use" class= "container-fluid" style="padding-top: 50px; ">
+<style type="text/css">
+  .panel-primary>.panel-heading {
+    background-image: linear-gradient(to bottom,#010e17 0,#8fa9bf 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
+    background-repeat: repeat-x;
+}
+.panel-info>.panel-heading {
+    /* background-image: -webkit-linear-gradient(top,#d9edf7 0,#c4e3f3 100%); */
+    background-image: -o-linear-gradient(top,#d9edf7 0,#c4e3f3 100%);
+    /* background-image: -webkit-gradient(linear,left top,left bottom,from(#d9edf7),to(#c4e3f3)); */
+    background-image: linear-gradient(to bottom,#f2f4f5 0,#50b6eb 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9edf7', endColorstr='#ffc4e3f3', GradientType=0);
+    background-repeat: repeat-x;
+}
+.panel-success>.panel-heading {
+    background-image: -webkit-linear-gradient(top,#dff0d8 0,#d0e9c6 100%);
+    background-image: -o-linear-gradient(top,#dff0d8 0,#d0e9c6 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#dff0d8),to(#d0e9c6));
+    background-image: linear-gradient(to bottom,#66ad49 0,#c1f3ac 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdff0d8', endColorstr='#ffd0e9c6', GradientType=0);
+    background-repeat: repeat-x;
+}
+</style>
+<div  class= "container-fluid" style="padding-top: 50px; ">
 
     
   <div class="container" style="padding-left: 15px;""> 
-  <div class="panel panel-default panel-primary">
+  <div class="panel panel-default panel-primary" style="">
   <div class="panel-heading"><h1>How to use it?</h1></div>
   <div class="panel-body"><p>Now it's time for live action. Just click on the specific questions and boom!!
   You will get to know how to access each and every cool features of the application.</p> </div>
@@ -425,7 +463,8 @@ But with initial public release, we won't be giving rights to any data to the ad
 </div>
 </div>
 
-<div class="container" style="padding-left: 15px;">
+<div class="container col-md-6 col-md-offset-3" style="padding-left: 15px;">
+  <h3> Wanna Leave Us A Message</h3>
 <form method="POST">
 			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
 			{% for field in FeedBackForm %}<!-- making a loop across form to break it into 2-3 forms -->
@@ -435,9 +474,7 @@ But with initial public release, we won't be giving rights to any data to the ad
 				{% endif %} -->
 			{% endfor %}
 			<br>
-			<button type="submit" class="btn">Submit</button>
+			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 		</div>
-
-ASK YOUR QUESTION :- We will reach back to you. A general HTML form Nothing fancy
 {% endblock %}
