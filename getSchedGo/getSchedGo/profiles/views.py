@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import SimpleForm
-from .models import profile
+from .forms import SimpleForm,FeedBackForm
+from .models import profile,FeedBack
 # Create your views here.
 # main page url is ^$. No special context to be displayed
 
@@ -16,7 +16,12 @@ def home(request):
 
 ## A view that would brief user about the application
 def about(request):
-	context = {}
+	user = request.user
+	## When Submit is pressed
+	if request.method == "POST":
+		form = FeedBackForm(request.POST)
+		form.save()
+	context = {'FeedBackForm':FeedBackForm}
 	template = 'about.html'
 	return render(request,template,context)
 
@@ -40,14 +45,14 @@ def userProfile(request):
 			return redirect('home')
 		# form = SimpleForm(request.POST)
 		# if form.is_valid():
-		# 	pos = form.save(commit=False)
-		# 	pos.user = request.user
-		# 	# userProfile, isCreated = profile.objects.get_or_create(user=user)
-		# 	update_prof=profile.objects.get(user=user)
-		# 	update_prof=pos
-		# 	update_prof.save()
-		# 	form = SimpleForm()
-		# 	return redirect('home')
+		#   pos = form.save(commit=False)
+		#   pos.user = request.user
+		#   # userProfile, isCreated = profile.objects.get_or_create(user=user)
+		#   update_prof=profile.objects.get(user=user)
+		#   update_prof=pos
+		#   update_prof.save()
+		#   form = SimpleForm()
+		#   return redirect('home')
 		return render(request,template,{'user': user, 'form': form})
 
 	else: #for get request i.e. when page opens on browser

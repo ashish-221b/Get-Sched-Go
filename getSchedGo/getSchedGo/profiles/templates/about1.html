@@ -1,16 +1,17 @@
 {% extends 'base.html'%}
-{% load crispy_forms_tags %}
 {% block content %}
+<h1>WELCOME TO ABOUT</h1>
+Ok Guys, thanks for wasting your valuable time(which is definitely not the project's aim, by the way) and visiting our web application.Here you will find everything you wanna know as a user. So, dig in without
+wasting any further valuable moments.<br>
 <style>
-	
+	body {
+      position: relative; 
+  }
   .affix {
-      top:60px;
+      top:0;
       width: 100%;
       z-index: 9999 !important;
   }
-  /*.affix-to{
-  	 top:60px;
-  }*/
   .navbar {
       margin-bottom: 0px;
   }
@@ -20,16 +21,18 @@
      top: 50px;
   }
 
+  #Basic {padding-top:50px;height:50px;}
+  #Use {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
   
 </style>
 
-<div class="container-fluid" style="padding-left: 30px;">
-<div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;" >
-<h1>WELCOME TO FAQ</h1>
-Ok Guys, thanks for wasting your valuable time(which is definitely not the project's aim, by the way) and visiting our web application.Here you will find everything you wanna know as a user. So, dig in without
-wasting any further valuable moments.<br>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<div class="container-fluid" style="background-color:#F44336;color:#fff;height:200px;">
+  <h1>Scrollspy and Affix Example</h1>
+  <h3>Fixed navbar on scroll</h3>
+  <p>Scroll this page to see how the navbar behaves with data-spy="affix" and data-spy="scrollspy".</p>
+  <p>The navbar is attached to the top of the page after you have scrolled a specified amount of pixels, and the links in the navbar are automatically updated based on scroll position.</p>
 </div>
-
 
 <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197">
   <div class="container-fluid">
@@ -44,16 +47,16 @@ wasting any further valuable moments.<br>
     <div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="#Basics">Basics</a></li>
-          <li><a href="#Use">Learn To Use</a></li>
+          <li><a href="#Basics">Section 1</a></li>
+          <li><a href="#Use">Section 2</a></li>
           
         </ul>
       </div>
     </div>
  </div>
 </nav> 
-</div>
-<div id="Basics" class="container-fluid">
+
+,<div id="Basics" class="container-fluid">
 <div class="container" style="padding-top:50px; " >
 
   <div class="panel panel-default panel-primary">
@@ -64,7 +67,7 @@ wasting any further valuable moments.<br>
    
 </div>
 
-<div class="container">
+<div class="container" style="padding-left:15px; ">
 <div class="panel-group" id="accordion" >
   <div class="panel panel-default panel-success">
     <div class="panel-heading">
@@ -183,18 +186,19 @@ But with initial public release, we won't be giving rights to any data to the ad
 </div>
 </div>
 
-<div id="Use" class= "container-fluid" style="padding-top: 50px; ">
+<div id="Use" class= "container-fluid">
+<div class="container" style="padding-top:50px; ">
 
     
-  <div class="container" style="padding-left: 15px;""> 
+    
   <div class="panel panel-default panel-primary">
-  <div class="panel-heading"><h1>How to use it?</h1></div>
+  <div class="panel-heading"><h1>How to use it??</h1></div>
   <div class="panel-body"><p>Now it's time for live action. Just click on the specific questions and boom!!
   You will get to know how to access each and every cool features of the application.</p> </div>
 </div>
 </div>
 
-<div class="container" style="padding-left: 15px;"	>
+<div class="container" style="padding-left:15px; ">
 <div class="panel-group" id="accordion2" >
   <div class="panel panel-default panel-success">
     <div class="panel-heading">
@@ -425,19 +429,7 @@ But with initial public release, we won't be giving rights to any data to the ad
 </div>
 </div>
 
-<div class="container" style="padding-left: 15px;">
-<form method="POST">
-			{% csrf_token %}<!-- Must in forms. Extra object for cyber Site cross referencing object -->
-			{% for field in FeedBackForm %}<!-- making a loop across form to break it into 2-3 forms -->
-				{{ field|as_crispy_field }}
-<!-- 				{% if field.error %}
-				<label class='error' for='id_{{ field.name }}' generated="true">{{ field.errors|join:". " }}</label>
-				{% endif %} -->
-			{% endfor %}
-			<br>
-			<button type="submit" class="btn">Submit</button>
-		</form>
-		</div>
+  </body>
 
 ASK YOUR QUESTION :- We will reach back to you. A general HTML form Nothing fancy
 {% endblock %}
