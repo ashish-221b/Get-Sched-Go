@@ -5,6 +5,7 @@ import json
 import re
 from .models import suggestion
 from profiles.models import profile
+from datetime import *
 
 ## Method for scheduling match
 # @param userprofile
@@ -37,6 +38,14 @@ def matcheschedule(userprofile):
 	for match in fixture:
 		if str(match['homeTeamName']) in list or str(match['awayTeamName']) in list:
 			s= match['date']
-			q= suggestion(UserProfile=userprofile,StartDate=s[0:10],StartTime=s[11:17],Hometeam=match['homeTeamName'],Awayteam=match['awayTeamName'],League=dict[match['competitionId']])
+			Date= s[0:9]
+			Time= s[11:18]
+
+			date=datetime.strptime(Date, '%Y-%m-%d')
+			time=datetime.strptime(Time, '%H:%M:%S')
+			Start= datetime.combine(date.date(), time.time())
+			Start= Start+ timedelta(hours=5,minutes=30)
+
+			q= suggestion(UserProfile=userprofile,StartDate=Start.date(),StartTime=Start.time(),Hometeam=match['homeTeamName'],Awayteam=match['awayTeamName'],League=dict[match['competitionId']])
 		
 			q.save()
