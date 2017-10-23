@@ -8,7 +8,7 @@ from datetime import *
 Priority_Options = [('1','Normal'),('2','Preferred'), ('3','Important'), ('4','Indespensable')]
 Event_Timings = [('B','Fixed Timing'),('C',('Variable Timing'))]
 Event_Type = [('A','Official Classes'), ('B','Study Acads'), ('C','Extra Study'), ('D','ExtraCurriculars'),('E','Misc.')]
-Duration_choices = [('1','Half Hour'),('2','One Hour'),('3','One and Half Hour'),('4','Two Hour')]
+Duration_choices = [('1','Half Hour'),('2','One Hour'),('3','One and Half Hour'),('4','Two Hour'),('5',"Two and Half Hour"),('6','Three Hour'),('8','Four Hour'), ('10','Five Hours'),('12','Six Hours')]
 
 ## A model named DailySched
 # @details It contains the fields UserProfile which has a foreignkey to the profile model,
