@@ -38,8 +38,8 @@ def matcheschedule(userprofile):
 	for match in fixture:
 		if str(match['homeTeamName']) in list or str(match['awayTeamName']) in list:
 			s= match['date']
-			Date= s[0:9]
-			Time= s[11:18]
+			Date= s[0:10]
+			Time= s[11:19]
 
 			date=datetime.strptime(Date, '%Y-%m-%d')
 			time=datetime.strptime(Time, '%H:%M:%S')

@@ -26,7 +26,7 @@ class EventForm(forms.ModelForm):
                 'StartTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
                 'EndTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
                 'DeadLineTime': forms.TextInput(attrs={'placeholder': 'HH:MM:SS'}),
-            }
+            }   
 
 ## Form corresponding to an InstructorAssignment model with it's specified widgets and placeholders excluding some field
 class InstructorAssignmentForm(forms.ModelForm):
