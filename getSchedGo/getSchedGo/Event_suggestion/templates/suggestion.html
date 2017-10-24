@@ -10,9 +10,13 @@
    }
 
     #rand:hover {
-     background-color: #737373;
-     opacity: 1;
+    background-color: #ff9900;
       }
+
+    .carousel-caption:hover{
+    opacity:1;
+    text-shadow: -3px -1px 2px rgba(99, 91, 57, 0.6);
+}
 
  </style>
  {% endblock %}
@@ -115,8 +119,8 @@
       
 
 
-
-       <div class = "carousel-caption" id="rand" style="background-color:#ebebe0; opacity:0.8";>
+       
+       <div class = "carousel-caption"  style="background-color:#ebebe0; opacity:0.8";>
 
          
           {% if c != 0 %}
@@ -128,13 +132,17 @@
           <h3> You are Following this event </h3><br><br><br>
         </div>
           {% else %}
+          
           <a href="{% url 'suggestion:ConvertToEvent' q.id %}">
         <h3> Time: {{ q.StartTime }} </h3>
         <h3> Date: {{ q.StartDate }} </h3>
         <h3> {{ q.Hometeam }} V/S {{ q.Awayteam }} </h3>
         <h3> League: {{ q.League }} </h3><br><br><br>
         </a>
+        
+          
         {% endif %}
+        
       </div>
      </div>
   
