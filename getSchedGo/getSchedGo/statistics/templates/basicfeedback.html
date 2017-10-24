@@ -19,8 +19,8 @@ Hi {{ user }}<br>
       <div class="col-md-5" >
          {% if not Event.Completed %}
          <a href="{% url 'statistics:MarkItCompleted' Event.id %}">Yah I did it</a><br>
-         <a href="{% url 'Timetable:EditEvent' Event.id %}">No I missed it. Edit and Reschedule it</a><br>
          {% if not Event.Type == 'A' %}
+         <a href="{% url 'Timetable:EditEvent' Event.id %}">No I missed it. Edit and Reschedule it</a><br>
          <a href="{% url 'Timetable:DeleteEvent' Event.id %}">Sorry I missed. Let's delete it. I don't wanna reschedule</a><br>
          {% endif %}
          {% else %}
