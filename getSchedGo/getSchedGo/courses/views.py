@@ -135,7 +135,7 @@ def UserDropper(request,pk):
 ## view to search querry for available courses
 # @param request  basic call for a view in django
 # Does an intelligent searching of course by it's course code throughout the database
-# 
+#
 # Provides links to course enrollment as well as course dropping to the student
 @login_required
 def Enrollmentview(request):
@@ -208,7 +208,7 @@ def AssignmentToEvent(request, pk):
 # @param request  basic call for a view in django
 # @param pk InstructorClass id
 # Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
-# Priority is kept indespensable with fixed time setting. 
+# Priority is kept indespensable with fixed time setting.
 def ClassToEvent(request,pk):
     instance=get_object_or_404(InstructorClass, pk=pk)
     Start= datetime.combine(instance.Date, instance.StartTime)
@@ -249,7 +249,7 @@ def TimeToDuration(time):
 # @param request  basic call for a view in django
 # @param pk InstructorExam id
 # Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
-# Priority is kept indespensable with fixed time setting. 
+# Priority is kept indespensable with fixed time setting.
 def ExamToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     Start= datetime.combine(instance.Date, instance.StartTime)
@@ -281,7 +281,7 @@ def ExamToEvent(request,pk):
 # @param request  basic call for a view in django
 # @param pk InstructorExam id
 # Saves a sample of that event and redirects to the eventForm with its instance to edit few details and schedule it with highest priority
-# Priority is kept indespensable with variable time setting. 
+# Priority is kept indespensable with variable time setting.
 def ExamPrepToEvent(request,pk):
     instance=get_object_or_404(InstructorExam, pk=pk)
     Start= datetime.combine(instance.Date,instance.StartTime)

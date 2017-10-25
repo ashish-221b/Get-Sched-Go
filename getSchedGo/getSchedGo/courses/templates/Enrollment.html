@@ -11,6 +11,8 @@
 </div>
 {% for courses in courseDetail %}
 <div class="col-md-6 col-md-offset-2">
+	<div class='row event-holder'>
+	<div class='col-md-8'>
 <h3>
 Code: {{ courses.code }}
 </h3>
@@ -21,10 +23,10 @@ Slot Number: {{ courses.Slot }}
 </h3><h3>
 Credit: {{ courses.credit }}
 </h3>
-{% if courses.tutorial %}
-<h3>
-Tutorial Slot: {{ courses.tutorialSlot }}
-</h3>
+{% if courses.instructor %}
+	<h3>Instructor: {{ courses.instructor.name }}</h3>
+{% else %}
+	<h3>Instructor: Not Alloted</h3>
 {% endif %}
 </div>
 <div class="col-md-4">
@@ -34,6 +36,8 @@ Tutorial Slot: {{ courses.tutorialSlot }}
 	<a href="{% url 'courses:UserDropper' courses.id %}">        <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-remove"></span>Drop
         </button></a> <br>
+</div>
+</div>
 </div>
 
 {% endfor %}

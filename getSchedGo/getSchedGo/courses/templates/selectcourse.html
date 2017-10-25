@@ -11,6 +11,7 @@
 </div>
 <div class="col-md-8 col-md-offset-2">
 {% for course in courseDetail %}
+<div class='event-holder'>
 <h3>
 Code: {{ course.code }}
 </h3><br>
@@ -29,10 +30,11 @@ Tutorial Slot: {{ course.tutorialSlot }}
 {% if request.user.profile.instructor %}
 <h3>
 	{% if not course.instructor %}
-	<li><a href="{% url 'courses:ClaimCourse' course.id %}">I am the Instructor</a></li>
+	<a href="{% url 'courses:ClaimCourse' course.id %}">I am the Instructor</a>
 	{% endif %}
 </h3><br>
 {% endif %}
+</div>
 {% endfor %}
 </div>
 {% endblock %}

@@ -102,6 +102,8 @@ def EventList(request,pk=-1):
         print(List)
     elif(pk == '3'):
         List = Event.objects.filter(UserProfile=user.profile,ScheduledStartTime__isnull=True).exclude(Type='A', CreatorType ='0')
+    elif(pk == '4'):
+        List = Event.objects.filter(UserProfile=user.profile,Completed = False).exclude(Type='A', CreatorType ='0')
     else:
         print(pk)#now if more wanted then add pk=='3' so on
         List = Event.objects.filter(UserProfile=user.profile).order_by('StartDate','StartTime').exclude(Type='A', CreatorType ='0')
