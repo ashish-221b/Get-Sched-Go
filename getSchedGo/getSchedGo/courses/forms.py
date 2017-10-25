@@ -13,4 +13,4 @@ class CourseForm(forms.Form):
 class CourseEditForm(forms.ModelForm):
 	class Meta:
 		model = coursedetail
-		exclude = ('code','Slot','instructor','Student','PrescribedStudyHours')
+		exclude = ('code','Slot','instructor','Student','tutorial','tutorialSlot')

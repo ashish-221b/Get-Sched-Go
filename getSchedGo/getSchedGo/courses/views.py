@@ -146,6 +146,14 @@ def Enrollmentview(request):
         if form.is_valid():
             text = form.cleaned_data['code']
             detail = coursedetail.objects.filter(code__istartswith=text) | coursedetail.objects.filter(code__iendswith=text)
+            exList = []
+            for courses in detail:
+                en = coursedetail.objects.filter(Student = user.profile, code = courses.code)
+                if not en:
+                    exList.append('1')
+                else:
+                    exList.append('0')
+            detail = list(zip(detail,exList))
         return render(request,template,{'form': form, 'courseDetail': detail, 'user': user})
     else:
         form = CourseForm()
@@ -164,7 +172,8 @@ def SelectCourse(request,pk=-1):
             if form.is_valid():
                 text = form.cleaned_data['code']
                 detail = coursedetail.objects.filter(code__istartswith=text) | coursedetail.objects.filter(code__iendswith=text)
-            return render(request,template,{'form': form, 'text': text, 'courseDetail': detail, 'user': user})
+                All = coursedetail.objects.filter(instructor = user.profile)
+            return render(request,template,{'form': form, 'text': text, 'courseDetail': detail, 'user': user, 'Aux': All})
 
     else: #for get request i.e. when page opens on browser
         if(pk==-1):

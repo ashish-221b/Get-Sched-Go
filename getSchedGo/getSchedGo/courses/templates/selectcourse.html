@@ -30,7 +30,9 @@ Tutorial Slot: {{ course.tutorialSlot }}
 {% if request.user.profile.instructor %}
 <h3>
 	{% if not course.instructor %}
+	{% if not Aux %}
 	<a href="{% url 'courses:ClaimCourse' course.id %}">I am the Instructor</a>
+	{% endif %}
 	{% endif %}
 </h3><br>
 {% endif %}

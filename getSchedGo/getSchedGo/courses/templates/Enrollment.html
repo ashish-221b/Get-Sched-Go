@@ -9,7 +9,7 @@
 			<button class="btn btn-primary " type="submit">Submit</button>
 		</form>
 </div>
-{% for courses in courseDetail %}
+{% for courses,stat in courseDetail %}
 <div class="col-md-6 col-md-offset-2">
 	<div class='row event-holder'>
 	<div class='col-md-8'>
@@ -30,12 +30,15 @@ Credit: {{ courses.credit }}
 {% endif %}
 </div>
 <div class="col-md-4">
+	{% if stat == '1' %}
 	<a href="{% url 'courses:UserAdder' courses.id %}"><button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-ok"></span>Enroll
         </button></a> <br><br>
+	{% else %}
 	<a href="{% url 'courses:UserDropper' courses.id %}">        <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-remove"></span>Drop
         </button></a> <br>
+	{% endif %}
 </div>
 </div>
 </div>
