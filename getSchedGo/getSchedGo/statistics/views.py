@@ -162,6 +162,11 @@ def AheadOfTime(request):
 @login_required
 def googleConnector(request):
 	print(request.user.email)
+	filename = "sched"+str(request.user)+".csv"
+	try:
+		os.remove(filename)
+	except OSError:
+		pass	
 	text = None
 	mail = request.user.email
 	if mail is not None:
