@@ -33,19 +33,6 @@
           <ul class="nav navbar-nav">
           <li><a href="{% url 'Timetable:SortExam' 0 %}">Sort by ID</a></li>
           <li><a href="{% url 'Timetable:SortExam' 1 %}">Sort by DATE</a></li>
-          <li class="dropdown" align="right">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-<!-- using if for different view if user is logged in or not -->
-                <li><a href="{% url 'Timetable:SortExam' 2 %}">Declared Exams</a></li>
-                <li><a href="{% url 'Timetable:SortExam' 3 %}">Undeclared Exams</a></li>
-                <li><a href="{% url 'Timetable:ExamList' %}">All Exams</a></li>
-<!--                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li> -->
-              </ul>
-            </li>
         </ul>
       </div>
 
@@ -70,7 +57,7 @@ It is just as if part of content in block of actually in base.html -->
          <h4> At : {{ Exam.Venue }} </h4>
          <h4> Preparation : {{ Exam.PreparationDuration }}
       </div>
-    
+
     </div>
    {% endfor %}
 </p>
