@@ -82,7 +82,7 @@
       {% if added == 0 %}
 		<a href="{% url 'courses:AssignmentToEvent' Assignment.id %}"><span class="glyphicon glyphicon-edit shaker"></span></a>
       {% else %}
-      Added
+      <b><font size="6" color="#4d79ff">Already added, don't worry!!</font></b>
       {% endif %}
 			 </div>
 	</div>
@@ -125,7 +125,7 @@
 {% endif %}
 
 {% if ClassList %}
-<p>
+
  {% for Class,added in ClassList %}
  <!-- {% if Event.ScheduledStartTime %}
  <div class="row event-holder" id="event{{ forloop.counter }}" style="background-color: white; color:#033a22; font-family: 'Alegreya SC';font-size: 24px;">
