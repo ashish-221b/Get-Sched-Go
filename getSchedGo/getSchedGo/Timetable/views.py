@@ -77,6 +77,7 @@ def CreateEvent(request,pk=-1):
                 dataList,freqList,mean = getDuration(prev.CreatorType,prev.CreatorId)
                 maximum = max(freqList, key=freqList.get)
                 multiplier=100//freqList[maximum]
+                # print(freqList.items())
                 context = {'user': user, 'form': form, 'freqList': freqList.items(),'mult': multiplier}
                 template = 'CreateEventSpecial.html'
         return render(request,template,context)
