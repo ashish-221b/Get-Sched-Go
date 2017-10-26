@@ -31,7 +31,8 @@ Tutorial Slot: {{ course.tutorialSlot }}
 <h3>
 	{% if not course.instructor %}
 	{% if not Aux %}
-	<a href="{% url 'courses:ClaimCourse' course.id %}">I am the Instructor</a>
+	<!-- <a href="{% url 'courses:ClaimCourse' course.id %}">I am the Instructor</a> -->
+	<a href="{% url 'courses:ClaimCourse' course.id %}" class="btn btn-danger"><h4>I am the Instructor</h4></button></a>
 	{% endif %}
 	{% endif %}
 </h3><br>
