@@ -108,20 +108,9 @@
           {% url 'statistics:TodayStatistic' as statsHome %}
           <li {% if request.path == home %} class="active"{% endif %}><a href="{% url 'home'%}">Home</a></li><!-- Turns to active in navbar if current path is home -->
           <li {% if request.path == profile %} class="active"{% endif %}><a href="{% url 'profile'%}">Profile</a></li>
-          <li {% if request.path == about %} class="active"{% endif %}><a href="{% url 'about'%}">About</a></li>
+          
           <li {% if request.path == statsHome %} class="active"{% endif %}><a href="{% url 'statistics:TodayStatistic'%}">Statistics</a></li>
 
-             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                {% if not request.user.is_authenticated %}<!-- using if for different view if user is logged in or not -->
-                <li><a href="{% url 'account_login'%}">Login</a></li>
-                <li><a href="{% url 'account_signup'%}">Signup</a></li>
-                {% else %}
-                <li><a href="{% url 'account_logout'%}">Logout</a></li>
-                {% endif %}
-              </ul>
-            </li>
             {% if request.user.is_authenticated %}
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events<span class="caret"></span></a>
@@ -165,6 +154,19 @@
             </li>
             {% endif %}
             {% endif %}
+            <li {% if request.path == about %} class="active"{% endif %}><a href="{% url 'about'%}">FAQ</a></li>
+            
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {% if not request.user.is_authenticated %}<!-- using if for different view if user is logged in or not -->
+                <li><a href="{% url 'account_login'%}">Login</a></li>
+                <li><a href="{% url 'account_signup'%}">Signup</a></li>
+                {% else %}
+                <li><a href="{% url 'account_logout'%}">Logout</a></li>
+                {% endif %}
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
