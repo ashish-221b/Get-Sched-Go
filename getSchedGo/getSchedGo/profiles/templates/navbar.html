@@ -130,10 +130,10 @@
                 <li><a href="{% url 'Timetable:EventList'%}">Event List</a></li>
                 <li><a href="{% url 'Timetable:Schedule'%}">TimeTable</a></li>
                 <li><a href="{% url 'suggestion:index'%}">Suggested Events</a></li>
-                <li><a href="{% url 'statistics:EventBeforeDate' %}">Give Completion Data</a>
+                <li><a href="{% url 'statistics:EventBeforeDate' %}">Event Feedback</a>
               </ul>
             </li>
-            {% url 'statistics:googleConnector' as googl%} 
+            {% url 'statistics:googleConnector' as googl%}
 <li  {% if request.path == googl %} class="active"{% endif %}>        <a href="{% url 'statistics:googleConnector' %}"><img src="https://calendar.google.com/googlecalendar/images/favicon_v2014_18.ico" width="30" height="25"></a>
 </li>
             {% if request.user.profile.instructor %}

@@ -231,8 +231,6 @@ def ClassToEvent(request,pk):
     StartTime = instance.StartTime,
     StartDate = instance.Date,
     Duration = TimeToDuration((datetime.min+(End-Start)).strftime('%H:%M:%S')),
-    ScheduledStartTime = instance.StartTime,
-    ScheduledEndTime = instance.EndTime,
     TimeSettings = 'B',
     EndDate = instance.Date,
     EndTime= instance.EndTime,
@@ -274,8 +272,6 @@ def ExamToEvent(request,pk):
     EndDate = instance.Date,
     EndTime= instance.EndTime,
     Duration = TimeToDuration((datetime.min+(End-Start)).strftime('%H:%M:%S')),
-    ScheduledStartTime = instance.StartTime ,
-    ScheduledEndTime = instance.EndTime,
     TimeSettings = 'B',
 
     Priority = '4',
