@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+<style>
+.glyphicon {
+    font-size: 2	0px;
+}
+</style>
 <div class="col-md-4 col-md-offset-2">
 
 	 <form method="post">
@@ -9,9 +14,12 @@
 			<button class="btn btn-primary " type="submit">Submit</button>
 		</form>
 </div>
+
+
 {% for courses,stat in courseDetail %}
 <div class="col-md-6 col-md-offset-2">
 	<div class='row event-holder'>
+
 	<div class='col-md-8'>
 <h3>
 Code: {{ courses.code }}
@@ -29,14 +37,16 @@ Credit: {{ courses.credit }}
 	<h3>Instructor: Not Alloted</h3>
 {% endif %}
 </div>
+<div class="col-md-2"></div>
 <div class="col-md-4">
 	{% if stat == '1' %}
 	<a href="{% url 'courses:UserAdder' courses.id %}"><button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-ok"></span>Enroll
         </button></a> <br><br>
 	{% else %}
-	<a href="{% url 'courses:UserDropper' courses.id %}">        <button type="button" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-remove"></span>Drop
+	<a href="{% url 'courses:UserDropper' courses.id %}">  <button type="button" class="btn btn-danger btn-sm"; style="height: 60px; width: 100px;">
+          <span class="glyphicon glyphicon-remove"></span> <font size="5" color="#ffcc00
+">Drop</font>
         </button></a> <br>
 	{% endif %}
 </div>
