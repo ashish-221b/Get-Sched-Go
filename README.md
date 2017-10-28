@@ -3,6 +3,10 @@ This would be a web application which will be your next stop to planning your da
 We will schedule your task and also hand you a CSV output if you need to export to your frequently used calender.
 
 Clone this repository and run manage.py as a django web application and enjoy this app.
+## How to clone and make it running?
+* First step is clone this repository to your local machine.
+* sudo apt-get install python3 python3-pip
+* sudo pip3 install -r requirements.txt
 ## Basic Features
 ## Personalised mode:
 * ### Personal details and habits:
