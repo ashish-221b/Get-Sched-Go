@@ -7,6 +7,11 @@ Clone this repository and run manage.py as a django web application and enjoy th
 * First step is clone this repository to your local machine.
 * sudo apt-get install python3 python3-pip
 * sudo pip3 install -r requirements.txt
+* move to folder where main django files are: cd getSchedGo/getSchedGo
+* python3 manage.py migrate
+* python3 manage.py createsuperuser   This will be your admin user.
+* python3 manage.py runserver And you are good to go.
+
 ## Basic Features
 ## Personalised mode:
 * ### Personal details and habits:
