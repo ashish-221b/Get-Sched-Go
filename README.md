@@ -11,6 +11,11 @@ Clone this repository and run manage.py as a django web application and enjoy th
 * python3 manage.py migrate
 * python3 manage.py createsuperuser   This will be your admin user.
 * python3 manage.py runserver And you are good to go.
+* To use data of courses added in your database 
+   Run python3 manage.py shell
+   In Shell
+   from courses.CourseData import UpdateCourse
+   UpdateCourse()
 
 ## Basic Features
 ## Personalised mode:
