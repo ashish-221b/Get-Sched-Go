@@ -18,7 +18,6 @@ Clone this repository and run manage.py as a django web application and enjoy th
    * **UpdateCourse()**
 
 ## Basic Features
-## Personalised mode:
 * ### Personal details and habits:
     * **Input** as query/form from user
         * Sleep Preferences/slots:
